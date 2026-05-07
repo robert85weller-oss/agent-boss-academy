@@ -1547,28 +1547,37 @@
     e.preventDefault();
     const form = document.getElementById('brevo-form');
     const btn = document.getElementById('popup-btn');
-    const data = new FormData(form);
+
+    // Create hidden iframe as target
+    const iframeName = 'brevo-target-' + Date.now();
+    const iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    // Point form to iframe
+    form.target = iframeName;
+    form.action = 'https://6041780f.sibforms.com/serve/MUIFABsigqHEVFOHcCYCaSTnPAwqP--UkAyY0MlfIWeuVn657ah4P2TFCgI9apJZDWT-jm3mFst3HelC4CLL-R42_ECqKj-_gpJM6WeY4jEU1NgzGWPCiNbNyNiUBDYPJos9pMjIhPMFvrXy2C8HOTWRNi9qQzz1ZiSJTLzXDrig_QOcIgzdbnQ3aBmubXGUeVkf-26Kkob3dH9jFA==';
+    form.method = 'POST';
 
     btn.textContent = '...';
     btn.style.opacity = '0.7';
 
-    fetch('https://6041780f.sibforms.com/serve/MUIFABsigqHEVFOHcCYCaSTnPAwqP--UkAyY0MlfIWeuVn657ah4P2TFCgI9apJZDWT-jm3mFst3HelC4CLL-R42_ECqKj-_gpJM6WeY4jEU1NgzGWPCiNbNyNiUBDYPJos9pMjIhPMFvrXy2C8HOTWRNi9qQzz1ZiSJTLzXDrig_QOcIgzdbnQ3aBmubXGUeVkf-26Kkob3dH9jFA==', {
-      method: 'POST',
-      body: data,
-      mode: 'no-cors'
-    }).then(() => {
-      // Show success state
+    // Show success after short delay
+    iframe.onload = function() {
       form.innerHTML = `
         <div style="text-align:center;padding:20px 0;">
           <div style="font-size:40px;margin-bottom:16px;">✅</div>
           <div style="font-size:17px;font-weight:600;color:#FFFFFF;margin-bottom:8px;">Checklist wird zugeschickt!</div>
           <div style="font-size:14px;color:#8B90A4;line-height:1.6;">Schau in deinem Postfach – die AI Readiness Checklist ist unterwegs.</div>
         </div>`;
-      setTimeout(() => document.getElementById('popup').classList.remove('active'), 3000);
-    }).catch(() => {
-      btn.textContent = document.documentElement.lang === 'en' ? 'Request Free Checklist' : 'Kostenlose Checklist anfordern';
-      btn.style.opacity = '1';
-    });
+      setTimeout(() => {
+        document.getElementById('popup').classList.remove('active');
+        document.body.removeChild(iframe);
+      }, 3000);
+    };
+
+    form.submit();
   }
 </script>
 
