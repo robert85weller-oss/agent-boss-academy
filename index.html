@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Boss Academy | WHU-zertifizierte AI Transformation für Sales, Finance & HR</title>
+<meta name="description" content="Vom Abteilungsleiter zum Agent Boss Leader. Praktische Learning Journeys, Coaching und Managed AI Agents für Sales, Finance und HR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F5621E;
+    --orange-light: #FF8A50;
+    --dark: #0D0F14;
+    --dark-2: #141720;
+    --dark-3: #1C202C;
+    --dark-4: #242838;
+    --text: #E8EAF0;
+    --text-muted: #8B90A4;
+    --white: #FFFFFF;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,15,20,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--white); cursor: pointer; text-decoration: none; }
+  .logo span { color: var(--orange); }
+  nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: .5px; transition: color .2s; cursor: pointer; }
+  nav ul a:hover { color: var(--white); }
+  .nav-cta { background: var(--orange) !important; color: var(--white) !important; padding: 10px 22px; border-radius: 4px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--orange-light) !important; }
+  .nav-back { display: none; align-items: center; gap: 8px; color: var(--text-muted); font-size: 13px; font-weight: 500; cursor: pointer; transition: color .2s; }
+  .nav-back:hover { color: var(--white); }
+  .nav-back::before { content: '←'; font-size: 16px; }
+  .lang-toggle { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+  .lang-toggle button { background: none; border: none; padding: 7px 13px; font-size: 12px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all .2s; font-family: 'DM Sans', sans-serif; color: var(--text-muted); }
+  .lang-toggle button.lang-active { background: var(--orange); color: var(--white); }
+  .lang-toggle button:hover:not(.lang-active) { color: var(--white); background: rgba(255,255,255,.06); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+
+  /* SHARED BUTTONS */
+  .btn-primary { background: var(--orange); color: var(--white); padding: 16px 32px; border-radius: 4px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-block; letter-spacing: .3px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,98,30,.35); }
+  .btn-secondary { background: transparent; color: var(--white); padding: 15px 32px; border-radius: 4px; font-size: 16px; font-weight: 500; text-decoration: none; border: 1.5px solid rgba(255,255,255,.25); transition: all .2s; display: inline-block; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary:hover { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.05); }
+  .btn-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--orange-light); text-decoration: none; letter-spacing: .3px; transition: gap .2s; cursor: pointer; }
+  .btn-link:hover { gap: 12px; }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 28px; }
+
+  /* SHARED SECTION */
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+  .section-headline { font-family: 'DM Serif Display', serif; font-size: clamp(34px,4vw,52px); line-height: 1.15; color: var(--white); margin-bottom: 20px; }
+
+  /* FADE */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+  /* ═══════ HOMEPAGE ═══════ */
+
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 60px 80px; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 40%,rgba(245,98,30,.12) 0%,transparent 60%), radial-gradient(ellipse 50% 80% at 20% 60%,rgba(59,130,246,.06) 0%,transparent 50%), var(--dark); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%); }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,98,30,.12); border: 1px solid rgba(245,98,30,.3); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--orange-light); margin-bottom: 32px; letter-spacing: .5px; }
+  .hero-badge::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; animation:pulse 2s infinite; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px,8vw,110px); line-height: .95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .hero h1 .highlight { color: var(--orange); display: block; }
+  .hero-sub { font-size: clamp(18px,2.2vw,22px); line-height: 1.55; color: var(--text-muted); max-width: 640px; margin-bottom: 48px; font-weight: 300; }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+  .hero-footnote { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .hero-footnote::before { content:'✓'; color:var(--orange); font-weight:700; }
+
+  .trust-bar { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 60px; }
+  .trust-inner { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+  .trust-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; padding-right: 24px; border-right: 1px solid var(--border); }
+  .trust-logos { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+  .trust-logo { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.4); letter-spacing: .5px; transition: color .2s; }
+  .trust-logo:hover { color: rgba(255,255,255,.7); }
+  .trust-logo.whu { font-family: 'DM Serif Display', serif; font-size: 16px; }
+
+  .programs { background: var(--dark-2); padding: 100px 60px; }
+  .programs-header { margin-bottom: 60px; }
+  .programs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .program-card { background: var(--dark-3); padding: 48px 40px; position: relative; overflow: hidden; transition: all .3s; cursor: pointer; }
+  .program-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--orange); transform:scaleX(0); transition:transform .3s; transform-origin:left; }
+  .program-card:hover::before { transform: scaleX(1); }
+  .program-card:hover { background: var(--dark-4); transform: translateY(-4px); }
+  .program-icon { width:52px; height:52px; background:rgba(245,98,30,.12); border:1px solid rgba(245,98,30,.25); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:24px; }
+  .program-tag { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
+  .program-title { font-family:'DM Serif Display',serif; font-size:32px; color:var(--white); margin-bottom:16px; line-height:1.1; }
+  .program-desc { font-size:15px; color:var(--text-muted); line-height:1.65; margin-bottom:32px; font-weight:300; }
+
+  .why { background: var(--dark); padding: 100px 60px; }
+  .why-header { margin-bottom: 64px; max-width: 600px; }
+  .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+  .feature-card { background:var(--dark-2); padding:40px 32px; border-top:3px solid transparent; transition:border-color .3s; }
+  .feature-card:hover { border-top-color:var(--orange); }
+  .feature-num { font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(245,98,30,.2); line-height:1; margin-bottom:20px; }
+  .feature-title { font-size:17px; font-weight:600; color:var(--white); margin-bottom:12px; line-height:1.3; }
+  .feature-desc { font-size:14px; color:var(--text-muted); line-height:1.65; font-weight:300; }
+
+  .impact { background:var(--dark-3); padding:100px 60px; position:relative; overflow:hidden; }
+  .impact::before { content:''; position:absolute; top:-100px;right:-100px; width:500px;height:500px; background:radial-gradient(circle,rgba(245,98,30,.08) 0%,transparent 70%); pointer-events:none; }
+  .impact-header { text-align:center; margin-bottom:72px; }
+  .impact-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:48px; }
+  .metric-card { background:var(--dark-2); padding:52px 32px; text-align:center; position:relative; overflow:hidden; transition:all .3s; }
+  .metric-card::after { content:''; position:absolute; bottom:0;left:0;right:0; height:1px; background:linear-gradient(90deg,transparent,var(--orange),transparent); opacity:0; transition:opacity .3s; }
+  .metric-card:hover::after { opacity:1; }
+  .metric-card:hover { transform:translateY(-4px); }
+  .metric-value { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,6vw,80px); color:var(--white); line-height:1; margin-bottom:12px; letter-spacing:1px; }
+  .metric-value span { color:var(--orange); }
+  .metric-label { font-size:14px; color:var(--text-muted); line-height:1.5; }
+  .impact-footnote { text-align:center; font-size:14px; color:var(--text-muted); font-style:italic; }
+
+  .testimonials { background:var(--dark-2); padding:100px 60px; }
+  .testimonials-header { margin-bottom:64px; }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .testimonial-card { background:var(--dark-3); border:1px solid var(--border); border-radius:8px; padding:40px 36px; transition:all .3s; }
+  .testimonial-card:hover { border-color:rgba(245,98,30,.25); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
+  .quote-mark { font-family:'DM Serif Display',serif; font-size:80px; color:rgba(245,98,30,.15); line-height:.8; margin-bottom:16px; display:block; }
+  .testimonial-text { font-size:15px; line-height:1.7; color:var(--text); margin-bottom:28px; font-weight:300; font-style:italic; }
+  .testimonial-author { font-size:14px; font-weight:600; color:var(--white); margin-bottom:4px; }
+  .testimonial-role { font-size:12px; color:var(--text-muted); }
+  .stars { color:var(--orange); font-size:13px; margin-bottom:20px; letter-spacing:2px; }
+
+  .final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
+  .final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(245,98,30,.09) 0%,transparent 70%); }
+  .final-cta-content { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+  .final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7vw,90px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .final-cta h2 span { color:var(--orange); }
+  .final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:48px; font-weight:300; line-height:1.6; }
+  .cta-meta { font-size:13px; color:var(--text-muted); display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:24px; }
+  .cta-meta span { display:flex; align-items:center; gap:6px; }
+  .cta-meta span::before { content:'✓'; color:var(--orange); font-weight:700; font-size:11px; }
+
+  footer { background:var(--dark-2); border-top:1px solid var(--border); padding:40px 60px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  footer p { font-size:13px; color:var(--text-muted); }
+
+  /* ═══════ SALES PAGE ═══════ */
+
+  .sales-hero { min-height: 88vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:140px 60px 80px; }
+  .sales-hero-bg { position:absolute; inset:0; background: radial-gradient(ellipse 70% 70% at 80% 30%,rgba(245,98,30,.15) 0%,transparent 55%), radial-gradient(ellipse 60% 60% at 10% 70%,rgba(245,98,30,.05) 0%,transparent 50%), var(--dark); }
+  .sales-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%); }
+  .sales-hero-content { position:relative; z-index:2; max-width:860px; }
+  .sales-breadcrumb { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:28px; cursor:pointer; }
+  .sales-breadcrumb span:not(.sales-bc-sep) { transition:color .2s; }
+  .sales-breadcrumb:hover span { color:var(--text); }
+  .sales-bc-current { color:var(--orange) !important; font-weight:500; }
+  .sales-bc-sep { opacity:.4; }
+  .sales-hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(245,98,30,.12); border:1px solid rgba(245,98,30,.3); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; color:var(--orange-light); margin-bottom:28px; letter-spacing:.5px; }
+  .sales-hero-tag::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; animation:pulse 2s infinite; }
+  .sales-hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
+  .sales-hero h1 .hl { color:var(--orange); display:block; }
+  .sales-hero-sub { font-size:clamp(17px,2vw,21px); line-height:1.6; color:var(--text-muted); max-width:660px; margin-bottom:44px; font-weight:300; }
+  .sales-hero-sub strong { color:var(--text); font-weight:500; }
+  .sales-hero-footnote { font-size:13px; color:var(--orange-light); display:flex; align-items:center; gap:8px; font-weight:500; }
+  .sales-hero-footnote::before { content:'⚡'; }
+
+  .sales-pain { background:var(--dark-2); padding:90px 60px; }
+  .sales-pain-header { margin-bottom:56px; max-width:640px; }
+  .pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:40px; }
+  .pain-card { background:var(--dark-3); padding:40px 36px; border-top:3px solid rgba(245,98,30,.3); transition:all .3s; }
+  .pain-card:hover { background:var(--dark-4); border-top-color:var(--orange); }
+  .pain-icon { font-size:28px; margin-bottom:20px; display:block; }
+  .pain-title { font-size:20px; font-weight:700; color:var(--white); margin-bottom:12px; line-height:1.2; }
+  .pain-title span { color:var(--orange); }
+  .pain-desc { font-size:14px; color:var(--text-muted); line-height:1.65; font-weight:300; }
+  .pain-quote { background:var(--dark-3); border-left:3px solid var(--orange); padding:28px 36px; border-radius:0 8px 8px 0; font-size:16px; color:var(--text-muted); font-style:italic; line-height:1.6; }
+
+  .sales-solution { background:var(--dark); padding:90px 60px; }
+  .sales-solution-header { margin-bottom:64px; max-width:620px; }
+  .stufen-grid { display:flex; flex-direction:column; gap:2px; }
+  .stufe-card { background:var(--dark-2); padding:44px 48px; display:grid; grid-template-columns:80px 1fr; gap:32px; align-items:start; transition:all .3s; position:relative; overflow:hidden; }
+  .stufe-card::after { content:''; position:absolute; left:0;top:0;bottom:0; width:3px; background:var(--orange); transform:scaleY(0); transition:transform .4s; transform-origin:top; }
+  .stufe-card:hover::after { transform:scaleY(1); }
+  .stufe-card:hover { background:var(--dark-3); padding-left:56px; }
+  .stufe-num { font-family:'Bebas Neue',sans-serif; font-size:64px; color:rgba(245,98,30,.2); line-height:1; padding-top:4px; }
+  .stufe-tag { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:10px; }
+  .stufe-title { font-family:'DM Serif Display',serif; font-size:28px; color:var(--white); margin-bottom:14px; line-height:1.15; }
+  .stufe-desc { font-size:15px; color:var(--text-muted); line-height:1.7; font-weight:300; }
+
+  .sales-results { background:var(--dark-2); padding:90px 60px; }
+  .sales-results-header { margin-bottom:64px; }
+  .results-top { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:56px; }
+  .result-metric { background:var(--dark-3); padding:44px 32px; text-align:center; position:relative; overflow:hidden; transition:all .3s; }
+  .result-metric::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--orange); transform:scaleX(0); transition:transform .4s; transform-origin:left; }
+  .result-metric:hover::before { transform:scaleX(1); }
+  .result-metric:hover { transform:translateY(-4px); }
+  .result-icon { font-size:28px; margin-bottom:16px; display:block; }
+  .result-value { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,5vw,62px); color:var(--white); line-height:1; margin-bottom:10px; }
+  .result-value span { color:var(--orange); }
+  .result-label { font-size:13px; color:var(--text-muted); line-height:1.5; }
+  .results-agents-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; }
+  .agents-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  .agent-chip { background:var(--dark-3); border:1px solid var(--border); border-radius:8px; padding:20px 18px; text-align:center; transition:all .3s; }
+  .agent-chip:hover { border-color:rgba(245,98,30,.4); background:var(--dark-4); }
+  .agent-chip-icon { font-size:22px; margin-bottom:10px; display:block; }
+  .agent-chip-name { font-size:13px; font-weight:500; color:var(--text); line-height:1.3; }
+
+  .sales-curriculum { background:var(--dark-3); padding:90px 60px; }
+  .sales-curriculum-header { margin-bottom:64px; max-width:680px; }
+  .curriculum-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:32px; }
+  .week-card { background:var(--dark-2); padding:32px 28px; border-bottom:2px solid transparent; transition:all .3s; }
+  .week-card:hover { border-bottom-color:var(--orange); background:var(--dark-4); }
+  .week-num { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
+  .week-title { font-size:15px; font-weight:600; color:var(--white); line-height:1.35; }
+  .cert-banner { background:linear-gradient(135deg,rgba(245,98,30,.12),rgba(245,98,30,.05)); border:1px solid rgba(245,98,30,.25); border-radius:8px; padding:28px 36px; display:flex; align-items:center; gap:24px; }
+  .cert-icon { font-size:40px; flex-shrink:0; }
+  .cert-text-label { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:6px; }
+  .cert-text-title { font-size:18px; font-weight:600; color:var(--white); line-height:1.3; }
+
+  .sales-pricing { background:var(--dark); padding:90px 60px; }
+  .sales-pricing-header { margin-bottom:64px; max-width:580px; }
+  .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .pricing-card { background:var(--dark-2); border:1px solid var(--border); border-radius:12px; padding:44px 36px; position:relative; transition:all .3s; }
+  .pricing-card:hover { border-color:rgba(245,98,30,.3); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
+  .pricing-card.featured { border-color:rgba(245,98,30,.4); background:var(--dark-3); }
+  .pricing-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--orange); color:var(--white); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 16px; border-radius:100px; white-space:nowrap; }
+  .pricing-tier { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
+  .pricing-name { font-family:'DM Serif Display',serif; font-size:26px; color:var(--white); margin-bottom:24px; line-height:1.2; }
+  .pricing-price { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--white); line-height:1; margin-bottom:6px; letter-spacing:1px; }
+  .pricing-price span { font-size:22px; color:var(--text-muted); }
+  .pricing-price-sub { font-size:13px; color:var(--text-muted); margin-bottom:28px; line-height:1.5; }
+  .pricing-divider { border:none; border-top:1px solid var(--border); margin-bottom:24px; }
+  .pricing-features { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:32px; }
+  .pricing-features li { font-size:14px; color:var(--text-muted); display:flex; align-items:flex-start; gap:10px; line-height:1.45; }
+  .pricing-features li::before { content:'✓'; color:var(--orange); font-weight:700; font-size:12px; flex-shrink:0; margin-top:2px; }
+  .pricing-note { font-size:13px; color:var(--text-muted); text-align:center; margin-top:28px; font-style:italic; }
+
+  .sales-faq { background:var(--dark-2); padding:90px 60px; }
+  .sales-faq-header { margin-bottom:56px; max-width:580px; }
+  .faq-list { display:flex; flex-direction:column; gap:2px; max-width:800px; }
+  .faq-item { background:var(--dark-3); overflow:hidden; }
+  .faq-question { padding:24px 32px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:16px; font-weight:500; color:var(--text); transition:color .2s; gap:24px; }
+  .faq-question:hover { color:var(--white); }
+  .faq-icon { font-size:20px; color:var(--orange); flex-shrink:0; transition:transform .3s; font-weight:300; line-height:1; }
+  .faq-item.open .faq-icon { transform:rotate(45deg); }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height .4s ease; }
+  .faq-item.open .faq-answer { max-height:200px; }
+  .faq-answer-inner { padding:0 32px 24px; font-size:15px; color:var(--text-muted); line-height:1.7; font-weight:300; }
+
+  .sales-final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
+  .sales-final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(245,98,30,.1) 0%,transparent 70%); pointer-events:none; }
+  .sales-final-cta-content { position:relative; z-index:2; max-width:720px; margin:0 auto; }
+  .sales-final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .sales-final-cta h2 span { color:var(--orange); }
+  .sales-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
+  .sales-cta-urgency { margin-top:20px; font-size:13px; color:var(--orange-light); display:flex; align-items:center; justify-content:center; gap:8px; font-weight:500; }
+  .sales-cta-urgency::before { content:'🔴'; font-size:10px; }
+
+  /* POPUP */
+  .popup-overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:9999; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; backdrop-filter:blur(8px); }
+  .popup-overlay.active { opacity:1; pointer-events:all; }
+  .popup { background:var(--dark-3); border:1px solid var(--border); border-radius:12px; padding:52px 48px; max-width:480px; width:90%; position:relative; transform:scale(.9); transition:transform .3s; }
+  .popup-overlay.active .popup { transform:scale(1); }
+  .popup-close { position:absolute; top:16px;right:20px; background:none; border:none; color:var(--text-muted); font-size:22px; cursor:pointer; }
+  .popup-close:hover { color:var(--white); }
+  .popup-badge { display:inline-block; background:rgba(245,98,30,.12); border:1px solid rgba(245,98,30,.3); color:var(--orange-light); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius:100px; margin-bottom:20px; }
+  .popup h3 { font-family:'DM Serif Display',serif; font-size:28px; color:var(--white); margin-bottom:12px; line-height:1.2; }
+  .popup p { font-size:14px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; font-weight:300; }
+  .popup-form { display:flex; flex-direction:column; gap:12px; }
+  .popup-form input { background:var(--dark-4); border:1px solid var(--border); border-radius:4px; padding:14px 16px; color:var(--white); font-size:15px; font-family:'DM Sans',sans-serif; outline:none; transition:border-color .2s; }
+  .popup-form input:focus { border-color:rgba(245,98,30,.5); }
+  .popup-form input::placeholder { color:var(--text-muted); }
+  .popup-disclaimer { font-size:11px; color:var(--text-muted); text-align:center; margin-top:8px; }
+
+  /* ═══════ FINANCE PAGE ═══════ */
+  .fin-hero { min-height:88vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:140px 60px 80px; }
+  .fin-hero-bg { position:absolute; inset:0; background: radial-gradient(ellipse 70% 70% at 75% 35%,rgba(59,130,246,.14) 0%,transparent 55%), radial-gradient(ellipse 60% 60% at 15% 65%,rgba(245,98,30,.07) 0%,transparent 50%), var(--dark); }
+  .fin-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%); }
+  .fin-hero-content { position:relative; z-index:2; max-width:860px; }
+  .fin-breadcrumb { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:28px; cursor:pointer; }
+  .fin-breadcrumb:hover span { color:var(--text); }
+  .fin-bc-current { color:var(--orange) !important; font-weight:500; }
+  .fin-bc-sep { opacity:.4; }
+  .fin-hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.3); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; color:#93C5FD; margin-bottom:28px; letter-spacing:.5px; }
+  .fin-hero-tag::before { content:''; width:6px; height:6px; background:#3B82F6; border-radius:50%; animation:pulse 2s infinite; }
+  .fin-hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
+  .fin-hero h1 .hl { color:var(--orange); display:block; }
+  .fin-hero-sub { font-size:clamp(17px,2vw,21px); line-height:1.6; color:var(--text-muted); max-width:660px; margin-bottom:44px; font-weight:300; }
+  .fin-hero-sub strong { color:var(--text); font-weight:500; }
+  .fin-hero-footnote { font-size:13px; color:#93C5FD; display:flex; align-items:center; gap:8px; font-weight:500; }
+  .fin-hero-footnote::before { content:'📅'; }
+
+  /* ═══════ HR PAGE ═══════ */
+  .hr-hero { min-height:88vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:140px 60px 80px; }
+  .hr-hero-bg { position:absolute; inset:0; background: radial-gradient(ellipse 70% 70% at 75% 35%,rgba(16,185,129,.12) 0%,transparent 55%), radial-gradient(ellipse 60% 60% at 15% 65%,rgba(245,98,30,.06) 0%,transparent 50%), var(--dark); }
+  .hr-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%); }
+  .hr-hero-content { position:relative; z-index:2; max-width:860px; }
+  .hr-breadcrumb { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:28px; cursor:pointer; }
+  .hr-breadcrumb:hover span { color:var(--text); }
+  .hr-bc-current { color:var(--orange) !important; font-weight:500; }
+  .hr-bc-sep { opacity:.4; }
+  .hr-hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(16,185,129,.12); border:1px solid rgba(16,185,129,.3); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; color:#6EE7B7; margin-bottom:28px; letter-spacing:.5px; }
+  .hr-hero-tag::before { content:''; width:6px; height:6px; background:#10B981; border-radius:50%; animation:pulse 2s infinite; }
+  .hr-hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
+  .hr-hero h1 .hl { color:var(--orange); display:block; }
+  .hr-hero-sub { font-size:clamp(17px,2vw,21px); line-height:1.6; color:var(--text-muted); max-width:660px; margin-bottom:44px; font-weight:300; }
+  .hr-hero-sub strong { color:var(--text); font-weight:500; }
+
+  /* SHARED subpage sections – reuse sales classes for pain/solution/results/curriculum/pricing/faq/final-cta */
+  .fin-pricing { background:var(--dark); padding:90px 60px; }
+  .fin-pricing-header { margin-bottom:64px; max-width:580px; }
+  .fin-final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
+  .fin-final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(59,130,246,.08) 0%,transparent 70%); pointer-events:none; }
+  .fin-final-cta-content { position:relative; z-index:2; max-width:720px; margin:0 auto; }
+  .fin-final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .fin-final-cta h2 span { color:var(--orange); }
+  .fin-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
+  .hr-final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
+  .hr-final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(16,185,129,.07) 0%,transparent 70%); pointer-events:none; }
+  .hr-final-cta-content { position:relative; z-index:2; max-width:720px; margin:0 auto; }
+  .hr-final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .hr-final-cta h2 span { color:var(--orange); }
+  .hr-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
+
+  /* RESPONSIVE */
+  @media (max-width:1024px) {
+    nav { padding:16px 24px; }
+    nav ul { display:none; }
+    .hero,.sales-hero,.fin-hero,.hr-hero,.programs,.why,.impact,.testimonials,.final-cta,.trust-bar,footer,
+    .sales-pain,.sales-solution,.sales-results,.sales-curriculum,.sales-pricing,.sales-faq,.sales-final-cta,
+    .fin-pricing,.fin-final-cta,.hr-final-cta { padding-left:24px; padding-right:24px; }
+    .programs-grid,.features-grid,.impact-grid,.testimonials-grid,
+    .pain-grid,.results-top,.curriculum-grid,.pricing-grid,.agents-grid { grid-template-columns:1fr; }
+    .stufe-card { grid-template-columns:56px 1fr; gap:20px; padding:32px 24px; }
+    .stufe-card:hover { padding-left:32px; }
+  }
+  @media (max-width:600px) {
+    .stufe-card { grid-template-columns:1fr; }
+    .stufe-num { display:none; }
+    .cert-banner { flex-direction:column; text-align:center; }
+    .btn-group { flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="logo" onclick="showPage('home')">Agent<span>Boss</span> Academy</a>
+  <ul id="navLinks">
+    <li><a onclick="goHomeSection('programmes')" data-de="Programme" data-en="Programs">Programme</a></li>
+    <li><a onclick="goHomeSection('why')" data-de="Warum wir" data-en="Why us">Warum wir</a></li>
+    <li><a onclick="goHomeSection('impact')" data-de="Ergebnisse" data-en="Results">Ergebnisse</a></li>
+    <li><a onclick="goHomeSection('testimonials')" data-de="Stimmen" data-en="Testimonials">Stimmen</a></li>
+    <li><a href="#" class="nav-cta" data-de="Strategy Call" data-en="Strategy Call">Strategy Call</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-back" id="navBack" onclick="showPage('home')" data-de="Zurück zur Übersicht" data-en="Back to Overview">Zurück zur Übersicht</span>
+    <div class="lang-toggle">
+      <button class="lang-active" onclick="setLang('de')">DE</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════ HOMEPAGE ═══════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge" id="h-badge">WHU-zertifiziertes Programm · 2026</div>
+      <h1 id="h-h1">Abteilungen zu<span class="highlight">Frontier Units</span>transformieren</h1>
+      <p class="hero-sub" id="h-sub">Vom Abteilungsleiter zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. Sales, Finance und HR werden mit AI Agents zur wettbewerbsentscheidenden Kraft.</p>
+      <div class="btn-group">
+        <a href="#" class="btn-primary" id="h-cta1">Kostenloses 30-Min Strategy Call buchen</a>
+        <a onclick="goHomeSection('programmes')" class="btn-secondary" id="h-cta2">Programme entdecken</a>
+      </div>
+      <p class="hero-footnote" id="h-fn">Bereits über 40 Abteilungsleiter starten 2026 ihre Transformation</p>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <span class="trust-label" id="trust-label">Partner & Zertifizierung</span>
+      <div class="trust-logos">
+        <span class="trust-logo whu">WHU – Otto Beisheim School of Management</span>
+        <span class="trust-logo">Microsoft</span>
+        <span class="trust-logo">Langdock</span>
+        <span class="trust-logo">Mountanridge</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="programs" id="programmes">
+    <div class="programs-header fade-in">
+      <div class="section-label" id="prog-label">Die 3 Wege</div>
+      <h2 class="section-headline" id="prog-h2">Ihr Programm. Ihr Hebel.</h2>
+      <p id="prog-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Spezialisierte Transformation für jede Line of Business – mit sofort einsetzbaren Agent-Templates.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card fade-in" onclick="showPage('sales')">
+        <div class="program-icon">📈</div>
+        <div class="program-tag" id="prog-sales-tag">Sales</div>
+        <h3 class="program-title" id="prog-sales-title">Agent Boss<br>Sales</h3>
+        <p class="program-desc" id="prog-sales-desc">Verwandeln Sie Ihr Vertriebsteam in eine Revenue-Maschine. Mehr Selling-Time, höhere Win-Rates, präzise Forecasts.</p>
+        <span class="btn-link" id="prog-sales-link">Sales Programm entdecken →</span>
+      </div>
+      <div class="program-card fade-in" onclick="showPage('finance')">
+        <div class="program-icon">💼</div>
+        <div class="program-tag" id="prog-fin-tag">Finance</div>
+        <h3 class="program-title" id="prog-fin-title">Agent Boss<br>Finance</h3>
+        <p class="program-desc" id="prog-fin-desc">Schließen Sie Monate in Tagen. Finance wird zum strategischen Business Partner mit Autonomous Reporting & Echtzeit-Insights.</p>
+        <span class="btn-link" id="prog-fin-link">Finance Programm entdecken →</span>
+      </div>
+      <div class="program-card fade-in" onclick="showPage('hr')">
+        <div class="program-icon">🎯</div>
+        <div class="program-tag" id="prog-hr-tag">HR</div>
+        <h3 class="program-title" id="prog-hr-title">Agent Boss<br>HR</h3>
+        <p class="program-desc" id="prog-hr-desc">Besetzen Sie Stellen 50 % schneller und steigern Sie die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.</p>
+        <span class="btn-link" id="prog-hr-link">HR Programm entdecken →</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="why-header fade-in">
+      <div class="section-label" id="why-label">Warum wir</div>
+      <h2 class="section-headline" id="why-h2">Warum führende Abteilungsleiter bei uns starten</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in"><div class="feature-num">01</div><div class="feature-title" id="feat1t">End-to-End Transformation</div><p class="feature-desc" id="feat1d">Nicht nur ein Kurs – Learning Journey + praktisches Coaching + langfristiger Managed Service.</p></div>
+      <div class="feature-card fade-in"><div class="feature-num">02</div><div class="feature-title" id="feat2t">Hochschul-Zertifizierung</div><p class="feature-desc" id="feat2d">Offiziell zertifiziert durch die WHU. Starkes Signal nach innen und außen.</p></div>
+      <div class="feature-card fade-in"><div class="feature-num">03</div><div class="feature-title" id="feat3t">LoB-spezifisch & praxisnah</div><p class="feature-desc" id="feat3d">Spezielle Programme für Sales, Finance und HR – mit sofort einsetzbaren Agent-Templates.</p></div>
+      <div class="feature-card fade-in"><div class="feature-num">04</div><div class="feature-title" id="feat4t">Ergebnisorientiert</div><p class="feature-desc" id="feat4d">Jeder Teilnehmer baut echte, produktive Agents für die eigene Abteilung.</p></div>
+    </div>
+  </section>
+
+  <section class="impact" id="impact">
+    <div class="impact-header fade-in">
+      <div class="section-label" id="impact-label">Erste Ergebnisse 2026</div>
+      <h2 class="section-headline" id="impact-h2">Erste Ergebnisse unserer Teilnehmer</h2>
+    </div>
+    <div class="impact-grid">
+      <div class="metric-card fade-in"><div class="metric-value" id="m1v"><span>+</span>45<span>%</span></div><div class="metric-label" id="m1l">mehr produktive Zeit<br>in den Abteilungen</div></div>
+      <div class="metric-card fade-in"><div class="metric-value" id="m2v"><span>–</span>52<span>%</span></div><div class="metric-label" id="m2l">Time-to-Hire<br>(HR)</div></div>
+      <div class="metric-card fade-in"><div class="metric-value" id="m3v"><span>+</span>22<span>%</span></div><div class="metric-label" id="m3l">Win-Rate Steigerung<br>(Sales)</div></div>
+      <div class="metric-card fade-in"><div class="metric-value" id="m4v"><span>–</span>58<span>%</span></div><div class="metric-label" id="m4l">Reporting-Aufwand<br>(Finance)</div></div>
+    </div>
+    <p class="impact-footnote fade-in" id="impact-fn">Und das sind nur die ersten 90 Tage.</p>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-header fade-in">
+      <div class="section-label" id="testi-label">Stimmen</div>
+      <h2 class="section-headline" id="testi-h2">Was Abteilungsleiter sagen</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon in Woche 6 Mehrwert geliefert.</p><div class="testimonial-author" id="t1a">Head of Sales</div><div class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</div></div>
+      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Die Zertifizierung war das i-Tüpfelchen für meinen nächsten Karriereschritt.</p><div class="testimonial-author" id="t2a">Head of Finance</div><div class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</div></div>
+      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-author" id="t3a">Head of HR</div><div class="testimonial-role" id="t3r">Tech-Scale-up, Series B</div></div>
+    </div>
+  </section>
+
+  <section class="final-cta" id="cta">
+    <div class="final-cta-content">
+      <div class="section-label" id="cta-label" style="text-align:center;">Jetzt starten</div>
+      <h2 id="cta-h2">Bereit, Ihre Abteilung zur <span>Frontier Unit</span> zu machen?</h2>
+      <p id="cta-p">Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer Abteilung.</p>
+      <a href="#" class="btn-primary" id="cta-btn">Jetzt kostenloses Strategy Call buchen</a>
+      <div class="cta-meta"><span id="cta-meta1">Dauer: 30 Minuten</span><span id="cta-meta2">Keine Verkaufspräsentation</span><span id="cta-meta3">Konkrete nächste Schritte garantiert</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">Agent<span>Boss</span> Academy</div>
+    <p id="footer-copy">© 2026 Agent Boss Academy · WHU-zertifiziertes Programm</p>
+    <p id="footer-links" style="font-size:12px;">Impressum · Datenschutz</p>
+  </footer>
+
+</div><!-- /home -->
+
+
+<!-- ═══════ SALES PAGE ═══════ -->
+<div id="page-sales" class="page">
+
+  <!-- HERO -->
+  <section class="sales-hero">
+    <div class="sales-hero-bg"></div>
+    <div class="sales-hero-grid"></div>
+    <div class="sales-hero-content">
+      <div class="sales-breadcrumb" onclick="showPage('home')">
+        <span id="s-bread-home">Home</span><span class="sales-bc-sep"> › </span><span id="s-bread-prog">Programme</span><span class="sales-bc-sep"> › </span><span class="sales-bc-current" id="s-bread-cur">Agent Boss Sales</span>
+      </div>
+      <div class="sales-hero-tag" id="s-tag">Sales · WHU-zertifiziert · 8–12 Wochen</div>
+      <h1 class="fade-in" id="s-h1">Ihr Sales-Team zur<span class="hl">Revenue-Maschine</span>machen</h1>
+      <p class="sales-hero-sub fade-in" id="s-sub" style="transition-delay:100ms;">Vom Head of Sales zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. AI Agents übernehmen Admin-Arbeit – Ihr Team verkauft mehr, schneller und präziser.</p>
+      <div class="btn-group fade-in" style="transition-delay:200ms;">
+        <a href="#" class="btn-primary" id="s-cta1">Kostenloses 30-Min Strategy Call buchen</a>
+        <a href="#" class="btn-secondary" id="s-cta2">Programm-PDF herunterladen</a>
+      </div>
+      <p class="sales-hero-footnote fade-in" id="s-fn" style="transition-delay:300ms;">Starten Sie noch im Q2 2026 – begrenzte Plätze für die erste Sales-Journey</p>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="sales-pain">
+    <div class="sales-pain-header fade-in">
+      <div class="section-label" id="sp-label">Die Realität in Sales 2026</div>
+      <h2 class="section-headline" id="sp-h2">Warum die meisten Sales-Teams trotz AI nicht vorankommen</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon">⏳</span><div class="pain-title" id="sp1t"><span>40–60 %</span> Admin-Time</div><p class="pain-desc" id="sp1d">Ihre Verkäufer recherchieren, qualifizieren manuell und schreiben Proposals statt zu verkaufen.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon">📉</span><div class="pain-title" id="sp2t">Unzuverlässige Forecasts</div><p class="pain-desc" id="sp2d">Pipeline-Daten sind unvollständig → Überraschungen gegenüber der Geschäftsführung.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon">🔥</span><div class="pain-title" id="sp3t">Hohe Fluktuation & Demotivation</div><p class="pain-desc" id="sp3d">Verkäufer hassen den administrativen Ballast und brennen aus.</p></div>
+    </div>
+    <div class="pain-quote fade-in" id="sp-quote">"Wir haben schon Copilot und Salesforce Einstein – aber nichts verändert sich wirklich."</div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="sales-solution">
+    <div class="sales-solution-header fade-in">
+      <div class="section-label" id="ss-label">Unser Ansatz</div>
+      <h2 class="section-headline" id="ss-h2">Ihr klarer Weg zum Agent Boss Sales Leader</h2>
+    </div>
+    <div class="stufen-grid">
+      <div class="stufe-card fade-in" style="transition-delay:80ms;"><div class="stufe-num">01</div><div><div class="stufe-tag" id="ss1tag">Learning Journey · 8–12 Wochen</div><h3 class="stufe-title" id="ss1t">WHU-zertifiziertes Programm</h3><p class="stufe-desc" id="ss1d">Sie lernen Agent-Building, Prompt-Strategien und Sales-spezifische Multi-Agent-Systeme. Mit eigenem Capstone-Projekt – live in Ihrer Umgebung.</p></div></div>
+      <div class="stufe-card fade-in" style="transition-delay:160ms;"><div class="stufe-num">02</div><div><div class="stufe-tag" id="ss2tag">Department Transformation Coaching · 3–6 Monate</div><h3 class="stufe-title" id="ss2t">Ihre Abteilung neu aufstellen</h3><p class="stufe-desc" id="ss2d">Wir begleiten Sie und Ihr Team bei der Einführung – inkl. Change-Management, Team-Workshops und Prozess-Neugestaltung.</p></div></div>
+      <div class="stufe-card fade-in" style="transition-delay:240ms;"><div class="stufe-num">03</div><div><div class="stufe-tag" id="ss3tag">Managed Second Brain + Agent Service · laufend</div><h3 class="stufe-title" id="ss3t">Agents die 24/7 für Sie arbeiten</h3><p class="stufe-desc" id="ss3d">Ihre Sales-Agents laufen kontinuierlich. Wir kümmern uns um Monitoring, Updates, Governance und Skalierung.</p></div></div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="sales-results">
+    <div class="sales-results-header fade-in">
+      <div class="section-label" id="sr-label">Ergebnisse</div>
+      <h2 class="section-headline" id="sr-h2">Was Sie in den ersten 90 Tagen erreichen</h2>
+    </div>
+    <div class="results-top">
+      <div class="result-metric fade-in" style="transition-delay:80ms;"><span class="result-icon">⏱</span><div class="result-value"><span>+</span>30–50<span>%</span></div><div class="result-label">echte Selling Time</div></div>
+      <div class="result-metric fade-in" style="transition-delay:160ms;"><span class="result-icon">🎯</span><div class="result-value"><span>+</span>15–25<span>%</span></div><div class="result-label">Win-Rate Steigerung</div></div>
+      <div class="result-metric fade-in" style="transition-delay:240ms;"><span class="result-icon">📊</span><div class="result-value" style="font-size:clamp(26px,3vw,38px);padding-top:10px;">Deutlich<br>präziser</div><div class="result-label">Pipeline-Forecasts</div></div>
+      <div class="result-metric fade-in" style="transition-delay:320ms;"><span class="result-icon">💡</span><div class="result-value" style="font-size:clamp(26px,3vw,38px);padding-top:10px;">Weniger<br>Fluktuation</div><div class="result-label">AI als persönlicher Co-Pilot</div></div>
+    </div>
+    <div class="fade-in">
+      <div class="results-agents-label" id="s-agent-label">Ihre Agent-Flotte</div>
+      <div class="agents-grid">
+        <div class="agent-chip"><span class="agent-chip-icon">🔍</span><div class="agent-chip-name" id="sag1">Lead-Scoring Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">🧠</span><div class="agent-chip-name" id="sag2">Research & Account-Intelligence Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">✍️</span><div class="agent-chip-name" id="sag3">Proposal Generator</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">🔄</span><div class="agent-chip-name" id="sag4">Automated Follow-up Orchestra</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">📈</span><div class="agent-chip-name" id="sag5">Live ROI-Dashboard</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="sales-curriculum">
+    <div class="sales-curriculum-header fade-in">
+      <div class="section-label" id="sc-label">Curriculum</div>
+      <h2 class="section-headline" id="sc-h2">In 8–12 Wochen zum zertifizierten Agent Boss Sales Leader</h2>
+    </div>
+    <div class="curriculum-grid">
+      <div class="week-card fade-in" style="transition-delay:40ms;"><div class="week-num">Woche 01</div><div class="week-title" id="sw1">Agent Leadership Mindset & Sales 2026</div></div>
+      <div class="week-card fade-in" style="transition-delay:80ms;"><div class="week-num">Woche 02</div><div class="week-title" id="sw2">Prompt Engineering für komplexe Sales-Prozesse</div></div>
+      <div class="week-card fade-in" style="transition-delay:120ms;"><div class="week-num">Woche 03</div><div class="week-title" id="sw3">Bau Ihres ersten Lead-Scoring & Qualification Agents</div></div>
+      <div class="week-card fade-in" style="transition-delay:160ms;"><div class="week-num">Woche 04</div><div class="week-title" id="sw4">Multi-Agent Orchestration (Langdock / Mountanridge)</div></div>
+      <div class="week-card fade-in" style="transition-delay:200ms;"><div class="week-num">Woche 05</div><div class="week-title" id="sw5">Integration in Salesforce, HubSpot & Microsoft 365</div></div>
+      <div class="week-card fade-in" style="transition-delay:240ms;"><div class="week-num">Woche 06</div><div class="week-title" id="sw6">Change Management & Team-Adoption</div></div>
+      <div class="week-card fade-in" style="transition-delay:280ms;"><div class="week-num">Woche 07</div><div class="week-title" id="sw7">Governance, Compliance & ROI-Messung</div></div>
+      <div class="week-card fade-in" style="transition-delay:320ms;"><div class="week-num">Woche 08</div><div class="week-title" id="sw8">Capstone: Ihre produktive Sales-Agent-Flotte live in Ihrer Umgebung</div></div>
+    </div>
+    <div class="cert-banner fade-in" style="margin-top:32px;">
+      <span class="cert-icon">🎓</span>
+      <div><div class="cert-text-label" id="s-cert-label">Zertifizierung</div><div class="cert-text-title" id="s-cert-title">Offizielles WHU-Zertifikat „Agent Boss Sales Leader"</div></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sales-pricing">
+    <div class="sales-pricing-header fade-in">
+      <div class="section-label" id="sprice-label">Investition</div>
+      <h2 class="section-headline" id="sprice-h2">Flexible Einstiegsmöglichkeiten</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in" style="transition-delay:80ms;">
+        <div class="pricing-tier" id="pk1tier">Paket 1</div>
+        <div class="pricing-name" id="pk1name">Learning Journey</div>
+        <div class="pricing-price" id="pk1price">6.900 <span id="pk1curr">€</span></div>
+        <div class="pricing-price-sub" id="pk1sub">pro Person · oder 22.000 € Firmen-Ticket (bis 4 Personen)</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="pk1f1">8–12 Wochen WHU-zertifiziertes Programm</li>
+          <li id="pk1f2">Agent-Building, Prompt Engineering, Multi-Agent</li>
+          <li id="pk1f3">Eigenes Capstone-Projekt</li>
+          <li id="pk1f4">Offizielles WHU-Zertifikat</li>
+        </ul>
+        <a href="#" class="btn-secondary" id="pk1btn" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+      <div class="pricing-card featured fade-in" style="transition-delay:160ms;">
+        <div class="pricing-badge" id="pk2badge">Empfohlen</div>
+        <div class="pricing-tier" id="pk2tier">Paket 2</div>
+        <div class="pricing-name" id="pk2name">Full Transformation</div>
+        <div class="pricing-price" id="pk2price">38.000 <span id="pk2curr">€</span></div>
+        <div class="pricing-price-sub" id="pk2sub">bis 55.000 € · inkl. Coaching + Implementierung</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="pk2f1">Alles aus Paket 1</li>
+          <li id="pk2f2">3–6 Monate Transformation Coaching</li>
+          <li id="pk2f3">Change Management & Team-Workshops</li>
+          <li id="pk2f4">Prozess-Neugestaltung & Implementierung</li>
+          <li id="pk2f5">Agent-Flotte live in Ihrer Umgebung</li>
+        </ul>
+        <a href="#" class="btn-primary" id="pk2btn" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+      <div class="pricing-card fade-in" style="transition-delay:240ms;">
+        <div class="pricing-tier" id="pk3tier">Paket 3</div>
+        <div class="pricing-name" id="pk3name">Managed Growth</div>
+        <div class="pricing-price" id="pk3price">5.900 <span id="pk3curr">€/Mo</span></div>
+        <div class="pricing-price-sub" id="pk3sub">bis 12.900 € / Monat · Second Brain + Agent Maintenance</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="pk3f1">24/7 Agent Monitoring & Wartung</li>
+          <li id="pk3f2">Kontinuierliche Updates & Skalierung</li>
+          <li id="pk3f3">Governance-Framework laufend</li>
+          <li id="pk3f4">Monatliches ROI-Reporting</li>
+        </ul>
+        <a href="#" class="btn-secondary" id="pk3btn" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+    </div>
+    <p class="pricing-note fade-in" id="pk-note">Die meisten Unternehmen starten mit der Journey und skalieren danach.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sales-faq">
+    <div class="sales-faq-header fade-in">
+      <div class="section-label" id="sfaq-label">FAQ</div>
+      <h2 class="section-headline" id="sfaq-h2">Häufige Fragen</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="sfaq1q">Brauche ich Programmierkenntnisse?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="sfaq1a">Nein. Das Programm ist für Sales Leader gemacht – keine Code-Kenntnisse nötig. Sie lernen, wie Sie Agents konfigurieren, orchestrieren und in Ihrer Abteilung einsetzen – ohne eine Zeile zu programmieren.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="sfaq2q">Wie schnell sehe ich erste Ergebnisse?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="sfaq2a">Viele Teilnehmer haben den ersten produktiven Agent bereits in Woche 4–6. Durch das Capstone-Projekt am Ende der Journey ist Ihr erster produktiver Agent in Ihrer echten Umgebung live.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="sfaq3q">Passt das zu Salesforce / HubSpot?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="sfaq3a">Ja. Wir integrieren in alle gängigen CRM- und Microsoft-Umgebungen – Salesforce, HubSpot, Microsoft 365, Teams und mehr. Die Integration ist fester Bestandteil von Woche 5.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="sfaq4q">Was ist mit Datenschutz & Compliance?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="sfaq4a">Voll DSGVO-konform. Das Governance-Framework inkl. Compliance-Anforderungen, Datenschutzarchitektur und Audit-Trails ist fester Bestandteil von Woche 7 – und wird in Ihrer Umgebung implementiert.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="sales-final-cta">
+    <div class="sales-final-cta-content">
+      <div class="section-label" id="scta-label" style="text-align:center;">Jetzt starten</div>
+      <h2 class="fade-in" id="scta-h2">Bereit, Ihre Sales-Abteilung zur <span>Frontier Unit</span> zu machen?</h2>
+      <p class="fade-in" id="scta-p" style="transition-delay:100ms;">Lassen Sie uns in einem 30-minütigen Call herausfinden, welcher Agent den größten Hebel in Ihrem Team hat.</p>
+      <div class="fade-in" style="transition-delay:200ms;">
+        <a href="#" class="btn-primary" id="scta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenloses Strategy Call buchen</a>
+      </div>
+      <div class="sales-cta-urgency fade-in" id="scta-urgency" style="transition-delay:280ms;">Termine verfügbar: Diese Woche noch 4 Plätze</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <p>© 2026 Agent Boss Academy · WHU-zertifiziertes Programm</p>
+    <p style="font-size:12px;">Impressum · Datenschutz</p>
+  </footer>
+
+</div><!-- /sales -->
+
+
+<!-- ═══════ FINANCE PAGE ═══════ -->
+<div id="page-finance" class="page">
+
+  <section class="fin-hero">
+    <div class="fin-hero-bg"></div>
+    <div class="fin-hero-grid"></div>
+    <div class="fin-hero-content">
+      <div class="fin-breadcrumb" onclick="showPage('home')">
+        <span>Home</span><span class="fin-bc-sep"> › </span><span>Programme</span><span class="fin-bc-sep"> › </span><span class="fin-bc-current" id="f-bread-cur">Agent Boss Finance</span>
+      </div>
+      <div class="fin-hero-tag" id="f-tag">Finance · WHU-zertifiziert · 8–12 Wochen</div>
+      <h1 class="fade-in" id="f-h1">Finance abschließen in<span class="hl">Tagen statt Wochen</span></h1>
+      <p class="fin-hero-sub fade-in" id="f-sub" style="transition-delay:100ms;">Vom Head of Finance zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. Autonome Agents übernehmen Reporting, Reconciliation und Forecasting – Sie werden zum strategischen Business Partner.</p>
+      <div class="btn-group fade-in" style="transition-delay:200ms;">
+        <a href="#" class="btn-primary">Kostenloses 30-Min Strategy Call buchen</a>
+        <a href="#" class="btn-secondary">Programm-PDF herunterladen</a>
+      </div>
+      <p class="fin-hero-footnote fade-in" id="f-fn" style="transition-delay:300ms;">Die erste Finance-Journey 2026 startet im Juni – begrenzte Plätze</p>
+    </div>
+  </section>
+
+  <section class="sales-pain">
+    <div class="sales-pain-header fade-in">
+      <div class="section-label" id="fp-label">Die Closing-Hölle 2026</div>
+      <h2 class="section-headline" id="fp-h2">Die Closing-Hölle 2026 ist noch real</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon">🗂️</span><div class="pain-title" id="fp1t">Manuelles Reporting & Daten-Chaos</div><p class="pain-desc" id="fp1d">Stundenlanges Zusammenführen aus SAP, Excel, Power BI & Co.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon">📅</span><div class="pain-title" id="fp2t">Monatsabschluss dauert <span>8–14 Tage</span></div><p class="pain-desc" id="fp2d">Hoher Stress, Fehlerquellen und wenig Zeit für echte Analysen.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon">⚖️</span><div class="pain-title" id="fp3t">Regulatorische & Compliance-Last</div><p class="pain-desc" id="fp3d">ESG, IFRS, GoBD – alles noch weitgehend manuell.</p></div>
+    </div>
+    <div class="pain-quote fade-in" id="fp-quote">"Wir haben Tools, aber keine echte Automatisierung und keine Zeit für strategische Arbeit."</div>
+  </section>
+
+  <section class="sales-solution">
+    <div class="sales-solution-header fade-in">
+      <div class="section-label" id="fs-label">Unser Ansatz</div>
+      <h2 class="section-headline" id="fs-h2">Ihr Weg zum Agent Boss Finance Leader</h2>
+    </div>
+    <div class="stufen-grid">
+      <div class="stufe-card fade-in" style="transition-delay:80ms;"><div class="stufe-num">01</div><div><div class="stufe-tag" id="fs1tag">Learning Journey · 8–12 Wochen</div><h3 class="stufe-title" id="fs1t">WHU-zertifiziertes Programm</h3><p class="stufe-desc" id="fs1d">Fokus auf Finance Agents, Autonomous Reporting und erklärbarer KI. Mit eigenem Capstone-Projekt – live in Ihrer Umgebung.</p></div></div>
+      <div class="stufe-card fade-in" style="transition-delay:160ms;"><div class="stufe-num">02</div><div><div class="stufe-tag" id="fs2tag">Department Transformation Coaching · 3–6 Monate</div><h3 class="stufe-title" id="fs2t">Ihre Finance-Prozesse neu gestalten</h3><p class="stufe-desc" id="fs2d">Prozess-Neugestaltung, Team-Workshops und Einführung von Human-in-the-Loop Workflows.</p></div></div>
+      <div class="stufe-card fade-in" style="transition-delay:240ms;"><div class="stufe-num">03</div><div><div class="stufe-tag" id="fs3tag">Managed Second Brain + Agent Service · laufend</div><h3 class="stufe-title" id="fs3t">24/7 laufende Finance Agents</h3><p class="stufe-desc" id="fs3d">Kontinuierliche Agents mit Monitoring, Updates und vollständigen Audit-Trails.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sales-results">
+    <div class="sales-results-header fade-in">
+      <div class="section-label" id="fr-label">Ergebnisse</div>
+      <h2 class="section-headline" id="fr-h2">Erste Ergebnisse in 90 Tagen</h2>
+    </div>
+    <div class="results-top">
+      <div class="result-metric fade-in" style="transition-delay:80ms;"><span class="result-icon">⏱</span><div class="result-value"><span>–</span>40–60<span>%</span></div><div class="result-label">Reporting- & Closing-Zeit</div></div>
+      <div class="result-metric fade-in" style="transition-delay:160ms;"><span class="result-icon">📊</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Echtzeit-<br>Forecasting</div><div class="result-label">mit Anomaly Detection</div></div>
+      <div class="result-metric fade-in" style="transition-delay:240ms;"><span class="result-icon">🔒</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Höhere<br>Audit-Sicherheit</div><div class="result-label">durch vollständige Protokollierung</div></div>
+      <div class="result-metric fade-in" style="transition-delay:320ms;"><span class="result-icon">🎯</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Mehr Zeit<br>für Strategie</div><div class="result-label">Beratung der Geschäftsführung</div></div>
+    </div>
+    <div class="fade-in">
+      <div class="results-agents-label" id="f-agent-label">Ihre Agent-Flotte</div>
+      <div class="agents-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="agent-chip"><span class="agent-chip-icon">🗓️</span><div class="agent-chip-name" id="fag1">Monthly Closing Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">🔮</span><div class="agent-chip-name" id="fag2">Forecasting & Scenario Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">🔍</span><div class="agent-chip-name" id="fag3">Reconciliation & Anomaly Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">📋</span><div class="agent-chip-name" id="fag4">Board-Report Generator</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sales-curriculum">
+    <div class="sales-curriculum-header fade-in">
+      <div class="section-label" id="fc-label">Curriculum</div>
+      <h2 class="section-headline" id="fc-h2">In 8–12 Wochen zum zertifizierten Agent Boss Finance Leader</h2>
+    </div>
+    <div class="curriculum-grid">
+      <div class="week-card fade-in" style="transition-delay:40ms;"><div class="week-num">Woche 01</div><div class="week-title" id="fw1">Finance Leadership in the Age of Agents</div></div>
+      <div class="week-card fade-in" style="transition-delay:80ms;"><div class="week-num">Woche 02</div><div class="week-title" id="fw2">Data Governance & Compliance für AI</div></div>
+      <div class="week-card fade-in" style="transition-delay:120ms;"><div class="week-num">Woche 03</div><div class="week-title" id="fw3">Bau Ihres ersten Autonomous Reporting Agents</div></div>
+      <div class="week-card fade-in" style="transition-delay:160ms;"><div class="week-num">Woche 04</div><div class="week-title" id="fw4">Advanced Multi-Agent Systems für Finance</div></div>
+      <div class="week-card fade-in" style="transition-delay:200ms;"><div class="week-num">Woche 05</div><div class="week-title" id="fw5">Integration in SAP, DATEV, Power BI & Microsoft 365</div></div>
+      <div class="week-card fade-in" style="transition-delay:240ms;"><div class="week-num">Woche 06</div><div class="week-title" id="fw6">Change Management für Finance-Teams</div></div>
+      <div class="week-card fade-in" style="transition-delay:280ms;"><div class="week-num">Woche 07</div><div class="week-title" id="fw7">ROI-Messung & Audit-Ready Documentation</div></div>
+      <div class="week-card fade-in" style="transition-delay:320ms;"><div class="week-num">Woche 08</div><div class="week-title" id="fw8">Capstone: Vollautomatisierter Monatsabschluss-Prozess</div></div>
+    </div>
+    <div class="cert-banner fade-in" style="margin-top:32px;">
+      <span class="cert-icon">🎓</span>
+      <div><div class="cert-text-label">Zertifizierung</div><div class="cert-text-title" id="f-cert-title">WHU-Zertifikat „Agent Boss Finance Leader"</div></div>
+    </div>
+  </section>
+
+  <section class="fin-pricing">
+    <div class="fin-pricing-header fade-in">
+      <div class="section-label" id="fprice-label">Investition</div>
+      <h2 class="section-headline" id="fprice-h2">Flexible Einstiegsmöglichkeiten</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in" style="transition-delay:80ms;">
+        <div class="pricing-tier">Paket 1</div>
+        <div class="pricing-name">Learning Journey</div>
+        <div class="pricing-price">6.900 <span>€</span></div>
+        <div class="pricing-price-sub">pro Person · oder 22.000 € Firmen-Ticket (bis 4 Personen)</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="fpk1f1">8–12 Wochen WHU-zertifiziertes Programm</li>
+          <li id="fpk1f2">Finance Agents, Autonomous Reporting, Multi-Agent</li>
+          <li id="fpk1f3">Eigenes Capstone-Projekt</li>
+          <li id="fpk1f4">Offizielles WHU-Zertifikat</li>
+        </ul>
+        <a href="#" class="btn-secondary" id="pk1btn" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+      <div class="pricing-card featured fade-in" style="transition-delay:160ms;">
+        <div class="pricing-badge" id="pk2badge">Empfohlen</div>
+        <div class="pricing-tier" id="pk2tier">Paket 2</div>
+        <div class="pricing-name" id="pk2name">Full Transformation</div>
+        <div class="pricing-price" id="pk2price">38.000 <span id="pk2curr">€</span></div>
+        <div class="pricing-price-sub" id="pk2sub">bis 55.000 € · inkl. Coaching + Implementierung</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>Alles aus Paket 1</li>
+          <li id="fpk2f2">3–6 Monate Transformation Coaching</li>
+          <li id="fpk2f3">Human-in-the-Loop Workflow-Design</li>
+          <li id="fpk2f4">Prozess-Neugestaltung & Implementierung</li>
+          <li id="fpk2f5">Finance-Agent-Flotte live in Ihrer Umgebung</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+      <div class="pricing-card fade-in" style="transition-delay:240ms;">
+        <div class="pricing-tier">Paket 3</div>
+        <div class="pricing-name">Managed Service</div>
+        <div class="pricing-price">6.900 <span id="fpk3curr">€/Mo</span></div>
+        <div class="pricing-price-sub" id="fpk3sub">bis 14.900 € / Monat · Second Brain + Agent Maintenance</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="fpk3f1">24/7 Agent Monitoring & Wartung</li>
+          <li id="fpk3f2">Kontinuierliche Updates & Governance</li>
+          <li id="fpk3f3">Vollständige Audit-Trails</li>
+          <li id="fpk3f4">Monatliches ROI-Reporting</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+    </div>
+    <p class="pricing-note fade-in">Die meisten Unternehmen starten mit der Journey und skalieren danach.</p>
+  </section>
+
+  <section class="sales-faq">
+    <div class="sales-faq-header fade-in">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-headline">Häufige Fragen</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="ffaq1q">Brauche ich tiefes technisches Wissen?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="ffaq1a">Nein – Finance-Know-how reicht. Das Programm ist für Finance Leader gemacht. Sie lernen, wie Sie Agents konfigurieren und in Ihren Prozessen einsetzen, ohne zu programmieren.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="ffaq2q">Wie steht es um Compliance?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="ffaq2a">Voll DSGVO- und GoBD-konform. Das Governance-Framework inkl. Audit-Trails und Datenschutzarchitektur ist fester Bestandteil des Programms – und wird in Ihrer Umgebung implementiert.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)" id="ffaq3q">Wann sehe ich erste Ergebnisse?<span class="faq-icon">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner" id="ffaq3a">Viele Teilnehmer haben den ersten produktiven Reporting Agent bereits in Woche 5 live. Durch das Capstone-Projekt läuft Ihr automatisierter Reporting-Prozess in Ihrer echten Umgebung.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fin-final-cta">
+    <div class="fin-final-cta-content">
+      <div class="section-label" id="fcta-label" style="text-align:center;">Jetzt starten</div>
+      <h2 class="fade-in" id="fcta-h2">Bereit, Finance zum strategischen <span>Powerhouse</span> zu machen?</h2>
+      <p class="fade-in" id="fcta-p" style="transition-delay:100ms;">Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer Finance-Abteilung.</p>
+      <div class="fade-in" style="transition-delay:200ms;">
+        <a href="#" class="btn-primary" id="fcta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenloses Strategy Call buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <p>© 2026 Agent Boss Academy · WHU-zertifiziertes Programm</p>
+    <p style="font-size:12px;">Impressum · Datenschutz</p>
+  </footer>
+
+</div><!-- /finance -->
+
+
+<!-- ═══════ HR PAGE ═══════ -->
+<div id="page-hr" class="page">
+
+  <section class="hr-hero">
+    <div class="hr-hero-bg"></div>
+    <div class="hr-hero-grid"></div>
+    <div class="hr-hero-content">
+      <div class="hr-breadcrumb" onclick="showPage('home')">
+        <span>Home</span><span class="hr-bc-sep"> › </span><span>Programme</span><span class="hr-bc-sep"> › </span><span class="hr-bc-current" id="hr-bread-cur">Agent Boss HR</span>
+      </div>
+      <div class="hr-hero-tag" id="hr-tag">HR · WHU-zertifiziert · 8–12 Wochen</div>
+      <h1 class="fade-in" id="hr-h1">Stellen <span class="hl">50 % schneller</span> besetzen und Top-Talente halten</h1>
+      <p class="hr-hero-sub fade-in" id="hr-sub" style="transition-delay:100ms;">Vom Head of HR zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. Recruiting, Onboarding und Talent Development Agents machen HR zum strategischen Talent-Magneten.</p>
+      <div class="btn-group fade-in" style="transition-delay:200ms;">
+        <a href="#" class="btn-primary">Kostenloses 30-Min Strategy Call buchen</a>
+        <a href="#" class="btn-secondary">Programm-PDF herunterladen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sales-pain">
+    <div class="sales-pain-header fade-in">
+      <div class="section-label" id="hrp-label">Die HR-Realität 2026</div>
+      <h2 class="section-headline" id="hrp-h2">HR kämpft 2026 noch viel zu oft manuell</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon">📥</span><div class="pain-title" id="hp1t"><span>100+</span> Bewerbungen manuell sichten</div><p class="pain-desc" id="hp1d">Wochenlange Recruiting-Zyklen kosten die besten Kandidaten.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon">📝</span><div class="pain-title" id="hp2t">Hoher Admin-Aufwand</div><p class="pain-desc" id="hp2d">On-/Offboarding und Verwaltungsaufgaben fressen strategische HR-Zeit.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon">📉</span><div class="pain-title" id="hp3t">Schwieriger HR-Impact-Nachweis</div><p class="pain-desc" id="hp3d">Messung von HR-Wirkung und Skills-Gaps bleibt ohne datengetriebene Unterstützung schwierig.</p></div>
+    </div>
+    <div class="pain-quote fade-in" id="hrp-quote">"Wir verlieren gute Kandidaten, weil der Prozess zu langsam ist."</div>
+  </section>
+
+  <section class="sales-solution">
+    <div class="sales-solution-header fade-in">
+      <div class="section-label" id="hrs-label">Unser Ansatz</div>
+      <h2 class="section-headline" id="hrs-h2">Ihr Weg zum Agent Boss HR Leader</h2>
+    </div>
+    <div class="stufen-grid">
+      <div class="stufe-card fade-in" style="transition-delay:80ms;"><div class="stufe-num">01</div><div><div class="stufe-tag" id="hs1tag">Learning Journey · 8–12 Wochen</div><h3 class="stufe-title" id="hs1t">WHU-zertifiziertes Programm</h3><p class="stufe-desc" id="hs1d">Fokus auf Recruiting- und Talent-Agents. Mit eigenem Capstone-Projekt – live in Ihrer Umgebung.</p></div></div>
+      <div class="stufe-card fade-in" style="transition-delay:160ms;"><div class="stufe-num">02</div><div><div class="stufe-tag" id="hs2tag">Department Transformation Coaching · 3–6 Monate</div><h3 class="stufe-title" id="hs2t">Neue HR-Prozesse & Team-Adoption</h3><p class="stufe-desc" id="hs2d">Wir begleiten Sie bei der Neugestaltung Ihrer HR-Prozesse und der Team-Adoption der neuen Agents.</p></div></div>
+      <div class="stufe-card fade-in" style="transition-delay:240ms;"><div class="stufe-num">03</div><div><div class="stufe-tag" id="hs3tag">Managed Second Brain + Agent Service · laufend</div><h3 class="stufe-title" id="hs3t">Kontinuierliche Optimierung</h3><p class="stufe-desc" id="hs3d">Monitoring, Updates und kontinuierliche Optimierung Ihrer HR-Agenten-Flotte.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sales-results">
+    <div class="sales-results-header fade-in">
+      <div class="section-label" id="hrr-label">Ergebnisse</div>
+      <h2 class="section-headline" id="hrr-h2">Erste Ergebnisse in 90 Tagen</h2>
+    </div>
+    <div class="results-top">
+      <div class="result-metric fade-in" style="transition-delay:80ms;"><span class="result-icon">⚡</span><div class="result-value"><span>–</span>40–60<span>%</span></div><div class="result-label">Time-to-Hire</div></div>
+      <div class="result-metric fade-in" style="transition-delay:160ms;"><span class="result-icon">🤝</span><div class="result-value"><span>+</span>25–35<span>%</span></div><div class="result-label">Offer-Acceptance-Rate</div></div>
+      <div class="result-metric fade-in" style="transition-delay:240ms;"><span class="result-icon">⭐</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Deutlich bessere</div><div class="result-label">Candidate Experience</div></div>
+      <div class="result-metric fade-in" style="transition-delay:320ms;"><span class="result-icon">🧠</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Skills-Intelligence</div><div class="result-label">in Echtzeit</div></div>
+    </div>
+    <div class="fade-in">
+      <div class="results-agents-label" id="hr-agent-label">Ihre Agent-Flotte</div>
+      <div class="agents-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="agent-chip"><span class="agent-chip-icon">🔍</span><div class="agent-chip-name" id="hag1">Intelligent Recruiting & Matching Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">🚀</span><div class="agent-chip-name" id="hag2">Personalisiertes Onboarding Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">📈</span><div class="agent-chip-name" id="hag3">Talent Development & Skills-Gap Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon">💬</span><div class="agent-chip-name" id="hag4">Employee Experience Feedback Agent</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sales-curriculum">
+    <div class="sales-curriculum-header fade-in">
+      <div class="section-label" id="hrc-label">Curriculum</div>
+      <h2 class="section-headline" id="hrc-h2">In 8–12 Wochen zum zertifizierten Agent Boss HR Leader</h2>
+    </div>
+    <div class="curriculum-grid">
+      <div class="week-card fade-in" style="transition-delay:40ms;"><div class="week-num">Woche 01</div><div class="week-title" id="hw1">HR Leadership & Agent Mindset</div></div>
+      <div class="week-card fade-in" style="transition-delay:80ms;"><div class="week-num">Woche 02</div><div class="week-title" id="hw2">Ethical AI & Bias-Reduction in Recruiting</div></div>
+      <div class="week-card fade-in" style="transition-delay:120ms;"><div class="week-num">Woche 03</div><div class="week-title" id="hw3">Bau Ihres ersten Candidate-Matching Agents</div></div>
+      <div class="week-card fade-in" style="transition-delay:160ms;"><div class="week-num">Woche 04</div><div class="week-title" id="hw4">Multi-Agent Orchestration für den gesamten Employee Lifecycle</div></div>
+      <div class="week-card fade-in" style="transition-delay:200ms;"><div class="week-num">Woche 05</div><div class="week-title" id="hw5">Integration in Workday, SAP SuccessFactors, Personio etc.</div></div>
+      <div class="week-card fade-in" style="transition-delay:240ms;"><div class="week-num">Woche 06</div><div class="week-title" id="hw6">Change Management für HR-Teams</div></div>
+      <div class="week-card fade-in" style="transition-delay:280ms;"><div class="week-num">Woche 07</div><div class="week-title" id="hw7">People Analytics & ROI von HR-Agents</div></div>
+      <div class="week-card fade-in" style="transition-delay:320ms;"><div class="week-num">Woche 08</div><div class="week-title" id="hw8">Capstone: Vollständiger AI-gestützter Recruiting-to-Onboarding-Prozess</div></div>
+    </div>
+    <div class="cert-banner fade-in" style="margin-top:32px;">
+      <span class="cert-icon">🎓</span>
+      <div><div class="cert-text-label">Zertifizierung</div><div class="cert-text-title" id="hr-cert-title">WHU-Zertifikat „Agent Boss HR Leader"</div></div>
+    </div>
+  </section>
+
+  <section class="fin-pricing">
+    <div class="fin-pricing-header fade-in">
+      <div class="section-label" id="fprice-label">Investition</div>
+      <h2 class="section-headline" id="fprice-h2">Flexible Einstiegsmöglichkeiten</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in" style="transition-delay:80ms;">
+        <div class="pricing-tier">Paket 1</div>
+        <div class="pricing-name">Learning Journey</div>
+        <div class="pricing-price">6.900 <span>€</span></div>
+        <div class="pricing-price-sub">pro Person · oder 22.000 € Firmen-Ticket (bis 4 Personen)</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="hrpk1f1">8–12 Wochen WHU-zertifiziertes Programm</li>
+          <li id="hrpk1f2">Recruiting-, Onboarding- & Talent-Agents</li>
+          <li id="hrpk1f3">Eigenes Capstone-Projekt</li>
+          <li id="hrpk1f4">Offizielles WHU-Zertifikat</li>
+        </ul>
+        <a href="#" class="btn-secondary" id="pk1btn" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+      <div class="pricing-card featured fade-in" style="transition-delay:160ms;">
+        <div class="pricing-badge" id="pk2badge">Empfohlen</div>
+        <div class="pricing-tier" id="pk2tier">Paket 2</div>
+        <div class="pricing-name" id="pk2name">Full Transformation</div>
+        <div class="pricing-price" id="pk2price">38.000 <span id="pk2curr">€</span></div>
+        <div class="pricing-price-sub" id="pk2sub">bis 55.000 € · inkl. Coaching + Implementierung</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li>Alles aus Paket 1</li>
+          <li id="hrpk2f2">3–6 Monate Transformation Coaching</li>
+          <li id="hrpk2f3">Prozess-Neugestaltung & Team-Adoption</li>
+          <li id="hrpk2f4">HR-Agent-Flotte live in Ihrer Umgebung</li>
+          <li id="hrpk2f5">People Analytics Setup</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+      <div class="pricing-card fade-in" style="transition-delay:240ms;">
+        <div class="pricing-tier">Paket 3</div>
+        <div class="pricing-name">Managed Service</div>
+        <div class="pricing-price">5.900 <span id="hrpk3curr">€/Mo</span></div>
+        <div class="pricing-price-sub" id="hrpk3sub">bis 12.900 € / Monat · Second Brain + Agent Maintenance</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li id="hrpk3f1">24/7 Agent Monitoring & Wartung</li>
+          <li id="hrpk3f2">Kontinuierliche Optimierung der Agents</li>
+          <li id="hrpk3f3">Bias-Monitoring & Ethics-Audits</li>
+          <li id="hrpk3f4">Monatliches People-Analytics-Reporting</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="width:100%;text-align:center;display:block;">Jetzt anfragen</a>
+      </div>
+    </div>
+    <p class="pricing-note fade-in">Die meisten Unternehmen starten mit der Journey und skalieren danach.</p>
+  </section>
+
+  <section class="hr-final-cta">
+    <div class="hr-final-cta-content">
+      <div class="section-label" id="hrcta-label" style="text-align:center;">Jetzt starten</div>
+      <h2 class="fade-in" id="hrcta-h2">Bereit, HR zum strategischen <span>Talent-Magneten</span> zu machen?</h2>
+      <p class="fade-in" id="hrcta-p" style="transition-delay:100ms;">Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer HR-Abteilung.</p>
+      <div class="fade-in" style="transition-delay:200ms;">
+        <a href="#" class="btn-primary" id="hrcta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenloses Strategy Call buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <p>© 2026 Agent Boss Academy · WHU-zertifiziertes Programm</p>
+    <p style="font-size:12px;">Impressum · Datenschutz</p>
+  </footer>
+
+</div><!-- /hr -->
+
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <button class="popup-close" onclick="document.getElementById('popup').classList.remove('active')">✕</button>
+    <div class="popup-badge" id="popup-badge">Kostenlos</div>
+    <h3 id="popup-h3">AI Readiness Checklist für Ihre Abteilung</h3>
+    <p id="popup-p">Erhalten Sie unsere kostenlose Checkliste und erfahren Sie, wie AI-ready Ihre Abteilung bereits ist.</p>
+    <div class="popup-form">
+      <input type="text" id="popup-name" placeholder="Ihr Name">
+      <input type="email" id="popup-email" placeholder="Ihre geschäftliche E-Mail">
+      <input type="text" id="popup-pos" placeholder="Position / Abteilung">
+      <button class="btn-primary" id="popup-btn" style="width:100%;border:none;">Kostenlose Checklist anfordern</button>
+    </div>
+    <p class="popup-disclaimer" id="popup-disc">Keine Weitergabe Ihrer Daten. Jederzeit abmeldbar.</p>
+  </div>
+</div>
+
+
+<script>
+  // ── TRANSLATIONS ──
+  const i18n = {
+    de: {
+      // META
+      pageTitle: 'Agent Boss Academy | WHU-zertifizierte AI Transformation für Sales, Finance & HR',
+      // NAV
+      navBack: 'Zurück zur Übersicht',
+      // HERO
+      heroBadge: 'WHU-zertifiziertes Programm · 2026',
+      heroH1a: 'Abteilungen zu',
+      heroH1b: 'Frontier Units',
+      heroH1c: 'transformieren',
+      heroSub: 'Vom Abteilungsleiter zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. Sales, Finance und HR werden mit AI Agents zur wettbewerbsentscheidenden Kraft.',
+      heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
+      heroCta2: 'Programme entdecken',
+      heroFn: 'Bereits über 40 Abteilungsleiter starten 2026 ihre Transformation',
+      // TRUST BAR
+      trustLabel: 'Partner & Zertifizierung',
+      // PROGRAMS
+      progLabel: 'Die 3 Wege',
+      progH2: 'Ihr Programm. Ihr Hebel.',
+      progSub: 'Spezialisierte Transformation für jede Line of Business – mit sofort einsetzbaren Agent-Templates.',
+      progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Verwandeln Sie Ihr Vertriebsteam in eine Revenue-Maschine. Mehr Selling-Time, höhere Win-Rates, präzise Forecasts.', progSalesLink: 'Sales Programm entdecken →',
+      progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Schließen Sie Monate in Tagen. Finance wird zum strategischen Business Partner mit Autonomous Reporting & Echtzeit-Insights.', progFinLink: 'Finance Programm entdecken →',
+      progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Besetzen Sie Stellen 50 % schneller und steigern Sie die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.', progHRLink: 'HR Programm entdecken →',
+      // WHY
+      whyLabel: 'Warum wir', whyH2: 'Warum führende Abteilungsleiter bei uns starten',
+      feat1t: 'End-to-End Transformation', feat1d: 'Nicht nur ein Kurs – Learning Journey + praktisches Coaching + langfristiger Managed Service.',
+      feat2t: 'Hochschul-Zertifizierung', feat2d: 'Offiziell zertifiziert durch die WHU. Starkes Signal nach innen und außen.',
+      feat3t: 'LoB-spezifisch & praxisnah', feat3d: 'Spezielle Programme für Sales, Finance und HR – mit sofort einsetzbaren Agent-Templates.',
+      feat4t: 'Ergebnisorientiert', feat4d: 'Jeder Teilnehmer baut echte, produktive Agents für die eigene Abteilung.',
+      // IMPACT
+      impactLabel: 'Erste Ergebnisse 2026', impactH2: 'Erste Ergebnisse unserer Teilnehmer',
+      m1: '+45%', m1l: 'mehr produktive Zeit<br>in den Abteilungen',
+      m2: '–52%', m2l: 'Time-to-Hire<br>(HR)',
+      m3: '+22%', m3l: 'Win-Rate Steigerung<br>(Sales)',
+      m4: '–58%', m4l: 'Reporting-Aufwand<br>(Finance)',
+      impactFn: 'Und das sind nur die ersten 90 Tage.',
+      // TESTIMONIALS
+      testiLabel: 'Stimmen', testiH2: 'Was Abteilungsleiter sagen',
+      t1: 'Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon in Woche 6 Mehrwert geliefert.', t1a: 'Head of Sales', t1r: 'Maschinenbau, 1.200 Mitarbeiter',
+      t2: 'Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Die Zertifizierung war das i-Tüpfelchen für meinen nächsten Karriereschritt.', t2a: 'Head of Finance', t2r: 'Hidden Champion, Mittelstand',
+      t3: 'Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.', t3a: 'Head of HR', t3r: 'Tech-Scale-up, Series B',
+      // FINAL CTA
+      ctaLabel: 'Jetzt starten', ctaH2a: 'Bereit, Ihre Abteilung zur', ctaH2b: 'Frontier Unit', ctaH2c: 'zu machen?',
+      ctaP: 'Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer Abteilung.',
+      ctaBtn: 'Jetzt kostenloses Strategy Call buchen',
+      ctaMeta1: 'Dauer: 30 Minuten', ctaMeta2: 'Keine Verkaufspräsentation', ctaMeta3: 'Konkrete nächste Schritte garantiert',
+      // FOOTER
+      footerCopy: '© 2026 Agent Boss Academy · WHU-zertifiziertes Programm',
+      footerLinks: 'Impressum · Datenschutz',
+      // POPUP
+      popupBadge: 'Kostenlos', popupH3: 'AI Readiness Checklist für Ihre Abteilung',
+      popupP: 'Erhalten Sie unsere kostenlose Checkliste und erfahren Sie, wie AI-ready Ihre Abteilung bereits ist.',
+      popupName: 'Ihr Name', popupEmail: 'Ihre geschäftliche E-Mail', popupPos: 'Position / Abteilung',
+      popupBtn: 'Kostenlose Checklist anfordern', popupDisc: 'Keine Weitergabe Ihrer Daten. Jederzeit abmeldbar.',
+      // SALES PAGE
+      salesBreadHome: 'Home', salesBreadProg: 'Programme', salesBreadCurrent: 'Agent Boss Sales',
+      salesTag: 'Sales · WHU-zertifiziert · 8–12 Wochen',
+      salesH1a: 'Ihr Sales-Team zur', salesH1b: 'Revenue-Maschine', salesH1c: 'machen',
+      salesSub: 'Vom Head of Sales zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. AI Agents übernehmen Admin-Arbeit – Ihr Team verkauft mehr, schneller und präziser.',
+      salesCta1: 'Kostenloses 30-Min Strategy Call buchen', salesCta2: 'Programm-PDF herunterladen',
+      salesFn: 'Starten Sie noch im Q2 2026 – begrenzte Plätze für die erste Sales-Journey',
+      salesPainLabel: 'Die Realität in Sales 2026', salesPainH2: 'Warum die meisten Sales-Teams trotz AI nicht vorankommen',
+      sp1t: '40–60 % Admin-Time', sp1d: 'Ihre Verkäufer recherchieren, qualifizieren manuell und schreiben Proposals statt zu verkaufen.',
+      sp2t: 'Unzuverlässige Forecasts', sp2d: 'Pipeline-Daten sind unvollständig → Überraschungen gegenüber der Geschäftsführung.',
+      sp3t: 'Hohe Fluktuation & Demotivation', sp3d: 'Verkäufer hassen den administrativen Ballast und brennen aus.',
+      salesPainQuote: '"Wir haben schon Copilot und Salesforce Einstein – aber nichts verändert sich wirklich."',
+      salesSolLabel: 'Unser Ansatz', salesSolH2: 'Ihr klarer Weg zum Agent Boss Sales Leader',
+      ss1tag: 'Learning Journey · 8–12 Wochen', ss1t: 'WHU-zertifiziertes Programm', ss1d: 'Sie lernen Agent-Building, Prompt-Strategien und Sales-spezifische Multi-Agent-Systeme. Mit eigenem Capstone-Projekt – live in Ihrer Umgebung.',
+      ss2tag: 'Department Transformation Coaching · 3–6 Monate', ss2t: 'Ihre Abteilung neu aufstellen', ss2d: 'Wir begleiten Sie und Ihr Team bei der Einführung – inkl. Change-Management, Team-Workshops und Prozess-Neugestaltung.',
+      ss3tag: 'Managed Second Brain + Agent Service · laufend', ss3t: 'Agents die 24/7 für Sie arbeiten', ss3d: 'Ihre Sales-Agents laufen kontinuierlich. Wir kümmern uns um Monitoring, Updates, Governance und Skalierung.',
+      salesResLabel: 'Ergebnisse', salesResH2: 'Was Sie in den ersten 90 Tagen erreichen',
+      sr1: '+30–50%', sr1l: 'echte Selling Time', sr2: '+15–25%', sr2l: 'Win-Rate Steigerung',
+      sr3: 'Deutlich<br>präziser', sr3l: 'Pipeline-Forecasts', sr4: 'Weniger<br>Fluktuation', sr4l: 'AI als persönlicher Co-Pilot',
+      agentFlotte: 'Ihre Agent-Flotte',
+      sag1: 'Lead-Scoring Agent', sag2: 'Research & Account-Intelligence Agent', sag3: 'Proposal Generator', sag4: 'Automated Follow-up Orchestra', sag5: 'Live ROI-Dashboard',
+      salesCurrLabel: 'Curriculum', salesCurrH2: 'In 8–12 Wochen zum zertifizierten Agent Boss Sales Leader',
+      sw1: 'Agent Leadership Mindset & Sales 2026', sw2: 'Prompt Engineering für komplexe Sales-Prozesse', sw3: 'Bau Ihres ersten Lead-Scoring & Qualification Agents', sw4: 'Multi-Agent Orchestration (Langdock / Mountanridge)', sw5: 'Integration in Salesforce, HubSpot & Microsoft 365', sw6: 'Change Management & Team-Adoption', sw7: 'Governance, Compliance & ROI-Messung', sw8: 'Capstone: Ihre produktive Sales-Agent-Flotte live in Ihrer Umgebung',
+      certLabel: 'Zertifizierung', certTitle: 'Offizielles WHU-Zertifikat „Agent Boss Sales Leader"',
+      salesPriceLabel: 'Investition', salesPriceH2: 'Flexible Einstiegsmöglichkeiten',
+      pk1tier: 'Paket 1', pk1name: 'Learning Journey', pk1price: '6.900', pk1curr: '€', pk1sub: 'pro Person · oder 22.000 € Firmen-Ticket (bis 4 Personen)', pk1f1: '8–12 Wochen WHU-zertifiziertes Programm', pk1f2: 'Agent-Building, Prompt Engineering, Multi-Agent', pk1f3: 'Eigenes Capstone-Projekt', pk1f4: 'Offizielles WHU-Zertifikat', pk1btn: 'Jetzt anfragen',
+      pk2tier: 'Paket 2', pk2badge: 'Empfohlen', pk2name: 'Full Transformation', pk2price: '38.000', pk2curr: '€', pk2sub: 'bis 55.000 € · inkl. Coaching + Implementierung', pk2f1: 'Alles aus Paket 1', pk2f2: '3–6 Monate Transformation Coaching', pk2f3: 'Change Management & Team-Workshops', pk2f4: 'Prozess-Neugestaltung & Implementierung', pk2f5: 'Agent-Flotte live in Ihrer Umgebung', pk2btn: 'Jetzt anfragen',
+      pk3tier: 'Paket 3', pk3name: 'Managed Growth', pk3price: '5.900', pk3curr: '€/Mo', pk3sub: 'bis 12.900 € / Monat · Second Brain + Agent Maintenance', pk3f1: '24/7 Agent Monitoring & Wartung', pk3f2: 'Kontinuierliche Updates & Skalierung', pk3f3: 'Governance-Framework laufend', pk3f4: 'Monatliches ROI-Reporting', pk3btn: 'Jetzt anfragen',
+      pkNote: 'Die meisten Unternehmen starten mit der Journey und skalieren danach.',
+      faqLabel: 'FAQ', faqH2: 'Häufige Fragen',
+      faq1q: 'Brauche ich Programmierkenntnisse?', faq1a: 'Nein. Das Programm ist für Sales Leader gemacht – keine Code-Kenntnisse nötig. Sie lernen, wie Sie Agents konfigurieren, orchestrieren und in Ihrer Abteilung einsetzen – ohne eine Zeile zu programmieren.',
+      faq2q: 'Wie schnell sehe ich erste Ergebnisse?', faq2a: 'Viele Teilnehmer haben den ersten produktiven Agent bereits in Woche 4–6. Durch das Capstone-Projekt am Ende der Journey ist Ihr erster produktiver Agent in Ihrer echten Umgebung live.',
+      faq3q: 'Passt das zu Salesforce / HubSpot?', faq3a: 'Ja. Wir integrieren in alle gängigen CRM- und Microsoft-Umgebungen – Salesforce, HubSpot, Microsoft 365, Teams und mehr. Die Integration ist fester Bestandteil von Woche 5.',
+      faq4q: 'Was ist mit Datenschutz & Compliance?', faq4a: 'Voll DSGVO-konform. Das Governance-Framework inkl. Compliance-Anforderungen, Datenschutzarchitektur und Audit-Trails ist fester Bestandteil von Woche 7 – und wird in Ihrer Umgebung implementiert.',
+      salesCtaLabel: 'Jetzt starten', salesCtaH2a: 'Bereit, Ihre Sales-Abteilung zur', salesCtaH2b: 'Frontier Unit', salesCtaH2c: 'zu machen?',
+      salesCtaP: 'Lassen Sie uns in einem 30-minütigen Call herausfinden, welcher Agent den größten Hebel in Ihrem Team hat.',
+      salesCtaBtn: 'Jetzt kostenloses Strategy Call buchen', salesCtaUrgency: 'Termine verfügbar: Diese Woche noch 4 Plätze',
+      // FINANCE PAGE
+      finBreadCurrent: 'Agent Boss Finance', finTag: 'Finance · WHU-zertifiziert · 8–12 Wochen',
+      finH1a: 'Finance abschließen in', finH1b: 'Tagen statt Wochen', finH1c: '',
+      finSub: 'Vom Head of Finance zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. Autonome Agents übernehmen Reporting, Reconciliation und Forecasting – Sie werden zum strategischen Business Partner.',
+      finCta1: 'Kostenloses 30-Min Strategy Call buchen', finCta2: 'Programm-PDF herunterladen',
+      finFn: 'Die erste Finance-Journey 2026 startet im Juni – begrenzte Plätze',
+      finPainLabel: 'Die Closing-Hölle 2026', finPainH2: 'Die Closing-Hölle 2026 ist noch real',
+      fp1t: 'Manuelles Reporting & Daten-Chaos', fp1d: 'Stundenlanges Zusammenführen aus SAP, Excel, Power BI & Co.',
+      fp2t: 'Monatsabschluss dauert 8–14 Tage', fp2d: 'Hoher Stress, Fehlerquellen und wenig Zeit für echte Analysen.',
+      fp3t: 'Regulatorische & Compliance-Last', fp3d: 'ESG, IFRS, GoBD – alles noch weitgehend manuell.',
+      finPainQuote: '"Wir haben Tools, aber keine echte Automatisierung und keine Zeit für strategische Arbeit."',
+      finSolLabel: 'Unser Ansatz', finSolH2: 'Ihr Weg zum Agent Boss Finance Leader',
+      fs1tag: 'Learning Journey · 8–12 Wochen', fs1t: 'WHU-zertifiziertes Programm', fs1d: 'Fokus auf Finance Agents, Autonomous Reporting und erklärbarer KI. Mit eigenem Capstone-Projekt – live in Ihrer Umgebung.',
+      fs2tag: 'Department Transformation Coaching · 3–6 Monate', fs2t: 'Ihre Finance-Prozesse neu gestalten', fs2d: 'Prozess-Neugestaltung, Team-Workshops und Einführung von Human-in-the-Loop Workflows.',
+      fs3tag: 'Managed Second Brain + Agent Service · laufend', fs3t: '24/7 laufende Finance Agents', fs3d: 'Kontinuierliche Agents mit Monitoring, Updates und vollständigen Audit-Trails.',
+      finResLabel: 'Ergebnisse', finResH2: 'Erste Ergebnisse in 90 Tagen',
+      fr1: '–40–60%', fr1l: 'Reporting- & Closing-Zeit', fr2: 'Echtzeit-<br>Forecasting', fr2l: 'mit Anomaly Detection', fr3: 'Höhere<br>Audit-Sicherheit', fr3l: 'durch vollständige Protokollierung', fr4: 'Mehr Zeit<br>für Strategie', fr4l: 'Beratung der Geschäftsführung',
+      finAgentFlotte: 'Ihre Agent-Flotte',
+      fag1: 'Monthly Closing Agent', fag2: 'Forecasting & Scenario Agent', fag3: 'Reconciliation & Anomaly Agent', fag4: 'Board-Report Generator',
+      finCurrLabel: 'Curriculum', finCurrH2: 'In 8–12 Wochen zum zertifizierten Agent Boss Finance Leader',
+      fw1: 'Finance Leadership in the Age of Agents', fw2: 'Data Governance & Compliance für AI', fw3: 'Bau Ihres ersten Autonomous Reporting Agents', fw4: 'Advanced Multi-Agent Systems für Finance', fw5: 'Integration in SAP, DATEV, Power BI & Microsoft 365', fw6: 'Change Management für Finance-Teams', fw7: 'ROI-Messung & Audit-Ready Documentation', fw8: 'Capstone: Vollautomatisierter Monatsabschluss-Prozess',
+      finCertTitle: 'WHU-Zertifikat „Agent Boss Finance Leader"',
+      finPriceLabel: 'Investition', finPriceH2: 'Flexible Einstiegsmöglichkeiten',
+      finPk1f1: '8–12 Wochen WHU-zertifiziertes Programm', finPk1f2: 'Finance Agents, Autonomous Reporting, Multi-Agent', finPk1f3: 'Eigenes Capstone-Projekt', finPk1f4: 'Offizielles WHU-Zertifikat',
+      finPk2f2: '3–6 Monate Transformation Coaching', finPk2f3: 'Human-in-the-Loop Workflow-Design', finPk2f4: 'Prozess-Neugestaltung & Implementierung', finPk2f5: 'Finance-Agent-Flotte live in Ihrer Umgebung',
+      finPk3curr: '€/Mo', finPk3sub: 'bis 14.900 € / Monat · Second Brain + Agent Maintenance', finPk3f1: '24/7 Agent Monitoring & Wartung', finPk3f2: 'Kontinuierliche Updates & Governance', finPk3f3: 'Vollständige Audit-Trails', finPk3f4: 'Monatliches ROI-Reporting',
+      finFaq1q: 'Brauche ich tiefes technisches Wissen?', finFaq1a: 'Nein – Finance-Know-how reicht. Das Programm ist für Finance Leader gemacht. Sie lernen, wie Sie Agents konfigurieren und in Ihren Prozessen einsetzen, ohne zu programmieren.',
+      finFaq2q: 'Wie steht es um Compliance?', finFaq2a: 'Voll DSGVO- und GoBD-konform. Das Governance-Framework inkl. Audit-Trails und Datenschutzarchitektur ist fester Bestandteil des Programms – und wird in Ihrer Umgebung implementiert.',
+      finFaq3q: 'Wann sehe ich erste Ergebnisse?', finFaq3a: 'Viele Teilnehmer haben den ersten produktiven Reporting Agent bereits in Woche 5 live.',
+      finCtaLabel: 'Jetzt starten', finCtaH2a: 'Bereit, Finance zum strategischen', finCtaH2b: 'Powerhouse', finCtaH2c: 'zu machen?',
+      finCtaP: 'Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer Finance-Abteilung.',
+      finCtaBtn: 'Jetzt kostenloses Strategy Call buchen',
+      // HR PAGE
+      hrBreadCurrent: 'Agent Boss HR', hrTag: 'HR · WHU-zertifiziert · 8–12 Wochen',
+      hrH1a: 'Stellen', hrH1b: '50 % schneller', hrH1c: 'besetzen und Top-Talente halten',
+      hrSub: 'Vom Head of HR zum <strong>WHU-zertifizierten Agent Boss Leader</strong>. Recruiting, Onboarding und Talent Development Agents machen HR zum strategischen Talent-Magneten.',
+      hrCta1: 'Kostenloses 30-Min Strategy Call buchen', hrCta2: 'Programm-PDF herunterladen',
+      hrPainLabel: 'Die HR-Realität 2026', hrPainH2: 'HR kämpft 2026 noch viel zu oft manuell',
+      hp1t: '100+ Bewerbungen manuell sichten', hp1d: 'Wochenlange Recruiting-Zyklen kosten die besten Kandidaten.',
+      hp2t: 'Hoher Admin-Aufwand', hp2d: 'On-/Offboarding und Verwaltungsaufgaben fressen strategische HR-Zeit.',
+      hp3t: 'Schwieriger HR-Impact-Nachweis', hp3d: 'Messung von HR-Wirkung und Skills-Gaps bleibt ohne datengetriebene Unterstützung schwierig.',
+      hrPainQuote: '"Wir verlieren gute Kandidaten, weil der Prozess zu langsam ist."',
+      hrSolLabel: 'Unser Ansatz', hrSolH2: 'Ihr Weg zum Agent Boss HR Leader',
+      hs1tag: 'Learning Journey · 8–12 Wochen', hs1t: 'WHU-zertifiziertes Programm', hs1d: 'Fokus auf Recruiting- und Talent-Agents. Mit eigenem Capstone-Projekt – live in Ihrer Umgebung.',
+      hs2tag: 'Department Transformation Coaching · 3–6 Monate', hs2t: 'Neue HR-Prozesse & Team-Adoption', hs2d: 'Wir begleiten Sie bei der Neugestaltung Ihrer HR-Prozesse und der Team-Adoption der neuen Agents.',
+      hs3tag: 'Managed Second Brain + Agent Service · laufend', hs3t: 'Kontinuierliche Optimierung', hs3d: 'Monitoring, Updates und kontinuierliche Optimierung Ihrer HR-Agenten-Flotte.',
+      hrResLabel: 'Ergebnisse', hrResH2: 'Erste Ergebnisse in 90 Tagen',
+      hr1: '–40–60%', hr1l: 'Time-to-Hire', hr2: '+25–35%', hr2l: 'Offer-Acceptance-Rate', hr3: 'Deutlich bessere', hr3l: 'Candidate Experience', hr4: 'Skills-Intelligence', hr4l: 'in Echtzeit',
+      hrAgentFlotte: 'Ihre Agent-Flotte',
+      hag1: 'Intelligent Recruiting & Matching Agent', hag2: 'Personalisiertes Onboarding Agent', hag3: 'Talent Development & Skills-Gap Agent', hag4: 'Employee Experience Feedback Agent',
+      hrCurrLabel: 'Curriculum', hrCurrH2: 'In 8–12 Wochen zum zertifizierten Agent Boss HR Leader',
+      hw1: 'HR Leadership & Agent Mindset', hw2: 'Ethical AI & Bias-Reduction in Recruiting', hw3: 'Bau Ihres ersten Candidate-Matching Agents', hw4: 'Multi-Agent Orchestration für den gesamten Employee Lifecycle', hw5: 'Integration in Workday, SAP SuccessFactors, Personio etc.', hw6: 'Change Management für HR-Teams', hw7: 'People Analytics & ROI von HR-Agents', hw8: 'Capstone: Vollständiger AI-gestützter Recruiting-to-Onboarding-Prozess',
+      hrCertTitle: 'WHU-Zertifikat „Agent Boss HR Leader"',
+      hrPriceLabel: 'Investition', hrPriceH2: 'Flexible Einstiegsmöglichkeiten',
+      hrPk1f1: '8–12 Wochen WHU-zertifiziertes Programm', hrPk1f2: 'Recruiting-, Onboarding- & Talent-Agents', hrPk1f3: 'Eigenes Capstone-Projekt', hrPk1f4: 'Offizielles WHU-Zertifikat',
+      hrPk2f2: '3–6 Monate Transformation Coaching', hrPk2f3: 'Prozess-Neugestaltung & Team-Adoption', hrPk2f4: 'HR-Agent-Flotte live in Ihrer Umgebung', hrPk2f5: 'People Analytics Setup',
+      hrPk3curr: '€/Mo', hrPk3sub: 'bis 12.900 € / Monat · Second Brain + Agent Maintenance', hrPk3f1: '24/7 Agent Monitoring & Wartung', hrPk3f2: 'Kontinuierliche Optimierung der Agents', hrPk3f3: 'Bias-Monitoring & Ethics-Audits', hrPk3f4: 'Monatliches People-Analytics-Reporting',
+      hrCtaLabel: 'Jetzt starten', hrCtaH2a: 'Bereit, HR zum strategischen', hrCtaH2b: 'Talent-Magneten', hrCtaH2c: 'zu machen?',
+      hrCtaP: 'Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer HR-Abteilung.',
+      hrCtaBtn: 'Jetzt kostenloses Strategy Call buchen',
+    },
+    en: {
+      pageTitle: 'Agent Boss Academy | WHU-Certified AI Transformation for Sales, Finance & HR',
+      navBack: 'Back to Overview',
+      heroBadge: 'WHU-Certified Program · 2026',
+      heroH1a: 'Transform Departments into',
+      heroH1b: 'Frontier Units',
+      heroH1c: '',
+      heroSub: 'From department head to <strong>WHU-certified Agent Boss Leader</strong>. Sales, Finance and HR become a decisive competitive advantage with AI Agents.',
+      heroCta1: 'Book a Free 30-Min Strategy Call',
+      heroCta2: 'Explore Programs',
+      heroFn: 'Over 40 department heads are already starting their transformation in 2026',
+      trustLabel: 'Partners & Certification',
+      progLabel: 'The 3 Paths', progH2: 'Your Program. Your Lever.', progSub: 'Specialized transformation for every line of business – with ready-to-deploy agent templates.',
+      progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Turn your sales team into a revenue machine. More selling time, higher win rates, precise forecasts.', progSalesLink: 'Explore Sales Program →',
+      progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Close months in days. Finance becomes a strategic business partner with autonomous reporting & real-time insights.', progFinLink: 'Explore Finance Program →',
+      progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Fill positions 50% faster and boost the employee experience. Recruiting, onboarding & talent agents included.', progHRLink: 'Explore HR Program →',
+      whyLabel: 'Why us', whyH2: 'Why leading department heads start with us',
+      feat1t: 'End-to-End Transformation', feat1d: 'Not just a course – Learning Journey + practical coaching + long-term managed service.',
+      feat2t: 'University Certification', feat2d: 'Officially certified by WHU. A strong signal internally and externally.',
+      feat3t: 'LoB-specific & hands-on', feat3d: 'Specialized programs for Sales, Finance and HR – with ready-to-deploy agent templates.',
+      feat4t: 'Results-Oriented', feat4d: 'Every participant builds real, productive agents for their own department.',
+      impactLabel: 'First Results 2026', impactH2: 'First Results from Our Participants',
+      m1: '+45%', m1l: 'more productive time<br>in departments',
+      m2: '–52%', m2l: 'Time-to-Hire<br>(HR)',
+      m3: '+22%', m3l: 'Win Rate Increase<br>(Sales)',
+      m4: '–58%', m4l: 'Reporting Effort<br>(Finance)',
+      impactFn: 'And those are just the first 90 days.',
+      testiLabel: 'Testimonials', testiH2: 'What Department Heads Say',
+      t1: 'Finally someone who doesn\'t just show tools, but completely restructures my entire sales department. The first agent already delivered value in week 6.', t1a: 'Head of Sales', t1r: 'Mechanical Engineering, 1,200 Employees',
+      t2: 'The Finance Agent reduced our month-end close from 12 to 4 days. The certification was the cherry on top for my next career step.', t2a: 'Head of Finance', t2r: 'Hidden Champion, Mid-Market',
+      t3: 'The Recruiting Agent + Onboarding Agent took a massive load off us. Finally HR can work strategically.', t3a: 'Head of HR', t3r: 'Tech Scale-up, Series B',
+      ctaLabel: 'Get Started', ctaH2a: 'Ready to turn your department into a', ctaH2b: 'Frontier Unit', ctaH2c: '?',
+      ctaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your department.',
+      ctaBtn: 'Book Your Free Strategy Call',
+      ctaMeta1: 'Duration: 30 Minutes', ctaMeta2: 'No Sales Pitch', ctaMeta3: 'Concrete Next Steps Guaranteed',
+      footerCopy: '© 2026 Agent Boss Academy · WHU-Certified Program',
+      footerLinks: 'Imprint · Privacy',
+      popupBadge: 'Free', popupH3: 'AI Readiness Checklist for Your Department',
+      popupP: 'Get our free checklist and find out how AI-ready your department already is.',
+      popupName: 'Your Name', popupEmail: 'Your Business Email', popupPos: 'Position / Department',
+      popupBtn: 'Request Free Checklist', popupDisc: 'No data sharing. Unsubscribe at any time.',
+      salesBreadHome: 'Home', salesBreadProg: 'Programs', salesBreadCurrent: 'Agent Boss Sales',
+      salesTag: 'Sales · WHU-Certified · 8–12 Weeks',
+      salesH1a: 'Turn Your Sales Team into a', salesH1b: 'Revenue Machine', salesH1c: '',
+      salesSub: 'From Head of Sales to <strong>WHU-certified Agent Boss Leader</strong>. AI Agents take over admin work – your team sells more, faster and more precisely.',
+      salesCta1: 'Book a Free 30-Min Strategy Call', salesCta2: 'Download Program PDF',
+      salesFn: 'Start as early as Q2 2026 – limited spots for the first Sales Journey',
+      salesPainLabel: 'The Reality in Sales 2026', salesPainH2: 'Why Most Sales Teams Don\'t Progress Despite AI',
+      sp1t: '40–60% Admin Time', sp1d: 'Your reps are researching, qualifying manually and writing proposals instead of selling.',
+      sp2t: 'Unreliable Forecasts', sp2d: 'Pipeline data is incomplete → surprises for management.',
+      sp3t: 'High Turnover & Demotivation', sp3d: 'Salespeople hate the administrative burden and burn out.',
+      salesPainQuote: '"We already have Copilot and Salesforce Einstein – but nothing really changes."',
+      salesSolLabel: 'Our Approach', salesSolH2: 'Your Clear Path to Agent Boss Sales Leader',
+      ss1tag: 'Learning Journey · 8–12 Weeks', ss1t: 'WHU-Certified Program', ss1d: 'You learn agent-building, prompt strategies and sales-specific multi-agent systems. With your own capstone project – live in your environment.',
+      ss2tag: 'Department Transformation Coaching · 3–6 Months', ss2t: 'Restructure Your Department', ss2d: 'We guide you and your team through the rollout – including change management, team workshops and process redesign.',
+      ss3tag: 'Managed Second Brain + Agent Service · ongoing', ss3t: 'Agents Working 24/7 for You', ss3d: 'Your sales agents run continuously. We handle monitoring, updates, governance and scaling.',
+      salesResLabel: 'Results', salesResH2: 'What You Achieve in the First 90 Days',
+      sr1: '+30–50%', sr1l: 'real selling time', sr2: '+15–25%', sr2l: 'Win Rate Increase',
+      sr3: 'Significantly<br>more precise', sr3l: 'Pipeline Forecasts', sr4: 'Less<br>Turnover', sr4l: 'AI as personal co-pilot',
+      agentFlotte: 'Your Agent Fleet',
+      sag1: 'Lead Scoring Agent', sag2: 'Research & Account Intelligence Agent', sag3: 'Proposal Generator', sag4: 'Automated Follow-up Orchestra', sag5: 'Live ROI Dashboard',
+      salesCurrLabel: 'Curriculum', salesCurrH2: 'Become a Certified Agent Boss Sales Leader in 8–12 Weeks',
+      sw1: 'Agent Leadership Mindset & Sales 2026', sw2: 'Prompt Engineering for Complex Sales Processes', sw3: 'Build Your First Lead Scoring & Qualification Agent', sw4: 'Multi-Agent Orchestration (Langdock / Mountanridge)', sw5: 'Integration into Salesforce, HubSpot & Microsoft 365', sw6: 'Change Management & Team Adoption', sw7: 'Governance, Compliance & ROI Measurement', sw8: 'Capstone: Your Productive Sales Agent Fleet Live in Your Environment',
+      certLabel: 'Certification', certTitle: 'Official WHU Certificate "Agent Boss Sales Leader"',
+      salesPriceLabel: 'Investment', salesPriceH2: 'Flexible Entry Options',
+      pk1tier: 'Package 1', pk1name: 'Learning Journey', pk1price: '6,900', pk1curr: '€', pk1sub: 'per person · or €22,000 company ticket (up to 4 people)', pk1f1: '8–12 week WHU-certified program', pk1f2: 'Agent building, prompt engineering, multi-agent', pk1f3: 'Your own capstone project', pk1f4: 'Official WHU Certificate', pk1btn: 'Enquire Now',
+      pk2tier: 'Package 2', pk2badge: 'Recommended', pk2name: 'Full Transformation', pk2price: '38,000', pk2curr: '€', pk2sub: 'up to €55,000 · incl. coaching + implementation', pk2f1: 'Everything in Package 1', pk2f2: '3–6 months transformation coaching', pk2f3: 'Change management & team workshops', pk2f4: 'Process redesign & implementation', pk2f5: 'Agent fleet live in your environment', pk2btn: 'Enquire Now',
+      pk3tier: 'Package 3', pk3name: 'Managed Growth', pk3price: '5,900', pk3curr: '€/mo', pk3sub: 'up to €12,900/month · Second Brain + Agent Maintenance', pk3f1: '24/7 agent monitoring & maintenance', pk3f2: 'Continuous updates & scaling', pk3f3: 'Governance framework ongoing', pk3f4: 'Monthly ROI reporting', pk3btn: 'Enquire Now',
+      pkNote: 'Most companies start with the Journey and scale from there.',
+      faqLabel: 'FAQ', faqH2: 'Frequently Asked Questions',
+      faq1q: 'Do I need programming skills?', faq1a: 'No. The program is designed for sales leaders – no coding knowledge required. You learn how to configure, orchestrate and deploy agents in your department without writing a single line of code.',
+      faq2q: 'How quickly will I see results?', faq2a: 'Many participants have their first productive agent live by week 4–6. Through the capstone project, your first productive agent runs in your real environment by the end of the journey.',
+      faq3q: 'Does it work with Salesforce / HubSpot?', faq3a: 'Yes. We integrate with all common CRM and Microsoft environments – Salesforce, HubSpot, Microsoft 365, Teams and more. Integration is a core part of week 5.',
+      faq4q: 'What about data protection & compliance?', faq4a: 'Fully GDPR-compliant. The governance framework including compliance requirements, data protection architecture and audit trails is a core part of week 7 – and is implemented in your environment.',
+      salesCtaLabel: 'Get Started', salesCtaH2a: 'Ready to turn your Sales Department into a', salesCtaH2b: 'Frontier Unit', salesCtaH2c: '?',
+      salesCtaP: 'Let\'s find out in a 30-minute call which agent has the biggest lever in your team.',
+      salesCtaBtn: 'Book Your Free Strategy Call', salesCtaUrgency: 'Available this week: 4 spots remaining',
+      finBreadCurrent: 'Agent Boss Finance', finTag: 'Finance · WHU-Certified · 8–12 Weeks',
+      finH1a: 'Close Finance in', finH1b: 'Days, Not Weeks', finH1c: '',
+      finSub: 'From Head of Finance to <strong>WHU-certified Agent Boss Leader</strong>. Autonomous agents handle reporting, reconciliation and forecasting – you become the strategic business partner.',
+      finCta1: 'Book a Free 30-Min Strategy Call', finCta2: 'Download Program PDF',
+      finFn: 'The first Finance Journey 2026 starts in June – limited spots',
+      finPainLabel: 'The Closing Hell 2026', finPainH2: 'The Closing Hell of 2026 Is Still Real',
+      fp1t: 'Manual Reporting & Data Chaos', fp1d: 'Hours spent merging data from SAP, Excel, Power BI & more.',
+      fp2t: 'Month-End Close Takes 8–14 Days', fp2d: 'High stress, error sources and little time for real analysis.',
+      fp3t: 'Regulatory & Compliance Burden', fp3d: 'ESG, IFRS, GoBD – still largely manual.',
+      finPainQuote: '"We have tools, but no real automation and no time for strategic work."',
+      finSolLabel: 'Our Approach', finSolH2: 'Your Path to Agent Boss Finance Leader',
+      fs1tag: 'Learning Journey · 8–12 Weeks', fs1t: 'WHU-Certified Program', fs1d: 'Focus on finance agents, autonomous reporting and explainable AI. With your own capstone project – live in your environment.',
+      fs2tag: 'Department Transformation Coaching · 3–6 Months', fs2t: 'Redesign Your Finance Processes', fs2d: 'Process redesign, team workshops and introduction of human-in-the-loop workflows.',
+      fs3tag: 'Managed Second Brain + Agent Service · ongoing', fs3t: '24/7 Finance Agents Running', fs3d: 'Continuous agents with monitoring, updates and full audit trails.',
+      finResLabel: 'Results', finResH2: 'First Results in 90 Days',
+      fr1: '–40–60%', fr1l: 'Reporting & Closing Time', fr2: 'Real-Time<br>Forecasting', fr2l: 'with Anomaly Detection', fr3: 'Higher<br>Audit Security', fr3l: 'through full audit trails', fr4: 'More Time<br>for Strategy', fr4l: 'Advising the Executive Board',
+      finAgentFlotte: 'Your Agent Fleet',
+      fag1: 'Monthly Closing Agent', fag2: 'Forecasting & Scenario Agent', fag3: 'Reconciliation & Anomaly Agent', fag4: 'Board Report Generator',
+      finCurrLabel: 'Curriculum', finCurrH2: 'Become a Certified Agent Boss Finance Leader in 8–12 Weeks',
+      fw1: 'Finance Leadership in the Age of Agents', fw2: 'Data Governance & Compliance for AI', fw3: 'Build Your First Autonomous Reporting Agent', fw4: 'Advanced Multi-Agent Systems for Finance', fw5: 'Integration into SAP, DATEV, Power BI & Microsoft 365', fw6: 'Change Management for Finance Teams', fw7: 'ROI Measurement & Audit-Ready Documentation', fw8: 'Capstone: Fully Automated Month-End Close Process',
+      finCertTitle: 'WHU Certificate "Agent Boss Finance Leader"',
+      finPriceLabel: 'Investment', finPriceH2: 'Flexible Entry Options',
+      finPk1f1: '8–12 week WHU-certified program', finPk1f2: 'Finance agents, autonomous reporting, multi-agent', finPk1f3: 'Your own capstone project', finPk1f4: 'Official WHU Certificate',
+      finPk2f2: '3–6 months transformation coaching', finPk2f3: 'Human-in-the-loop workflow design', finPk2f4: 'Process redesign & implementation', finPk2f5: 'Finance agent fleet live in your environment',
+      finPk3curr: '€/mo', finPk3sub: 'up to €14,900/month · Second Brain + Agent Maintenance', finPk3f1: '24/7 agent monitoring & maintenance', finPk3f2: 'Continuous updates & governance', finPk3f3: 'Full audit trails', finPk3f4: 'Monthly ROI reporting',
+      finFaq1q: 'Do I need deep technical knowledge?', finFaq1a: 'No – finance expertise is sufficient. The program is designed for finance leaders. You learn how to configure and deploy agents in your processes without any programming.',
+      finFaq2q: 'What about compliance?', finFaq2a: 'Fully GDPR and GoBD compliant. The governance framework including audit trails and data protection architecture is a core part of the program – and is implemented in your environment.',
+      finFaq3q: 'When will I see first results?', finFaq3a: 'Many participants have their first productive reporting agent live by week 5.',
+      finCtaLabel: 'Get Started', finCtaH2a: 'Ready to make Finance a strategic', finCtaH2b: 'Powerhouse', finCtaH2c: '?',
+      finCtaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your finance department.',
+      finCtaBtn: 'Book Your Free Strategy Call',
+      hrBreadCurrent: 'Agent Boss HR', hrTag: 'HR · WHU-Certified · 8–12 Weeks',
+      hrH1a: 'Fill Positions', hrH1b: '50% Faster', hrH1c: 'and Retain Top Talent',
+      hrSub: 'From Head of HR to <strong>WHU-certified Agent Boss Leader</strong>. Recruiting, onboarding and talent development agents turn HR into a strategic talent magnet.',
+      hrCta1: 'Book a Free 30-Min Strategy Call', hrCta2: 'Download Program PDF',
+      hrPainLabel: 'The HR Reality 2026', hrPainH2: 'HR Still Fights Too Many Manual Battles in 2026',
+      hp1t: '100+ Applications to Screen Manually', hp1d: 'Week-long recruiting cycles cost you the best candidates.',
+      hp2t: 'High Admin Overhead', hp2d: 'On-/offboarding and admin tasks eat up strategic HR time.',
+      hp3t: 'Difficult HR Impact Measurement', hp3d: 'Measuring HR impact and skills gaps remains difficult without data-driven support.',
+      hrPainQuote: '"We lose good candidates because the process is too slow."',
+      hrSolLabel: 'Our Approach', hrSolH2: 'Your Path to Agent Boss HR Leader',
+      hs1tag: 'Learning Journey · 8–12 Weeks', hs1t: 'WHU-Certified Program', hs1d: 'Focus on recruiting and talent agents. With your own capstone project – live in your environment.',
+      hs2tag: 'Department Transformation Coaching · 3–6 Months', hs2t: 'New HR Processes & Team Adoption', hs2d: 'We guide you through redesigning your HR processes and team adoption of the new agents.',
+      hs3tag: 'Managed Second Brain + Agent Service · ongoing', hs3t: 'Continuous Optimization', hs3d: 'Monitoring, updates and continuous optimization of your HR agent fleet.',
+      hrResLabel: 'Results', hrResH2: 'First Results in 90 Days',
+      hr1: '–40–60%', hr1l: 'Time-to-Hire', hr2: '+25–35%', hr2l: 'Offer Acceptance Rate', hr3: 'Significantly better', hr3l: 'Candidate Experience', hr4: 'Skills Intelligence', hr4l: 'in real time',
+      hrAgentFlotte: 'Your Agent Fleet',
+      hag1: 'Intelligent Recruiting & Matching Agent', hag2: 'Personalized Onboarding Agent', hag3: 'Talent Development & Skills-Gap Agent', hag4: 'Employee Experience Feedback Agent',
+      hrCurrLabel: 'Curriculum', hrCurrH2: 'Become a Certified Agent Boss HR Leader in 8–12 Weeks',
+      hw1: 'HR Leadership & Agent Mindset', hw2: 'Ethical AI & Bias Reduction in Recruiting', hw3: 'Build Your First Candidate Matching Agent', hw4: 'Multi-Agent Orchestration for the Entire Employee Lifecycle', hw5: 'Integration into Workday, SAP SuccessFactors, Personio etc.', hw6: 'Change Management for HR Teams', hw7: 'People Analytics & ROI of HR Agents', hw8: 'Capstone: Complete AI-Powered Recruiting-to-Onboarding Process',
+      hrCertTitle: 'WHU Certificate "Agent Boss HR Leader"',
+      hrPriceLabel: 'Investment', hrPriceH2: 'Flexible Entry Options',
+      hrPk1f1: '8–12 week WHU-certified program', hrPk1f2: 'Recruiting, onboarding & talent agents', hrPk1f3: 'Your own capstone project', hrPk1f4: 'Official WHU Certificate',
+      hrPk2f2: '3–6 months transformation coaching', hrPk2f3: 'Process redesign & team adoption', hrPk2f4: 'HR agent fleet live in your environment', hrPk2f5: 'People analytics setup',
+      hrPk3curr: '€/mo', hrPk3sub: 'up to €12,900/month · Second Brain + Agent Maintenance', hrPk3f1: '24/7 agent monitoring & maintenance', hrPk3f2: 'Continuous agent optimization', hrPk3f3: 'Bias monitoring & ethics audits', hrPk3f4: 'Monthly people analytics reporting',
+      hrCtaLabel: 'Get Started', hrCtaH2a: 'Ready to make HR a strategic', hrCtaH2b: 'Talent Magnet', hrCtaH2c: '?',
+      hrCtaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your HR department.',
+      hrCtaBtn: 'Book Your Free Strategy Call',
+    }
+  };
+
+  let currentLang = 'de';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const t = i18n[lang];
+    document.documentElement.lang = lang;
+    document.title = t.pageTitle;
+
+    // toggle buttons
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.classList.toggle('lang-active', b.textContent.toLowerCase() === lang);
+    });
+
+    // Helper: set innerHTML of element by id (safe – no user input)
+    const s = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+    const st = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+
+    // ── NAV ──
+    document.getElementById('navBack').textContent = t.navBack;
+    const navLinks = document.querySelectorAll('#navLinks li a');
+    const navKeys = ['navProg','navWhy','navImpact','navTesti'];
+    const navVals = [[t.progLabel||'Programme'],[t.whyLabel||'Warum wir'],[t.impactLabel||'Ergebnisse'],[t.testiLabel||'Stimmen']];
+
+    // ── HOMEPAGE ──
+    s('h-badge', t.heroBadge);
+    s('h-h1', `${t.heroH1a}<span class="highlight">${t.heroH1b}</span>${t.heroH1c}`);
+    s('h-sub', t.heroSub);
+    st('h-cta1', t.heroCta1); st('h-cta2', t.heroCta2);
+    st('h-fn', t.heroFn);
+    st('trust-label', t.trustLabel);
+    s('prog-label', t.progLabel); s('prog-h2', t.progH2); st('prog-sub', t.progSub);
+    s('prog-sales-tag', t.progSalesTag); s('prog-sales-title', t.progSalesTitle); st('prog-sales-desc', t.progSalesDesc); st('prog-sales-link', t.progSalesLink);
+    s('prog-fin-tag', t.progFinTag); s('prog-fin-title', t.progFinTitle); st('prog-fin-desc', t.progFinDesc); st('prog-fin-link', t.progFinLink);
+    s('prog-hr-tag', t.progHRTag); s('prog-hr-title', t.progHRTitle); st('prog-hr-desc', t.progHRDesc); st('prog-hr-link', t.progHRLink);
+    s('why-label', t.whyLabel); s('why-h2', t.whyH2);
+    st('feat1t', t.feat1t); st('feat1d', t.feat1d); st('feat2t', t.feat2t); st('feat2d', t.feat2d);
+    st('feat3t', t.feat3t); st('feat3d', t.feat3d); st('feat4t', t.feat4t); st('feat4d', t.feat4d);
+    s('impact-label', t.impactLabel); s('impact-h2', t.impactH2);
+    s('m1v', t.m1); s('m1l', t.m1l); s('m2v', t.m2); s('m2l', t.m2l); s('m3v', t.m3); s('m3l', t.m3l); s('m4v', t.m4); s('m4l', t.m4l);
+    st('impact-fn', t.impactFn);
+    s('testi-label', t.testiLabel); s('testi-h2', t.testiH2);
+    st('t1', t.t1); st('t1a', t.t1a); st('t1r', t.t1r);
+    st('t2', t.t2); st('t2a', t.t2a); st('t2r', t.t2r);
+    st('t3', t.t3); st('t3a', t.t3a); st('t3r', t.t3r);
+    s('cta-label', t.ctaLabel); s('cta-h2', `${t.ctaH2a} <span>${t.ctaH2b}</span> ${t.ctaH2c}`);
+    st('cta-p', t.ctaP); st('cta-btn', t.ctaBtn);
+    st('cta-meta1', t.ctaMeta1); st('cta-meta2', t.ctaMeta2); st('cta-meta3', t.ctaMeta3);
+    st('footer-copy', t.footerCopy); st('footer-links', t.footerLinks);
+    // popup
+    st('popup-badge', t.popupBadge); st('popup-h3', t.popupH3); st('popup-p', t.popupP);
+    document.getElementById('popup-name').placeholder = t.popupName;
+    document.getElementById('popup-email').placeholder = t.popupEmail;
+    document.getElementById('popup-pos').placeholder = t.popupPos;
+    st('popup-btn', t.popupBtn); st('popup-disc', t.popupDisc);
+
+    // ── SALES PAGE ──
+    st('s-bread-home', t.salesBreadHome); st('s-bread-prog', t.salesBreadProg); st('s-bread-cur', t.salesBreadCurrent);
+    st('s-tag', t.salesTag);
+    s('s-h1', `${t.salesH1a}<span class="hl">${t.salesH1b}</span>${t.salesH1c}`);
+    s('s-sub', t.salesSub); st('s-cta1', t.salesCta1); st('s-cta2', t.salesCta2); st('s-fn', t.salesFn);
+    s('sp-label', t.salesPainLabel); s('sp-h2', t.salesPainH2);
+    st('sp1t', t.sp1t); st('sp1d', t.sp1d); st('sp2t', t.sp2t); st('sp2d', t.sp2d); st('sp3t', t.sp3t); st('sp3d', t.sp3d);
+    st('sp-quote', t.salesPainQuote);
+    s('ss-label', t.salesSolLabel); s('ss-h2', t.salesSolH2);
+    st('ss1tag', t.ss1tag); st('ss1t', t.ss1t); st('ss1d', t.ss1d);
+    st('ss2tag', t.ss2tag); st('ss2t', t.ss2t); st('ss2d', t.ss2d);
+    st('ss3tag', t.ss3tag); st('ss3t', t.ss3t); st('ss3d', t.ss3d);
+    s('sr-label', t.salesResLabel); s('sr-h2', t.salesResH2);
+    s('sr1v', t.sr1); st('sr1l', t.sr1l); s('sr2v', t.sr2); st('sr2l', t.sr2l);
+    s('sr3v', t.sr3); st('sr3l', t.sr3l); s('sr4v', t.sr4); st('sr4l', t.sr4l);
+    st('s-agent-label', t.agentFlotte);
+    st('sag1', t.sag1); st('sag2', t.sag2); st('sag3', t.sag3); st('sag4', t.sag4); st('sag5', t.sag5);
+    s('sc-label', t.salesCurrLabel); s('sc-h2', t.salesCurrH2);
+    st('sw1', t.sw1); st('sw2', t.sw2); st('sw3', t.sw3); st('sw4', t.sw4);
+    st('sw5', t.sw5); st('sw6', t.sw6); st('sw7', t.sw7); st('sw8', t.sw8);
+    st('s-cert-label', t.certLabel); st('s-cert-title', t.certTitle);
+    s('sprice-label', t.salesPriceLabel); s('sprice-h2', t.salesPriceH2);
+    st('pk1tier', t.pk1tier); st('pk1name', t.pk1name); st('pk1price', t.pk1price); st('pk1curr', t.pk1curr); st('pk1sub', t.pk1sub);
+    st('pk1f1', t.pk1f1); st('pk1f2', t.pk1f2); st('pk1f3', t.pk1f3); st('pk1f4', t.pk1f4); st('pk1btn', t.pk1btn);
+    st('pk2tier', t.pk2tier); st('pk2badge', t.pk2badge); st('pk2name', t.pk2name); st('pk2price', t.pk2price); st('pk2curr', t.pk2curr); st('pk2sub', t.pk2sub);
+    st('pk2f1', t.pk2f1); st('pk2f2', t.pk2f2); st('pk2f3', t.pk2f3); st('pk2f4', t.pk2f4); st('pk2f5', t.pk2f5); st('pk2btn', t.pk2btn);
+    st('pk3tier', t.pk3tier); st('pk3name', t.pk3name); st('pk3price', t.pk3price); st('pk3curr', t.pk3curr); st('pk3sub', t.pk3sub);
+    st('pk3f1', t.pk3f1); st('pk3f2', t.pk3f2); st('pk3f3', t.pk3f3); st('pk3f4', t.pk3f4); st('pk3btn', t.pk3btn);
+    st('pk-note', t.pkNote);
+    s('sfaq-label', t.faqLabel); s('sfaq-h2', t.faqH2);
+    st('sfaq1q', t.faq1q); st('sfaq1a', t.faq1a); st('sfaq2q', t.faq2q); st('sfaq2a', t.faq2a);
+    st('sfaq3q', t.faq3q); st('sfaq3a', t.faq3a); st('sfaq4q', t.faq4q); st('sfaq4a', t.faq4a);
+    s('scta-label', t.salesCtaLabel); s('scta-h2', `${t.salesCtaH2a} <span>${t.salesCtaH2b}</span> ${t.salesCtaH2c}`);
+    st('scta-p', t.salesCtaP); st('scta-btn', t.salesCtaBtn); st('scta-urgency', t.salesCtaUrgency);
+
+    // ── FINANCE PAGE ──
+    st('f-bread-cur', t.finBreadCurrent); st('f-tag', t.finTag);
+    s('f-h1', `${t.finH1a}<span class="hl">${t.finH1b}</span>${t.finH1c}`);
+    s('f-sub', t.finSub); st('f-cta1', t.finCta1); st('f-cta2', t.finCta2); st('f-fn', t.finFn);
+    s('fp-label', t.finPainLabel); s('fp-h2', t.finPainH2);
+    st('fp1t', t.fp1t); st('fp1d', t.fp1d); st('fp2t', t.fp2t); st('fp2d', t.fp2d); st('fp3t', t.fp3t); st('fp3d', t.fp3d);
+    st('fp-quote', t.finPainQuote);
+    s('fs-label', t.finSolLabel); s('fs-h2', t.finSolH2);
+    st('fs1tag', t.fs1tag); st('fs1t', t.fs1t); st('fs1d', t.fs1d);
+    st('fs2tag', t.fs2tag); st('fs2t', t.fs2t); st('fs2d', t.fs2d);
+    st('fs3tag', t.fs3tag); st('fs3t', t.fs3t); st('fs3d', t.fs3d);
+    s('fr-label', t.finResLabel); s('fr-h2', t.finResH2);
+    s('fr1v', t.fr1); st('fr1l', t.fr1l); s('fr2v', t.fr2); st('fr2l', t.fr2l);
+    s('fr3v', t.fr3); st('fr3l', t.fr3l); s('fr4v', t.fr4); st('fr4l', t.fr4l);
+    st('f-agent-label', t.finAgentFlotte);
+    st('fag1', t.fag1); st('fag2', t.fag2); st('fag3', t.fag3); st('fag4', t.fag4);
+    s('fc-label', t.finCurrLabel); s('fc-h2', t.finCurrH2);
+    st('fw1', t.fw1); st('fw2', t.fw2); st('fw3', t.fw3); st('fw4', t.fw4);
+    st('fw5', t.fw5); st('fw6', t.fw6); st('fw7', t.fw7); st('fw8', t.fw8);
+    st('f-cert-title', t.finCertTitle);
+    s('fprice-label', t.finPriceLabel); s('fprice-h2', t.finPriceH2);
+    st('fpk1f1', t.finPk1f1); st('fpk1f2', t.finPk1f2); st('fpk1f3', t.finPk1f3); st('fpk1f4', t.finPk1f4);
+    st('fpk2f2', t.finPk2f2); st('fpk2f3', t.finPk2f3); st('fpk2f4', t.finPk2f4); st('fpk2f5', t.finPk2f5);
+    st('fpk3curr', t.finPk3curr); st('fpk3sub', t.finPk3sub);
+    st('fpk3f1', t.finPk3f1); st('fpk3f2', t.finPk3f2); st('fpk3f3', t.finPk3f3); st('fpk3f4', t.finPk3f4);
+    st('ffaq1q', t.finFaq1q); st('ffaq1a', t.finFaq1a); st('ffaq2q', t.finFaq2q); st('ffaq2a', t.finFaq2a);
+    st('ffaq3q', t.finFaq3q); st('ffaq3a', t.finFaq3a);
+    s('fcta-label', t.finCtaLabel); s('fcta-h2', `${t.finCtaH2a} <span>${t.finCtaH2b}</span> ${t.finCtaH2c}`);
+    st('fcta-p', t.finCtaP); st('fcta-btn', t.finCtaBtn);
+
+    // ── HR PAGE ──
+    st('hr-bread-cur', t.hrBreadCurrent); st('hr-tag', t.hrTag);
+    s('hr-h1', `${t.hrH1a} <span class="hl">${t.hrH1b}</span> ${t.hrH1c}`);
+    s('hr-sub', t.hrSub); st('hr-cta1', t.hrCta1); st('hr-cta2', t.hrCta2);
+    s('hrp-label', t.hrPainLabel); s('hrp-h2', t.hrPainH2);
+    st('hp1t', t.hp1t); st('hp1d', t.hp1d); st('hp2t', t.hp2t); st('hp2d', t.hp2d); st('hp3t', t.hp3t); st('hp3d', t.hp3d);
+    st('hrp-quote', t.hrPainQuote);
+    s('hrs-label', t.hrSolLabel); s('hrs-h2', t.hrSolH2);
+    st('hs1tag', t.hs1tag); st('hs1t', t.hs1t); st('hs1d', t.hs1d);
+    st('hs2tag', t.hs2tag); st('hs2t', t.hs2t); st('hs2d', t.hs2d);
+    st('hs3tag', t.hs3tag); st('hs3t', t.hs3t); st('hs3d', t.hs3d);
+    s('hrr-label', t.hrResLabel); s('hrr-h2', t.hrResH2);
+    s('hr1v', t.hr1); st('hr1l', t.hr1l); s('hr2v', t.hr2); st('hr2l', t.hr2l);
+    s('hr3v', t.hr3); st('hr3l', t.hr3l); s('hr4v', t.hr4); st('hr4l', t.hr4l);
+    st('hr-agent-label', t.hrAgentFlotte);
+    st('hag1', t.hag1); st('hag2', t.hag2); st('hag3', t.hag3); st('hag4', t.hag4);
+    s('hrc-label', t.hrCurrLabel); s('hrc-h2', t.hrCurrH2);
+    st('hw1', t.hw1); st('hw2', t.hw2); st('hw3', t.hw3); st('hw4', t.hw4);
+    st('hw5', t.hw5); st('hw6', t.hw6); st('hw7', t.hw7); st('hw8', t.hw8);
+    st('hr-cert-title', t.hrCertTitle);
+    s('hrprice-label', t.hrPriceLabel); s('hrprice-h2', t.hrPriceH2);
+    st('hrpk1f1', t.hrPk1f1); st('hrpk1f2', t.hrPk1f2); st('hrpk1f3', t.hrPk1f3); st('hrpk1f4', t.hrPk1f4);
+    st('hrpk2f2', t.hrPk2f2); st('hrpk2f3', t.hrPk2f3); st('hrpk2f4', t.hrPk2f4); st('hrpk2f5', t.hrPk2f5);
+    st('hrpk3curr', t.hrPk3curr); st('hrpk3sub', t.hrPk3sub);
+    st('hrpk3f1', t.hrPk3f1); st('hrpk3f2', t.hrPk3f2); st('hrpk3f3', t.hrPk3f3); st('hrpk3f4', t.hrPk3f4);
+    s('hrcta-label', t.hrCtaLabel); s('hrcta-h2', `${t.hrCtaH2a} <span>${t.hrCtaH2b}</span> ${t.hrCtaH2c}`);
+    st('hrcta-p', t.hrCtaP); st('hrcta-btn', t.hrCtaBtn);
+  }
+
+  // ── ROUTING ──
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    const isHome = id === 'home';
+    document.getElementById('navBack').style.display = isHome ? 'none' : 'flex';
+    document.getElementById('navLinks').style.display = isHome ? 'flex' : 'none';
+    setTimeout(() => {
+      document.querySelectorAll('#page-' + id + ' .fade-in:not(.visible)').forEach(el => observer.observe(el));
+    }, 60);
+  }
+
+  function goHomeSection(sectionId) {
+    showPage('home');
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 80);
+  }
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('#page-home .fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.programs-grid .program-card, .features-grid .feature-card, .impact-grid .metric-card, .testimonials-grid .testimonial-card').forEach((el, i) => {
+    el.style.transitionDelay = (i * 80) + 'ms';
+  });
+
+  // ── FAQ ──
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // ── POPUP ──
+  setTimeout(() => document.getElementById('popup').classList.add('active'), 8000);
+  document.getElementById('popup').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('popup').classList.remove('active'); });
+</script>
+
+</body>
+</html>
