@@ -1035,7 +1035,7 @@
     <div class="popup-badge" id="popup-badge">Kostenlos</div>
     <h3 id="popup-h3">AI Readiness Checklist für Ihre Abteilung</h3>
     <p id="popup-p">Erhalten Sie unsere kostenlose Checkliste und erfahren Sie, wie AI-ready Ihre Abteilung bereits ist.</p>
-    <form class="popup-form" action="https://6041780f.sibforms.com/serve/MUIFABsigqHEVFOHcCYCaSTnPAwqP--UkAyY0MlfIWeuVn657ah4P2TFCgI9apJZDWT-jm3mFst3HelC4CLL-R42_ECqKj-_gpJM6WeY4jEU1NgzGWPCiNbNyNiUBDYPJos9pMjIhPMFvrXy2C8HOTWRNi9qQzz1ZiSJTLzXDrig_QOcIgzdbnQ3aBmubXGUeVkf-26Kkob3dH9jFA==" method="POST" target="_blank">
+    <form class="popup-form" id="brevo-form" onsubmit="submitBrevoForm(event)">
       <input type="text" id="popup-name" name="FIRSTNAME" placeholder="Ihr Name" required>
       <input type="email" id="popup-email" name="EMAIL" placeholder="Ihre geschäftliche E-Mail" required>
       <input type="text" id="popup-pos" name="JOB_TITLE" placeholder="Position / Abteilung">
@@ -1541,6 +1541,35 @@
     if (e.target === this) this.classList.remove('active');
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('popup').classList.remove('active'); });
+
+  // ── BREVO FORM SUBMIT ──
+  function submitBrevoForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('brevo-form');
+    const btn = document.getElementById('popup-btn');
+    const data = new FormData(form);
+
+    btn.textContent = '...';
+    btn.style.opacity = '0.7';
+
+    fetch('https://6041780f.sibforms.com/serve/MUIFABsigqHEVFOHcCYCaSTnPAwqP--UkAyY0MlfIWeuVn657ah4P2TFCgI9apJZDWT-jm3mFst3HelC4CLL-R42_ECqKj-_gpJM6WeY4jEU1NgzGWPCiNbNyNiUBDYPJos9pMjIhPMFvrXy2C8HOTWRNi9qQzz1ZiSJTLzXDrig_QOcIgzdbnQ3aBmubXGUeVkf-26Kkob3dH9jFA==', {
+      method: 'POST',
+      body: data,
+      mode: 'no-cors'
+    }).then(() => {
+      // Show success state
+      form.innerHTML = `
+        <div style="text-align:center;padding:20px 0;">
+          <div style="font-size:40px;margin-bottom:16px;">✅</div>
+          <div style="font-size:17px;font-weight:600;color:#FFFFFF;margin-bottom:8px;">Checklist wird zugeschickt!</div>
+          <div style="font-size:14px;color:#8B90A4;line-height:1.6;">Schau in deinem Postfach – die AI Readiness Checklist ist unterwegs.</div>
+        </div>`;
+      setTimeout(() => document.getElementById('popup').classList.remove('active'), 3000);
+    }).catch(() => {
+      btn.textContent = document.documentElement.lang === 'en' ? 'Request Free Checklist' : 'Kostenlose Checklist anfordern';
+      btn.style.opacity = '1';
+    });
+  }
 </script>
 
 </body>
