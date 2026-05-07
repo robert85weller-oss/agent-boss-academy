@@ -1542,42 +1542,38 @@
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('popup').classList.remove('active'); });
 
-  // ── BREVO FORM SUBMIT ──
+  // ── BREVO FORM SUBMIT via Make.com Webhook ──
   function submitBrevoForm(e) {
     e.preventDefault();
     const form = document.getElementById('brevo-form');
     const btn = document.getElementById('popup-btn');
 
-    // Create hidden iframe as target
-    const iframeName = 'brevo-target-' + Date.now();
-    const iframe = document.createElement('iframe');
-    iframe.name = iframeName;
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    // Point form to iframe
-    form.target = iframeName;
-    form.action = 'https://6041780f.sibforms.com/serve/MUIFABsigqHEVFOHcCYCaSTnPAwqP--UkAyY0MlfIWeuVn657ah4P2TFCgI9apJZDWT-jm3mFst3HelC4CLL-R42_ECqKj-_gpJM6WeY4jEU1NgzGWPCiNbNyNiUBDYPJos9pMjIhPMFvrXy2C8HOTWRNi9qQzz1ZiSJTLzXDrig_QOcIgzdbnQ3aBmubXGUeVkf-26Kkob3dH9jFA==';
-    form.method = 'POST';
+    const name = document.getElementById('popup-name').value;
+    const email = document.getElementById('popup-email').value;
+    const position = document.getElementById('popup-pos').value;
 
     btn.textContent = '...';
     btn.style.opacity = '0.7';
 
-    // Show success after short delay
-    iframe.onload = function() {
+    fetch('https://hook.eu1.make.com/wavpbgacrnhru1mxjha6d8nw1hktkyyj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, position, source: 'popup', lang: document.documentElement.lang })
+    })
+    .then(res => {
       form.innerHTML = `
         <div style="text-align:center;padding:20px 0;">
           <div style="font-size:40px;margin-bottom:16px;">✅</div>
           <div style="font-size:17px;font-weight:600;color:#FFFFFF;margin-bottom:8px;">Checklist wird zugeschickt!</div>
           <div style="font-size:14px;color:#8B90A4;line-height:1.6;">Schau in deinem Postfach – die AI Readiness Checklist ist unterwegs.</div>
         </div>`;
-      setTimeout(() => {
-        document.getElementById('popup').classList.remove('active');
-        document.body.removeChild(iframe);
-      }, 3000);
-    };
-
-    form.submit();
+      setTimeout(() => document.getElementById('popup').classList.remove('active'), 3000);
+    })
+    .catch(() => {
+      btn.textContent = document.documentElement.lang === 'en' ? 'Request Free Checklist' : 'Kostenlose Checklist anfordern';
+      btn.style.opacity = '1';
+      alert('Etwas ist schiefgelaufen. Bitte versuche es nochmal.');
+    });
   }
 </script>
 
