@@ -323,6 +323,19 @@
   .hr-final-cta h2 span { color:var(--orange); }
   .hr-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
 
+  /* IMPRESSUM PAGE */
+  .impressum { padding: 140px 60px 100px; max-width: 780px; margin: 0 auto; }
+  .impressum h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px,6vw,72px); color: var(--white); margin-bottom: 48px; letter-spacing: 1px; }
+  .impressum h2 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin: 40px 0 12px; }
+  .impressum p, .impressum address { font-size: 15px; color: var(--text-muted); line-height: 1.8; font-style: normal; font-weight: 300; }
+  .impressum a { color: var(--orange-light); text-decoration: none; }
+  .impressum a:hover { text-decoration: underline; }
+  .impressum .placeholder { background: rgba(245,98,30,.12); border: 1px dashed rgba(245,98,30,.4); border-radius: 4px; padding: 2px 8px; color: var(--orange-light); font-size: 13px; font-weight: 600; letter-spacing: .5px; }
+  .impressum-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--text-muted); cursor: pointer; margin-bottom: 40px; transition: color .2s; }
+  .impressum-back:hover { color: var(--white); }
+  .impressum-back::before { content: '←'; font-size: 16px; }
+  .impressum hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
   /* HAMBURGER */
   .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
   .hamburger span { display:block; width:24px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
@@ -585,7 +598,7 @@
   <footer>
     <div class="logo">Agent<span>Boss</span> Academy</div>
     <p id="footer-copy">© 2026 Agent Boss Academy · Hochschulzertifiziertes Programm</p>
-    <p id="footer-links" style="font-size:12px;">Impressum · Datenschutz</p>
+    <p id="footer-links" style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · Datenschutz</p>
   </footer>
 
 </div><!-- /home -->
@@ -783,7 +796,7 @@
   <footer>
     <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
     <p>© 2026 Agent Boss Academy · Hochschulzertifiziertes Programm</p>
-    <p style="font-size:12px;">Impressum · Datenschutz</p>
+    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · Datenschutz</p>
   </footer>
 
 </div><!-- /sales -->
@@ -967,7 +980,7 @@
   <footer>
     <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
     <p>© 2026 Agent Boss Academy · Hochschulzertifiziertes Programm</p>
-    <p style="font-size:12px;">Impressum · Datenschutz</p>
+    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · Datenschutz</p>
   </footer>
 
 </div><!-- /finance -->
@@ -1154,10 +1167,61 @@
   <footer>
     <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
     <p>© 2026 Agent Boss Academy · Hochschulzertifiziertes Programm</p>
-    <p style="font-size:12px;">Impressum · Datenschutz</p>
+    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · Datenschutz</p>
   </footer>
 
 </div><!-- /hr -->
+
+
+<!-- ═══════ IMPRESSUM ═══════ -->
+<div id="page-impressum" class="page">
+  <div class="impressum">
+    <div class="impressum-back" onclick="showPage('home')">Zurück zur Startseite</div>
+
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <address>
+      Robert Weller<br>
+      <span class="placeholder">[STRASSE &amp; HAUSNUMMER]</span><br>
+      <span class="placeholder">[PLZ &amp; ORT]</span><br>
+      Deutschland
+    </address>
+
+    <h2>Kontakt</h2>
+    <p>
+      Telefon: <span class="placeholder">[TELEFONNUMMER]</span><br>
+      E-Mail: <a href="mailto:robert85.weller@googlemail.com">robert85.weller@googlemail.com</a>
+    </p>
+
+    <hr>
+
+    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+    <address>
+      Robert Weller<br>
+      <span class="placeholder">[STRASSE &amp; HAUSNUMMER]</span><br>
+      <span class="placeholder">[PLZ &amp; ORT]</span>
+    </address>
+
+    <hr>
+
+    <h2>Haftungsausschluss</h2>
+    <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+
+    <h2>Urheberrecht</h2>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+
+    <hr>
+
+    <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Stand: Mai 2026</p>
+  </div>
+
+  <footer>
+    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <p>© 2026 Agent Boss Academy · Hochschulzertifiziertes Programm</p>
+    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · Datenschutz</p>
+  </footer>
+</div><!-- /impressum -->
 
 
 <!-- POPUP -->
