@@ -47,7 +47,7 @@ Community läuft über die Warteliste.
 4. **Anwendungsfelder: Sales · Finance · HR** — als Use-Case-Bereiche („Wo ich helfe"), je ein kurzer Block, der in die bestehenden Unterseiten führt. NICHT mehr als Kurse.
 5. **Social Proof** — Testimonials + Ergebnisse (bestehend, bleibt).
 6. **Final CTA** — Strategie-Call buchen.
-7. **Footer + Impressum-Link** — Academy-Sprache („Hochschulzertifiziertes Programm") entfernen/anpassen.
+7. **Footer + Impressum-Link** — Academy-Claim **„Hochschulzertifiziertes Programm" wird zum Community-Approach über Skool** (z. B. „Community-getriebener Agent-Boss-Approach via Skool"). Überall ersetzen, wo der alte Claim auftaucht (Footer Home + Impressum-Footer, Copyright-Zeile).
 
 ---
 
@@ -88,7 +88,7 @@ Statisches HTML, keine Build-Tools, alles in `index.html`. Zweisprachig (DE/EN) 
 
 ### Skool-Waitlist (Offering 2)
 - Gewählt: **Netlify Forms** (E-Mails im Netlify-Dashboard, kein externes Tool).
-- **Implementierungs-Notiz:** Es existiert bereits ein **Brevo-E-Mail-Popup** (`submitBrevoForm`). Beim Umsetzen prüfen, ob die Warteliste sauberer über das bestehende Brevo-Setup läuft statt parallel Netlify Forms. Default bleibt Netlify Forms, falls Brevo nicht unkompliziert wiederverwendbar ist.
+- **Wichtig:** Das bestehende **Brevo-E-Mail-Popup** (`submitBrevoForm`) gehört zu einem anderen Test und wird **NICHT** wiederverwendet — unangetastet lassen. Die Warteliste bekommt ein eigenes Netlify-Forms-Formular.
 - „Bald verfügbar"-Badge auf der Community-Karte.
 
 ---
