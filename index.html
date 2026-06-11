@@ -469,6 +469,13 @@
 </head>
 <body>
 
+<!-- Netlify Forms detection (hidden, static) -->
+<form name="skool-waitlist" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="bot-field" />
+</form>
+
 <!-- NAV -->
 <nav id="mainNav">
   <a class="logo" onclick="showPage('home')">Agent<span>Boss</span> Academy</a>
@@ -1201,6 +1208,24 @@
   </div>
 </div>
 
+<!-- SKOOL WAITLIST POPUP -->
+<div class="popup-overlay" id="waitlist-popup">
+  <div class="popup">
+    <button class="popup-close" onclick="document.getElementById('waitlist-popup').classList.remove('active')">✕</button>
+    <div class="popup-badge" id="wl-badge">Early Access</div>
+    <h3 id="wl-h3">Skool Community – Warteliste</h3>
+    <p id="wl-p">Trag dich ein und sei dabei, sobald die Community öffnet.</p>
+    <form class="popup-form" name="skool-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?waitlist=success">
+      <input type="hidden" name="form-name" value="skool-waitlist">
+      <p hidden><input name="bot-field"></p>
+      <input type="text" name="name" id="wl-name" placeholder="Dein Name" required>
+      <input type="email" name="email" id="wl-email" placeholder="Deine E-Mail" required>
+      <button type="submit" class="btn-primary" id="wl-btn" style="width:100%;border:none;">Auf die Warteliste</button>
+    </form>
+    <p class="popup-disclaimer" id="wl-disc">Keine Weitergabe deiner Daten. Jederzeit abmeldbar.</p>
+  </div>
+</div>
+
 
 <script>
   // ── TRANSLATIONS ──
@@ -1277,6 +1302,7 @@
       popupP: 'Erhalten Sie unsere kostenlose Checkliste und erfahren Sie, wie AI-ready Ihre Abteilung bereits ist.',
       popupName: 'Ihr Name', popupEmail: 'Ihre geschäftliche E-Mail', popupPos: 'Position / Abteilung',
       popupBtn: 'Kostenlose Checklist anfordern', popupDisc: 'Keine Weitergabe Ihrer Daten. Jederzeit abmeldbar.',
+      wlBadge: 'Early Access', wlH3: 'Skool Community – Warteliste', wlP: 'Trag dich ein und sei dabei, sobald die Community öffnet.', wlName: 'Dein Name', wlEmail: 'Deine E-Mail', wlBtn: 'Auf die Warteliste', wlDisc: 'Keine Weitergabe deiner Daten. Jederzeit abmeldbar.',
       // SALES PAGE
       salesBreadHome: 'Home', salesBreadProg: 'Anwendungsfelder', salesBreadCurrent: 'Agent Boss Sales',
       salesTag: 'Sales · Anwendungsfeld',
@@ -1424,6 +1450,7 @@
       popupP: 'Get our free checklist and find out how AI-ready your department already is.',
       popupName: 'Your Name', popupEmail: 'Your Business Email', popupPos: 'Position / Department',
       popupBtn: 'Request Free Checklist', popupDisc: 'No data sharing. Unsubscribe at any time.',
+      wlBadge: 'Early access', wlH3: 'Skool Community – Waitlist', wlP: 'Sign up and be first in when the community opens.', wlName: 'Your name', wlEmail: 'Your email', wlBtn: 'Join the waitlist', wlDisc: 'No data sharing. Unsubscribe at any time.',
       salesBreadHome: 'Home', salesBreadProg: 'Use cases', salesBreadCurrent: 'Agent Boss Sales',
       salesTag: 'Sales · Use case',
       salesH1a: 'Turn Your Sales Team into a', salesH1b: 'Revenue Machine', salesH1c: '',
@@ -1575,6 +1602,12 @@
     document.getElementById('popup-email').placeholder = t.popupEmail;
     document.getElementById('popup-pos').placeholder = t.popupPos;
     st('popup-btn', t.popupBtn); st('popup-disc', t.popupDisc);
+    // waitlist popup
+    st('wl-badge', t.wlBadge); st('wl-h3', t.wlH3);
+    if (location.search.indexOf('waitlist=success') === -1) st('wl-p', t.wlP);
+    const wlN = document.getElementById('wl-name'); if (wlN) wlN.placeholder = t.wlName;
+    const wlE = document.getElementById('wl-email'); if (wlE) wlE.placeholder = t.wlEmail;
+    st('wl-btn', t.wlBtn); st('wl-disc', t.wlDisc);
 
     // ── SALES PAGE ──
     st('s-bread-home', t.salesBreadHome); st('s-bread-prog', t.salesBreadProg); st('s-bread-cur', t.salesBreadCurrent);
@@ -1897,6 +1930,24 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('popup').classList.remove('active'); });
 
   // ── BREVO FORM SUBMIT via Make.com Webhook ──
+  // ── SKOOL WAITLIST ──
+  function openWaitlist() {
+    document.getElementById('waitlist-popup').classList.add('active');
+  }
+  // Danke-Zustand nach erfolgreichem Netlify-Submit (?waitlist=success)
+  if (location.search.indexOf('waitlist=success') !== -1) {
+    window.addEventListener('DOMContentLoaded', () => {
+      const wp = document.getElementById('waitlist-popup');
+      const p = document.getElementById('wl-p');
+      const form = wp && wp.querySelector('form');
+      if (p) p.textContent = document.documentElement.lang === 'en'
+        ? 'Thank you! You are on the waitlist. ✅'
+        : 'Danke! Du stehst auf der Warteliste. ✅';
+      if (form) form.style.display = 'none';
+      if (wp) wp.classList.add('active');
+    });
+  }
+
   function submitBrevoForm(e) {
     e.preventDefault();
     const form = document.getElementById('brevo-form');
