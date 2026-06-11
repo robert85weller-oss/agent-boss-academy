@@ -126,6 +126,15 @@
   .programs { background: var(--dark-2); padding: 100px 60px; }
   .programs-header { margin-bottom: 60px; }
   .programs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  /* OFFERINGS */
+  .offerings { padding:100px 60px; max-width:1280px; margin:0 auto; }
+  .offerings-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .offering-card { position:relative; background:var(--dark-3); border:1px solid var(--border); border-radius:12px; padding:40px 32px; display:flex; flex-direction:column; transition:all .3s; }
+  .offering-card:hover { border-color:rgba(245,98,30,.3); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
+  .offering-icon { font-size:32px; margin-bottom:20px; }
+  .offering-title { font-family:'DM Serif Display',serif; font-size:24px; color:var(--white); margin-bottom:14px; line-height:1.2; }
+  .offering-desc { font-size:15px; color:var(--text-muted); line-height:1.6; margin-bottom:28px; flex:1; }
+  .offering-badge { position:absolute; top:-12px; right:24px; background:var(--orange); color:var(--white); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 14px; border-radius:100px; }
   .program-card { background: var(--dark-3); padding: 48px 40px; position: relative; overflow: hidden; transition: all .3s; cursor: pointer; }
   .program-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--orange); transform:scaleX(0); transition:transform .3s; transform-origin:left; }
   .program-card:hover::before { transform: scaleX(1); }
@@ -439,11 +448,11 @@
     nav ul { display:none; }
     .hamburger { display:flex; }
     .hero-right { display:none; }
-    .hero,.sales-hero,.fin-hero,.hr-hero,.programs,.why,.impact,.testimonials,.final-cta,.trust-bar,footer,
+    .hero,.sales-hero,.fin-hero,.hr-hero,.programs,.offerings,.why,.impact,.testimonials,.final-cta,.trust-bar,footer,
     .sales-pain,.sales-solution,.sales-results,.sales-curriculum,.sales-pricing,.sales-faq,.sales-final-cta,
     .fin-pricing,.fin-final-cta,.hr-final-cta,.team,.hr-faq { padding-left:24px; padding-right:24px; }
     .programs-grid,.features-grid,.impact-grid,.testimonials-grid,
-    .pain-grid,.results-top,.curriculum-grid,.pricing-grid,.agents-grid,.team-grid { grid-template-columns:1fr; }
+    .pain-grid,.results-top,.curriculum-grid,.pricing-grid,.agents-grid,.team-grid,.offerings-grid { grid-template-columns:1fr; }
     .stufe-card { grid-template-columns:56px 1fr; gap:20px; padding:32px 24px; }
     .stufe-card:hover { padding-left:32px; }
   }
@@ -541,6 +550,35 @@
       </div>
     </div>
   </div>
+
+  <section class="offerings" id="offerings">
+    <div class="programs-header fade-in">
+      <div class="section-label" id="off-label">Zusammenarbeit</div>
+      <h2 class="section-headline" id="off-h2">Drei Wege, mit mir zu arbeiten</h2>
+      <p id="off-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Gleichwertig – je nachdem, wie viel du selbst bauen willst und wie viel wir für dich übernehmen.</p>
+    </div>
+    <div class="offerings-grid">
+      <div class="offering-card fade-in">
+        <div class="offering-icon">🧭</div>
+        <h3 class="offering-title" id="off1-title">Beratung &amp; Guidance</h3>
+        <p class="offering-desc" id="off1-desc">Frameworks, Sparring und konkrete Hilfe beim Aufbau deiner eigenen Agent-Boss-Journey – strategisch und umsetzungsnah.</p>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener" class="btn-primary" id="off1-cta" style="width:100%;text-align:center;display:block;">Strategie-Call buchen</a>
+      </div>
+      <div class="offering-card fade-in">
+        <span class="offering-badge" id="off2-badge">Bald verfügbar</span>
+        <div class="offering-icon">👥</div>
+        <h3 class="offering-title" id="off2-title">Skool Community</h3>
+        <p class="offering-desc" id="off2-desc">Lerne in der Community, equippe dich mit Playbooks und tausche dich im Exchange mit anderen Agent Bosses aus.</p>
+        <button class="btn-secondary" id="off2-cta" onclick="openWaitlist()" style="width:100%;text-align:center;display:block;">Auf die Warteliste</button>
+      </div>
+      <div class="offering-card fade-in">
+        <div class="offering-icon">⚙️</div>
+        <h3 class="offering-title" id="off3-title">Done-for-you Automation</h3>
+        <p class="offering-desc" id="off3-desc">Wir bauen deine AI-Agents (Langdock + Claude) und Workflows (n8n) – und betreiben sie laufend für dich.</p>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener" class="btn-primary" id="off3-cta" style="width:100%;text-align:center;display:block;">Strategie-Call buchen</a>
+      </div>
+    </div>
+  </section>
 
   <section class="programs" id="programmes">
     <div class="programs-header fade-in">
@@ -1328,6 +1366,12 @@
       heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
       heroCta2: 'Die 3 Wege ansehen',
       heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.',
+      // OFFERINGS
+      offLabel: 'Zusammenarbeit', offH2: 'Drei Wege, mit mir zu arbeiten',
+      offSub: 'Gleichwertig – je nachdem, wie viel du selbst bauen willst und wie viel wir für dich übernehmen.',
+      off1Title: 'Beratung & Guidance', off1Desc: 'Frameworks, Sparring und konkrete Hilfe beim Aufbau deiner eigenen Agent-Boss-Journey – strategisch und umsetzungsnah.', off1Cta: 'Strategie-Call buchen',
+      off2Badge: 'Bald verfügbar', off2Title: 'Skool Community', off2Desc: 'Lerne in der Community, equippe dich mit Playbooks und tausche dich im Exchange mit anderen Agent Bosses aus.', off2Cta: 'Auf die Warteliste',
+      off3Title: 'Done-for-you Automation', off3Desc: 'Wir bauen deine AI-Agents (Langdock + Claude) und Workflows (n8n) – und betreiben sie laufend für dich.', off3Cta: 'Strategie-Call buchen',
       // TRUST BAR
       trustLabel: 'Partner & Zertifizierung',
       // PROGRAMS
@@ -1489,6 +1533,12 @@
       heroCta1: 'Book a Free 30-Min Strategy Call',
       heroCta2: 'See the 3 paths',
       heroFn: 'Practitioner, not theory — real AI agents live in production.',
+      // OFFERINGS
+      offLabel: 'Work with me', offH2: 'Three ways to work with me',
+      offSub: 'All equal – depending on how much you want to build yourself and how much we take off your plate.',
+      off1Title: 'Advisory & Guidance', off1Desc: 'Frameworks, sparring and hands-on help building your own Agent Boss journey – strategic and execution-focused.', off1Cta: 'Book a strategy call',
+      off2Badge: 'Coming soon', off2Title: 'Skool Community', off2Desc: 'Learn in the community, equip yourself with playbooks and exchange with other Agent Bosses.', off2Cta: 'Join the waitlist',
+      off3Title: 'Done-for-you Automation', off3Desc: 'We build your AI agents (Langdock + Claude) and workflows (n8n) – and run them for you on an ongoing basis.', off3Cta: 'Book a strategy call',
       trustLabel: 'Partners & Certification',
       progLabel: 'The 3 Paths', progH2: 'Your Program. Your Lever.', progSub: 'Specialized transformation for every line of business – with ready-to-deploy agent templates.',
       progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Turn your sales team into a revenue machine. More selling time, higher win rates, precise forecasts.', progSalesLink: 'Explore Sales Program →',
@@ -1647,6 +1697,11 @@
     st('h-cta1', t.heroCta1); st('h-cta2', t.heroCta2);
     st('h-fn', t.heroFn);
     st('trust-label', t.trustLabel); st('whu-label', t.whuLabel);
+    // ── OFFERINGS ──
+    s('off-label', t.offLabel); s('off-h2', t.offH2); st('off-sub', t.offSub);
+    st('off1-title', t.off1Title); st('off1-desc', t.off1Desc); st('off1-cta', t.off1Cta);
+    st('off2-badge', t.off2Badge); st('off2-title', t.off2Title); st('off2-desc', t.off2Desc); st('off2-cta', t.off2Cta);
+    st('off3-title', t.off3Title); st('off3-desc', t.off3Desc); st('off3-cta', t.off3Cta);
     s('prog-label', t.progLabel); s('prog-h2', t.progH2); st('prog-sub', t.progSub);
     s('prog-sales-tag', t.progSalesTag); s('prog-sales-title', t.progSalesTitle); st('prog-sales-desc', t.progSalesDesc); st('prog-sales-link', t.progSalesLink);
     s('prog-fin-tag', t.progFinTag); s('prog-fin-title', t.progFinTitle); st('prog-fin-desc', t.progFinDesc); st('prog-fin-link', t.progFinLink);
