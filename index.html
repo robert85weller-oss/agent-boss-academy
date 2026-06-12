@@ -693,6 +693,130 @@
     body.theme-light .offering-card, body.theme-light .offerings-grid > .offering-card:not(:last-child) { border-right:none; padding-right:0; border-top:1px solid var(--line); }
     body.theme-light .features-grid { border-top:none; }
   }
+
+  /* ═══════════════════════════════════════════════════════════
+     EDITORIAL LIGHT — Sales / Finance / HR subpages + Impressum
+     (body is theme-light on every page; these target subpage classes)
+  ═══════════════════════════════════════════════════════════ */
+  /* ── SUBPAGE HEROES ── */
+  body.theme-light .sales-hero, body.theme-light .fin-hero, body.theme-light .hr-hero { min-height:auto; padding:168px 64px 84px; }
+  body.theme-light .sales-hero-bg, body.theme-light .sales-hero-grid,
+  body.theme-light .fin-hero-bg, body.theme-light .fin-hero-grid,
+  body.theme-light .hr-hero-bg, body.theme-light .hr-hero-grid { display:none; }
+  body.theme-light .sales-breadcrumb, body.theme-light .fin-breadcrumb, body.theme-light .hr-breadcrumb { color:var(--ink-mute); }
+  body.theme-light .sales-breadcrumb:hover span, body.theme-light .fin-breadcrumb:hover span, body.theme-light .hr-breadcrumb:hover span { color:var(--ink); }
+  body.theme-light .sales-bc-current, body.theme-light .fin-bc-current, body.theme-light .hr-bc-current { color:var(--amber) !important; }
+  body.theme-light .sales-hero-tag, body.theme-light .fin-hero-tag, body.theme-light .hr-hero-tag {
+    background:none; border:none; padding:0; border-radius:0; color:var(--amber); font-weight:600; font-size:12px; letter-spacing:2.5px; text-transform:uppercase; gap:12px; }
+  body.theme-light .sales-hero-tag::before, body.theme-light .fin-hero-tag::before, body.theme-light .hr-hero-tag::before {
+    width:28px; height:1px; background:var(--amber); border-radius:0; animation:none; }
+  body.theme-light .sales-hero h1, body.theme-light .fin-hero h1, body.theme-light .hr-hero h1 {
+    font-family:'Fraunces',serif; font-optical-sizing:auto; font-weight:440; font-variation-settings:'SOFT' 40,'WONK' 1;
+    color:var(--ink); font-size:clamp(44px,6vw,86px); line-height:1.0; letter-spacing:-1.5px; }
+  body.theme-light .sales-hero h1 .hl, body.theme-light .fin-hero h1 .hl, body.theme-light .hr-hero h1 .hl { color:var(--amber); font-style:italic; font-weight:430; }
+  body.theme-light .sales-hero-sub, body.theme-light .fin-hero-sub, body.theme-light .hr-hero-sub { color:var(--ink-soft); font-weight:400; }
+  body.theme-light .sales-hero-sub strong, body.theme-light .fin-hero-sub strong, body.theme-light .hr-hero-sub strong { color:var(--ink); font-weight:600; }
+  body.theme-light .sales-hero-footnote, body.theme-light .fin-hero-footnote { color:var(--ink-mute); }
+  body.theme-light .sales-hero-footnote::before { content:'⚡'; }
+  body.theme-light .fin-hero-footnote::before { content:'📅'; }
+
+  /* ── PAIN ── */
+  body.theme-light .sales-pain { background:var(--paper-2); padding:96px 64px; }
+  body.theme-light .pain-grid { gap:1px; background:var(--line); border:1px solid var(--line); }
+  body.theme-light .pain-card { background:var(--paper); border-top:none; padding:38px 32px; }
+  body.theme-light .pain-card:hover { background:var(--paper-card); border-top:none; }
+  body.theme-light .pain-icon { display:none; }
+  body.theme-light .pain-title { color:var(--ink); font-weight:600; font-size:19px; }
+  body.theme-light .pain-title span { color:var(--amber); }
+  body.theme-light .pain-desc { color:var(--ink-mute); font-weight:400; }
+  body.theme-light .pain-quote { background:var(--paper-card); border-left:2px solid var(--amber); border-radius:0; color:var(--ink-soft); font-family:'Fraunces',serif; font-style:italic; font-size:19px; }
+
+  /* ── SOLUTION / STUFEN ── */
+  body.theme-light .sales-solution { background:var(--paper); padding:96px 64px; }
+  body.theme-light .stufen-grid { gap:1px; background:var(--line); border-top:1px solid var(--ink); border-bottom:1px solid var(--line); }
+  body.theme-light .stufe-card { background:var(--paper); }
+  body.theme-light .stufe-card:hover { background:var(--paper-card); }
+  body.theme-light .stufe-card::after { background:var(--amber); }
+  body.theme-light .stufe-num { font-family:'Fraunces',serif; font-style:italic; font-weight:360; color:var(--amber); }
+  body.theme-light .stufe-tag { color:var(--amber); letter-spacing:2.5px; }
+  body.theme-light .stufe-title { font-family:'Fraunces',serif; color:var(--ink); font-weight:480; }
+  body.theme-light .stufe-desc { color:var(--ink-mute); font-weight:400; }
+
+  /* ── RESULTS ── */
+  body.theme-light .sales-results { background:var(--paper-2); padding:96px 64px; }
+  body.theme-light .results-top { gap:1px; background:var(--line); border:1px solid var(--line); }
+  body.theme-light .result-metric { background:var(--paper); }
+  body.theme-light .result-metric:hover { background:var(--paper-card); transform:none; }
+  body.theme-light .result-metric::before { background:var(--amber); }
+  body.theme-light .result-icon { display:none; }
+  body.theme-light .result-value { font-family:'Fraunces',serif; font-weight:400; color:var(--ink); letter-spacing:-1px; }
+  body.theme-light .result-value span { color:var(--amber); }
+  body.theme-light .result-label { color:var(--ink-mute); }
+  body.theme-light .results-agents-label { color:var(--ink-mute); letter-spacing:3px; }
+  body.theme-light .agent-chip { background:var(--paper); border:1px solid var(--line); border-radius:3px; }
+  body.theme-light .agent-chip:hover { border-color:rgba(182,84,31,.4); background:var(--paper-card); }
+  body.theme-light .agent-chip-icon { display:none; }
+  body.theme-light .agent-chip-name { color:var(--ink-soft); }
+
+  /* ── CURRICULUM ── */
+  body.theme-light .sales-curriculum { background:var(--paper); padding:96px 64px; }
+  body.theme-light .curriculum-grid { gap:1px; background:var(--line); border:1px solid var(--line); }
+  body.theme-light .week-card { background:var(--paper); border-bottom:none; }
+  body.theme-light .week-card:hover { background:var(--paper-card); border-bottom:none; }
+  body.theme-light .week-num { color:var(--amber); letter-spacing:2px; }
+  body.theme-light .week-title { color:var(--ink); font-weight:600; }
+  body.theme-light .cert-banner { background:rgba(182,84,31,.06); border:1px solid rgba(182,84,31,.25); border-radius:4px; }
+  body.theme-light .cert-icon { display:none; }
+  body.theme-light .cert-text-label { color:var(--amber); }
+  body.theme-light .cert-text-title { font-family:'Fraunces',serif; color:var(--ink); font-weight:480; }
+
+  /* ── PRICING POINTER (now the offerings CTA on subpages) ── */
+  body.theme-light .sales-pricing, body.theme-light .fin-pricing { background:var(--paper-2); padding:96px 64px; }
+
+  /* ── FAQ ── */
+  body.theme-light .sales-faq, body.theme-light .hr-faq { background:var(--paper); padding:96px 64px; }
+  body.theme-light .faq-list { gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  body.theme-light .faq-item { background:var(--paper); }
+  body.theme-light .faq-question { color:var(--ink); font-weight:500; }
+  body.theme-light .faq-question:hover { color:var(--amber-deep); }
+  body.theme-light .faq-icon { color:var(--amber); }
+  body.theme-light .faq-answer-inner { color:var(--ink-mute); font-weight:400; }
+
+  /* ── SUBPAGE FINAL CTAs → dramatic ink block ── */
+  body.theme-light .sales-final-cta, body.theme-light .fin-final-cta, body.theme-light .hr-final-cta { background:var(--ink); padding:124px 64px; }
+  body.theme-light .sales-final-cta::before, body.theme-light .fin-final-cta::before, body.theme-light .hr-final-cta::before { display:none; }
+  body.theme-light .sales-final-cta h2, body.theme-light .fin-final-cta h2, body.theme-light .hr-final-cta h2 {
+    font-family:'Fraunces',serif; font-weight:430; color:var(--paper); font-size:clamp(44px,6vw,80px); line-height:1.03; letter-spacing:-1px; }
+  body.theme-light .sales-final-cta h2 span, body.theme-light .fin-final-cta h2 span, body.theme-light .hr-final-cta h2 span { color:var(--amber-light); font-style:italic; }
+  body.theme-light .sales-final-cta p, body.theme-light .fin-final-cta p, body.theme-light .hr-final-cta p { color:rgba(244,241,234,.66); }
+  body.theme-light .sales-final-cta .btn-primary, body.theme-light .fin-final-cta .btn-primary, body.theme-light .hr-final-cta .btn-primary { background:var(--amber); color:var(--paper); }
+  body.theme-light .sales-final-cta .btn-primary:hover, body.theme-light .fin-final-cta .btn-primary:hover, body.theme-light .hr-final-cta .btn-primary:hover { background:#fff; color:var(--ink); }
+  body.theme-light .sales-cta-urgency { color:var(--amber-light); }
+
+  /* ── IMPRESSUM ── */
+  body.theme-light .impressum h1 { font-family:'Fraunces',serif; font-weight:460; color:var(--ink); letter-spacing:-1px; }
+  body.theme-light .impressum h2 { color:var(--amber); }
+  body.theme-light .impressum p, body.theme-light .impressum address { color:var(--ink-mute); font-weight:400; }
+  body.theme-light .impressum a { color:var(--amber-deep); }
+  body.theme-light .impressum-back { color:var(--ink-mute); }
+  body.theme-light .impressum-back:hover { color:var(--ink); }
+  body.theme-light .impressum hr { border-top:1px solid var(--line); }
+
+  /* ── MOBILE NAV DRAWER ── */
+  body.theme-light .mobile-nav-drawer { background:var(--paper); border-left:1px solid var(--line); }
+  body.theme-light .mobile-nav-drawer a { color:var(--ink-soft); border-bottom:1px solid var(--line); }
+  body.theme-light .mobile-nav-drawer a:hover { color:var(--ink); }
+  body.theme-light .mobile-nav-drawer a.mobile-nav-cta { color:var(--amber-deep); }
+  body.theme-light .mobile-nav-close { color:var(--ink-mute); }
+
+  /* ── subpage responsive ── */
+  @media (max-width:1024px) {
+    body.theme-light .sales-hero, body.theme-light .fin-hero, body.theme-light .hr-hero { padding:130px 24px 64px; }
+    body.theme-light .sales-pain, body.theme-light .sales-solution, body.theme-light .sales-results,
+    body.theme-light .sales-curriculum, body.theme-light .sales-faq, body.theme-light .hr-faq,
+    body.theme-light .sales-final-cta, body.theme-light .fin-final-cta, body.theme-light .hr-final-cta { padding-left:24px; padding-right:24px; }
+    body.theme-light .stufen-grid { border-top:none; }
+  }
 </style>
 </head>
 <body class="theme-light">
@@ -1931,7 +2055,7 @@
     document.getElementById('page-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
     const isHome = id === 'home';
-    document.body.classList.toggle('theme-light', isHome);
+    document.body.classList.add('theme-light'); // editorial light theme across all pages
     document.getElementById('navBack').style.display = isHome ? 'none' : 'flex';
     document.getElementById('navLinks').style.display = isHome ? 'flex' : 'none';
     setTimeout(() => {
