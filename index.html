@@ -563,13 +563,17 @@
   body.theme-light .chat-send { background:var(--amber); color:var(--paper); border-radius:5px; }
 
   /* ── TRUST BAR ── */
-  body.theme-light .trust-bar { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:22px 64px; }
+  body.theme-light .trust-bar { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 64px; }
+  body.theme-light .trust-inner { gap:40px; }
   body.theme-light .trust-label { color:var(--ink-mute); border-right:1px solid var(--line); letter-spacing:2px; }
-  body.theme-light .trust-chip { color:var(--ink-soft); }
+  body.theme-light .trust-logos { gap:30px 34px; }
   body.theme-light .trust-chip-icon { display:none; }
-  body.theme-light .trust-chip-name { color:var(--ink-soft); font-weight:600; letter-spacing:.4px; font-size:14px; }
-  body.theme-light .trust-whu-sep { background:var(--line); }
-  body.theme-light .whu-chip .trust-chip-name { font-family:'Fraunces',serif !important; color:var(--amber-deep); }
+  body.theme-light .trust-chip { background:none; border:none; padding:0; border-radius:0; }
+  body.theme-light .trust-chip:hover { background:none; border:none; }
+  body.theme-light .trust-chip-name { color:var(--ink-soft); font-weight:600; letter-spacing:.3px; font-size:15px; transition:color .2s; }
+  body.theme-light .trust-chip:hover .trust-chip-name { color:var(--amber-deep); }
+  body.theme-light .trust-chip-soon { opacity:.9; }
+  body.theme-light .trust-soon-tag { margin-left:9px; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber-deep); border:1px solid rgba(182,84,31,.4); border-radius:100px; padding:2px 8px; font-weight:600; vertical-align:middle; }
 
   /* ── OFFERINGS → editorial numbered index ── */
   body.theme-light .offerings { padding:104px 64px; max-width:1180px; }
@@ -771,13 +775,15 @@
 
   <div class="trust-bar">
     <div class="trust-inner">
-      <span class="trust-label" id="trust-label">Partner & Zertifizierung</span>
+      <span class="trust-label" id="trust-label">Womit wir automatisieren</span>
       <div class="trust-logos">
-        <div class="trust-chip"><span class="trust-chip-icon">🪟</span><span class="trust-chip-name">Microsoft</span></div>
-        <div class="trust-chip"><span class="trust-chip-icon">🔗</span><span class="trust-chip-name">Langdock</span></div>
-        <div class="trust-chip"><span class="trust-chip-icon">🏔</span><span class="trust-chip-name">Mountanridge</span></div>
-        <div class="trust-whu-sep"></div>
-        <div class="trust-chip whu-chip"><span class="trust-chip-icon">🎓</span><span class="trust-chip-name" id="whu-label" style="font-family:'DM Serif Display',serif;font-size:15px;">WHU Zertifiziert</span></div>
+        <div class="trust-chip"><span class="trust-chip-name">Microsoft AI Portfolio</span></div>
+        <div class="trust-chip"><span class="trust-chip-name">Langdock</span></div>
+        <div class="trust-chip"><span class="trust-chip-name">n8n</span></div>
+        <div class="trust-chip"><span class="trust-chip-name">Make</span></div>
+        <div class="trust-chip"><span class="trust-chip-name">Claude</span></div>
+        <div class="trust-chip"><span class="trust-chip-name">Second Brain</span></div>
+        <div class="trust-chip trust-chip-soon"><span class="trust-chip-name">Mountanridge</span><span class="trust-soon-tag" id="trust-soon-tag">zukünftig</span></div>
       </div>
     </div>
   </div>
@@ -1487,7 +1493,7 @@
       off2Badge: 'Bald verfügbar', off2Title: 'Skool Community', off2Desc: 'Lerne in der Community, equippe dich mit Playbooks und tausche dich im Exchange mit anderen Agent Bosses aus.', off2Cta: 'Auf die Warteliste',
       off3Title: 'Done-for-you Automation', off3Desc: 'Wir bauen deine AI-Agents (Langdock + Claude) und Workflows (n8n) – und betreiben sie laufend für dich.', off3Cta: 'Strategie-Call buchen',
       // TRUST BAR
-      trustLabel: 'Partner & Zertifizierung',
+      trustLabel: 'Womit wir automatisieren', trustSoon: 'zukünftig',
       // PROGRAMS
       progLabel: 'Anwendungsfelder',
       progH2: 'Wo Agent-Boss-Arbeit wirkt',
@@ -1644,7 +1650,7 @@
       off1Title: 'Advisory & Guidance', off1Desc: 'Frameworks, sparring and hands-on help building your own Agent Boss journey – strategic and execution-focused.', off1Cta: 'Book a strategy call',
       off2Badge: 'Coming soon', off2Title: 'Skool Community', off2Desc: 'Learn in the community, equip yourself with playbooks and exchange with other Agent Bosses.', off2Cta: 'Join the waitlist',
       off3Title: 'Done-for-you Automation', off3Desc: 'We build your AI agents (Langdock + Claude) and workflows (n8n) – and run them for you on an ongoing basis.', off3Cta: 'Book a strategy call',
-      trustLabel: 'Partners & Certification',
+      trustLabel: 'How we automate', trustSoon: 'soon',
       progLabel: 'Use cases', progH2: 'Where Agent Boss work pays off', progSub: 'The same three paths – applied to the areas where I help most.',
       progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Turn your sales team into a revenue machine. More selling time, higher win rates, precise forecasts.', progSalesLink: 'Use cases in Sales →',
       progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Close months in days. Finance becomes a strategic business partner with autonomous reporting & real-time insights.', progFinLink: 'Use cases in Finance →',
@@ -1792,7 +1798,7 @@
     s('h-sub', t.heroSub);
     st('h-cta1', t.heroCta1); st('h-cta2', t.heroCta2);
     st('h-fn', t.heroFn);
-    st('trust-label', t.trustLabel); st('whu-label', t.whuLabel);
+    st('trust-label', t.trustLabel); st('trust-soon-tag', t.trustSoon);
     // ── OFFERINGS ──
     s('off-label', t.offLabel); s('off-h2', t.offH2); st('off-sub', t.offSub);
     st('off1-title', t.off1Title); st('off1-desc', t.off1Desc); st('off1-cta', t.off1Cta);
