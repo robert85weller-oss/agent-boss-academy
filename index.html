@@ -817,6 +817,102 @@
     body.theme-light .sales-final-cta, body.theme-light .fin-final-cta, body.theme-light .hr-final-cta { padding-left:24px; padding-right:24px; }
     body.theme-light .stufen-grid { border-top:none; }
   }
+
+  /* ═══════════════════════════════════════════════════════════
+     AGENT BOSS READINESS CHECK + MINI-GUIDE READER (editorial)
+  ═══════════════════════════════════════════════════════════ */
+  .rc-modal { background:var(--paper-card); border:1px solid var(--line); border-radius:8px; padding:44px 44px 40px; max-width:600px; width:92%; position:relative; transform:scale(.94); transition:transform .3s; max-height:90vh; overflow-y:auto; box-shadow:0 40px 90px -30px rgba(22,20,15,.45); }
+  .rc-overlay.active .rc-modal { transform:scale(1); }
+  .rc-kicker { color:var(--amber); font-weight:600; letter-spacing:2.5px; font-size:11px; text-transform:uppercase; display:inline-flex; align-items:center; gap:12px; margin-bottom:18px; }
+  .rc-kicker::before { content:''; width:24px; height:1px; background:var(--amber); }
+  .rc-title { font-family:'Fraunces',serif; font-weight:460; font-size:30px; line-height:1.12; color:var(--ink); letter-spacing:-.5px; margin-bottom:14px; }
+  .rc-title em { font-style:italic; color:var(--amber); }
+  .rc-sub { font-size:15px; color:var(--ink-mute); line-height:1.6; margin-bottom:30px; }
+  .rc-start { width:100%; }
+  .rc-meta { margin-top:18px; font-size:12.5px; color:var(--ink-mute); display:flex; gap:18px; flex-wrap:wrap; }
+  .rc-meta span { display:inline-flex; align-items:center; gap:6px; }
+  .rc-meta span::before { content:'•'; color:var(--amber); }
+
+  .rc-progress { display:flex; align-items:center; gap:14px; margin-bottom:26px; }
+  .rc-progress-track { flex:1; height:3px; background:var(--line); border-radius:2px; overflow:hidden; }
+  .rc-progress-fill { height:100%; background:var(--amber); transition:width .4s cubic-bezier(.4,0,.2,1); }
+  .rc-progress-label { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-mute); white-space:nowrap; }
+  .rc-q { font-family:'Fraunces',serif; font-weight:480; font-size:23px; line-height:1.22; color:var(--ink); letter-spacing:-.3px; margin-bottom:24px; }
+  .rc-options { display:flex; flex-direction:column; gap:10px; }
+  .rc-option { text-align:left; background:var(--paper); border:1px solid var(--line); border-radius:5px; padding:16px 18px; font-size:15px; color:var(--ink-soft); cursor:pointer; transition:all .18s; font-family:'Hanken Grotesk',sans-serif; display:flex; align-items:flex-start; gap:12px; line-height:1.45; }
+  .rc-option::before { content:''; width:16px; height:16px; border:1.5px solid var(--line); border-radius:50%; flex-shrink:0; margin-top:1px; transition:all .18s; }
+  .rc-option:hover { border-color:var(--amber); background:var(--paper-card); color:var(--ink); }
+  .rc-option:hover::before { border-color:var(--amber); }
+  .rc-option.sel { border-color:var(--amber); background:rgba(182,84,31,.06); color:var(--ink); }
+  .rc-option.sel::before { border-color:var(--amber); background:radial-gradient(circle, var(--amber) 0 5px, transparent 6px); box-shadow:inset 0 0 0 3px var(--paper); }
+  .rc-nav { display:flex; justify-content:space-between; align-items:center; margin-top:28px; }
+  .rc-back { background:none; border:none; color:var(--ink-mute); font-size:14px; cursor:pointer; font-family:'Hanken Grotesk',sans-serif; padding:6px 0; }
+  .rc-back:hover { color:var(--ink); }
+  .rc-back[disabled] { opacity:0; pointer-events:none; }
+
+  /* result */
+  .rc-level-tag { color:var(--amber); font-weight:600; letter-spacing:2.5px; font-size:11px; text-transform:uppercase; margin-bottom:12px; }
+  .rc-level-name { font-family:'Fraunces',serif; font-weight:460; font-size:38px; line-height:1.05; color:var(--ink); letter-spacing:-.8px; margin-bottom:6px; }
+  .rc-level-name em { font-style:italic; color:var(--amber); }
+  .rc-level-tagline { font-size:15px; color:var(--ink-mute); line-height:1.55; margin-bottom:22px; }
+  .rc-scorebar { height:8px; background:var(--line); border-radius:4px; overflow:hidden; margin-bottom:6px; position:relative; }
+  .rc-scorebar-fill { height:100%; background:linear-gradient(90deg, var(--amber), var(--amber-deep)); border-radius:4px; transition:width .7s cubic-bezier(.4,0,.2,1); }
+  .rc-score-ticks { display:flex; justify-content:space-between; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--ink-mute); margin-bottom:26px; }
+  .rc-next { background:var(--paper); border:1px solid var(--line); border-left:2px solid var(--amber); border-radius:0 5px 5px 0; padding:18px 20px; margin-bottom:26px; }
+  .rc-next-label { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); margin-bottom:8px; }
+  .rc-next-text { font-size:15px; color:var(--ink-soft); line-height:1.55; }
+  .rc-gate-title { font-family:'Fraunces',serif; font-weight:470; font-size:19px; color:var(--ink); margin-bottom:6px; line-height:1.25; }
+  .rc-gate-sub { font-size:13.5px; color:var(--ink-mute); line-height:1.5; margin-bottom:16px; }
+  .rc-form { display:flex; flex-direction:column; gap:10px; }
+  .rc-form input { background:#fff; border:1px solid var(--line); border-radius:4px; padding:13px 15px; color:var(--ink); font-size:15px; font-family:'Hanken Grotesk',sans-serif; outline:none; transition:border-color .2s; }
+  .rc-form input:focus { border-color:var(--amber); }
+  .rc-form input::placeholder { color:var(--ink-mute); }
+  .rc-secondary { text-align:center; margin-top:14px; font-size:13px; }
+  .rc-secondary a { color:var(--amber-deep); text-decoration:none; }
+  .rc-secondary a:hover { text-decoration:underline; }
+  .rc-disc { font-size:11px; color:var(--ink-mute); text-align:center; margin-top:6px; }
+
+  /* MINI-GUIDE READER */
+  .guide-overlay { position:fixed; inset:0; z-index:10000; background:var(--paper); overflow-y:auto; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .guide-overlay.active { opacity:1; pointer-events:all; }
+  .guide-bar { position:sticky; top:0; z-index:2; background:rgba(244,241,234,.9); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); padding:16px clamp(24px,5vw,64px); display:flex; justify-content:space-between; align-items:center; }
+  .guide-back, .guide-print { background:none; border:1px solid var(--line); border-radius:2px; padding:9px 18px; font-size:13px; font-weight:500; color:var(--ink); cursor:pointer; font-family:'Hanken Grotesk',sans-serif; transition:all .2s; }
+  .guide-print { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .guide-back:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .guide-print:hover { background:var(--amber); border-color:var(--amber); }
+  .guide-content { max-width:760px; margin:0 auto; padding:clamp(40px,6vw,76px) clamp(24px,5vw,40px) 100px; }
+  .guide-content .g-kicker { color:var(--amber); font-weight:600; letter-spacing:2.5px; font-size:12px; text-transform:uppercase; margin-bottom:18px; }
+  .guide-content h1 { font-family:'Fraunces',serif; font-weight:450; font-size:clamp(36px,5vw,56px); line-height:1.04; color:var(--ink); letter-spacing:-1px; margin-bottom:14px; }
+  .guide-content .g-lead { font-size:19px; color:var(--ink-soft); line-height:1.6; margin-bottom:48px; font-weight:400; }
+  .guide-content h2 { font-family:'Fraunces',serif; font-weight:470; font-size:27px; color:var(--ink); letter-spacing:-.4px; margin:46px 0 14px; padding-top:24px; border-top:1px solid var(--line); }
+  .guide-content h3 { font-size:16px; font-weight:600; color:var(--ink); margin:22px 0 6px; }
+  .guide-content p { font-size:16px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; }
+  .guide-content strong { color:var(--ink); font-weight:600; }
+  .guide-content ul { list-style:none; margin:8px 0 16px; padding:0; }
+  .guide-content li { font-size:15.5px; line-height:1.6; color:var(--ink-soft); padding-left:22px; position:relative; margin-bottom:8px; }
+  .guide-content li::before { content:'—'; position:absolute; left:0; color:var(--amber); }
+  .guide-content .g-action { display:grid; grid-template-columns:46px 1fr; gap:6px 16px; margin:18px 0; }
+  .guide-content .g-action dt { font-family:'Fraunces',serif; font-style:italic; font-size:26px; color:var(--amber); line-height:1; }
+  .guide-content .g-action dd { font-size:15px; color:var(--ink-soft); line-height:1.5; margin:0; align-self:center; }
+  .guide-content .g-cta { background:var(--ink); border-radius:6px; padding:34px 32px; margin-top:48px; text-align:center; }
+  .guide-content .g-cta p { color:rgba(244,241,234,.7); margin-bottom:20px; }
+  .guide-content .g-cta h2 { color:var(--paper); border:none; padding:0; margin:0 0 10px; }
+  .guide-content .g-cta .btn-primary { background:var(--amber); color:var(--paper); }
+
+  @media (max-width:600px) {
+    .rc-modal { padding:32px 24px 28px; }
+    .rc-title { font-size:25px; }
+    .rc-level-name { font-size:30px; }
+  }
+  @media print {
+    body * { visibility:hidden; }
+    #guide-overlay, #guide-overlay * { visibility:visible; }
+    #guide-overlay { position:absolute; inset:0; overflow:visible; }
+    .guide-bar { display:none; }
+    .guide-content { max-width:none; padding:0; }
+    .guide-content .g-cta { background:none; border:1px solid #ccc; }
+    .guide-content .g-cta h2, .guide-content .g-cta p { color:#000; }
+  }
 </style>
 </head>
 <body class="theme-light">
@@ -825,6 +921,13 @@
 <form name="skool-waitlist" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="text" name="name" />
   <input type="email" name="email" />
+  <input type="text" name="bot-field" />
+</form>
+<form name="readiness-check" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="level" />
+  <input type="text" name="score" />
   <input type="text" name="bot-field" />
 </form>
 
@@ -1580,6 +1683,25 @@
   </div>
 </div>
 
+<!-- AGENT BOSS READINESS CHECK -->
+<div class="popup-overlay rc-overlay" id="readiness-popup">
+  <div class="rc-modal">
+    <button class="popup-close" onclick="rcClose()" aria-label="Schließen">✕</button>
+    <div id="rc-body"></div>
+  </div>
+</div>
+
+<!-- MINI-GUIDE READER -->
+<div class="guide-overlay" id="guide-overlay">
+  <div class="guide-shell">
+    <div class="guide-bar">
+      <button class="guide-back" onclick="guideClose()" id="guide-back">← Zurück</button>
+      <button class="guide-print" onclick="window.print()" id="guide-print">Als PDF speichern</button>
+    </div>
+    <article class="guide-content" id="guide-content"></article>
+  </div>
+</div>
+
 
 <script>
   // ── TRANSLATIONS ──
@@ -1960,6 +2082,9 @@
     const wlN = document.getElementById('wl-name'); if (wlN) wlN.placeholder = t.wlName;
     const wlE = document.getElementById('wl-email'); if (wlE) wlE.placeholder = t.wlEmail;
     st('wl-btn', t.wlBtn); st('wl-disc', t.wlDisc);
+    // re-render readiness check / guide on language switch
+    if (typeof rcState !== 'undefined' && document.getElementById('readiness-popup') && document.getElementById('readiness-popup').classList.contains('active')) rcRender();
+    if (document.getElementById('guide-overlay') && document.getElementById('guide-overlay').classList.contains('active')) renderGuide();
 
     // ── SALES PAGE ──
     st('s-bread-home', t.salesBreadHome); st('s-bread-prog', t.salesBreadProg); st('s-bread-cur', t.salesBreadCurrent);
@@ -2277,7 +2402,13 @@
   })();
 
   // ── POPUP ──
-  setTimeout(() => document.getElementById('popup').classList.add('active'), 8000);
+  // Auto-open the Agent Boss Readiness Check (once per session, only if nothing else is open)
+  setTimeout(() => {
+    try { if (sessionStorage.getItem('rcSeen')) return; } catch(e){}
+    if (document.querySelector('.popup-overlay.active') || document.getElementById('guide-overlay').classList.contains('active')) return;
+    try { sessionStorage.setItem('rcSeen','1'); } catch(e){}
+    rcOpen();
+  }, 12000);
   document.getElementById('popup').addEventListener('click', function(e) {
     if (e.target === this) this.classList.remove('active');
   });
@@ -2287,6 +2418,269 @@
   // ── SKOOL WAITLIST ──
   function openWaitlist() {
     document.getElementById('waitlist-popup').classList.add('active');
+  }
+
+  // ══ AGENT BOSS READINESS CHECK ══
+  const RC_DATA = {
+    de: {
+      badge:'Kostenloser 2-Min-Check',
+      introTitle:'Wo steht deine Abteilung auf dem Weg zum <em>Agent Boss</em>?',
+      introSub:'6 kurze Fragen, ein ehrliches Bild: Wo stehst du heute – und was ist dein wichtigster nächster Hebel? Am Ende bekommst du dein Level plus den Mini-Guide „Vom Assistant zum Agent Boss".',
+      start:'Check starten', meta:['6 Fragen','~2 Minuten','Sofort-Ergebnis'],
+      progress:'Frage', of:'von', back:'Zurück',
+      questions:[
+        {q:'Wie nutzt du KI heute im Arbeitsalltag?',opts:[
+          {t:'Vereinzelt für einzelne Aufgaben (Texte, Recherche, Zusammenfassungen).',s:1},
+          {t:'KI übernimmt ganze Workflows weitgehend selbstständig.',s:2},
+          {t:'Ich orchestriere mehrere spezialisierte Agenten wie ein Team.',s:3}]},
+        {q:'Wie gehst du beim Prompten vor?',opts:[
+          {t:'Spontan, nach Versuch und Irrtum.',s:1},
+          {t:'Mit eigenen, wiederverwendbaren Vorlagen.',s:2},
+          {t:'Strukturiert nach einem Framework (z.B. ACTION®).',s:3}]},
+        {q:'Laufen bei euch autonome Agents oder Workflows produktiv?',opts:[
+          {t:'Noch nicht.',s:1},
+          {t:'Erste laufen testweise.',s:2},
+          {t:'Mehrere laufen stabil im Tagesgeschäft.',s:3}]},
+        {q:'Wie viel delegierst du an KI (Human-Agent-Ratio)?',opts:[
+          {t:'Ich mache das meiste noch selbst.',s:1},
+          {t:'Ich delegiere klar abgegrenzte Aufgaben.',s:2},
+          {t:'Ich steuere Agenten-Teams und prüfe vor allem die Ergebnisse.',s:3}]},
+        {q:'Wie ist es um Governance & EU AI Act bestellt?',opts:[
+          {t:'Nicht auf dem Schirm.',s:1},
+          {t:'Grob bekannt, aber nicht geregelt.',s:2},
+          {t:'Strukturiert geregelt (Risikoklassen, Verantwortlichkeiten).',s:3}]},
+        {q:'Wie sind Daten & Tooling organisiert?',opts:[
+          {t:'Verstreut über viele einzelne Tools.',s:1},
+          {t:'Eine erste zentrale Plattform ist im Einsatz.',s:2},
+          {t:'Zentral & DSGVO-konform (z.B. Langdock + Second Brain).',s:3}]}
+      ],
+      levels:[
+        {tag:'Dein Level',name:'Stufe 1 — <em>Assistant</em>',tagline:'KI ist für dich vor allem ein Helfer für Einzelaufgaben. Solider Start – aber dein größter Hebel liegt noch vor dir.',
+         next:'Bring Struktur rein: ein wiederholbares Prompt-Framework (ACTION®) und dein erster echter Agent für einen wiederkehrenden Prozess. Damit springst du von „schneller tippen" zu „Arbeit abgeben".'},
+        {tag:'Dein Level',name:'Stufe 2 — <em>Agent</em>',tagline:'KI ist bei dir schon ein digitaler Kollege – erste Workflows laufen autonom. Jetzt zählen Verlässlichkeit, Governance und Skalierung.',
+         next:'Mach deine Agents produktionsreif: saubere Orchestrierung mehrerer Agents, Governance nach EU AI Act und ein zentrales, DSGVO-konformes Tooling. So wird aus „läuft manchmal" ein verlässlicher Betrieb.'},
+        {tag:'Dein Level',name:'Stufe 3 — <em>Agent Boss</em>',tagline:'Du führst bereits Agenten-Teams und denkst in Work-Charts statt Org-Charts. Stark – jetzt geht es um Skalierung und Vorsprung.',
+         next:'Skaliere die Orchestrierung über Bereiche hinweg, optimiere die Human-Agent-Ratio und lass den Betrieb (Monitoring, Updates, Governance) sauber laufen – damit dein Vorsprung bleibt.'}
+      ],
+      scoreLow:'Assistant', scoreHigh:'Agent Boss',
+      gateTitle:'Hol dir den vollständigen Mini-Guide',
+      gateSub:'„Vom Assistant zum Agent Boss" – die 3 Stufen, das ACTION®-Framework, EU AI Act in 4 Klassen und dein konkreter nächster Schritt. E-Mail eintragen, der Guide öffnet sich sofort.',
+      namePh:'Dein Name', emailPh:'Deine geschäftliche E-Mail', submit:'Guide freischalten',
+      orCall:'Lieber direkt sprechen?', callLink:'Strategie-Call buchen →',
+      disc:'Keine Weitergabe deiner Daten. Jederzeit abmeldbar.'
+    },
+    en: {
+      badge:'Free 2-min check',
+      introTitle:'Where does your department stand on the way to <em>Agent Boss</em>?',
+      introSub:'6 quick questions, an honest picture: where are you today – and what is your most important next lever? At the end you get your level plus the mini-guide “From Assistant to Agent Boss”.',
+      start:'Start the check', meta:['6 questions','~2 minutes','Instant result'],
+      progress:'Question', of:'of', back:'Back',
+      questions:[
+        {q:'How do you use AI in your daily work today?',opts:[
+          {t:'Occasionally for single tasks (text, research, summaries).',s:1},
+          {t:'AI handles whole workflows largely on its own.',s:2},
+          {t:'I orchestrate several specialized agents like a team.',s:3}]},
+        {q:'How do you approach prompting?',opts:[
+          {t:'Spontaneously, by trial and error.',s:1},
+          {t:'With my own reusable templates.',s:2},
+          {t:'Structured, using a framework (e.g. ACTION®).',s:3}]},
+        {q:'Are autonomous agents or workflows running in production?',opts:[
+          {t:'Not yet.',s:1},
+          {t:'First ones running as a test.',s:2},
+          {t:'Several run reliably in daily business.',s:3}]},
+        {q:'How much do you delegate to AI (human-agent ratio)?',opts:[
+          {t:'I still do most of it myself.',s:1},
+          {t:'I delegate clearly scoped tasks.',s:2},
+          {t:'I steer agent teams and mainly review the results.',s:3}]},
+        {q:'How is governance & the EU AI Act handled?',opts:[
+          {t:'Not on the radar.',s:1},
+          {t:'Roughly known, but not formalized.',s:2},
+          {t:'Structured (risk classes, responsibilities).',s:3}]},
+        {q:'How are data & tooling organized?',opts:[
+          {t:'Scattered across many separate tools.',s:1},
+          {t:'A first central platform is in use.',s:2},
+          {t:'Central & GDPR-compliant (e.g. Langdock + Second Brain).',s:3}]}
+      ],
+      levels:[
+        {tag:'Your level',name:'Stage 1 — <em>Assistant</em>',tagline:'For you, AI is mainly a helper for single tasks. A solid start – but your biggest lever is still ahead of you.',
+         next:'Add structure: a repeatable prompting framework (ACTION®) and your first real agent for a recurring process. That takes you from “typing faster” to “handing off work”.'},
+        {tag:'Your level',name:'Stage 2 — <em>Agent</em>',tagline:'AI is already a digital colleague for you – first workflows run autonomously. Now reliability, governance and scaling matter.',
+         next:'Make your agents production-ready: clean orchestration of multiple agents, governance per the EU AI Act and a central, GDPR-compliant toolset. That turns “works sometimes” into reliable operation.'},
+        {tag:'Your level',name:'Stage 3 — <em>Agent Boss</em>',tagline:'You already lead agent teams and think in work charts instead of org charts. Strong – now it is about scaling and staying ahead.',
+         next:'Scale orchestration across functions, optimize the human-agent ratio and keep operations (monitoring, updates, governance) running cleanly – so your lead holds.'}
+      ],
+      scoreLow:'Assistant', scoreHigh:'Agent Boss',
+      gateTitle:'Get the full mini-guide',
+      gateSub:'“From Assistant to Agent Boss” – the 3 stages, the ACTION® framework, the EU AI Act in 4 classes and your concrete next step. Enter your email and the guide opens instantly.',
+      namePh:'Your name', emailPh:'Your work email', submit:'Unlock the guide',
+      orCall:'Rather talk directly?', callLink:'Book a strategy call →',
+      disc:'No data sharing. Unsubscribe at any time.'
+    }
+  };
+
+  let rcState = { view:'intro', qi:0, answers:[], level:0 };
+  function rcLang(){ return RC_DATA[currentLang] ? currentLang : 'de'; }
+  function rcOpen(){ rcState = { view:'intro', qi:0, answers:[], level:0 }; rcRender(); document.getElementById('readiness-popup').classList.add('active'); }
+  function rcClose(){ document.getElementById('readiness-popup').classList.remove('active'); }
+  function rcLevelOf(total){ return total <= 9 ? 0 : (total <= 14 ? 1 : 2); }
+
+  function rcRender(){
+    const d = RC_DATA[rcLang()];
+    const body = document.getElementById('rc-body');
+    if (!body) return;
+    if (rcState.view === 'intro') {
+      body.innerHTML =
+        '<div class="rc-kicker">'+d.badge+'</div>'+
+        '<h3 class="rc-title">'+d.introTitle+'</h3>'+
+        '<p class="rc-sub">'+d.introSub+'</p>'+
+        '<button class="btn-primary rc-start" onclick="rcStart()">'+d.start+'</button>'+
+        '<div class="rc-meta">'+d.meta.map(m=>'<span>'+m+'</span>').join('')+'</div>';
+    } else if (rcState.view === 'q') {
+      const qi = rcState.qi, q = d.questions[qi];
+      const pct = Math.round((qi/d.questions.length)*100);
+      body.innerHTML =
+        '<div class="rc-progress"><div class="rc-progress-track"><div class="rc-progress-fill" style="width:'+pct+'%"></div></div>'+
+        '<span class="rc-progress-label">'+d.progress+' '+(qi+1)+' '+d.of+' '+d.questions.length+'</span></div>'+
+        '<div class="rc-q">'+q.q+'</div>'+
+        '<div class="rc-options">'+q.opts.map((o,i)=>'<button class="rc-option'+(rcState.answers[qi]===i?' sel':'')+'" onclick="rcPick('+i+')">'+o.t+'</button>').join('')+'</div>'+
+        '<div class="rc-nav"><button class="rc-back" onclick="rcBack()"'+(qi===0?' disabled':'')+'>← '+d.back+'</button></div>';
+    } else {
+      const total = rcState.answers.reduce((a,i,qi)=>a + d.questions[qi].opts[i].s, 0);
+      const lv = rcLevelOf(total); rcState.level = lv;
+      const L = d.levels[lv];
+      const pct = Math.round(((total-6)/12)*100);
+      body.innerHTML =
+        '<div class="rc-level-tag">'+L.tag+'</div>'+
+        '<div class="rc-level-name">'+L.name+'</div>'+
+        '<p class="rc-level-tagline">'+L.tagline+'</p>'+
+        '<div class="rc-scorebar"><div class="rc-scorebar-fill" style="width:0%"></div></div>'+
+        '<div class="rc-score-ticks"><span>'+d.scoreLow+'</span><span>'+d.scoreHigh+'</span></div>'+
+        '<div class="rc-next"><div class="rc-next-label">'+(currentLang==='en'?'Your next lever':'Dein nächster Hebel')+'</div><div class="rc-next-text">'+L.next+'</div></div>'+
+        '<div class="rc-gate-title">'+d.gateTitle+'</div>'+
+        '<p class="rc-gate-sub">'+d.gateSub+'</p>'+
+        '<form class="rc-form" onsubmit="rcSubmit(event)">'+
+          '<input type="text" name="name" placeholder="'+d.namePh+'" required>'+
+          '<input type="email" name="email" placeholder="'+d.emailPh+'" required>'+
+          '<button type="submit" class="btn-primary" style="width:100%;border:none;">'+d.submit+'</button>'+
+        '</form>'+
+        '<div class="rc-secondary">'+d.orCall+' <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener">'+d.callLink+'</a></div>'+
+        '<div class="rc-disc">'+d.disc+'</div>';
+      requestAnimationFrame(()=>{ const f=body.querySelector('.rc-scorebar-fill'); if(f) f.style.width=Math.max(8,pct)+'%'; });
+    }
+  }
+  function rcStart(){ rcState.view='q'; rcState.qi=0; rcRender(); }
+  function rcPick(i){ rcState.answers[rcState.qi]=i; const d=RC_DATA[rcLang()];
+    setTimeout(()=>{ if(rcState.qi < d.questions.length-1){ rcState.qi++; rcRender(); } else { rcState.view='result'; rcRender(); document.querySelector('.rc-modal').scrollTop=0; } }, 230); rcRender(); }
+  function rcBack(){ if(rcState.qi>0){ rcState.qi--; rcRender(); } }
+  function rcSubmit(e){
+    e.preventDefault();
+    const f=e.target, name=f.name.value, email=f.email.value;
+    const d=RC_DATA[rcLang()];
+    const total=rcState.answers.reduce((a,i,qi)=>a+d.questions[qi].opts[i].s,0);
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams({'form-name':'readiness-check', name, email, level:'Stufe '+(rcState.level+1), score:String(total)}).toString()}).catch(()=>{});
+    rcClose();
+    openGuide(rcState.level, name);
+  }
+
+  // ── MINI-GUIDE READER ──
+  let guideLevel = 0, guideName = '';
+  function openGuide(level, name){ guideLevel=level; guideName=name||''; renderGuide(); document.getElementById('guide-overlay').classList.add('active'); document.body.style.overflow='hidden'; }
+  function guideClose(){ document.getElementById('guide-overlay').classList.remove('active'); document.body.style.overflow=''; }
+  function renderGuide(){
+    const el=document.getElementById('guide-content'); if(!el) return;
+    const en = currentLang==='en';
+    const d = RC_DATA[rcLang()];
+    const L = d.levels[guideLevel];
+    document.getElementById('guide-back').textContent = en?'← Back':'← Zurück';
+    document.getElementById('guide-print').textContent = en?'Save as PDF':'Als PDF speichern';
+    const hi = guideName ? (en?('Hi '+guideName+' — '):(guideName+' — ')) : '';
+    el.innerHTML = en ? `
+      <div class="g-kicker">Mini-Guide · Agent Boss Academy</div>
+      <h1>From Assistant to Agent Boss</h1>
+      <p class="g-lead">The shift of 2025 is not a better chatbot — it is a new operating model. Here is the map: the three stages, the framework to lead AI, the rules that keep it safe, and your concrete next step.</p>
+      <div class="g-cta" style="margin:0 0 8px;text-align:left;background:rgba(182,84,31,.06);border:1px solid rgba(182,84,31,.25);padding:22px 24px;border-radius:6px;">
+        <div class="g-kicker" style="margin-bottom:8px;">${hi}Your result</div>
+        <h2 style="color:var(--ink);border:none;padding:0;margin:0 0 8px;font-size:22px;">${L.name.replace(/<\/?em>/g,'')}</h2>
+        <p style="color:var(--ink-soft);margin:0;">${L.next}</p>
+      </div>
+      <h2>1 · The three stages of human–AI work</h2>
+      <p>Microsoft describes the shift in three phases. Most people and teams are somewhere on this ladder right now:</p>
+      <h3>Assistant — AI helps</h3><p>AI supports you with existing tasks to boost productivity. You stay fully hands-on.</p>
+      <h3>Agent — AI acts</h3><p>AI works like a digital colleague that can plan and execute whole tasks or workflows autonomously.</p>
+      <h3>Agent Boss — you lead</h3><p>You steer systems of specialized agents — like the “CEO of an agent-powered startup”. Your leverage is orchestration, not execution.</p>
+      <h2>2 · The Frontier Firm &amp; the human-agent ratio</h2>
+      <p>The <strong>Frontier Firm</strong> integrates human judgment and machine intelligence seamlessly. Intelligence becomes <strong>“on tap”</strong> — an affordable utility you scale through digital work. The static org chart gives way to a dynamic <strong>work chart</strong>: teams of people and agents form around outcomes.</p>
+      <p>The new metric is the <strong>human-agent ratio</strong> — the balance between human oversight and agent efficiency. Moving up the stages means consciously shifting that ratio.</p>
+      <h2>3 · ACTION® — how to lead AI</h2>
+      <p>A repeatable framework to delegate work to generative AI:</p>
+      <dl class="g-action">
+        <dt>A</dt><dd><strong>Act as</strong> — assign an expert role (PR expert, data analyst).</dd>
+        <dt>C</dt><dd><strong>Context</strong> — precise background (company, audience, expectations).</dd>
+        <dt>T</dt><dd><strong>Task</strong> — one clear task, optionally as a to-do list (chain of thought).</dd>
+        <dt>IO</dt><dd><strong>Iterate Output</strong> — specify the form (table, mindmap) and give examples (few-shot).</dd>
+        <dt>N</dt><dd><strong>Netiquette</strong> — an emotional trigger that lifts quality (“important for my career”).</dd>
+      </dl>
+      <p>With reasoning models (GPT-5-Thinking, DeepSeek-R1) the approach shrinks to <strong>ACTION®</strong> — they handle chains of thought and examples internally.</p>
+      <h2>4 · The EU AI Act in 4 classes</h2>
+      <p>Regulation 2024/1689 is risk-based. Know which class your use case falls into:</p>
+      <ul>
+        <li><strong>Unacceptable risk</strong> — banned (e.g. subliminal manipulation, sensitive biometric categorization).</li>
+        <li><strong>High risk</strong> — strictly regulated (education, HR/people management, critical infrastructure).</li>
+        <li><strong>Transparency risk</strong> — labelling duty (chatbots, deepfakes).</li>
+        <li><strong>Minimal risk</strong> — unregulated (e.g. AI-powered games).</li>
+      </ul>
+      <h2>5 · Your next step &amp; the tooling principle</h2>
+      <p><strong>Stay tool-agnostic.</strong> Software changes constantly; principles and business logic last. Keep your stack central and GDPR-compliant — e.g. <strong>Langdock</strong> (EU servers, GPT/Claude/Gemini in one place) plus a <strong>Second Brain</strong> as your knowledge base.</p>
+      <p>${L.next}</p>
+      <div class="g-cta">
+        <h2>Want this built with you?</h2>
+        <p>In a free 30-min strategy call we find the single biggest lever in your department — and the fastest path up the stages.</p>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener" class="btn-primary">Book a strategy call</a>
+      </div>` : `
+      <div class="g-kicker">Mini-Guide · Agent Boss Academy</div>
+      <h1>Vom Assistant zum Agent Boss</h1>
+      <p class="g-lead">Der Umbruch von 2025 ist kein besserer Chatbot – es ist ein neues Betriebsmodell. Hier ist die Landkarte: die drei Stufen, das Framework zur KI-Führung, die Regeln für sicheren Einsatz und dein konkreter nächster Schritt.</p>
+      <div class="g-cta" style="margin:0 0 8px;text-align:left;background:rgba(182,84,31,.06);border:1px solid rgba(182,84,31,.25);padding:22px 24px;border-radius:6px;">
+        <div class="g-kicker" style="margin-bottom:8px;">${hi}Dein Ergebnis</div>
+        <h2 style="color:var(--ink);border:none;padding:0;margin:0 0 8px;font-size:22px;">${L.name.replace(/<\/?em>/g,'')}</h2>
+        <p style="color:var(--ink-soft);margin:0;">${L.next}</p>
+      </div>
+      <h2>1 · Die drei Stufen der Mensch-KI-Arbeit</h2>
+      <p>Microsoft beschreibt den Wandel in drei Phasen. Die meisten stehen gerade irgendwo auf dieser Leiter:</p>
+      <h3>Assistant — KI hilft</h3><p>KI unterstützt dich bei bestehenden Aufgaben und steigert die Produktivität. Du bleibst voll am Steuer.</p>
+      <h3>Agent — KI handelt</h3><p>KI arbeitet wie ein digitaler Kollege, der ganze Aufgaben oder Workflows eigenständig planen und ausführen kann.</p>
+      <h3>Agent Boss — du führst</h3><p>Du steuerst Systeme spezialisierter Agenten – wie der „CEO eines agentenbetriebenen Startups". Dein Hebel ist Orchestrierung, nicht Ausführung.</p>
+      <h2>2 · Die Frontier Firm &amp; die Human-Agent-Ratio</h2>
+      <p>Die <strong>Frontier Firm</strong> verbindet menschliche Urteilskraft und Maschinenintelligenz nahtlos. Intelligenz wird <strong>„on tap"</strong> – ein erschwingliches Gebrauchsgut, das du über digitale Arbeit skalierst. Das statische Organigramm weicht einem dynamischen <strong>Work-Chart</strong>: Teams aus Menschen und Agenten bilden sich um Ergebnisse herum.</p>
+      <p>Die neue Kennzahl ist die <strong>Human-Agent-Ratio</strong> – die Balance aus menschlicher Aufsicht und agentischer Effizienz. Aufsteigen heißt, dieses Verhältnis bewusst zu verschieben.</p>
+      <h2>3 · ACTION® — so führst du KI</h2>
+      <p>Ein wiederholbares Framework, um Arbeit an generative KI zu delegieren:</p>
+      <dl class="g-action">
+        <dt>A</dt><dd><strong>Act as</strong> — weise eine Expertenrolle zu (PR-Experte, Datenanalyst).</dd>
+        <dt>C</dt><dd><strong>Context</strong> — präzise Hintergrundinfos (Unternehmen, Zielgruppe, Erwartungen).</dd>
+        <dt>T</dt><dd><strong>Task</strong> — eine eindeutige Aufgabe, ggf. als To-Do-Liste (Chain of Thought).</dd>
+        <dt>IO</dt><dd><strong>Iterate Output</strong> — Form festlegen (Tabelle, Mindmap) und Beispiele geben (Few-Shot).</dd>
+        <dt>N</dt><dd><strong>Netiquette</strong> — ein emotionaler Trigger, der die Qualität hebt („wichtig für meine Karriere").</dd>
+      </dl>
+      <p>Bei Reasoning-Modellen (GPT-5-Thinking, DeepSeek-R1) schrumpft der Ansatz auf <strong>ACTION®</strong> – sie verarbeiten Gedankenketten und Beispiele oft schon intern.</p>
+      <h2>4 · Der EU AI Act in 4 Klassen</h2>
+      <p>Die Verordnung 2024/1689 ist risikobasiert. Wisse, in welche Klasse dein Use-Case fällt:</p>
+      <ul>
+        <li><strong>Unannehmbares Risiko</strong> — verboten (z.B. unterschwellige Manipulation, biometrische Kategorisierung nach sensiblen Merkmalen).</li>
+        <li><strong>Hohes Risiko</strong> — streng reguliert (Bildung, Personalmanagement, kritische Infrastruktur).</li>
+        <li><strong>Transparenzrisiko</strong> — Kennzeichnungspflicht (Chatbots, Deepfakes).</li>
+        <li><strong>Minimales Risiko</strong> — nicht reguliert (z.B. KI-gestützte Spiele).</li>
+      </ul>
+      <h2>5 · Dein nächster Schritt &amp; das Tooling-Prinzip</h2>
+      <p><strong>Bleib tool-agnostisch.</strong> Software ändert sich ständig; Prinzipien und Business-Logik bleiben. Halte deinen Stack zentral und DSGVO-konform – z.B. <strong>Langdock</strong> (EU-Server, GPT/Claude/Gemini an einem Ort) plus ein <strong>Second Brain</strong> als Wissensbasis.</p>
+      <p>${L.next}</p>
+      <div class="g-cta">
+        <h2>Sollen wir das gemeinsam aufbauen?</h2>
+        <p>Im kostenlosen 30-Min-Strategie-Call finden wir den größten Hebel in deiner Abteilung – und den schnellsten Weg die Stufen hinauf.</p>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener" class="btn-primary">Strategie-Call buchen</a>
+      </div>`;
+    document.getElementById('guide-content').scrollTop=0;
   }
   // Danke-Zustand nach erfolgreichem Netlify-Submit (?waitlist=success)
   if (location.search.indexOf('waitlist=success') !== -1) {
