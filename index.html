@@ -645,6 +645,7 @@
   .about { background:var(--paper-2); padding:104px 64px; }
   .about-inner { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:260px 1fr; gap:60px; align-items:start; }
   .about-avatar { width:84px; height:84px; border-radius:50%; background:var(--ink); color:var(--paper); font-family:'Fraunces',serif; font-size:31px; display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
+  .about-photo { width:104px; height:104px; object-fit:cover; object-position:center 30%; display:block; border:1px solid var(--line); }
   .about-name { font-family:'Fraunces',serif; font-size:26px; color:var(--ink); font-weight:500; line-height:1.1; margin-bottom:8px; }
   .about-role { color:var(--amber); font-weight:600; font-size:11px; letter-spacing:1.8px; text-transform:uppercase; margin-bottom:14px; }
   .about-meta { color:var(--ink-mute); font-size:14px; line-height:1.5; margin-bottom:18px; }
@@ -690,8 +691,8 @@
   body.theme-light .final-cta p { color:rgba(244,241,234,.66); }
   body.theme-light .final-cta .btn-primary { background:var(--amber); color:var(--paper); }
   body.theme-light .final-cta .btn-primary:hover { background:#fff; color:var(--ink); }
-  body.theme-light .cta-meta span { color:rgba(244,241,234,.5); }
-  body.theme-light .cta-meta span::before { background:var(--amber) !important; }
+  body.theme-light .cta-meta span { color:rgba(244,241,234,.62); }
+  body.theme-light .cta-meta span::before { background:none !important; color:var(--amber-light) !important; }
 
   /* testimonial avatars → ink monochrome */
   body.theme-light .t-avatar { background:var(--ink) !important; color:var(--paper); font-family:'Fraunces',serif; font-size:15px; }
@@ -1132,7 +1133,7 @@
   <section class="about" id="team">
     <div class="about-inner">
       <div class="about-aside fade-in">
-        <div class="about-avatar">RW</div>
+        <img class="about-avatar about-photo" src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="lazy">
         <div class="about-name">Robert Weller</div>
         <div class="about-role" data-de="Gründer · Agent Boss Leader" data-en="Founder · Agent Boss Leader">Gründer · Agent Boss Leader</div>
         <div class="about-meta" data-de="VP &amp; Global Content Officer, SAP" data-en="VP &amp; Global Content Officer, SAP">VP &amp; Global Content Officer, SAP</div>
@@ -1178,8 +1179,8 @@
   <section class="final-cta" id="cta">
     <div class="final-cta-content">
       <div class="section-label" id="cta-label" style="text-align:center;">Jetzt starten</div>
-      <h2 id="cta-h2">Bereit, Ihre Abteilung zur <span>Frontier Unit</span> zu machen?</h2>
-      <p id="cta-p">Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer Abteilung.</p>
+      <h2 id="cta-h2">Bereit, deinen Bereich zur <span>Frontier Unit</span> zu machen?</h2>
+      <p id="cta-p">Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deinem Bereich.</p>
       <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="cta-btn">Jetzt kostenloses Strategy Call buchen</a>
       <div class="cta-meta"><span id="cta-meta1">Dauer: 30 Minuten</span><span id="cta-meta2">Keine Verkaufspräsentation</span><span id="cta-meta3">Konkrete nächste Schritte garantiert</span></div>
     </div>
@@ -1798,8 +1799,8 @@
       t2: 'Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.', t2a: 'Head of Finance', t2r: 'Hidden Champion, Mittelstand',
       t3: 'Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.', t3a: 'Head of HR', t3r: 'Tech-Scale-up, Series B',
       // FINAL CTA
-      ctaLabel: 'Jetzt starten', ctaH2a: 'Bereit, Ihre Abteilung zur', ctaH2b: 'Frontier Unit', ctaH2c: 'zu machen?',
-      ctaP: 'Starten Sie mit einem unverbindlichen Strategy Call. Wir analysieren gemeinsam den größten Hebel in Ihrer Abteilung.',
+      ctaLabel: 'Jetzt starten', ctaH2a: 'Bereit, deinen Bereich zur', ctaH2b: 'Frontier Unit', ctaH2c: 'zu machen?',
+      ctaP: 'Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deinem Bereich.',
       ctaBtn: 'Jetzt kostenloses Strategy Call buchen',
       ctaMeta1: 'Dauer: 30 Minuten', ctaMeta2: 'Keine Verkaufspräsentation', ctaMeta3: 'Konkrete nächste Schritte garantiert',
       // FOOTER
@@ -1947,8 +1948,8 @@
       t1: 'Finally someone who doesn\'t just show tools, but completely restructures my entire sales department. The first agent delivered value within a few weeks.', t1a: 'Head of Sales', t1r: 'Mechanical Engineering, 1,200 Employees',
       t2: 'The Finance Agent reduced our month-end close from 12 to 4 days. Finally someone who really gets finance – now I have time for strategy.', t2a: 'Head of Finance', t2r: 'Hidden Champion, Mid-Market',
       t3: 'The Recruiting Agent + Onboarding Agent took a massive load off us. Finally HR can work strategically.', t3a: 'Head of HR', t3r: 'Tech Scale-up, Series B',
-      ctaLabel: 'Get Started', ctaH2a: 'Ready to turn your department into a', ctaH2b: 'Frontier Unit', ctaH2c: '?',
-      ctaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your department.',
+      ctaLabel: 'Get Started', ctaH2a: 'Ready to turn your domain into a', ctaH2b: 'Frontier Unit', ctaH2c: '?',
+      ctaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your domain.',
       ctaBtn: 'Book Your Free Strategy Call',
       ctaMeta1: 'Duration: 30 Minutes', ctaMeta2: 'No Sales Pitch', ctaMeta3: 'Concrete Next Steps Guaranteed',
       footerCopy: '© 2026 Agent Boss Academy · Agent Boss community on Skool',
