@@ -541,6 +541,22 @@
   .hero-rc-link { background:none; border:none; cursor:pointer; font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:var(--amber-deep); padding:0; margin:-10px 0 22px; display:inline-flex; align-items:center; gap:7px; letter-spacing:.2px; position:relative; }
   .hero-rc-link::after { content:''; position:absolute; left:0; bottom:-3px; width:100%; height:1px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .25s; }
   .hero-rc-link:hover::after { transform:scaleX(1); }
+  /* HERO INFOGRAPHIC — alte vs. neue Welt des Leaders */
+  .leader-shift { width:100%; background:var(--paper-card); border:1px solid var(--line); border-radius:8px; padding:30px 30px 24px; box-shadow:0 30px 60px -28px rgba(22,20,15,.26), 0 2px 0 rgba(22,20,15,.03); }
+  .ls-eyebrow { color:var(--amber); font-family:'Hanken Grotesk',sans-serif; font-weight:600; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; display:inline-flex; align-items:center; gap:10px; }
+  .ls-eyebrow::before { content:''; width:22px; height:1px; background:var(--amber); }
+  .ls-title { font-family:'Fraunces',serif; font-weight:470; font-size:21px; color:var(--ink); letter-spacing:-.3px; line-height:1.2; margin:12px 0 20px; }
+  .ls-colhead { display:grid; grid-template-columns:1fr 30px 1fr; margin-bottom:2px; }
+  .ls-colhead span { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; }
+  .ls-colhead span:first-child { color:var(--ink-mute); }
+  .ls-colhead span:last-child { color:var(--amber-deep); grid-column:3; }
+  .ls-grid { display:grid; grid-template-columns:1fr 30px 1fr; align-items:center; }
+  .ls-grid > span { padding:12px 0; font-size:14px; line-height:1.3; }
+  .ls-grid > *:nth-child(n+4) { border-top:1px solid var(--line); }
+  .ls-old { color:var(--ink-mute); }
+  .ls-arr { color:var(--amber); text-align:center; font-size:13px; }
+  .ls-new { color:var(--ink); font-weight:600; }
+  .ls-foot { margin-top:18px; padding-top:16px; border-top:1px solid var(--line); text-align:center; font-size:12px; font-weight:600; letter-spacing:.3px; color:var(--ink-soft); }
 
   /* hero chat demo → light "paper console" */
   body.theme-light .chat-demo { background:var(--paper-card); border:1px solid var(--line); border-radius:6px; box-shadow:0 30px 60px -24px rgba(22,20,15,.28), 0 2px 0 rgba(22,20,15,.04); }
@@ -990,17 +1006,20 @@
       </div>
       <!-- RIGHT: CHAT DEMO -->
       <div class="hero-right">
-        <div class="chat-demo">
-          <div class="chat-hd">
-            <div class="chat-hd-av">AB</div>
-            <span class="chat-hd-name">Agent Boss · Sales</span>
-            <span class="chat-hd-live">Live</span>
+        <div class="leader-shift">
+          <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
+          <h3 class="ls-title" data-de="Vom Manager zum Agent Boss" data-en="From manager to Agent Boss">Vom Manager zum Agent Boss</h3>
+          <div class="ls-colhead">
+            <span data-de="Gestern" data-en="Yesterday">Gestern</span>
+            <span data-de="Agent Boss" data-en="Agent Boss">Agent Boss</span>
           </div>
-          <div class="chat-body" id="chatBody"></div>
-          <div class="chat-inp-area">
-            <div class="chat-inp" id="chatInput"><span class="chat-inp-cursor"></span></div>
-            <div class="chat-send" id="chatSendBtn">↑</div>
+          <div class="ls-grid">
+            <span class="ls-old" data-de="Org-Chart" data-en="Org chart">Org-Chart</span><span class="ls-arr">→</span><span class="ls-new" data-de="Work-Chart" data-en="Work chart">Work-Chart</span>
+            <span class="ls-old" data-de="Führt Menschen" data-en="Leads people">Führt Menschen</span><span class="ls-arr">→</span><span class="ls-new" data-de="Führt Mensch + KI" data-en="Leads people + AI">Führt Mensch + KI</span>
+            <span class="ls-old" data-de="Macht die Arbeit" data-en="Does the work">Macht die Arbeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Orchestriert Agenten" data-en="Orchestrates agents">Orchestriert Agenten</span>
+            <span class="ls-old" data-de="Engpass: eigene Zeit" data-en="Bottleneck: own time">Engpass: eigene Zeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Skaliert digital" data-en="Scales digitally">Skaliert digital</span>
           </div>
+          <div class="ls-foot" data-de="Assistant → Agent → Agent Boss" data-en="Assistant → Agent → Agent Boss">Assistant → Agent → Agent Boss</div>
         </div>
       </div>
     </div>
