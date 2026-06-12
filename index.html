@@ -538,6 +538,9 @@
   body.theme-light .hero-sub strong { color:var(--ink); font-weight:600; }
   body.theme-light .hero-footnote { color:var(--ink-mute); font-size:13px; }
   body.theme-light .hero-footnote::before { color:var(--amber); }
+  .hero-rc-link { background:none; border:none; cursor:pointer; font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:var(--amber-deep); padding:0; margin:-10px 0 22px; display:inline-flex; align-items:center; gap:7px; letter-spacing:.2px; position:relative; }
+  .hero-rc-link::after { content:''; position:absolute; left:0; bottom:-3px; width:100%; height:1px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .25s; }
+  .hero-rc-link:hover::after { transform:scaleX(1); }
 
   /* hero chat demo → light "paper console" */
   body.theme-light .chat-demo { background:var(--paper-card); border:1px solid var(--line); border-radius:6px; box-shadow:0 30px 60px -24px rgba(22,20,15,.28), 0 2px 0 rgba(22,20,15,.04); }
@@ -905,13 +908,15 @@
     .rc-level-name { font-size:30px; }
   }
   @media print {
-    body * { visibility:hidden; }
-    #guide-overlay, #guide-overlay * { visibility:visible; }
-    #guide-overlay { position:absolute; inset:0; overflow:visible; }
-    .guide-bar { display:none; }
-    .guide-content { max-width:none; padding:0; }
-    .guide-content .g-cta { background:none; border:1px solid #ccc; }
-    .guide-content .g-cta h2, .guide-content .g-cta p { color:#000; }
+    @page { margin:16mm; }
+    html, body.guide-open { background:#fff !important; height:auto !important; overflow:visible !important; }
+    body.guide-open::before { display:none !important; }                 /* paper grain */
+    body.guide-open > *:not(#guide-overlay) { display:none !important; }  /* hide everything else (no blank pages) */
+    body.guide-open #guide-overlay { position:static !important; inset:auto !important; height:auto !important; max-height:none !important; overflow:visible !important; opacity:1 !important; pointer-events:auto !important; background:#fff !important; }
+    body.guide-open .guide-bar { display:none !important; }
+    body.guide-open .guide-content { max-width:none !important; margin:0 !important; padding:0 !important; }
+    body.guide-open .guide-content .g-cta { background:#f0ece2 !important; border:1px solid #ccc !important; }
+    body.guide-open .guide-content .g-cta h2, body.guide-open .guide-content .g-cta p { color:#000 !important; }
   }
 </style>
 </head>
@@ -980,6 +985,7 @@
           <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="h-cta1">Kostenloses 30-Min Strategy Call buchen</a>
           <a onclick="goHomeSection('offerings')" class="btn-secondary" id="h-cta2">Die 3 Wege ansehen</a>
         </div>
+        <button class="hero-rc-link" id="h-rc" onclick="rcOpen()">2-Min Readiness-Check: Wo stehst du? →</button>
         <p class="hero-footnote" id="h-fn">Praktiker statt Theorie — echte AI-Agents live in Produktion.</p>
       </div>
       <!-- RIGHT: CHAT DEMO -->
@@ -1696,7 +1702,7 @@
   <div class="guide-shell">
     <div class="guide-bar">
       <button class="guide-back" onclick="guideClose()" id="guide-back">← Zurück</button>
-      <button class="guide-print" onclick="window.print()" id="guide-print">Als PDF speichern</button>
+      <button class="guide-print" onclick="guidePrint()" id="guide-print">Als PDF speichern</button>
     </div>
     <article class="guide-content" id="guide-content"></article>
   </div>
@@ -1730,7 +1736,7 @@
       heroSub: 'Du bist bereit für die KI-Ära – und willst dein Profil und deine Teams für die nächste Revolution startklar machen. Du wirst verstehen, wo du stehst, was als Nächstes kommt und wie du es Schritt für Schritt aufbaust. Hier sind <strong>deine Startpunkte für die Agent-Boss-Journey</strong> – und die Wege, wie wir zusammenarbeiten.',
       heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
       heroCta2: 'Die 3 Wege ansehen',
-      heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.',
+      heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.', heroRcLink: '2-Min Readiness-Check: Wo stehst du? →',
       // OFFERINGS
       offLabel: 'Zusammenarbeit', offH2: 'Drei Wege, mit mir zu arbeiten',
       offSub: 'Gleichwertig – je nachdem, wie viel du selbst bauen willst und wie viel wir für dich übernehmen.',
@@ -1887,7 +1893,7 @@
       heroSub: 'You\'re ready for the AI era – and want to get your profile and your teams set for the next revolution. You\'ll understand where you stand, what comes next, and how to build it step by step. These are <strong>your starting points for the Agent Boss journey</strong> – and the ways we can work together.',
       heroCta1: 'Book a Free 30-Min Strategy Call',
       heroCta2: 'See the 3 paths',
-      heroFn: 'Practitioner, not theory — real AI agents live in production.',
+      heroFn: 'Practitioner, not theory — real AI agents live in production.', heroRcLink: '2-min Readiness Check: where do you stand? →',
       // OFFERINGS
       offLabel: 'Work with me', offH2: 'Three ways to work with me',
       offSub: 'All equal – depending on how much you want to build yourself and how much we take off your plate.',
@@ -2032,16 +2038,15 @@
     // ── NAV ──
     document.getElementById('navBack').textContent = t.navBack;
     st('mnav-prog', t.mnavProg); st('mnav-why', t.mnavWhy); st('mnav-impact', t.mnavImpact); st('mnav-testi', t.mnavTesti); st('mnav-cta', t.mnavCta);
-    const navLinks = document.querySelectorAll('#navLinks li a');
-    const navKeys = ['navProg','navWhy','navImpact','navTesti'];
-    const navVals = [[t.progLabel||'Programme'],[t.whyLabel||'Warum wir'],[t.impactLabel||'Ergebnisse'],[t.testiLabel||'Stimmen']];
+    // desktop nav (+ navBack/nav-cta) via data-de/data-en attributes
+    document.querySelectorAll('[data-de]').forEach(el => { const v = el.getAttribute('data-' + lang); if (v != null) el.textContent = v; });
 
     // ── HOMEPAGE ──
     s('h-badge', t.heroBadge);
     s('h-h1', `${t.heroH1a}<span class="highlight">${t.heroH1b}</span>${t.heroH1c}`);
     s('h-sub', t.heroSub);
     st('h-cta1', t.heroCta1); st('h-cta2', t.heroCta2);
-    st('h-fn', t.heroFn);
+    st('h-fn', t.heroFn); st('h-rc', t.heroRcLink);
     st('trust-label', t.trustLabel); st('trust-soon-tag', t.trustSoon);
     // ── OFFERINGS ──
     s('off-label', t.offLabel); s('off-h2', t.offH2); st('off-sub', t.offSub);
@@ -2585,8 +2590,9 @@
 
   // ── MINI-GUIDE READER ──
   let guideLevel = 0, guideName = '';
-  function openGuide(level, name){ guideLevel=level; guideName=name||''; renderGuide(); document.getElementById('guide-overlay').classList.add('active'); document.body.style.overflow='hidden'; }
-  function guideClose(){ document.getElementById('guide-overlay').classList.remove('active'); document.body.style.overflow=''; }
+  function openGuide(level, name){ guideLevel=level; guideName=name||''; renderGuide(); document.getElementById('guide-overlay').classList.add('active'); document.body.classList.add('guide-open'); document.body.style.overflow='hidden'; }
+  function guideClose(){ document.getElementById('guide-overlay').classList.remove('active'); document.body.classList.remove('guide-open'); document.body.style.overflow=''; }
+  function guidePrint(){ window.print(); }
   function renderGuide(){
     const el=document.getElementById('guide-content'); if(!el) return;
     const en = currentLang==='en';
