@@ -721,7 +721,7 @@
 
   /* ── responsive ── */
   @media (max-width:1024px) {
-    body.theme-light .hero { padding:140px 24px 70px; }
+    body.theme-light .hero { padding:112px 24px 64px; }
     body.theme-light .offerings, body.theme-light .programs, body.theme-light .why,
     body.theme-light .team, body.theme-light .impact, body.theme-light .testimonials,
     body.theme-light .final-cta, body.theme-light .trust-bar { padding-left:24px; padding-right:24px; }
@@ -1080,7 +1080,24 @@
   /* laufender Index: kleine Fraunces-Kursiv-Ziffer über dem Eyebrow */
   .sec-index { display:block; font-family:'Fraunces',serif; font-style:italic; font-weight:360; font-size:30px; line-height:1; color:var(--amber); opacity:.85; margin-bottom:16px; letter-spacing:-.5px; }
   .sec-index::before { content:attr(data-idx); }
+
+  /* Advisory-Hero: Porträt + Statement */
+  body.theme-light .hero-content { align-items:center; }
+  body.theme-light .hero-right { flex:0 0 400px; }
+  .hero-portrait { margin:0; }
+  .hero-portrait img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 22%; display:block; border:1px solid var(--line); border-radius:2px; box-shadow:0 36px 80px -46px rgba(22,20,15,.55); filter:saturate(.96); }
+  .hero-portrait figcaption { margin-top:14px; font-size:12px; letter-spacing:.4px; color:var(--ink-mute); display:flex; align-items:center; gap:10px; }
+  .hero-portrait figcaption::before { content:''; width:20px; height:1px; background:var(--amber); flex-shrink:0; }
+  .hero-prog { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+
+  /* Leadership-Wandel-Band (relozierte Infografik) */
+  .leadership-shift-band { background:var(--paper-2); border-top:1px solid var(--line); padding:88px 64px 96px; display:flex; justify-content:center; }
+  .leadership-shift-band .leader-shift { max-width:560px; width:100%; }
+
   @media (max-width:1024px) {
+    body.theme-light .hero-content { flex-direction:column; align-items:flex-start; gap:40px; }
+    body.theme-light .hero-right { display:block; flex:none; width:100%; max-width:320px; }
+    .leadership-shift-band { padding-left:24px; padding-right:24px; }
     body.theme-light .offerings-grid { grid-template-columns:1fr; }
     body.theme-light .impact-grid { grid-template-columns:1fr; }
     body.theme-light .testimonials-grid { grid-template-columns:1fr; }
@@ -1154,36 +1171,43 @@
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <!-- LEFT -->
+      <!-- LEFT: Advisory-Statement -->
       <div class="hero-left">
         <div class="hero-badge" id="h-badge">Robert Weller · Agent Boss Leader</div>
-        <h1 id="h-h1">Werde zum <span class="highlight">Agent Boss</span> in deinem Bereich.</h1>
-        <p class="hero-sub" id="h-sub">Du bist bereit für die KI-Ära – und willst dein Profil und deine Teams für die nächste Revolution startklar machen. Du wirst verstehen, wo du stehst, was als Nächstes kommt und wie du es Schritt für Schritt aufbaust. Hier sind <strong>deine Startpunkte für die Agent-Boss-Journey</strong> – und die Wege, wie wir zusammenarbeiten.</p>
+        <h1 id="h-h1">Ich coache Führungskräfte in die <span class="highlight">KI-Transformation</span></h1>
+        <p class="hero-sub" id="h-sub">Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.</p>
         <div class="btn-group">
           <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="h-cta1">Kostenloses 30-Min Strategy Call buchen</a>
-          <a onclick="goHomeSection('offerings')" class="btn-secondary" id="h-cta2">Die 3 Wege ansehen</a>
         </div>
         <button class="hero-rc-link" id="h-rc" onclick="rcOpen()">2-Min Readiness-Check: Wo stehst du? →</button>
         <p class="hero-footnote" id="h-fn">Praktiker statt Theorie — echte AI-Agents live in Produktion.</p>
       </div>
-      <!-- RIGHT: CHAT DEMO -->
+      <!-- RIGHT: Porträt -->
       <div class="hero-right">
-        <div class="leader-shift">
-          <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
-          <h3 class="ls-title" data-de="Vom Manager zum Agent Boss" data-en="From manager to Agent Boss">Vom Manager zum Agent Boss</h3>
-          <div class="ls-colhead">
-            <span data-de="Gestern" data-en="Yesterday">Gestern</span>
-            <span data-de="Agent Boss" data-en="Agent Boss">Agent Boss</span>
-          </div>
-          <div class="ls-grid">
-            <span class="ls-old" data-de="Org-Chart" data-en="Org chart">Org-Chart</span><span class="ls-arr">→</span><span class="ls-new" data-de="Work-Chart" data-en="Work chart">Work-Chart</span>
-            <span class="ls-old" data-de="Führt Menschen" data-en="Leads people">Führt Menschen</span><span class="ls-arr">→</span><span class="ls-new" data-de="Führt Mensch + KI" data-en="Leads people + AI">Führt Mensch + KI</span>
-            <span class="ls-old" data-de="Macht die Arbeit" data-en="Does the work">Macht die Arbeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Orchestriert Agenten" data-en="Orchestrates agents">Orchestriert Agenten</span>
-            <span class="ls-old" data-de="Engpass: eigene Zeit" data-en="Bottleneck: own time">Engpass: eigene Zeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Skaliert digital" data-en="Scales digitally">Skaliert digital</span>
-          </div>
-          <div class="ls-foot" data-de="Assistant → Agent → Agent Boss" data-en="Assistant → Agent → Agent Boss">Assistant → Agent → Agent Boss</div>
-        </div>
+        <figure class="hero-portrait">
+          <img src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="eager">
+          <figcaption id="h-caption">SAP-Exec · Agent Boss Leader</figcaption>
+        </figure>
+        <div class="hero-prog" id="h-prog">Assistant → Agent → Agent Boss</div>
       </div>
+    </div>
+  </section>
+
+  <section class="leadership-shift-band" id="leadershift">
+    <div class="leader-shift fade-in">
+      <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
+      <h3 class="ls-title" data-de="Vom Manager zum Agent Boss" data-en="From manager to Agent Boss">Vom Manager zum Agent Boss</h3>
+      <div class="ls-colhead">
+        <span data-de="Gestern" data-en="Yesterday">Gestern</span>
+        <span data-de="Agent Boss" data-en="Agent Boss">Agent Boss</span>
+      </div>
+      <div class="ls-grid">
+        <span class="ls-old" data-de="Org-Chart" data-en="Org chart">Org-Chart</span><span class="ls-arr">→</span><span class="ls-new" data-de="Work-Chart" data-en="Work chart">Work-Chart</span>
+        <span class="ls-old" data-de="Führt Menschen" data-en="Leads people">Führt Menschen</span><span class="ls-arr">→</span><span class="ls-new" data-de="Führt Mensch + KI" data-en="Leads people + AI">Führt Mensch + KI</span>
+        <span class="ls-old" data-de="Macht die Arbeit" data-en="Does the work">Macht die Arbeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Orchestriert Agenten" data-en="Orchestrates agents">Orchestriert Agenten</span>
+        <span class="ls-old" data-de="Engpass: eigene Zeit" data-en="Bottleneck: own time">Engpass: eigene Zeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Skaliert digital" data-en="Scales digitally">Skaliert digital</span>
+      </div>
+      <div class="ls-foot" data-de="Assistant → Agent → Agent Boss" data-en="Assistant → Agent → Agent Boss">Assistant → Agent → Agent Boss</div>
     </div>
   </section>
 
@@ -2009,12 +2033,12 @@
       floatingCtaText: 'Strategy Call buchen',
       // HERO
       heroBadge: 'Robert Weller · Agent Boss Leader',
-      heroH1a: 'Werde zum ',
-      heroH1b: 'Agent Boss',
-      heroH1c: ' in deinem Bereich.',
-      heroSub: 'Du bist bereit für die KI-Ära – und willst dein Profil und deine Teams für die nächste Revolution startklar machen. Du wirst verstehen, wo du stehst, was als Nächstes kommt und wie du es Schritt für Schritt aufbaust. Hier sind <strong>deine Startpunkte für die Agent-Boss-Journey</strong> – und die Wege, wie wir zusammenarbeiten.',
+      heroH1a: 'Ich coache Führungskräfte in die ',
+      heroH1b: 'KI-Transformation',
+      heroH1c: '',
+      heroSub: 'Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.',
       heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
-      heroCta2: 'Die 3 Wege ansehen',
+      heroCaption: 'SAP-Exec · Agent Boss Leader', heroProg: 'Assistant → Agent → Agent Boss',
       heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.', heroRcLink: '2-Min Readiness-Check: Wo stehst du? →',
       // OFFERINGS
       offLabel: 'Zusammenarbeit', offH2: 'Drei Wege, mit mir zu arbeiten',
@@ -2178,12 +2202,12 @@
       hrFaq4q: 'When will we see first results?', hrFaq4a: 'First productive recruiting agents often run within a few weeks. In the end, your complete recruiting-to-onboarding process runs live in your real environment.',
       floatingCtaText: 'Book Strategy Call',
       heroBadge: 'Robert Weller · Agent Boss Leader',
-      heroH1a: 'Become the ',
-      heroH1b: 'Agent Boss',
-      heroH1c: ' in your domain.',
-      heroSub: 'You\'re ready for the AI era – and want to get your profile and your teams set for the next revolution. You\'ll understand where you stand, what comes next, and how to build it step by step. These are <strong>your starting points for the Agent Boss journey</strong> – and the ways we can work together.',
+      heroH1a: 'I coach leaders through their ',
+      heroH1b: 'AI transformation',
+      heroH1c: '',
+      heroSub: 'You don\'t just want to use AI — you want to lead your team alongside it. I show you <strong>where you stand and what comes next</strong> – and guide you step by step from manager to Agent Boss.',
       heroCta1: 'Book a Free 30-Min Strategy Call',
-      heroCta2: 'See the 3 paths',
+      heroCaption: 'SAP exec · Agent Boss Leader', heroProg: 'Assistant → Agent → Agent Boss',
       heroFn: 'Practitioner, not theory — real AI agents live in production.', heroRcLink: '2-min Readiness Check: where do you stand? →',
       // OFFERINGS
       offLabel: 'Work with me', offH2: 'Three ways to work with me',
@@ -2459,7 +2483,8 @@
     s('h-badge', t.heroBadge);
     s('h-h1', `${t.heroH1a}<span class="highlight">${t.heroH1b}</span>${t.heroH1c}`);
     s('h-sub', t.heroSub);
-    st('h-cta1', t.heroCta1); st('h-cta2', t.heroCta2);
+    st('h-cta1', t.heroCta1);
+    st('h-caption', t.heroCaption); st('h-prog', t.heroProg);
     st('h-fn', t.heroFn); st('h-rc', t.heroRcLink);
     st('trust-label', t.trustLabel); st('trust-soon-tag', t.trustSoon);
     // ── OFFERINGS ──
