@@ -1092,6 +1092,12 @@
 
   /* About rückt unter den Hero → Hintergrund an Hero angleichen (kein Doppel-Paper-2) */
   body.theme-light #page-home .about { background:var(--paper); }
+  /* Testimonials redaktionell: ohne Sterne/Initialen-Avatare, klare Zitat-Quelle */
+  body.theme-light .testimonial-cite { display:flex; flex-wrap:wrap; align-items:baseline; gap:9px; margin-top:22px; padding-top:16px; border-top:1px solid var(--line); font-size:13.5px; }
+  body.theme-light .testimonial-cite .testimonial-author { color:var(--ink); font-weight:600; letter-spacing:.2px; }
+  body.theme-light .testimonial-cite .testimonial-sep { color:var(--amber); }
+  body.theme-light .testimonial-cite .testimonial-role { color:var(--ink-mute); }
+  body.theme-light .testimonial-card--feature .testimonial-cite { justify-content:center; border-top:none; padding-top:0; margin-top:18px; }
   /* Leadership-Wandel-Band (relozierte Infografik) */
   .leadership-shift-band { background:var(--paper-2); border-top:1px solid var(--line); padding:88px 64px 96px; display:flex; justify-content:center; }
   .leadership-shift-band .leader-shift { max-width:560px; width:100%; }
@@ -1390,9 +1396,9 @@
       <h2 class="section-headline" id="testi-h2">Was Abteilungsleiter sagen</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card testimonial-card--feature fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-1">HS</div><div class="testimonial-meta"><div class="testimonial-author" id="t1a">Head of Sales</div><div class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</div></div></div></div>
-      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-2">HF</div><div class="testimonial-meta"><div class="testimonial-author" id="t2a">Head of Finance</div><div class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</div></div></div></div>
-      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-3">HR</div><div class="testimonial-meta"><div class="testimonial-author" id="t3a">Head of HR</div><div class="testimonial-role" id="t3r">Tech-Scale-up, Series B</div></div></div></div>
+      <div class="testimonial-card testimonial-card--feature fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-cite"><span class="testimonial-author" id="t1a">Head of Sales</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</span></div></div>
+      <div class="testimonial-card fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.</p><div class="testimonial-cite"><span class="testimonial-author" id="t2a">Head of Finance</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</span></div></div>
+      <div class="testimonial-card fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-cite"><span class="testimonial-author" id="t3a">Head of HR</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t3r">Tech-Scale-up, Series B</span></div></div>
     </div>
   </section>
 
