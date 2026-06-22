@@ -951,6 +951,137 @@
     body.guide-open .guide-content .g-cta { background:#f0ece2 !important; border:1px solid #ccc !important; }
     body.guide-open .guide-content .g-cta h2, body.guide-open .guide-content .g-cta p { color:#000 !important; }
   }
+
+  /* ═══════════════════════════════════════════════════════════
+     MODERNISIERUNG — fine line-icons, asymmetric grids, lead metric/quote
+  ═══════════════════════════════════════════════════════════ */
+  /* program icons → fine editorial SVG line-art (replaces broken emoji ::before) */
+  body.theme-light .program-icon { font-size:0; margin-bottom:20px; }
+  body.theme-light .program-icon::before { content:none; }
+  body.theme-light .program-icon svg { width:30px; height:30px; stroke:var(--amber); stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; overflow:visible; }
+  .floating-cta-icon { display:inline-flex; }
+  .floating-cta-icon svg { width:17px; height:17px; stroke:currentColor; stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  /* offerings → featured-first asymmetry */
+  body.theme-light .offerings-grid { grid-template-columns:1.32fr 1fr 1fr; }
+  body.theme-light .offering-card:first-child .offering-icon::before { font-size:58px; }
+  body.theme-light .offering-card:first-child .offering-title { font-size:28px; }
+
+  /* impact → lead metric spans full width with context line */
+  body.theme-light .impact-grid { grid-template-columns:repeat(3,1fr); }
+  body.theme-light .metric-card--lead { grid-column:1 / -1; display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:44px 40px; position:relative; }
+  body.theme-light .metric-card--lead .metric-value { font-size:clamp(58px,8vw,92px); }
+  body.theme-light .metric-card--lead .metric-label { font-size:15px; }
+  .metric-context { font-size:16px; line-height:1.6; color:var(--ink-mute); max-width:48ch; margin-top:14px; padding-top:16px; border-top:1px solid var(--line); }
+  body.theme-light .metric-card:not(.metric-card--lead) .metric-context { display:none; }
+
+  /* testimonials → featured pull-quote + supporting cards */
+  body.theme-light .testimonials-grid { grid-template-columns:repeat(2,1fr); }
+  body.theme-light .testimonial-card--feature { grid-column:1 / -1; background:none; border:none; border-radius:0; border-bottom:1px solid var(--line); padding:8px 0 40px; text-align:center; }
+  body.theme-light .testimonial-card--feature:hover { transform:none; box-shadow:none; border-color:var(--line); }
+  body.theme-light .testimonial-card--feature .stars { justify-content:center; }
+  body.theme-light .testimonial-card--feature .quote-mark { font-size:88px; color:rgba(182,84,31,.18); display:block; line-height:.4; margin:10px 0 0; }
+  body.theme-light .testimonial-card--feature .testimonial-text { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-size:clamp(22px,2.6vw,30px); line-height:1.35; color:var(--ink); max-width:24ch; margin:0 auto 22px; letter-spacing:-.3px; }
+  body.theme-light .testimonial-card--feature .testimonial-footer { justify-content:center; }
+
+  /* ═══════════════════════════════════════════════════════════
+     ORCHESTRATION — leadership animation band
+  ═══════════════════════════════════════════════════════════ */
+  .orchestration { background:var(--paper-2); border-top:1px solid var(--line); padding:104px 64px; }
+  .orchestration-head { max-width:680px; margin:0 auto 48px; text-align:center; }
+  .orchestration-head .section-label { justify-content:center; }
+  .orchestration-intro { font-size:18px; line-height:1.6; color:var(--ink-mute); font-weight:300; margin-top:14px; }
+  .orchestration-stage { max-width:720px; margin:0 auto; }
+  .orch-svg { width:100%; height:auto; display:block; }
+  .orch-link { fill:none; stroke:rgba(182,84,31,.4); stroke-width:1.5; stroke-dashoffset:0; }
+  .orch-node circle { fill:var(--paper-card); stroke:var(--line); stroke-width:1.5; }
+  .orch-leader circle { stroke:var(--amber); stroke-width:2; fill:rgba(182,84,31,.07); }
+  .orch-node-label { font-family:'Fraunces',serif; font-size:16px; fill:var(--ink); text-anchor:middle; font-style:italic; }
+  .orch-agent-label { font-size:14px; fill:var(--ink-soft); }
+  .orch-pulse { fill:var(--amber); opacity:0; }
+  .orch-report { fill:var(--amber-light); opacity:0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orch-pulse, .orch-report { display:none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .orch-link { stroke-dasharray:420; stroke-dashoffset:420; }
+    .orchestration-stage.visible .orch-link-1 { animation:orchDraw 1s .10s cubic-bezier(.4,0,.2,1) forwards; }
+    .orchestration-stage.visible .orch-link-2 { animation:orchDraw 1s .28s cubic-bezier(.4,0,.2,1) forwards; }
+    .orchestration-stage.visible .orch-link-3 { animation:orchDraw 1s .46s cubic-bezier(.4,0,.2,1) forwards; }
+    .orchestration-stage.visible .orch-pulse,
+    .orchestration-stage.visible .orch-report { opacity:1; transition:opacity .4s 1s; }
+    .orchestration-stage.visible .orch-agent circle { animation:orchNodePulse 2.6s ease-in-out infinite; }
+    .orchestration-stage.visible .orch-agent-2 circle { animation-delay:.5s; }
+    .orchestration-stage.visible .orch-agent-3 circle { animation-delay:1s; }
+    .orchestration-stage.visible .orch-leader circle { animation:orchLeaderPulse 2.6s ease-in-out infinite; }
+  }
+  @keyframes orchDraw { to { stroke-dashoffset:0; } }
+  @keyframes orchNodePulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
+  @keyframes orchLeaderPulse { 0%,100% { stroke-width:2; } 50% { stroke-width:3.4; } }
+
+  /* ═══════════════════════════════════════════════════════════
+     INSIGHTS — hub, cards, filters, reader, home teaser
+  ═══════════════════════════════════════════════════════════ */
+  .insights-hub { max-width:1180px; margin:0 auto; padding:140px 64px 90px; }
+  .insights-hub-head { max-width:700px; margin-bottom:40px; }
+  .insights-intro { font-size:18px; line-height:1.62; color:var(--ink-mute); font-weight:300; margin-top:10px; }
+  .insights-filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:34px; }
+  .ins-tab { font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; letter-spacing:.3px; color:var(--ink-mute); background:none; border:1px solid var(--line); border-radius:100px; padding:9px 18px; cursor:pointer; transition:all .2s; }
+  .ins-tab:hover { border-color:var(--amber); color:var(--ink); }
+  .ins-tab.is-active { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+  .insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .insight-card { background:var(--paper-card); border:none; border-radius:0; text-align:left; cursor:pointer; padding:34px 30px 30px; display:flex; flex-direction:column; gap:13px; min-height:236px; font-family:'Hanken Grotesk',sans-serif; transition:background .25s; width:100%; }
+  .insight-card:hover { background:#fff; }
+  .insight-card-series { font-size:11px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--amber); display:inline-flex; align-items:center; gap:9px; }
+  .insight-card-series::before { content:''; width:16px; height:1px; background:currentColor; flex-shrink:0; }
+  .insight-series--craft, .insight-series-label.insight-series--craft { color:var(--ink-soft); }
+  .insight-card-title { font-family:'Fraunces',serif; font-weight:480; font-size:21px; line-height:1.2; color:var(--ink); letter-spacing:-.3px; }
+  .insight-card-excerpt { font-size:14.5px; line-height:1.6; color:var(--ink-mute); flex:1; }
+  .insight-card-meta { font-size:12px; color:var(--ink-mute); letter-spacing:.3px; margin-top:auto; }
+  .insights-empty { grid-column:1 / -1; background:var(--paper-card); padding:40px; color:var(--ink-mute); font-size:15px; }
+
+  /* reader */
+  .insight-reader { max-width:720px; margin:0 auto; padding:128px 24px 90px; }
+  .insight-reader-inner { display:block; }
+  .insight-back { background:none; border:none; color:var(--ink-mute); font-family:'Hanken Grotesk',sans-serif; font-size:14px; cursor:pointer; padding:0; margin-bottom:30px; transition:color .2s; }
+  .insight-back:hover { color:var(--amber-deep); }
+  .insight-series-label { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--amber); margin-bottom:14px; }
+  .insight-reader-title { font-family:'Fraunces',serif; font-weight:450; font-size:clamp(30px,4.6vw,50px); line-height:1.06; color:var(--ink); letter-spacing:-1px; margin-bottom:16px; }
+  .insight-reader-meta { font-size:13px; color:var(--ink-mute); letter-spacing:.4px; margin-bottom:38px; padding-bottom:24px; border-bottom:1px solid var(--line); }
+  .insight-reader-body { font-size:17px; line-height:1.75; color:var(--ink-soft); }
+  .insight-reader-body p { margin-bottom:18px; }
+  .insight-reader-body h3 { font-family:'Fraunces',serif; font-weight:500; font-size:23px; color:var(--ink); margin:34px 0 12px; letter-spacing:-.3px; }
+  .insight-reader-body ul { list-style:none; margin:8px 0 20px; padding:0; }
+  .insight-reader-body li { position:relative; padding-left:22px; margin-bottom:9px; line-height:1.6; }
+  .insight-reader-body li::before { content:'—'; position:absolute; left:0; color:var(--amber); }
+  .insight-reader-body blockquote { margin:26px 0; padding:6px 0 6px 22px; border-left:2px solid var(--amber); font-family:'Fraunces',serif; font-style:italic; font-size:21px; line-height:1.4; color:var(--ink); }
+  .insight-reader-body strong { color:var(--ink); font-weight:600; }
+  .insight-reader-body a { color:var(--amber-deep); }
+  .insight-li-btn { display:inline-flex; align-items:center; gap:9px; margin-top:36px; background:var(--ink); color:var(--paper); font-weight:600; font-size:14px; padding:13px 24px; border-radius:2px; text-decoration:none; transition:background .2s; }
+  .insight-li-btn:hover { background:var(--amber); }
+  .insight-back-bottom { display:block; margin:46px 0 0; }
+
+  /* home teaser */
+  .insights-teaser { background:var(--paper); padding:100px 64px; }
+  .insights-teaser-head { max-width:1180px; margin:0 auto 36px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; }
+  .insights-teaser-all { white-space:nowrap; }
+  .insights-grid--teaser { max-width:1180px; margin:0 auto; }
+
+  @media (max-width:1024px) {
+    body.theme-light .offerings-grid { grid-template-columns:1fr; }
+    body.theme-light .impact-grid { grid-template-columns:1fr; }
+    body.theme-light .testimonials-grid { grid-template-columns:1fr; }
+    body.theme-light .metric-card--lead, body.theme-light .testimonial-card--feature { grid-column:auto; }
+    .insights-grid { grid-template-columns:1fr; }
+    .insights-hub { padding:120px 24px 70px; }
+    .insights-teaser { padding:80px 24px; }
+    .insights-teaser-head { flex-direction:column; align-items:flex-start; }
+    .insights-filters { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
+    .ins-tab { white-space:nowrap; }
+    .orchestration { padding-left:24px; padding-right:24px; }
+  }
 </style>
 </head>
 <body class="theme-light">
@@ -977,6 +1108,7 @@
     <li><a onclick="goHomeSection('why')" data-de="Warum wir" data-en="Why us">Warum wir</a></li>
     <li><a onclick="goHomeSection('impact')" data-de="Ergebnisse" data-en="Results">Ergebnisse</a></li>
     <li><a onclick="goHomeSection('testimonials')" data-de="Stimmen" data-en="Testimonials">Stimmen</a></li>
+    <li><a onclick="showPage('insights');location.hash='insights'" data-de="Insights" data-en="Insights">Insights</a></li>
     <li><a href="https://calendly.com/robert85-weller/30min" target="_blank" class="nav-cta" data-de="Strategy Call" data-en="Strategy Call">Strategy Call</a></li>
   </ul>
   <div class="nav-right">
@@ -998,6 +1130,7 @@
   <a id="mnav-why" onclick="closeMobileNav();goHomeSection('why')">Warum wir</a>
   <a id="mnav-impact" onclick="closeMobileNav();goHomeSection('impact')">Ergebnisse</a>
   <a id="mnav-testi" onclick="closeMobileNav();goHomeSection('testimonials')">Stimmen</a>
+  <a id="mnav-insights" onclick="closeMobileNav();showPage('insights');location.hash='insights'">Insights</a>
   <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="mobile-nav-cta" id="mnav-cta" onclick="closeMobileNav()">Strategy Call buchen</a>
 </div>
 
@@ -1086,6 +1219,50 @@
     </div>
   </section>
 
+  <section class="orchestration" id="orchestration">
+    <div class="orchestration-head fade-in">
+      <div class="section-label" id="orch-label">Orchestrierung</div>
+      <h2 class="section-headline" id="orch-h2">Wie ein Agent Boss arbeitet</h2>
+      <p class="orchestration-intro" id="orch-intro">Du tippst nicht mehr selbst. Du delegierst an ein Team aus Agenten – sie arbeiten parallel und melden zurück. Aus „alles selbst machen" wird „das Richtige entscheiden".</p>
+    </div>
+    <div class="orchestration-stage fade-in" id="orchStage">
+      <svg class="orch-svg" viewBox="0 0 800 380" role="img" aria-labelledby="orchTitle orchDesc" preserveAspectRatio="xMidYMid meet">
+        <title id="orchTitle">Orchestrierung: Leader delegiert an Agenten-Team</title>
+        <desc id="orchDesc">Ein Leader-Knoten oben delegiert an drei Agenten-Knoten, die Aufgaben erledigen und zurückmelden.</desc>
+        <!-- connectors -->
+        <path class="orch-link orch-link-1" d="M400,96 C300,150 230,190 168,250" />
+        <path class="orch-link orch-link-2" d="M400,96 C400,160 400,195 400,248" />
+        <path class="orch-link orch-link-3" d="M400,96 C500,150 570,190 632,250" />
+        <!-- delegation pulses (Leader → Agent) -->
+        <circle class="orch-pulse orch-pulse-1" r="4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M400,96 C300,150 230,190 168,250" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-pulse orch-pulse-2" r="4"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" path="M400,96 C400,160 400,195 400,248" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-pulse orch-pulse-3" r="4"><animateMotion dur="2.6s" begin="1s" repeatCount="indefinite" path="M400,96 C500,150 570,190 632,250" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <!-- report-back pulses (Agent → Leader) -->
+        <circle class="orch-report orch-report-1" r="3"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M168,250 C230,190 300,150 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-report orch-report-2" r="3"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M400,248 C400,195 400,160 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-report orch-report-3" r="3"><animateMotion dur="2.6s" begin="2.3s" repeatCount="indefinite" path="M632,250 C570,190 500,150 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <!-- leader node -->
+        <g class="orch-node orch-leader">
+          <circle cx="400" cy="62" r="34" />
+          <text x="400" y="120" class="orch-node-label" id="orch-leader-label">Leader</text>
+        </g>
+        <!-- agent nodes -->
+        <g class="orch-node orch-agent orch-agent-1">
+          <circle cx="168" cy="278" r="26" />
+          <text x="168" y="330" class="orch-node-label orch-agent-label">Agent</text>
+        </g>
+        <g class="orch-node orch-agent orch-agent-2">
+          <circle cx="400" cy="278" r="26" />
+          <text x="400" y="330" class="orch-node-label orch-agent-label">Agent</text>
+        </g>
+        <g class="orch-node orch-agent orch-agent-3">
+          <circle cx="632" cy="278" r="26" />
+          <text x="632" y="330" class="orch-node-label orch-agent-label">Agent</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
   <section class="programs" id="programmes">
     <div class="programs-header fade-in">
       <div class="section-label" id="prog-label">Anwendungsfelder</div>
@@ -1094,21 +1271,21 @@
     </div>
     <div class="programs-grid">
       <div class="program-card fade-in" onclick="showPage('sales')">
-        <div class="program-icon">📈</div>
+        <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div>
         <div class="program-tag" id="prog-sales-tag">Sales</div>
         <h3 class="program-title" id="prog-sales-title">Agent Boss<br>Sales</h3>
         <p class="program-desc" id="prog-sales-desc">Verwandle dein Vertriebsteam in eine Revenue-Maschine. Mehr Selling-Time, höhere Win-Rates, präzise Forecasts.</p>
         <span class="btn-link" id="prog-sales-link">Use-Cases in Sales →</span>
       </div>
       <div class="program-card fade-in" onclick="showPage('finance')">
-        <div class="program-icon">💼</div>
+        <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="20" x2="21" y2="20"/><line x1="6.5" y1="20" x2="6.5" y2="13"/><line x1="12" y1="20" x2="12" y2="5"/><line x1="17.5" y1="20" x2="17.5" y2="10"/></svg></div>
         <div class="program-tag" id="prog-fin-tag">Finance</div>
         <h3 class="program-title" id="prog-fin-title">Agent Boss<br>Finance</h3>
         <p class="program-desc" id="prog-fin-desc">Schließe Monate in Tagen. Finance wird zum strategischen Business Partner mit Autonomous Reporting & Echtzeit-Insights.</p>
         <span class="btn-link" id="prog-fin-link">Use-Cases in Finance →</span>
       </div>
       <div class="program-card fade-in" onclick="showPage('hr')">
-        <div class="program-icon">🎯</div>
+        <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.4-5 5.5-5s5.5 2 5.5 5"/><path d="M16 5.4a3 3 0 0 1 0 5.8"/><path d="M16.8 14.1c2.3.5 3.9 2.3 3.9 4.9"/></svg></div>
         <div class="program-tag" id="prog-hr-tag">HR</div>
         <h3 class="program-title" id="prog-hr-title">Agent Boss<br>HR</h3>
         <p class="program-desc" id="prog-hr-desc">Besetze Stellen 50 % schneller und steigere die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.</p>
@@ -1156,7 +1333,7 @@
       <h2 class="section-headline" id="impact-h2">Erste Ergebnisse aus der Praxis</h2>
     </div>
     <div class="impact-grid">
-      <div class="metric-card fade-in"><div class="metric-value" id="m1v"><span>+</span>45<span>%</span></div><div class="metric-label" id="m1l">mehr produktive Zeit<br>in den Abteilungen</div></div>
+      <div class="metric-card metric-card--lead fade-in"><div class="metric-value" id="m1v"><span>+</span>45<span>%</span></div><div class="metric-label" id="m1l">mehr produktive Zeit<br>in den Abteilungen</div><p class="metric-context" id="m1ctx">Teams verbringen wieder Zeit mit Entscheidungen statt mit Fleißarbeit – der Hebel, der alles andere trägt.</p></div>
       <div class="metric-card fade-in"><div class="metric-value" id="m2v"><span>–</span>52<span>%</span></div><div class="metric-label" id="m2l">Time-to-Hire<br>(HR)</div></div>
       <div class="metric-card fade-in"><div class="metric-value" id="m3v"><span>+</span>22<span>%</span></div><div class="metric-label" id="m3l">Win-Rate Steigerung<br>(Sales)</div></div>
       <div class="metric-card fade-in"><div class="metric-value" id="m4v"><span>–</span>58<span>%</span></div><div class="metric-label" id="m4l">Reporting-Aufwand<br>(Finance)</div></div>
@@ -1170,10 +1347,21 @@
       <h2 class="section-headline" id="testi-h2">Was Abteilungsleiter sagen</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-1">HS</div><div class="testimonial-meta"><div class="testimonial-author" id="t1a">Head of Sales</div><div class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</div></div></div></div>
+      <div class="testimonial-card testimonial-card--feature fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-1">HS</div><div class="testimonial-meta"><div class="testimonial-author" id="t1a">Head of Sales</div><div class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</div></div></div></div>
       <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-2">HF</div><div class="testimonial-meta"><div class="testimonial-author" id="t2a">Head of Finance</div><div class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</div></div></div></div>
       <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-3">HR</div><div class="testimonial-meta"><div class="testimonial-author" id="t3a">Head of HR</div><div class="testimonial-role" id="t3r">Tech-Scale-up, Series B</div></div></div></div>
     </div>
+  </section>
+
+  <section class="insights-teaser" id="insights-home">
+    <div class="insights-teaser-head fade-in">
+      <div>
+        <div class="section-label" id="ins-teaser-label">Insights</div>
+        <h2 class="section-headline" id="ins-teaser-h2">Aus der Praxis</h2>
+      </div>
+      <button class="btn-link insights-teaser-all fade-in" id="ins-teaser-all" onclick="showPage('insights');location.hash='insights'">Alle Insights →</button>
+    </div>
+    <div class="insights-grid insights-grid--teaser" id="insightsTeaserGrid"><!-- JS-gerendert --></div>
   </section>
 
   <section class="final-cta" id="cta">
@@ -1680,6 +1868,45 @@
 </div><!-- /impressum -->
 
 
+<!-- ═══════ INSIGHTS ═══════ -->
+<div id="page-insights" class="page">
+  <section class="insights-hub">
+    <div class="insights-hub-head fade-in">
+      <div class="section-label" id="ins-label">Insights</div>
+      <h2 class="section-headline" id="ins-h2">Adventures &amp; Knowledge Craft</h2>
+      <p class="insights-intro" id="ins-intro">Notizen, How-Tos und Beobachtungen aus dem Alltag als Agent Boss – aus meinen LinkedIn-Serien, hier in Ruhe nachlesbar.</p>
+    </div>
+
+    <div class="insights-filters" id="ins-filters" role="tablist">
+      <button class="ins-tab is-active" role="tab" data-filter="all" onclick="renderInsightsList('all', this)">Alle</button>
+      <button class="ins-tab" role="tab" data-filter="adventures" onclick="renderInsightsList('adventures', this)">Adventures of an Agent Boss</button>
+      <button class="ins-tab" role="tab" data-filter="craft" onclick="renderInsightsList('craft', this)">Knowledge Craft</button>
+    </div>
+
+    <div class="insights-grid" id="insightsGrid"><!-- JS-gerendert --></div>
+  </section>
+
+  <!-- READER -->
+  <article class="insight-reader" id="insightReader" hidden>
+    <div class="insight-reader-inner">
+      <button class="insight-back" id="insReaderBack" onclick="closeInsight()">← Zurück zu Insights</button>
+      <div class="insight-series-label" id="insReaderSeries"></div>
+      <h1 class="insight-reader-title" id="insReaderTitle"></h1>
+      <div class="insight-reader-meta" id="insReaderMeta"></div>
+      <div class="insight-reader-body" id="insReaderBody"></div>
+      <a class="insight-li-btn" id="insReaderLi" href="#" target="_blank" rel="noopener"></a>
+      <button class="insight-back insight-back-bottom" id="insReaderBackBottom" onclick="closeInsight()">← Zurück zu Insights</button>
+    </div>
+  </article>
+
+  <footer>
+    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <p id="ins-footer-copy">© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
+    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · Datenschutz</p>
+  </footer>
+</div><!-- /insights -->
+
+
 <!-- POPUP -->
 <div class="popup-overlay" id="popup">
   <div class="popup">
@@ -1745,7 +1972,19 @@
       pageTitle: 'Agent Boss Academy | Robert Weller – Agent Boss Leader für AI-Agents & Automation',
       // NAV
       navBack: 'Zurück zur Übersicht',
-      mnavProg: 'Anwendungsfelder', mnavWhy: 'Warum wir', mnavImpact: 'Ergebnisse', mnavTesti: 'Stimmen', mnavCta: 'Strategy Call buchen',
+      mnavProg: 'Anwendungsfelder', mnavWhy: 'Warum wir', mnavImpact: 'Ergebnisse', mnavTesti: 'Stimmen', mnavInsights: 'Insights', mnavCta: 'Strategy Call buchen',
+      // ORCHESTRATION
+      orchLabel: 'Orchestrierung', orchH2: 'Wie ein Agent Boss arbeitet',
+      orchIntro: 'Du tippst nicht mehr selbst. Du delegierst an ein Team aus Agenten – sie arbeiten parallel und melden zurück. Aus „alles selbst machen" wird „das Richtige entscheiden".',
+      orchLeader: 'Leader', orchAgent: 'Agent',
+      // INSIGHTS
+      insLabel: 'Insights', insH2: 'Adventures &amp; Knowledge Craft',
+      insIntro: 'Notizen, How-Tos und Beobachtungen aus dem Alltag als Agent Boss – aus meinen LinkedIn-Serien, hier in Ruhe nachlesbar.',
+      insSeriesAll: 'Alle', insSeriesAdv: 'Adventures of an Agent Boss', insSeriesCraft: 'Knowledge Craft',
+      insMinRead: 'Min Lesezeit', insOnLinkedIn: 'Original auf LinkedIn ↗', insBack: '← Zurück zu Insights',
+      insEmpty: 'Bald mehr – die ersten Beiträge sind in Arbeit.',
+      insTeaserLabel: 'Insights', insTeaserH2: 'Aus der Praxis', insTeaserAll: 'Alle Insights →',
+      insFooterCopy: '© 2026 Agent Boss Academy · Agent-Boss-Community über Skool',
       teamLabel: 'Das Team', teamH2: 'Erfahrung, die zählt', teamSub: 'Praktiker, keine Theoretiker. Wir haben selbst AI-Systeme in Unternehmen gebaut.',
       tm1Name: 'Robert Weller', tm1Title: 'Gründer & Lead Coach', tm1Bio: '10 Jahre Erfahrung in Sales und AI-Transformation – hat über 15 Enterprise-Agent-Systeme live in Produktion gebracht.',
       tm2Name: 'Sarah Krüger', tm2Title: 'Head of Curriculum', tm2Bio: 'Ehemalige Finance-Leiterin im Mittelstand, spezialisiert auf Autonomous Reporting und erklärbarer KI für Finance-Teams.',
@@ -1903,7 +2142,19 @@
     en: {
       pageTitle: 'Agent Boss Academy | Robert Weller – Agent Boss Leader for AI agents & automation',
       navBack: 'Back to Overview',
-      mnavProg: 'Use cases', mnavWhy: 'Why us', mnavImpact: 'Results', mnavTesti: 'Testimonials', mnavCta: 'Book Strategy Call',
+      mnavProg: 'Use cases', mnavWhy: 'Why us', mnavImpact: 'Results', mnavTesti: 'Testimonials', mnavInsights: 'Insights', mnavCta: 'Book Strategy Call',
+      // ORCHESTRATION
+      orchLabel: 'Orchestration', orchH2: 'How an Agent Boss works',
+      orchIntro: 'You don\'t type everything yourself anymore. You delegate to a team of agents — they work in parallel and report back. "Do it all yourself" becomes "decide what matters".',
+      orchLeader: 'Leader', orchAgent: 'Agent',
+      // INSIGHTS
+      insLabel: 'Insights', insH2: 'Adventures &amp; Knowledge Craft',
+      insIntro: 'Notes, how-tos and observations from life as an Agent Boss — from my LinkedIn series, collected here to read at leisure.',
+      insSeriesAll: 'All', insSeriesAdv: 'Adventures of an Agent Boss', insSeriesCraft: 'Knowledge Craft',
+      insMinRead: 'min read', insOnLinkedIn: 'Read original on LinkedIn ↗', insBack: '← Back to Insights',
+      insEmpty: 'More soon — the first posts are in the works.',
+      insTeaserLabel: 'Insights', insTeaserH2: 'From the field', insTeaserAll: 'All insights →',
+      insFooterCopy: '© 2026 Agent Boss Academy · Agent Boss community on Skool',
       teamLabel: 'The Team', teamH2: 'Experience That Counts', teamSub: 'Practitioners, not theorists. We have built AI systems inside companies ourselves.',
       tm1Name: 'Robert Weller', tm1Title: 'Founder & Lead Coach', tm1Bio: '10 years of experience in sales and AI transformation – has delivered over 15 enterprise agent systems to production.',
       tm2Name: 'Sarah Krüger', tm2Title: 'Head of Curriculum', tm2Bio: 'Former finance leader in the mid-market, specialized in autonomous reporting and explainable AI for finance teams.',
@@ -2048,6 +2299,129 @@
 
   let currentLang = 'de';
 
+  // ══════════════════════════════════════════════════════════════════
+  //  INSIGHTS — LinkedIn-Serien ("Adventures of an Agent Boss" / "Knowledge Craft")
+  //  NEUEN BEITRAG HINZUFÜGEN: ein Objekt nach diesem Muster oben anhängen.
+  //  body[de|en] = HTML-String (vertrauenswürdiger Autor-Content). Erlaubt:
+  //  <p> <h3> <ul>/<li> <strong> <em> <blockquote> <a href>. Newline-frei nicht nötig.
+  //  series: 'adventures' | 'craft'  ·  date: 'YYYY-MM-DD' (neueste zuerst sortiert)
+  // ──────────────────────────────────────────────────────────────────
+  // const POST_TEMPLATE = {
+  //   id:'kurz-und-eindeutig', series:'adventures', date:'2026-06-17', readMin:4,
+  //   url:'https://www.linkedin.com/posts/...',
+  //   title:{ de:'…', en:'…' }, excerpt:{ de:'…', en:'…' },
+  //   body:{ de:`<p>…</p>`, en:`<p>…</p>` } };
+  const insights = [
+    {
+      id: 'adventures-ep-1-day-one',
+      series: 'adventures',
+      date: '2026-06-17',
+      readMin: 3,
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:7472913317498503169/',
+      title: {
+        de: 'Adventures of an Agent Boss — Folge 1: Tag Eins',
+        en: 'Adventures of an Agent Boss — Ep. 1: Day One'
+      },
+      excerpt: {
+        de: 'Neue Kurzgeschichten-Serie: Falkenrad, ein 60 Jahre alter Fahrradbauer, und der Sprung in die KI-Ära. Folge 1 — Tag Eins.',
+        en: 'A new short-fiction series: Falkenrad, a 60-year-old bike maker, and the leap into the AI era. Episode 1 — Day One.'
+      },
+      body: {
+        de: `<p>Heute starte ich meine neue Kurzgeschichten-Serie für Führungskräfte, die der KI gegenüberstehen: „The Adventures of an Agent Boss". Sie folgt Falkenrad — einem 60 Jahre alten Familien-Fahrradbauer — und den zwei Führungskräften, die ihn in die KI-Ära ziehen. Warum Fiktion? Weil Transformation ein Gefühl ist, keine Folie. Eine Episode, eine Lektion.</p>
+<h3>Folge 1: Tag Eins</h3>
+<p>Alex hat gerade als CEO bei Falkenrad übernommen — dem Fahrradunternehmen, das drei Generationen der Familie von Hand aufgebaut haben. Der Auftrag des Boards war eine Zeile: „Mach uns bereit für KI." Drei Wochen später wurde Alex klar, dass sich der Job leise verändert hatte — und niemand hatte es laut ausgesprochen.</p>
+<p>Falkenrad hatte das Internet überlebt. E-Mail überlebt. Sogar den Katalog online zu stellen. Jedes Mal war die Antwort dieselbe: härter arbeiten, hands-on bleiben, das Handwerk besser kennen als alle anderen. Aber KI belohnte nicht den, der am meisten wusste. Sie belohnte den, der orchestrieren konnte — Richtung geben, schärfere Fragen stellen, entscheiden was zählt. Und Alex' ganze Karriere war darauf gebaut, die Antworten zu haben.</p>
+<p>Das verlangt Tag Eins als Agent Boss wirklich von dir:</p>
+<ul>
+<li>Hör auf, die Antwort-Maschine zu sein. Fang an, die Richtung zu setzen.</li>
+<li>Hör auf, die schweren Entscheidungen zu horten. Fang an, ein Team zu bauen — Mensch und KI — das sie treffen kann.</li>
+<li>Hör auf, deinen Wert daran zu messen, was du weißt. Miss ihn daran, was dein Team jetzt ohne dich kann.</li>
+</ul>
+<p>Alex hat es an Tag Eins nicht verstanden. Die meisten von uns werden es nicht. Aber genau da beginnt das Abenteuer. <em>(Nächste Woche: Samantha stößt an dieselbe Wand — von der anderen Seite des Hauses.)</em></p>
+<blockquote>Wo stehst du — noch die Antwort-Maschine, oder lässt du schon los?</blockquote>`,
+        en: `<p>Today I start my new short-fiction series for leaders facing AI: "The Adventures of an Agent Boss". It follows Falkenrad — a 60-year-old family bike maker — and the two leaders dragging it into the AI era. Why fiction? Because transformation is a feeling, not a slide. One episode, one lesson.</p>
+<h3>Ep. 1: Day One</h3>
+<p>Alex just took over as CEO of Falkenrad — the bike company three generations of the family built by hand. The mandate from the board was one line: "Get us ready for AI." Three weeks in, Alex realized the job had quietly changed — and nobody had said it out loud.</p>
+<p>Falkenrad had survived the internet. Survived email. Even survived putting the catalog online. Every time, the answer was the same: work harder, stay hands-on, know the craft better than anyone. But AI didn't reward the person who knew the most. It rewarded the one who could orchestrate — set direction, ask sharper questions, decide what mattered. And Alex's whole career had been built on having the answers.</p>
+<p>Here's what Day One as an Agent Boss really asks of you:</p>
+<ul>
+<li>Stop being the answer machine. Start setting the direction.</li>
+<li>Stop hoarding the hard calls. Start building a team — human and AI — that can make them.</li>
+<li>Stop measuring your worth by what you know. Start measuring it by what your people can now do without you.</li>
+</ul>
+<p>Alex didn't get it on Day One. Most of us won't. But that's where the adventure starts. <em>(Next week: Samantha hits the same wall — from the other side of the building.)</em></p>
+<blockquote>Where are you — still the answer machine, or already letting go?</blockquote>`
+      }
+    },
+    {
+      id: 'what-is-an-agent-boss-leader',
+      series: 'craft',
+      date: '2026-06-16',
+      readMin: 4,
+      url: 'https://www.linkedin.com/pulse/what-agent-boss-leader-robert-weller-dcrue/',
+      title: {
+        de: 'Was ist ein Agent Boss Leader?',
+        en: 'What is an Agent Boss Leader?'
+      },
+      excerpt: {
+        de: 'Alle reden über KI-Einführung. Fast niemand darüber, wer sie führen soll. Eine Definition der Rolle, die bald jede Organisation braucht.',
+        en: 'Everyone is talking about AI adoption. Almost nobody about who is supposed to lead it. A definition of the role every organization is about to need.'
+      },
+      body: {
+        de: `<p>Alle reden über KI-Einführung. Fast niemand redet darüber, wer sie eigentlich führen soll.</p>
+<p>Wir geben Teams ein Tool, machen ein Training, gründen vielleicht ein „Center of Excellence" — und wundern uns, warum sich nichts wirklich ändert. Die Technik ist selten das Problem. Die Führung ist es.</p>
+<p>Deshalb definiere ich hier die Rolle, die meiner Meinung nach bald jede Organisation braucht: den Agent Boss Leader.</p>
+<h3>Der Wandel, auf den uns niemand vorbereitet hat</h3>
+<p>Jahrzehntelang lief Führung nach einem einfachen Deal: Die Führungskraft weiß mehr, entscheidet mehr, und alles läuft über sie. Wissen war der Burggraben. Der oder die Klügste im Raum zu sein, war der Job.</p>
+<p>KI hat diesen Burggraben einfach verschwinden lassen. Antworten sind jetzt sofort, günstig und für jeden im Team verfügbar. Die Führungskraft, die nur durch Wissen Wert geschaffen hat, hat ein Problem. Die Führungskraft, die orchestrieren kann — Richtung geben, schärfere Fragen stellen, entscheiden was zählt — hat einen Vorteil, wie es ihn nur einmal in der Karriere gibt.</p>
+<p>Diese zweite Führungskraft ist der Agent Boss.</p>
+<h3>Was ein Agent Boss Leader wirklich ist</h3>
+<p>Ein Agent Boss nutzt KI nicht. Ein Agent Boss führt an ihrer Seite.</p>
+<ul>
+<li>Er fragt nicht „welche Aufgaben kann mir die KI abnehmen?" Er fragt „wie verändert KI, wie mein Team denkt, entscheidet und liefert?"</li>
+<li>Er will nicht der beste Prompter im Haus sein. Er baut ein Team — Mensch und KI — das bessere Ergebnisse liefert, als jeder für sich allein.</li>
+<li>Er misst Erfolg nicht in gesparten Stunden. Er misst ihn in besseren Entscheidungen, schneller getroffen, von mehr Menschen.</li>
+</ul>
+<p>Weniger die Arbeit kontrollieren. Mehr die Arbeit komponieren.</p>
+<h3>Was es nicht ist</h3>
+<p>Es ist kein Hype-Hinterherlaufen. Es ist nicht, jedes Tool mit „AI" im Namen zu kaufen. Und es ist definitiv nicht die LinkedIn-Variante — Prompt-Hacks sammeln und das Transformation nennen.</p>
+<p>Ein Agent Boss Leader kann gelassen sagen „Ich weiß es noch nicht" — und dann das System bauen, das es herausfindet. Das ist ein Mindset-Wechsel, keine Software-Lizenz.</p>
+<h3>Wohin das führt: die Frontier Firm</h3>
+<p>Wenn genug Führungskräfte so denken, entsteht, was wir eine Frontier Firm nennen — ein Unternehmen, das KI nicht nur nutzt, sondern gebaut ist, um mit ihr zu lernen und zu führen. Entscheidungen werden schneller. Teams verteidigen keine Informations-Burggräben mehr, sondern bauen Fähigkeiten auf, die sich summieren. KI ist keine Abteilung. Sie ist, wie die Arbeit passiert.</p>
+<p>Ich baue das in meinen eigenen Abteilungen. Und genau das helfe ich Führungskräften über die Agent Boss Academy aufzubauen — das Mindset und das Skillset, ein Team im KI-Zeitalter zu führen, statt von ihm überrollt zu werden.</p>
+<h3>Der ehrliche Teil</h3>
+<p>Ein Agent Boss Leader zu werden ist nicht bequem. Es verlangt, den Engpass loszulassen — genau das, was dich wahrscheinlich befördert hat. Aber die Führungskräfte, die diesen Tausch machen, werden nicht von KI ersetzt. Sie werden der Grund sein, warum ihre Organisationen nicht abgehängt werden.</p>
+<blockquote>Delegierst du Aufgaben an die KI — oder bist du bereit, an ihrer Seite zu führen?</blockquote>`,
+        en: `<p>Everyone's talking about AI adoption. Almost nobody's talking about who's supposed to lead it.</p>
+<p>We hand teams a tool, run a training, maybe spin up a "center of excellence" — and then wonder why nothing actually changes. The tech is rarely the problem. The leadership is.</p>
+<p>So let me define the role I think every organization is about to need: the Agent Boss Leader.</p>
+<h3>The shift nobody prepared us for</h3>
+<p>For decades, leadership ran on a simple deal: the manager knows more, decides more, and everything flows through them. Expertise was the moat. Being the smartest person in the room was the job.</p>
+<p>AI just made that moat disappear. Answers are now instant, cheap, and available to everyone on your team. The leader who only added value by knowing things has a problem. The leader who can orchestrate — set direction, ask sharper questions, decide what matters — has a once-in-a-career advantage.</p>
+<p>That second leader is the Agent Boss.</p>
+<h3>What an Agent Boss Leader actually is</h3>
+<p>An Agent Boss doesn't use AI. An Agent Boss leads alongside it.</p>
+<ul>
+<li>They don't ask "which tasks can AI take off my plate?" They ask "how does AI change the way my team thinks, decides, and delivers?"</li>
+<li>They don't try to be the best prompter in the building. They build a team — human and AI — that produces better outcomes than either could alone.</li>
+<li>They don't measure success in hours saved. They measure it in better decisions, made faster, by more people.</li>
+</ul>
+<p>Less about controlling the work. More about composing it.</p>
+<h3>What it's not</h3>
+<p>It's not hype-chasing. It's not buying every tool with "AI" in the name. And it's definitely not the LinkedIn version — collecting prompt hacks and calling it transformation.</p>
+<p>An Agent Boss Leader is comfortable saying "I don't know yet" — and then building the system that finds out. That's a mindset shift, not a software license.</p>
+<h3>Where this leads: the Frontier Firm</h3>
+<p>When enough leaders think this way, you get what we call a Frontier Firm — a company that doesn't just use AI, but is built to learn and lead with it. Decisions move faster. Teams stop defending information moats and start compounding capability. AI isn't a department. It's how the work happens.</p>
+<p>I'm building this inside my departments. And it's the same thing I help leaders build through the Agent Boss Academy — the mindset and the skill set to run a team in the age of AI, instead of being run over by it.</p>
+<h3>The honest part</h3>
+<p>Becoming an Agent Boss Leader isn't comfortable. It asks you to give up being the bottleneck — the exact thing that probably got you promoted. But the leaders who make that trade won't be replaced by AI. They'll be the reason their organizations don't get left behind.</p>
+<blockquote>Are you delegating tasks to AI — or are you ready to lead alongside it?</blockquote>`
+      }
+    }
+  ];
+  let insightsFilter = 'all';
+  let currentInsightId = null;
+
   function setLang(lang) {
     currentLang = lang;
     const t = i18n[lang];
@@ -2065,7 +2439,7 @@
 
     // ── NAV ──
     document.getElementById('navBack').textContent = t.navBack;
-    st('mnav-prog', t.mnavProg); st('mnav-why', t.mnavWhy); st('mnav-impact', t.mnavImpact); st('mnav-testi', t.mnavTesti); st('mnav-cta', t.mnavCta);
+    st('mnav-prog', t.mnavProg); st('mnav-why', t.mnavWhy); st('mnav-impact', t.mnavImpact); st('mnav-testi', t.mnavTesti); st('mnav-insights', t.mnavInsights); st('mnav-cta', t.mnavCta);
     // desktop nav (+ navBack/nav-cta) via data-de/data-en attributes
     document.querySelectorAll('[data-de]').forEach(el => { const v = el.getAttribute('data-' + lang); if (v != null) el.textContent = v; });
 
@@ -2103,6 +2477,18 @@
     st('cta-p', t.ctaP); st('cta-btn', t.ctaBtn);
     st('cta-meta1', t.ctaMeta1); st('cta-meta2', t.ctaMeta2); st('cta-meta3', t.ctaMeta3);
     st('footer-copy', t.footerCopy); st('footer-links', t.footerLinks);
+    // ── ORCHESTRATION ──
+    s('orch-label', t.orchLabel); s('orch-h2', t.orchH2); st('orch-intro', t.orchIntro);
+    st('orch-leader-label', t.orchLeader);
+    document.querySelectorAll('.orch-agent-label').forEach(el => { el.textContent = t.orchAgent; });
+    // ── INSIGHTS (statische Chrome) ──
+    s('ins-label', t.insLabel); s('ins-h2', t.insH2); st('ins-intro', t.insIntro);
+    st('ins-teaser-label', t.insTeaserLabel); s('ins-teaser-h2', t.insTeaserH2); st('ins-teaser-all', t.insTeaserAll);
+    st('ins-footer-copy', t.insFooterCopy);
+    const insTabs = { all: t.insSeriesAll, adventures: t.insSeriesAdv, craft: t.insSeriesCraft };
+    document.querySelectorAll('#ins-filters .ins-tab').forEach(b => { const k = b.getAttribute('data-filter'); if (insTabs[k]) b.textContent = insTabs[k]; });
+    // ── INSIGHTS (dynamische Inhalte neu rendern in aktueller Sprache) ──
+    if (typeof renderInsightsList === 'function') { renderInsightsList(); renderInsightsTeaser(); if (currentInsightId) openInsight(currentInsightId, true); }
     // popup
     st('popup-badge', t.popupBadge); st('popup-h3', t.popupH3); st('popup-p', t.popupP);
     document.getElementById('popup-name').placeholder = t.popupName;
@@ -2207,6 +2593,8 @@
   // ── ROUTING ──
   function showPage(id) {
     closeMobileNav();
+    // verlässt man die Insights über Logo/Back, den Insights-Hash entfernen (kein Re-Open beim Reload)
+    if (id !== 'insights' && location.hash.indexOf('#insights') === 0) history.replaceState(null, '', location.pathname + location.search);
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -2243,6 +2631,92 @@
 
   document.querySelectorAll('.programs-grid .program-card, .features-grid .feature-card, .impact-grid .metric-card, .testimonials-grid .testimonial-card').forEach((el, i) => {
     el.style.transitionDelay = (i * 80) + 'ms';
+  });
+
+  // ══════════════════════════════════════════════════════════════════
+  //  INSIGHTS — Rendering, Reader & Hash-Routing
+  // ──────────────────────────────────────────────────────────────────
+  function fmtDate(iso, long) {
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString(currentLang === 'en' ? 'en-US' : 'de-DE',
+      { day: 'numeric', month: long ? 'long' : 'short', year: 'numeric' });
+  }
+  function seriesName(key) {
+    return i18n[currentLang][key === 'adventures' ? 'insSeriesAdv' : 'insSeriesCraft'];
+  }
+  function insightCard(p) {
+    const L = currentLang;
+    return `<button class="insight-card fade-in" onclick="openInsight('${p.id}')" aria-label="${p.title[L].replace(/"/g, '&quot;')}">
+        <span class="insight-card-series insight-series--${p.series}">${seriesName(p.series)}</span>
+        <h3 class="insight-card-title">${p.title[L]}</h3>
+        <p class="insight-card-excerpt">${p.excerpt[L]}</p>
+        <span class="insight-card-meta">${fmtDate(p.date)} &middot; ${p.readMin} ${i18n[L].insMinRead}</span>
+      </button>`;
+  }
+  function sortedInsights() {
+    return insights.slice().sort((a, b) => b.date.localeCompare(a.date));
+  }
+  function renderInsightsList(filter, btn) {
+    if (filter) insightsFilter = filter;
+    const tabs = document.querySelectorAll('#ins-filters .ins-tab');
+    tabs.forEach(b => b.classList.toggle('is-active', b.getAttribute('data-filter') === insightsFilter));
+    if (btn) { tabs.forEach(b => b.classList.remove('is-active')); btn.classList.add('is-active'); }
+    const grid = document.getElementById('insightsGrid');
+    if (!grid) return;
+    const items = sortedInsights().filter(p => insightsFilter === 'all' || p.series === insightsFilter);
+    grid.innerHTML = items.length ? items.map(insightCard).join('')
+      : `<p class="insights-empty">${i18n[currentLang].insEmpty}</p>`;
+    grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  }
+  function renderInsightsTeaser() {
+    const grid = document.getElementById('insightsTeaserGrid');
+    if (!grid) return;
+    grid.innerHTML = sortedInsights().slice(0, 3).map(insightCard).join('');
+    grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  }
+  function openInsight(id, fromHash) {
+    const p = insights.find(x => x.id === id);
+    if (!p) { showPage('insights'); return; }
+    if (!document.getElementById('page-insights').classList.contains('active')) showPage('insights');
+    const L = currentLang;
+    const set = (elId, txt) => { const el = document.getElementById(elId); if (el) el.textContent = txt; };
+    const series = document.getElementById('insReaderSeries');
+    if (series) { series.textContent = seriesName(p.series); series.className = 'insight-series-label insight-series--' + p.series; }
+    set('insReaderTitle', p.title[L]);
+    set('insReaderMeta', `${fmtDate(p.date, true)} · ${p.readMin} ${i18n[L].insMinRead}`);
+    const body = document.getElementById('insReaderBody'); if (body) body.innerHTML = p.body[L];
+    const li = document.getElementById('insReaderLi'); if (li) { li.href = p.url; li.textContent = i18n[L].insOnLinkedIn; }
+    document.getElementById('insReaderBack').textContent = i18n[L].insBack;
+    document.getElementById('insReaderBackBottom').textContent = i18n[L].insBack;
+    const hub = document.querySelector('#page-insights .insights-hub');
+    if (hub) hub.style.display = 'none';
+    document.getElementById('insightReader').hidden = false;
+    currentInsightId = id;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!fromHash) location.hash = 'insights/' + id;
+  }
+  function closeInsight() {
+    document.getElementById('insightReader').hidden = true;
+    const hub = document.querySelector('#page-insights .insights-hub');
+    if (hub) hub.style.display = '';
+    currentInsightId = null;
+    if (location.hash.indexOf('insights/') !== -1) location.hash = 'insights';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  function applyHash() {
+    const h = location.hash.replace(/^#/, '');
+    if (h.indexOf('insights') === 0) {
+      const slug = h.split('/')[1];
+      showPage('insights');
+      renderInsightsList();
+      if (slug) openInsight(slug, true); else closeInsight();
+    }
+  }
+  window.addEventListener('hashchange', applyHash);
+  window.addEventListener('DOMContentLoaded', () => {
+    renderInsightsTeaser();
+    renderInsightsList();
+    applyHash();
   });
 
   // ── FAQ ──
@@ -2767,7 +3241,7 @@
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floatingCta">
   <a href="https://calendly.com/robert85-weller/30min" target="_blank">
-    <span>📞</span><span id="floating-cta-text">Strategy Call buchen</span>
+    <span class="floating-cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.3 4-2 1.4a11 11 0 0 0 4.8 4.8l1.4-2 4 1.3v3a1.5 1.5 0 0 1-1.6 1.5A14.5 14.5 0 0 1 5 5.1 1.5 1.5 0 0 1 6.5 3.5z"/></svg></span><span id="floating-cta-text">Strategy Call buchen</span>
   </a>
 </div>
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben">↑</button>

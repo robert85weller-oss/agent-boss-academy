@@ -7,3 +7,6 @@
 
 # Original-Profilfoto (nur lokal; Web nutzt robert-avatar.jpg)
 assets/robert.jpeg
+
+# Lokale Firecrawl-Scrapes (nur Arbeitsmaterial)
+.firecrawl/
