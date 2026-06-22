@@ -1090,6 +1090,8 @@
   .hero-portrait figcaption::before { content:''; width:20px; height:1px; background:var(--amber); flex-shrink:0; }
   .hero-prog { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
 
+  /* About rückt unter den Hero → Hintergrund an Hero angleichen (kein Doppel-Paper-2) */
+  body.theme-light #page-home .about { background:var(--paper); }
   /* Leadership-Wandel-Band (relozierte Infografik) */
   .leadership-shift-band { background:var(--paper-2); border-top:1px solid var(--line); padding:88px 64px 96px; display:flex; justify-content:center; }
   .leadership-shift-band .leader-shift { max-width:560px; width:100%; }
@@ -1193,6 +1195,26 @@
     </div>
   </section>
 
+  <section class="about" id="team">
+    <div class="about-inner">
+      <div class="about-aside fade-in">
+        <div class="about-name">Robert Weller</div>
+        <div class="about-role" data-de="Gründer · Agent Boss Leader" data-en="Founder · Agent Boss Leader">Gründer · Agent Boss Leader</div>
+        <div class="about-meta" data-de="VP &amp; Global Content Officer, SAP" data-en="VP &amp; Global Content Officer, SAP">VP &amp; Global Content Officer, SAP</div>
+        <a class="about-link" href="https://www.linkedin.com/in/robertweller-info/" target="_blank" rel="noopener">LinkedIn →</a>
+      </div>
+      <div class="about-body fade-in">
+        <span class="sec-index" data-idx="01"></span>
+        <div class="section-label" data-de="Wer hinter Agent Boss steht" data-en="Who is behind Agent Boss">Wer hinter Agent Boss steht</div>
+        <h2 class="about-headline" data-de="SAP-Exec bei Tag, Agent Boss bei Nacht." data-en="SAP exec by day, Agent Boss by night.">SAP-Exec bei Tag, Agent Boss bei Nacht.</h2>
+        <p data-de="Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms&quot; nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn." data-en="As VP &amp; Global Content Officer at SAP, I'm building what we call 'Frontier Firms' — companies that don't just use AI, but learn to lead alongside it. That same mindset is the reason I started the Agent Boss Academy, my venture for people who want more than another ChatGPT hack on LinkedIn.">Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms" nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn.</p>
+        <p data-de="Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped." data-en="My sweet spot: strategy, product, and content — right where they collide. Due diligence on the Signavio acquisition? Done. SAP-wide Content Strategy from scratch? Live. Digital Boardroom in operations? Shipped.">Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped.</p>
+        <p data-de="Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak." data-en="I believe transformation doesn't start with tech. It starts with attitude. I like straight talk, sharp positioning, and content that actually moves the needle — no buzzword bingo, no consultant-speak.">Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak.</p>
+        <p data-de="Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt." data-en="Off-hours? Fresh MBAI in the pocket, a gin startup in the oven, and a mountain bike that doesn't ride itself.">Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="leadership-shift-band" id="leadershift">
     <div class="leader-shift fade-in">
       <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
@@ -1228,6 +1250,7 @@
 
   <section class="offerings" id="offerings">
     <div class="programs-header fade-in">
+      <span class="sec-index" data-idx="02"></span>
       <div class="section-label" id="off-label">Zusammenarbeit</div>
       <h2 class="section-headline" id="off-h2">Drei Wege, mit mir zu arbeiten</h2>
       <p id="off-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Gleichwertig – je nachdem, wie viel du selbst bauen willst und wie viel wir für dich übernehmen.</p>
@@ -1301,6 +1324,7 @@
 
   <section class="programs" id="programmes">
     <div class="programs-header fade-in">
+      <span class="sec-index" data-idx="03"></span>
       <div class="section-label" id="prog-label">Anwendungsfelder</div>
       <h2 class="section-headline" id="prog-h2">Wo Agent-Boss-Arbeit wirkt</h2>
       <p id="prog-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Dieselben drei Wege – angewendet auf die Bereiche, in denen ich am meisten helfe.</p>
@@ -1332,6 +1356,7 @@
 
   <section class="why" id="why">
     <div class="why-header fade-in">
+      <span class="sec-index" data-idx="04"></span>
       <div class="section-label" id="why-label">Warum wir</div>
       <h2 class="section-headline" id="why-h2">Warum Abteilungsleiter mit mir arbeiten</h2>
     </div>
@@ -1343,28 +1368,9 @@
     </div>
   </section>
 
-  <section class="about" id="team">
-    <div class="about-inner">
-      <div class="about-aside fade-in">
-        <img class="about-avatar about-photo" src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="lazy">
-        <div class="about-name">Robert Weller</div>
-        <div class="about-role" data-de="Gründer · Agent Boss Leader" data-en="Founder · Agent Boss Leader">Gründer · Agent Boss Leader</div>
-        <div class="about-meta" data-de="VP &amp; Global Content Officer, SAP" data-en="VP &amp; Global Content Officer, SAP">VP &amp; Global Content Officer, SAP</div>
-        <a class="about-link" href="https://www.linkedin.com/in/robertweller-info/" target="_blank" rel="noopener">LinkedIn →</a>
-      </div>
-      <div class="about-body fade-in">
-        <div class="section-label" data-de="Wer hinter Agent Boss steht" data-en="Who is behind Agent Boss">Wer hinter Agent Boss steht</div>
-        <h2 class="about-headline" data-de="SAP-Exec bei Tag, Agent Boss bei Nacht." data-en="SAP exec by day, Agent Boss by night.">SAP-Exec bei Tag, Agent Boss bei Nacht.</h2>
-        <p data-de="Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms&quot; nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn." data-en="As VP &amp; Global Content Officer at SAP, I'm building what we call 'Frontier Firms' — companies that don't just use AI, but learn to lead alongside it. That same mindset is the reason I started the Agent Boss Academy, my venture for people who want more than another ChatGPT hack on LinkedIn.">Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms" nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn.</p>
-        <p data-de="Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped." data-en="My sweet spot: strategy, product, and content — right where they collide. Due diligence on the Signavio acquisition? Done. SAP-wide Content Strategy from scratch? Live. Digital Boardroom in operations? Shipped.">Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped.</p>
-        <p data-de="Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak." data-en="I believe transformation doesn't start with tech. It starts with attitude. I like straight talk, sharp positioning, and content that actually moves the needle — no buzzword bingo, no consultant-speak.">Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak.</p>
-        <p data-de="Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt." data-en="Off-hours? Fresh MBAI in the pocket, a gin startup in the oven, and a mountain bike that doesn't ride itself.">Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="impact" id="impact">
     <div class="impact-header fade-in">
+      <span class="sec-index" data-idx="05"></span>
       <div class="section-label" id="impact-label">Erste Ergebnisse 2026</div>
       <h2 class="section-headline" id="impact-h2">Erste Ergebnisse aus der Praxis</h2>
     </div>
@@ -1379,6 +1385,7 @@
 
   <section class="testimonials" id="testimonials">
     <div class="testimonials-header fade-in">
+      <span class="sec-index" data-idx="06"></span>
       <div class="section-label" id="testi-label">Stimmen</div>
       <h2 class="section-headline" id="testi-h2">Was Abteilungsleiter sagen</h2>
     </div>
@@ -1392,6 +1399,7 @@
   <section class="insights-teaser" id="insights-home">
     <div class="insights-teaser-head fade-in">
       <div>
+        <span class="sec-index" data-idx="07"></span>
         <div class="section-label" id="ins-teaser-label">Insights</div>
         <h2 class="section-headline" id="ins-teaser-h2">Aus der Praxis</h2>
       </div>
