@@ -1069,12 +1069,24 @@
   .insights-teaser-all { white-space:nowrap; }
   .insights-grid--teaser { max-width:1180px; margin:0 auto; }
 
+  /* ═══════════════════════════════════════════════════════════
+     ADVISORY-REDESIGN — laufender Index + linksbündige Header (Home)
+  ═══════════════════════════════════════════════════════════ */
+  /* Sektions-Header linksbündig (Home), Final-CTA & Orchestrierung bleiben zentriert */
+  body.theme-light #page-home .programs-header,
+  body.theme-light #page-home .why-header,
+  body.theme-light #page-home .impact-header,
+  body.theme-light #page-home .testimonials-header { text-align:left; align-items:flex-start; max-width:760px; margin-left:0; margin-right:0; }
+  /* laufender Index: kleine Fraunces-Kursiv-Ziffer über dem Eyebrow */
+  .sec-index { display:block; font-family:'Fraunces',serif; font-style:italic; font-weight:360; font-size:30px; line-height:1; color:var(--amber); opacity:.85; margin-bottom:16px; letter-spacing:-.5px; }
+  .sec-index::before { content:attr(data-idx); }
   @media (max-width:1024px) {
     body.theme-light .offerings-grid { grid-template-columns:1fr; }
     body.theme-light .impact-grid { grid-template-columns:1fr; }
     body.theme-light .testimonials-grid { grid-template-columns:1fr; }
     body.theme-light .metric-card--lead, body.theme-light .testimonial-card--feature { grid-column:auto; }
     .insights-grid { grid-template-columns:1fr; }
+    .sec-index { font-size:26px; margin-bottom:12px; }
     .insights-hub { padding:120px 24px 70px; }
     .insights-teaser { padding:80px 24px; }
     .insights-teaser-head { flex-direction:column; align-items:flex-start; }
