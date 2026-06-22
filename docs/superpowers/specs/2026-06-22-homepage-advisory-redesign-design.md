@@ -102,8 +102,13 @@ das Editorial-Fundament bleiben.**
 Arbeit ausschließlich auf `feature/homepage-advisory-redesign`. `main`/Live unberührt. Merge nach
 `main` (= Auto-Deploy Netlify) **erst nach Roberts ausdrücklicher Freigabe** nach gemeinsamem Review.
 
-## Offene Punkte (vor/ während Umsetzung mit Robert klären)
+## Entscheidungen (mit Robert geklärt, 2026-06-22)
 
-- Finales **Wording der Hero-*Ich*-Headline** (Default oben vorgeschlagen).
-- Ob **About/Vita** wirklich direkt unter den Hero soll (vs. aktuelle Position).
-- Intensität „laufender Index + Asymmetrie" (kann dezenter gefahren werden).
+- **Hero-*Ich*-Headline:** bestätigt — DE „Ich coache Führungskräfte in die KI-Transformation."
+  (Akzentwort *KI-Transformation* kursiv+amber), EN analog.
+- **About/Vita:** rückt **direkt unter den Hero** (Person-first). → Um Doppel-Porträt zu vermeiden,
+  trägt der **Hero** das große Porträt; die About-Sektion verzichtet auf ihren kleinen Avatar und
+  wird vita-/text-fokussiert.
+- **Laufender Index:** gewünscht, **dezent** umgesetzt — kleine durchlaufende Fraunces-Kursiv-Ziffern
+  (01–0n) am linken Rand der Sektions-Header als editoriales Orientierungs-/Inhaltsverzeichnis-Detail.
+  In Review-Screenshots überprüfbar, jederzeit zurückdrehbar.
