@@ -3320,47 +3320,81 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const CFG = {
     ink: '22,20,15', amber: '182,84,31',
-    density: 30000,   // höher = weniger Knoten
-    maxNodes: 46, minNodes: 18,
-    linkDist: 150,    // px Reichweite für Linien
-    nodeAlpha: 0.10, lineAlpha: 0.07, packetAlpha: 0.40,
-    speed: 0.09, packetEvery: 42, maxPackets: 7
+    density: 30000,        // höher = weniger Knoten
+    maxNodes: 50, minNodes: 22,
+    clusters: 4,           // "Lappen" → Gehirn-/Second-Brain-Anmutung
+    agentRatio: 0.16,      // Anteil Agenten-Knoten (mit "A"-Marker)
+    linkDist: 165,         // px Reichweite für Synapsen
+    nodeAlpha: 0.10, lineAlpha: 0.06, packetAlpha: 0.42,
+    agentInk: 0.26, agentRing: 0.18,   // Sichtbarkeit der Agenten-Marker
+    spring: 0.0006, wander: 0.03, damp: 0.95,
+    packetEvery: 34, maxPackets: 9
   };
   const ctx = c.getContext('2d');
-  let W, H, DPR, nodes = [], packets = [], raf = null, running = true, acc = 0;
+  let DPR, nodes = [], agents = [], packets = [], raf = null, running = true, acc = 0;
+  const gauss = ()=> (Math.random()+Math.random()+Math.random()-1.5)/1.5;
   function size(){
     DPR = Math.min(2, window.devicePixelRatio || 1);
-    c.width = Math.floor(innerWidth * DPR); c.height = Math.floor(innerHeight * DPR);
-    c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px';
+    c.width = Math.floor(innerWidth*DPR); c.height = Math.floor(innerHeight*DPR);
+    c.style.width = innerWidth+'px'; c.style.height = innerHeight+'px';
     init();
   }
   function init(){
+    const W=c.width, H=c.height;
     const n = Math.max(CFG.minNodes, Math.min(CFG.maxNodes, Math.round((innerWidth*innerHeight)/CFG.density)));
+    const C = CFG.clusters, centers = [];
+    for (let i=0;i<C;i++) centers.push({ x:(0.18+0.64*Math.random())*W, y:(0.18+0.64*Math.random())*H });
+    const spread = Math.min(W,H)/C * 0.55;
     nodes = [];
-    for (let i=0;i<n;i++) nodes.push({
-      x: Math.random()*c.width, y: Math.random()*c.height,
-      vx: (Math.random()-.5)*CFG.speed*DPR, vy: (Math.random()-.5)*CFG.speed*DPR
-    });
+    for (let i=0;i<n;i++){
+      const ce = centers[i % C];
+      const hx = Math.max(0,Math.min(W, ce.x + gauss()*spread));
+      const hy = Math.max(0,Math.min(H, ce.y + gauss()*spread));
+      nodes.push({ x:hx, y:hy, hx, hy, vx:0, vy:0, agent:false });
+    }
+    // ein Agent pro Cluster (Hub) + zufällige weitere bis agentRatio
+    for (let ci=0; ci<C && ci<nodes.length; ci++) nodes[ci].agent = true;
+    let extra = Math.max(0, Math.round(n*CFG.agentRatio) - C);
+    while (extra>0){ const nd = nodes[(Math.random()*nodes.length)|0]; if(!nd.agent){ nd.agent=true; extra--; } }
+    agents = nodes.filter(x=>x.agent);
     packets = [];
   }
   function spawn(){
-    if (nodes.length < 2) return;
+    if (!agents.length || nodes.length<2) return;
     const a = nodes[(Math.random()*nodes.length)|0];
-    let best=null, bd=Infinity, R=CFG.linkDist*DPR;
-    for (const b of nodes){ if (b===a) continue; const d=Math.hypot(a.x-b.x,a.y-b.y); if (d<R && d<bd){ bd=d; best=b; } }
-    if (best) packets.push({a, b:best, t:0, sp:0.010+Math.random()*0.010});
+    let best=null, bd=Infinity;          // Info fließt zum nächsten Agenten
+    for (const ag of agents){ if (ag===a) continue; const d=Math.hypot(a.x-ag.x,a.y-ag.y); if(d<bd){bd=d;best=ag;} }
+    if (best && best!==a) packets.push({a, b:best, t:0, sp:0.010+Math.random()*0.010});
   }
   function frame(){
     if (!running) return;
-    ctx.clearRect(0,0,c.width,c.height);
-    for (const p of nodes){ p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x+=c.width; if(p.x>c.width)p.x-=c.width; if(p.y<0)p.y+=c.height; if(p.y>c.height)p.y-=c.height; }
-    const R = CFG.linkDist*DPR; ctx.lineWidth = DPR;
+    const W=c.width, H=c.height, R=CFG.linkDist*DPR;
+    ctx.clearRect(0,0,W,H);
+    // organische Bewegung: Feder zum Heimatpunkt + leichtes Wandern → Lappen bleiben
+    for (const p of nodes){
+      p.vx += (p.hx-p.x)*CFG.spring + (Math.random()-.5)*CFG.wander*DPR;
+      p.vy += (p.hy-p.y)*CFG.spring + (Math.random()-.5)*CFG.wander*DPR;
+      p.vx *= CFG.damp; p.vy *= CFG.damp; p.x += p.vx; p.y += p.vy;
+    }
+    // Synapsen
+    ctx.lineWidth = DPR;
     for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++){
       const a=nodes[i], b=nodes[j], d=Math.hypot(a.x-b.x,a.y-b.y);
       if (d<R){ ctx.strokeStyle='rgba('+CFG.ink+','+(CFG.lineAlpha*(1-d/R)).toFixed(3)+')'; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
     }
+    // Wissens-Knoten (kleine Punkte)
     ctx.fillStyle='rgba('+CFG.ink+','+CFG.nodeAlpha+')';
-    for (const p of nodes){ ctx.beginPath(); ctx.arc(p.x,p.y,1.5*DPR,0,6.2832); ctx.fill(); }
+    for (const p of nodes){ if(p.agent) continue; ctx.beginPath(); ctx.arc(p.x,p.y,1.5*DPR,0,6.2832); ctx.fill(); }
+    // Agenten-Knoten: Amber-Ring + "A"
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.font = 'italic '+(11*DPR)+"px 'Fraunces', Georgia, serif";
+    for (const p of agents){
+      ctx.lineWidth = DPR; ctx.strokeStyle='rgba('+CFG.amber+','+CFG.agentRing+')';
+      ctx.beginPath(); ctx.arc(p.x,p.y,7*DPR,0,6.2832); ctx.stroke();
+      ctx.fillStyle='rgba('+CFG.ink+','+CFG.agentInk+')';
+      ctx.fillText('A', p.x, p.y+0.5*DPR);
+    }
+    // Info-Pakete zu den Agenten
     if (++acc > CFG.packetEvery){ acc=0; if (packets.length<CFG.maxPackets) spawn(); }
     for (let k=packets.length-1;k>=0;k--){
       const pk=packets[k]; pk.t+=pk.sp; if (pk.t>=1){ packets.splice(k,1); continue; }
