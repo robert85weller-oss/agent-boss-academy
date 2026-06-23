@@ -991,15 +991,22 @@
   .orchestration-head { max-width:680px; margin:0 auto 48px; text-align:center; }
   .orchestration-head .section-label { justify-content:center; }
   .orchestration-intro { font-size:18px; line-height:1.6; color:var(--ink-mute); font-weight:300; margin-top:14px; }
-  .orchestration-stage { max-width:720px; margin:0 auto; }
+  .orchestration-stage { max-width:840px; margin:0 auto; }
   .orch-svg { width:100%; height:auto; display:block; }
   .orch-link { fill:none; stroke:rgba(182,84,31,.4); stroke-width:1.5; stroke-dashoffset:0; }
+  .orch-sublink { fill:none; stroke:rgba(182,84,31,.28); stroke-width:1.2; }
   .orch-node circle { fill:var(--paper-card); stroke:var(--line); stroke-width:1.5; }
   .orch-leader circle { stroke:var(--amber); stroke-width:2; fill:rgba(182,84,31,.07); }
   .orch-node-label { font-family:'Fraunces',serif; font-size:16px; fill:var(--ink); text-anchor:middle; font-style:italic; }
+  .orch-leader-label { font-size:17px; font-weight:500; }
   .orch-agent-label { font-size:14px; fill:var(--ink-soft); }
+  .orch-hub-a { font-family:'Fraunces',serif; font-style:italic; font-size:23px; fill:var(--amber); text-anchor:middle; dominant-baseline:central; }
+  .orch-dept { font-family:'Fraunces',serif; font-weight:480; font-size:19px; fill:var(--ink); text-anchor:middle; letter-spacing:-.2px; }
+  .orch-person-bg { fill:var(--paper-card); stroke:var(--line); stroke-width:1.2; }
+  .orch-person { color:var(--ink-soft); stroke-width:1.3; stroke-linecap:round; }
   .orch-pulse { fill:var(--amber); opacity:0; }
   .orch-report { fill:var(--amber-light); opacity:0; }
+  .orch-cpulse { fill:var(--amber-light); }
 
   @media (prefers-reduced-motion: reduce) {
     .orch-pulse, .orch-report { display:none; }
@@ -1090,10 +1097,6 @@
   .hero-portrait figcaption::before { content:''; width:20px; height:1px; background:var(--amber); flex-shrink:0; }
   .hero-prog { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
 
-  /* Agent-Network — dezente, sehr transparente Hintergrund-Animation (global) */
-  #agentNet { position:fixed; inset:0; width:100%; height:100%; z-index:3; pointer-events:none; opacity:.9; }
-  @media (prefers-reduced-motion: reduce) { #agentNet { display:none; } }
-
   /* About rückt unter den Hero → Hintergrund an Hero angleichen (kein Doppel-Paper-2) */
   body.theme-light #page-home .about { background:var(--paper); }
   /* Impact-Footnote links (konsistent mit linksbündigen Headern) */
@@ -1146,9 +1149,6 @@
   <input type="text" name="score" />
   <input type="text" name="bot-field" />
 </form>
-
-<!-- AGENT-NETWORK (dezente Hintergrund-Animation) -->
-<canvas id="agentNet" aria-hidden="true"></canvas>
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -1302,42 +1302,52 @@
     <div class="orchestration-head fade-in">
       <div class="section-label" id="orch-label">Orchestrierung</div>
       <h2 class="section-headline" id="orch-h2">Wie ein Agent Boss arbeitet</h2>
-      <p class="orchestration-intro" id="orch-intro">Du tippst nicht mehr selbst. Du delegierst an ein Team aus Agenten – sie arbeiten parallel und melden zurück. Aus „alles selbst machen" wird „das Richtige entscheiden".</p>
+      <p class="orchestration-intro" id="orch-intro">So sieht eine Organisation der Zukunft aus: Du als Agent Boss Leader steuerst mehrere Agenten-Cluster – je ein Agent plus Menschen, pro Bereich: Sales, Marketing, HR.</p>
     </div>
     <div class="orchestration-stage fade-in" id="orchStage">
-      <svg class="orch-svg" viewBox="0 0 800 380" role="img" aria-labelledby="orchTitle orchDesc" preserveAspectRatio="xMidYMid meet">
-        <title id="orchTitle">Orchestrierung: Leader delegiert an Agenten-Team</title>
-        <desc id="orchDesc">Ein Leader-Knoten oben delegiert an drei Agenten-Knoten, die Aufgaben erledigen und zurückmelden.</desc>
-        <!-- connectors -->
-        <path class="orch-link orch-link-1" d="M400,96 C300,150 230,190 168,250" />
-        <path class="orch-link orch-link-2" d="M400,96 C400,160 400,195 400,248" />
-        <path class="orch-link orch-link-3" d="M400,96 C500,150 570,190 632,250" />
-        <!-- delegation pulses (Leader → Agent) -->
-        <circle class="orch-pulse orch-pulse-1" r="4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M400,96 C300,150 230,190 168,250" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-pulse orch-pulse-2" r="4"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" path="M400,96 C400,160 400,195 400,248" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-pulse orch-pulse-3" r="4"><animateMotion dur="2.6s" begin="1s" repeatCount="indefinite" path="M400,96 C500,150 570,190 632,250" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <!-- report-back pulses (Agent → Leader) -->
-        <circle class="orch-report orch-report-1" r="3"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M168,250 C230,190 300,150 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-report orch-report-2" r="3"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M400,248 C400,195 400,160 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-report orch-report-3" r="3"><animateMotion dur="2.6s" begin="2.3s" repeatCount="indefinite" path="M632,250 C570,190 500,150 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <!-- leader node -->
-        <g class="orch-node orch-leader">
-          <circle cx="400" cy="62" r="34" />
-          <text x="400" y="120" class="orch-node-label" id="orch-leader-label">Leader</text>
-        </g>
-        <!-- agent nodes -->
-        <g class="orch-node orch-agent orch-agent-1">
-          <circle cx="168" cy="278" r="26" />
-          <text x="168" y="330" class="orch-node-label orch-agent-label">Agent</text>
-        </g>
-        <g class="orch-node orch-agent orch-agent-2">
-          <circle cx="400" cy="278" r="26" />
-          <text x="400" y="330" class="orch-node-label orch-agent-label">Agent</text>
-        </g>
-        <g class="orch-node orch-agent orch-agent-3">
-          <circle cx="632" cy="278" r="26" />
-          <text x="632" y="330" class="orch-node-label orch-agent-label">Agent</text>
-        </g>
+      <svg class="orch-svg" viewBox="0 0 900 470" role="img" aria-labelledby="orchTitle orchDesc" preserveAspectRatio="xMidYMid meet">
+        <title id="orchTitle">Organisation der Zukunft: Agent Boss Leader steuert Agenten-Cluster</title>
+        <desc id="orchDesc">Ein Agent Boss Leader oben delegiert an drei Bereichs-Cluster (Sales, Marketing, HR), jeweils mit einem Agenten und mehreren Menschen.</desc>
+        <defs>
+          <g id="orchPerson"><circle cx="0" cy="-3.4" r="3.3" fill="currentColor"/><path d="M-6,8 a6.2,6.6 0 0 1 12,0" fill="none" stroke="currentColor"/></g>
+        </defs>
+        <!-- Delegation: Leader → Bereichs-Agent -->
+        <path class="orch-link orch-link-1" d="M450,134 C360,180 250,215 162,266" />
+        <path class="orch-link orch-link-2" d="M450,134 C450,190 450,220 450,266" />
+        <path class="orch-link orch-link-3" d="M450,134 C540,180 650,215 738,266" />
+        <!-- Cluster-Links: Agent → Mensch -->
+        <path class="orch-sublink" d="M160,316 L112,360" /><path class="orch-sublink" d="M160,316 L208,360" />
+        <path class="orch-sublink" d="M450,316 L402,360" /><path class="orch-sublink" d="M450,316 L498,360" />
+        <path class="orch-sublink" d="M740,316 L692,360" /><path class="orch-sublink" d="M740,316 L788,360" />
+        <!-- Delegation-Pulse (Leader → Agent) -->
+        <circle class="orch-pulse orch-pulse-1" r="4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M450,134 C360,180 250,215 162,266" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-pulse orch-pulse-2" r="4"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" path="M450,134 C450,190 450,220 450,266" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-pulse orch-pulse-3" r="4"><animateMotion dur="2.6s" begin="1s" repeatCount="indefinite" path="M450,134 C540,180 650,215 738,266" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <!-- Report-Back-Pulse (Agent → Leader) -->
+        <circle class="orch-report orch-report-1" r="3"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M162,266 C250,215 360,180 450,134" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-report orch-report-2" r="3"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M450,266 C450,220 450,190 450,134" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <circle class="orch-report orch-report-3" r="3"><animateMotion dur="2.6s" begin="2.3s" repeatCount="indefinite" path="M738,266 C650,215 540,180 450,134" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
+        <!-- Cluster-Pulse (Agent → Mensch) -->
+        <circle class="orch-pulse orch-cpulse" r="2.6"><animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M160,316 L208,360" /></circle>
+        <circle class="orch-pulse orch-cpulse" r="2.6"><animateMotion dur="1.8s" begin="1.5s" repeatCount="indefinite" path="M450,316 L402,360" /></circle>
+        <circle class="orch-pulse orch-cpulse" r="2.6"><animateMotion dur="1.8s" begin="2.1s" repeatCount="indefinite" path="M740,316 L788,360" /></circle>
+        <!-- Menschen -->
+        <g class="orch-person-g"><circle class="orch-person-bg" cx="112" cy="360" r="11"/><use href="#orchPerson" class="orch-person" x="112" y="360"/></g>
+        <g class="orch-person-g"><circle class="orch-person-bg" cx="208" cy="360" r="11"/><use href="#orchPerson" class="orch-person" x="208" y="360"/></g>
+        <g class="orch-person-g"><circle class="orch-person-bg" cx="402" cy="360" r="11"/><use href="#orchPerson" class="orch-person" x="402" y="360"/></g>
+        <g class="orch-person-g"><circle class="orch-person-bg" cx="498" cy="360" r="11"/><use href="#orchPerson" class="orch-person" x="498" y="360"/></g>
+        <g class="orch-person-g"><circle class="orch-person-bg" cx="692" cy="360" r="11"/><use href="#orchPerson" class="orch-person" x="692" y="360"/></g>
+        <g class="orch-person-g"><circle class="orch-person-bg" cx="788" cy="360" r="11"/><use href="#orchPerson" class="orch-person" x="788" y="360"/></g>
+        <!-- Bereichs-Agenten -->
+        <g class="orch-node orch-agent orch-agent-1"><circle cx="160" cy="290" r="26"/><text x="160" y="290" class="orch-hub-a">A</text></g>
+        <g class="orch-node orch-agent orch-agent-2"><circle cx="450" cy="290" r="26"/><text x="450" y="290" class="orch-hub-a">A</text></g>
+        <g class="orch-node orch-agent orch-agent-3"><circle cx="740" cy="290" r="26"/><text x="740" y="290" class="orch-hub-a">A</text></g>
+        <!-- Bereichs-Labels -->
+        <text x="160" y="418" class="orch-dept" data-de="Sales" data-en="Sales">Sales</text>
+        <text x="450" y="418" class="orch-dept" data-de="Marketing" data-en="Marketing">Marketing</text>
+        <text x="740" y="418" class="orch-dept" data-de="HR" data-en="HR">HR</text>
+        <!-- Leader -->
+        <g class="orch-node orch-leader"><circle cx="450" cy="92" r="34"/><text x="450" y="40" class="orch-node-label orch-leader-label" id="orch-leader-label">Agent Boss Leader</text></g>
       </svg>
     </div>
   </section>
@@ -2039,8 +2049,8 @@
       mnavProg: 'Anwendungsfelder', mnavWhy: 'Warum wir', mnavImpact: 'Ergebnisse', mnavTesti: 'Stimmen', mnavInsights: 'Insights', mnavCta: 'Strategy Call buchen',
       // ORCHESTRATION
       orchLabel: 'Orchestrierung', orchH2: 'Wie ein Agent Boss arbeitet',
-      orchIntro: 'Du tippst nicht mehr selbst. Du delegierst an ein Team aus Agenten – sie arbeiten parallel und melden zurück. Aus „alles selbst machen" wird „das Richtige entscheiden".',
-      orchLeader: 'Leader', orchAgent: 'Agent',
+      orchIntro: 'So sieht eine Organisation der Zukunft aus: Du als Agent Boss Leader steuerst mehrere Agenten-Cluster – je ein Agent plus Menschen, pro Bereich: Sales, Marketing, HR.',
+      orchLeader: 'Agent Boss Leader', orchAgent: 'Agent',
       // INSIGHTS
       insLabel: 'Insights', insH2: 'Adventures &amp; Knowledge Craft',
       insIntro: 'Notizen, How-Tos und Beobachtungen aus dem Alltag als Agent Boss – aus meinen LinkedIn-Serien, hier in Ruhe nachlesbar.',
@@ -2209,8 +2219,8 @@
       mnavProg: 'Use cases', mnavWhy: 'Why us', mnavImpact: 'Results', mnavTesti: 'Testimonials', mnavInsights: 'Insights', mnavCta: 'Book Strategy Call',
       // ORCHESTRATION
       orchLabel: 'Orchestration', orchH2: 'How an Agent Boss works',
-      orchIntro: 'You don\'t type everything yourself anymore. You delegate to a team of agents — they work in parallel and report back. "Do it all yourself" becomes "decide what matters".',
-      orchLeader: 'Leader', orchAgent: 'Agent',
+      orchIntro: 'This is what the organization of the future looks like: as the Agent Boss Leader you steer several agent clusters – an agent plus people each, per function: Sales, Marketing, HR.',
+      orchLeader: 'Agent Boss Leader', orchAgent: 'Agent',
       // INSIGHTS
       insLabel: 'Insights', insH2: 'Adventures &amp; Knowledge Craft',
       insIntro: 'Notes, how-tos and observations from life as an Agent Boss — from my LinkedIn series, collected here to read at leisure.',
@@ -3311,104 +3321,5 @@
 </div>
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben">↑</button>
 
-<script>
-/* Agent-Network: dezentes, sehr transparentes Hintergrund-Netzwerk.
-   Tuning unten in CFG (Intensität anpassbar). Respektiert prefers-reduced-motion. */
-(function(){
-  const c = document.getElementById('agentNet');
-  if (!c) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const CFG = {
-    ink: '22,20,15', amber: '182,84,31',
-    density: 30000,        // höher = weniger Knoten
-    maxNodes: 50, minNodes: 22,
-    clusters: 4,           // "Lappen" → Gehirn-/Second-Brain-Anmutung
-    agentRatio: 0.16,      // Anteil Agenten-Knoten (mit "A"-Marker)
-    linkDist: 165,         // px Reichweite für Synapsen
-    nodeAlpha: 0.10, lineAlpha: 0.06, packetAlpha: 0.42,
-    agentInk: 0.26, agentRing: 0.18,   // Sichtbarkeit der Agenten-Marker
-    spring: 0.0006, wander: 0.03, damp: 0.95,
-    packetEvery: 34, maxPackets: 9
-  };
-  const ctx = c.getContext('2d');
-  let DPR, nodes = [], agents = [], packets = [], raf = null, running = true, acc = 0;
-  const gauss = ()=> (Math.random()+Math.random()+Math.random()-1.5)/1.5;
-  function size(){
-    DPR = Math.min(2, window.devicePixelRatio || 1);
-    c.width = Math.floor(innerWidth*DPR); c.height = Math.floor(innerHeight*DPR);
-    c.style.width = innerWidth+'px'; c.style.height = innerHeight+'px';
-    init();
-  }
-  function init(){
-    const W=c.width, H=c.height;
-    const n = Math.max(CFG.minNodes, Math.min(CFG.maxNodes, Math.round((innerWidth*innerHeight)/CFG.density)));
-    const C = CFG.clusters, centers = [];
-    for (let i=0;i<C;i++) centers.push({ x:(0.18+0.64*Math.random())*W, y:(0.18+0.64*Math.random())*H });
-    const spread = Math.min(W,H)/C * 0.55;
-    nodes = [];
-    for (let i=0;i<n;i++){
-      const ce = centers[i % C];
-      const hx = Math.max(0,Math.min(W, ce.x + gauss()*spread));
-      const hy = Math.max(0,Math.min(H, ce.y + gauss()*spread));
-      nodes.push({ x:hx, y:hy, hx, hy, vx:0, vy:0, agent:false });
-    }
-    // ein Agent pro Cluster (Hub) + zufällige weitere bis agentRatio
-    for (let ci=0; ci<C && ci<nodes.length; ci++) nodes[ci].agent = true;
-    let extra = Math.max(0, Math.round(n*CFG.agentRatio) - C);
-    while (extra>0){ const nd = nodes[(Math.random()*nodes.length)|0]; if(!nd.agent){ nd.agent=true; extra--; } }
-    agents = nodes.filter(x=>x.agent);
-    packets = [];
-  }
-  function spawn(){
-    if (!agents.length || nodes.length<2) return;
-    const a = nodes[(Math.random()*nodes.length)|0];
-    let best=null, bd=Infinity;          // Info fließt zum nächsten Agenten
-    for (const ag of agents){ if (ag===a) continue; const d=Math.hypot(a.x-ag.x,a.y-ag.y); if(d<bd){bd=d;best=ag;} }
-    if (best && best!==a) packets.push({a, b:best, t:0, sp:0.010+Math.random()*0.010});
-  }
-  function frame(){
-    if (!running) return;
-    const W=c.width, H=c.height, R=CFG.linkDist*DPR;
-    ctx.clearRect(0,0,W,H);
-    // organische Bewegung: Feder zum Heimatpunkt + leichtes Wandern → Lappen bleiben
-    for (const p of nodes){
-      p.vx += (p.hx-p.x)*CFG.spring + (Math.random()-.5)*CFG.wander*DPR;
-      p.vy += (p.hy-p.y)*CFG.spring + (Math.random()-.5)*CFG.wander*DPR;
-      p.vx *= CFG.damp; p.vy *= CFG.damp; p.x += p.vx; p.y += p.vy;
-    }
-    // Synapsen
-    ctx.lineWidth = DPR;
-    for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++){
-      const a=nodes[i], b=nodes[j], d=Math.hypot(a.x-b.x,a.y-b.y);
-      if (d<R){ ctx.strokeStyle='rgba('+CFG.ink+','+(CFG.lineAlpha*(1-d/R)).toFixed(3)+')'; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
-    }
-    // Wissens-Knoten (kleine Punkte)
-    ctx.fillStyle='rgba('+CFG.ink+','+CFG.nodeAlpha+')';
-    for (const p of nodes){ if(p.agent) continue; ctx.beginPath(); ctx.arc(p.x,p.y,1.5*DPR,0,6.2832); ctx.fill(); }
-    // Agenten-Knoten: Amber-Ring + "A"
-    ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.font = 'italic '+(11*DPR)+"px 'Fraunces', Georgia, serif";
-    for (const p of agents){
-      ctx.lineWidth = DPR; ctx.strokeStyle='rgba('+CFG.amber+','+CFG.agentRing+')';
-      ctx.beginPath(); ctx.arc(p.x,p.y,7*DPR,0,6.2832); ctx.stroke();
-      ctx.fillStyle='rgba('+CFG.ink+','+CFG.agentInk+')';
-      ctx.fillText('A', p.x, p.y+0.5*DPR);
-    }
-    // Info-Pakete zu den Agenten
-    if (++acc > CFG.packetEvery){ acc=0; if (packets.length<CFG.maxPackets) spawn(); }
-    for (let k=packets.length-1;k>=0;k--){
-      const pk=packets[k]; pk.t+=pk.sp; if (pk.t>=1){ packets.splice(k,1); continue; }
-      const x=pk.a.x+(pk.b.x-pk.a.x)*pk.t, y=pk.a.y+(pk.b.y-pk.a.y)*pk.t;
-      ctx.fillStyle='rgba('+CFG.amber+','+CFG.packetAlpha+')'; ctx.beginPath(); ctx.arc(x,y,1.8*DPR,0,6.2832); ctx.fill();
-    }
-    raf = requestAnimationFrame(frame);
-  }
-  function start(){ running=true; cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
-  function stop(){ running=false; cancelAnimationFrame(raf); }
-  let rt; addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(size,200); });
-  document.addEventListener('visibilitychange', ()=> document.hidden ? stop() : start());
-  size(); start();
-})();
-</script>
 </body>
 </html>
