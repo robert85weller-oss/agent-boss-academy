@@ -1090,6 +1090,10 @@
   .hero-portrait figcaption::before { content:''; width:20px; height:1px; background:var(--amber); flex-shrink:0; }
   .hero-prog { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
 
+  /* Agent-Network — dezente, sehr transparente Hintergrund-Animation (global) */
+  #agentNet { position:fixed; inset:0; width:100%; height:100%; z-index:3; pointer-events:none; opacity:.9; }
+  @media (prefers-reduced-motion: reduce) { #agentNet { display:none; } }
+
   /* About rückt unter den Hero → Hintergrund an Hero angleichen (kein Doppel-Paper-2) */
   body.theme-light #page-home .about { background:var(--paper); }
   /* Impact-Footnote links (konsistent mit linksbündigen Headern) */
@@ -1142,6 +1146,9 @@
   <input type="text" name="score" />
   <input type="text" name="bot-field" />
 </form>
+
+<!-- AGENT-NETWORK (dezente Hintergrund-Animation) -->
+<canvas id="agentNet" aria-hidden="true"></canvas>
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -3304,5 +3311,70 @@
 </div>
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben">↑</button>
 
+<script>
+/* Agent-Network: dezentes, sehr transparentes Hintergrund-Netzwerk.
+   Tuning unten in CFG (Intensität anpassbar). Respektiert prefers-reduced-motion. */
+(function(){
+  const c = document.getElementById('agentNet');
+  if (!c) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const CFG = {
+    ink: '22,20,15', amber: '182,84,31',
+    density: 30000,   // höher = weniger Knoten
+    maxNodes: 46, minNodes: 18,
+    linkDist: 150,    // px Reichweite für Linien
+    nodeAlpha: 0.10, lineAlpha: 0.07, packetAlpha: 0.40,
+    speed: 0.09, packetEvery: 42, maxPackets: 7
+  };
+  const ctx = c.getContext('2d');
+  let W, H, DPR, nodes = [], packets = [], raf = null, running = true, acc = 0;
+  function size(){
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    c.width = Math.floor(innerWidth * DPR); c.height = Math.floor(innerHeight * DPR);
+    c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px';
+    init();
+  }
+  function init(){
+    const n = Math.max(CFG.minNodes, Math.min(CFG.maxNodes, Math.round((innerWidth*innerHeight)/CFG.density)));
+    nodes = [];
+    for (let i=0;i<n;i++) nodes.push({
+      x: Math.random()*c.width, y: Math.random()*c.height,
+      vx: (Math.random()-.5)*CFG.speed*DPR, vy: (Math.random()-.5)*CFG.speed*DPR
+    });
+    packets = [];
+  }
+  function spawn(){
+    if (nodes.length < 2) return;
+    const a = nodes[(Math.random()*nodes.length)|0];
+    let best=null, bd=Infinity, R=CFG.linkDist*DPR;
+    for (const b of nodes){ if (b===a) continue; const d=Math.hypot(a.x-b.x,a.y-b.y); if (d<R && d<bd){ bd=d; best=b; } }
+    if (best) packets.push({a, b:best, t:0, sp:0.010+Math.random()*0.010});
+  }
+  function frame(){
+    if (!running) return;
+    ctx.clearRect(0,0,c.width,c.height);
+    for (const p of nodes){ p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x+=c.width; if(p.x>c.width)p.x-=c.width; if(p.y<0)p.y+=c.height; if(p.y>c.height)p.y-=c.height; }
+    const R = CFG.linkDist*DPR; ctx.lineWidth = DPR;
+    for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++){
+      const a=nodes[i], b=nodes[j], d=Math.hypot(a.x-b.x,a.y-b.y);
+      if (d<R){ ctx.strokeStyle='rgba('+CFG.ink+','+(CFG.lineAlpha*(1-d/R)).toFixed(3)+')'; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+    }
+    ctx.fillStyle='rgba('+CFG.ink+','+CFG.nodeAlpha+')';
+    for (const p of nodes){ ctx.beginPath(); ctx.arc(p.x,p.y,1.5*DPR,0,6.2832); ctx.fill(); }
+    if (++acc > CFG.packetEvery){ acc=0; if (packets.length<CFG.maxPackets) spawn(); }
+    for (let k=packets.length-1;k>=0;k--){
+      const pk=packets[k]; pk.t+=pk.sp; if (pk.t>=1){ packets.splice(k,1); continue; }
+      const x=pk.a.x+(pk.b.x-pk.a.x)*pk.t, y=pk.a.y+(pk.b.y-pk.a.y)*pk.t;
+      ctx.fillStyle='rgba('+CFG.amber+','+CFG.packetAlpha+')'; ctx.beginPath(); ctx.arc(x,y,1.8*DPR,0,6.2832); ctx.fill();
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){ running=true; cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
+  function stop(){ running=false; cancelAnimationFrame(raf); }
+  let rt; addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(size,200); });
+  document.addEventListener('visibilitychange', ()=> document.hidden ? stop() : start());
+  size(); start();
+})();
+</script>
 </body>
 </html>
