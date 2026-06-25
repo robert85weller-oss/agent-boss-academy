@@ -721,7 +721,7 @@
 
   /* ── responsive ── */
   @media (max-width:1024px) {
-    body.theme-light .hero { padding:140px 24px 70px; }
+    body.theme-light .hero { padding:112px 24px 64px; }
     body.theme-light .offerings, body.theme-light .programs, body.theme-light .why,
     body.theme-light .team, body.theme-light .impact, body.theme-light .testimonials,
     body.theme-light .final-cta, body.theme-light .trust-bar { padding-left:24px; padding-right:24px; }
@@ -991,34 +991,40 @@
   .orchestration-head { max-width:680px; margin:0 auto 48px; text-align:center; }
   .orchestration-head .section-label { justify-content:center; }
   .orchestration-intro { font-size:18px; line-height:1.6; color:var(--ink-mute); font-weight:300; margin-top:14px; }
-  .orchestration-stage { max-width:720px; margin:0 auto; }
+  .orchestration-stage { max-width:560px; margin:0 auto; }
   .orch-svg { width:100%; height:auto; display:block; }
-  .orch-link { fill:none; stroke:rgba(182,84,31,.4); stroke-width:1.5; stroke-dashoffset:0; }
-  .orch-node circle { fill:var(--paper-card); stroke:var(--line); stroke-width:1.5; }
-  .orch-leader circle { stroke:var(--amber); stroke-width:2; fill:rgba(182,84,31,.07); }
+  .orch-bound { fill:rgba(251,249,244,.55); stroke:var(--line); stroke-width:1.2; }
+  .orch-link { fill:none; stroke:rgba(182,84,31,.34); stroke-width:1.3; stroke-dashoffset:0; }
+  .orch-node circle { fill:var(--paper-card); stroke:rgba(182,84,31,.45); stroke-width:1.4; }
+  .orch-human circle { stroke:var(--line); }
+  .orch-boss circle { stroke:var(--amber); stroke-width:2; fill:rgba(182,84,31,.08); }
+  .orch-ic-agent { fill:var(--amber); }
+  .orch-ic-human { color:var(--ink-soft); }
+  .orch-let { font-family:'Fraunces',serif; font-style:italic; text-anchor:middle; }
+  .orch-let-agent { fill:var(--amber); }
+  .orch-let-human { fill:var(--ink-soft); }
   .orch-node-label { font-family:'Fraunces',serif; font-size:16px; fill:var(--ink); text-anchor:middle; font-style:italic; }
-  .orch-agent-label { font-size:14px; fill:var(--ink-soft); }
+  .orch-leader-label { font-size:16px; font-weight:500; }
   .orch-pulse { fill:var(--amber); opacity:0; }
-  .orch-report { fill:var(--amber-light); opacity:0; }
+  .orch-legend { display:flex; flex-wrap:wrap; justify-content:center; gap:14px 28px; margin-top:26px; font-size:13px; color:var(--ink-mute); }
+  .orch-leg-item { display:inline-flex; align-items:center; gap:8px; }
+  .orch-leg-dot { font-size:12px; line-height:1; }
+  .orch-leg-boss, .orch-leg-agent { color:var(--amber); }
+  .orch-leg-human { color:var(--ink-soft); font-size:10px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .orch-pulse, .orch-report { display:none; }
+    .orch-pulse { display:none; }
   }
   @media (prefers-reduced-motion: no-preference) {
-    .orch-link { stroke-dasharray:420; stroke-dashoffset:420; }
-    .orchestration-stage.visible .orch-link-1 { animation:orchDraw 1s .10s cubic-bezier(.4,0,.2,1) forwards; }
-    .orchestration-stage.visible .orch-link-2 { animation:orchDraw 1s .28s cubic-bezier(.4,0,.2,1) forwards; }
-    .orchestration-stage.visible .orch-link-3 { animation:orchDraw 1s .46s cubic-bezier(.4,0,.2,1) forwards; }
-    .orchestration-stage.visible .orch-pulse,
-    .orchestration-stage.visible .orch-report { opacity:1; transition:opacity .4s 1s; }
-    .orchestration-stage.visible .orch-agent circle { animation:orchNodePulse 2.6s ease-in-out infinite; }
-    .orchestration-stage.visible .orch-agent-2 circle { animation-delay:.5s; }
-    .orchestration-stage.visible .orch-agent-3 circle { animation-delay:1s; }
-    .orchestration-stage.visible .orch-leader circle { animation:orchLeaderPulse 2.6s ease-in-out infinite; }
+    .orch-link { stroke-dasharray:340; stroke-dashoffset:340; }
+    .orchestration-stage.visible .orch-link { animation:orchDraw 1.1s .15s cubic-bezier(.4,0,.2,1) forwards; }
+    .orchestration-stage.visible .orch-pulse { opacity:1; transition:opacity .5s 1.1s; }
+    .orchestration-stage.visible .orch-boss circle { animation:orchLeaderPulse 3s ease-in-out infinite; }
+    .orchestration-stage.visible .orch-agent circle { animation:orchNodePulse 3s ease-in-out infinite; }
   }
   @keyframes orchDraw { to { stroke-dashoffset:0; } }
-  @keyframes orchNodePulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
-  @keyframes orchLeaderPulse { 0%,100% { stroke-width:2; } 50% { stroke-width:3.4; } }
+  @keyframes orchNodePulse { 0%,100% { opacity:1; } 50% { opacity:.62; } }
+  @keyframes orchLeaderPulse { 0%,100% { stroke-width:2; } 50% { stroke-width:3.2; } }
 
   /* ═══════════════════════════════════════════════════════════
      INSIGHTS — hub, cards, filters, reader, home teaser
@@ -1069,12 +1075,55 @@
   .insights-teaser-all { white-space:nowrap; }
   .insights-grid--teaser { max-width:1180px; margin:0 auto; }
 
+  /* ═══════════════════════════════════════════════════════════
+     ADVISORY-REDESIGN — laufender Index + linksbündige Header (Home)
+  ═══════════════════════════════════════════════════════════ */
+  /* Sektions-Header linksbündig (Home), Final-CTA & Orchestrierung bleiben zentriert */
+  body.theme-light #page-home .programs-header,
+  body.theme-light #page-home .why-header,
+  body.theme-light #page-home .impact-header,
+  body.theme-light #page-home .testimonials-header { text-align:left; align-items:flex-start; max-width:760px; margin-left:0; margin-right:0; }
+  /* laufender Index: kleine Fraunces-Kursiv-Ziffer über dem Eyebrow */
+  .sec-index { display:block; font-family:'Fraunces',serif; font-style:italic; font-weight:360; font-size:30px; line-height:1; color:var(--amber); opacity:.85; margin-bottom:16px; letter-spacing:-.5px; }
+  .sec-index::before { content:attr(data-idx); }
+
+  /* Advisory-Hero: Porträt + Statement */
+  body.theme-light .hero-content { align-items:center; }
+  body.theme-light .hero-right { flex:0 0 340px; }
+  .hero-portrait { margin:0; }
+  .hero-portrait img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 22%; display:block; border:1px solid var(--line); border-radius:2px; box-shadow:0 36px 80px -46px rgba(22,20,15,.55); filter:saturate(.96); }
+  .hero-portrait figcaption { margin-top:14px; font-size:12px; letter-spacing:.4px; color:var(--ink-mute); display:flex; align-items:center; gap:10px; }
+  .hero-portrait figcaption::before { content:''; width:20px; height:1px; background:var(--amber); flex-shrink:0; }
+  .hero-prog { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+
+  /* About rückt unter den Hero → Hintergrund an Hero angleichen (kein Doppel-Paper-2) */
+  body.theme-light #page-home .about { background:var(--paper); }
+  /* Impact-Footnote links (konsistent mit linksbündigen Headern) */
+  body.theme-light #page-home .impact-footnote { text-align:left; }
+  /* Trust-Bar etwas leiser */
+  body.theme-light .trust-chip-name { font-size:14px; }
+  /* Testimonials redaktionell: ohne Sterne/Initialen-Avatare, klare Zitat-Quelle */
+  body.theme-light .testimonial-cite { display:flex; flex-wrap:wrap; align-items:baseline; gap:9px; margin-top:22px; padding-top:16px; border-top:1px solid var(--line); font-size:13.5px; }
+  body.theme-light .testimonial-cite .testimonial-author { color:var(--ink); font-weight:600; letter-spacing:.2px; }
+  body.theme-light .testimonial-cite .testimonial-sep { color:var(--amber); }
+  body.theme-light .testimonial-cite .testimonial-role { color:var(--ink-mute); }
+  body.theme-light .testimonial-card--feature .testimonial-cite { justify-content:center; border-top:none; padding-top:0; margin-top:18px; }
+  /* Leadership-Wandel-Band (relozierte Infografik) */
+  .leadership-shift-band { background:var(--paper-2); border-top:1px solid var(--line); padding:88px 64px 96px; display:flex; justify-content:center; }
+  .leadership-shift-band .leader-shift { max-width:640px; width:100%; }
+  .ls-banner { margin:20px 0 10px; }
+  .ls-banner img { width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:2px; }
+
   @media (max-width:1024px) {
+    body.theme-light .hero-content { flex-direction:column; align-items:flex-start; gap:40px; }
+    body.theme-light .hero-right { display:block; flex:none; width:100%; max-width:320px; }
+    .leadership-shift-band { padding-left:24px; padding-right:24px; }
     body.theme-light .offerings-grid { grid-template-columns:1fr; }
     body.theme-light .impact-grid { grid-template-columns:1fr; }
     body.theme-light .testimonials-grid { grid-template-columns:1fr; }
     body.theme-light .metric-card--lead, body.theme-light .testimonial-card--feature { grid-column:auto; }
     .insights-grid { grid-template-columns:1fr; }
+    .sec-index { font-size:26px; margin-bottom:12px; }
     .insights-hub { padding:120px 24px 70px; }
     .insights-teaser { padding:80px 24px; }
     .insights-teaser-head { flex-direction:column; align-items:flex-start; }
@@ -1142,36 +1191,64 @@
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <!-- LEFT -->
+      <!-- LEFT: Advisory-Statement -->
       <div class="hero-left">
         <div class="hero-badge" id="h-badge">Robert Weller · Agent Boss Leader</div>
-        <h1 id="h-h1">Werde zum <span class="highlight">Agent Boss</span> in deinem Bereich.</h1>
-        <p class="hero-sub" id="h-sub">Du bist bereit für die KI-Ära – und willst dein Profil und deine Teams für die nächste Revolution startklar machen. Du wirst verstehen, wo du stehst, was als Nächstes kommt und wie du es Schritt für Schritt aufbaust. Hier sind <strong>deine Startpunkte für die Agent-Boss-Journey</strong> – und die Wege, wie wir zusammenarbeiten.</p>
+        <h1 id="h-h1">Ich coache Führungskräfte in die <span class="highlight">KI-Transformation</span></h1>
+        <p class="hero-sub" id="h-sub">Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.</p>
         <div class="btn-group">
           <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="h-cta1">Kostenloses 30-Min Strategy Call buchen</a>
-          <a onclick="goHomeSection('offerings')" class="btn-secondary" id="h-cta2">Die 3 Wege ansehen</a>
         </div>
         <button class="hero-rc-link" id="h-rc" onclick="rcOpen()">2-Min Readiness-Check: Wo stehst du? →</button>
         <p class="hero-footnote" id="h-fn">Praktiker statt Theorie — echte AI-Agents live in Produktion.</p>
       </div>
-      <!-- RIGHT: CHAT DEMO -->
+      <!-- RIGHT: Porträt -->
       <div class="hero-right">
-        <div class="leader-shift">
-          <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
-          <h3 class="ls-title" data-de="Vom Manager zum Agent Boss" data-en="From manager to Agent Boss">Vom Manager zum Agent Boss</h3>
-          <div class="ls-colhead">
-            <span data-de="Gestern" data-en="Yesterday">Gestern</span>
-            <span data-de="Agent Boss" data-en="Agent Boss">Agent Boss</span>
-          </div>
-          <div class="ls-grid">
-            <span class="ls-old" data-de="Org-Chart" data-en="Org chart">Org-Chart</span><span class="ls-arr">→</span><span class="ls-new" data-de="Work-Chart" data-en="Work chart">Work-Chart</span>
-            <span class="ls-old" data-de="Führt Menschen" data-en="Leads people">Führt Menschen</span><span class="ls-arr">→</span><span class="ls-new" data-de="Führt Mensch + KI" data-en="Leads people + AI">Führt Mensch + KI</span>
-            <span class="ls-old" data-de="Macht die Arbeit" data-en="Does the work">Macht die Arbeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Orchestriert Agenten" data-en="Orchestrates agents">Orchestriert Agenten</span>
-            <span class="ls-old" data-de="Engpass: eigene Zeit" data-en="Bottleneck: own time">Engpass: eigene Zeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Skaliert digital" data-en="Scales digitally">Skaliert digital</span>
-          </div>
-          <div class="ls-foot" data-de="Assistant → Agent → Agent Boss" data-en="Assistant → Agent → Agent Boss">Assistant → Agent → Agent Boss</div>
-        </div>
+        <figure class="hero-portrait">
+          <img src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="eager">
+          <figcaption id="h-caption">SAP-Exec · Agent Boss Leader</figcaption>
+        </figure>
+        <div class="hero-prog" id="h-prog">Assistant → Agent → Agent Boss</div>
       </div>
+    </div>
+  </section>
+
+  <section class="about" id="team">
+    <div class="about-inner">
+      <div class="about-aside fade-in">
+        <div class="about-name">Robert Weller</div>
+        <div class="about-role" data-de="Gründer · Agent Boss Leader" data-en="Founder · Agent Boss Leader">Gründer · Agent Boss Leader</div>
+        <div class="about-meta" data-de="VP &amp; Global Content Officer, SAP" data-en="VP &amp; Global Content Officer, SAP">VP &amp; Global Content Officer, SAP</div>
+        <a class="about-link" href="https://www.linkedin.com/in/robertweller-info/" target="_blank" rel="noopener">LinkedIn →</a>
+      </div>
+      <div class="about-body fade-in">
+        <span class="sec-index" data-idx="01"></span>
+        <div class="section-label" data-de="Wer hinter Agent Boss steht" data-en="Who is behind Agent Boss">Wer hinter Agent Boss steht</div>
+        <h2 class="about-headline" data-de="SAP-Exec bei Tag, Agent Boss bei Nacht." data-en="SAP exec by day, Agent Boss by night.">SAP-Exec bei Tag, Agent Boss bei Nacht.</h2>
+        <p data-de="Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms&quot; nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn." data-en="As VP &amp; Global Content Officer at SAP, I'm building what we call 'Frontier Firms' — companies that don't just use AI, but learn to lead alongside it. That same mindset is the reason I started the Agent Boss Academy, my venture for people who want more than another ChatGPT hack on LinkedIn.">Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms" nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn.</p>
+        <p data-de="Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped." data-en="My sweet spot: strategy, product, and content — right where they collide. Due diligence on the Signavio acquisition? Done. SAP-wide Content Strategy from scratch? Live. Digital Boardroom in operations? Shipped.">Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped.</p>
+        <p data-de="Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak." data-en="I believe transformation doesn't start with tech. It starts with attitude. I like straight talk, sharp positioning, and content that actually moves the needle — no buzzword bingo, no consultant-speak.">Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak.</p>
+        <p data-de="Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt." data-en="Off-hours? Fresh MBAI in the pocket, a gin startup in the oven, and a mountain bike that doesn't ride itself.">Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="leadership-shift-band" id="leadershift">
+    <div class="leader-shift fade-in">
+      <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
+      <h3 class="ls-title" data-de="Vom Manager zum Agent Boss" data-en="From manager to Agent Boss">Vom Manager zum Agent Boss</h3>
+      <figure class="ls-banner"><img src="assets/robert-transformation-banner.jpg" alt="Robert Weller: vom Executive zum Agent Boss" loading="lazy" width="1004" height="500"></figure>
+      <div class="ls-colhead">
+        <span data-de="Gestern" data-en="Yesterday">Gestern</span>
+        <span data-de="Agent Boss" data-en="Agent Boss">Agent Boss</span>
+      </div>
+      <div class="ls-grid">
+        <span class="ls-old" data-de="Org-Chart" data-en="Org chart">Org-Chart</span><span class="ls-arr">→</span><span class="ls-new" data-de="Work-Chart" data-en="Work chart">Work-Chart</span>
+        <span class="ls-old" data-de="Führt Menschen" data-en="Leads people">Führt Menschen</span><span class="ls-arr">→</span><span class="ls-new" data-de="Führt Mensch + KI" data-en="Leads people + AI">Führt Mensch + KI</span>
+        <span class="ls-old" data-de="Macht die Arbeit" data-en="Does the work">Macht die Arbeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Orchestriert Agenten" data-en="Orchestrates agents">Orchestriert Agenten</span>
+        <span class="ls-old" data-de="Engpass: eigene Zeit" data-en="Bottleneck: own time">Engpass: eigene Zeit</span><span class="ls-arr">→</span><span class="ls-new" data-de="Skaliert digital" data-en="Scales digitally">Skaliert digital</span>
+      </div>
+      <div class="ls-foot" data-de="Assistant → Agent → Agent Boss" data-en="Assistant → Agent → Agent Boss">Assistant → Agent → Agent Boss</div>
     </div>
   </section>
 
@@ -1192,6 +1269,7 @@
 
   <section class="offerings" id="offerings">
     <div class="programs-header fade-in">
+      <span class="sec-index" data-idx="02"></span>
       <div class="section-label" id="off-label">Zusammenarbeit</div>
       <h2 class="section-headline" id="off-h2">Drei Wege, mit mir zu arbeiten</h2>
       <p id="off-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Gleichwertig – je nachdem, wie viel du selbst bauen willst und wie viel wir für dich übernehmen.</p>
@@ -1223,48 +1301,117 @@
     <div class="orchestration-head fade-in">
       <div class="section-label" id="orch-label">Orchestrierung</div>
       <h2 class="section-headline" id="orch-h2">Wie ein Agent Boss arbeitet</h2>
-      <p class="orchestration-intro" id="orch-intro">Du tippst nicht mehr selbst. Du delegierst an ein Team aus Agenten – sie arbeiten parallel und melden zurück. Aus „alles selbst machen" wird „das Richtige entscheiden".</p>
+      <p class="orchestration-intro" id="orch-intro">So sieht eine Organisation der Zukunft aus: ein rundes, vernetztes Team – du als Agent Boss (AB), umgeben von Agenten (A) und Menschen (H), die orchestriert Informationen austauschen.</p>
     </div>
     <div class="orchestration-stage fade-in" id="orchStage">
-      <svg class="orch-svg" viewBox="0 0 800 380" role="img" aria-labelledby="orchTitle orchDesc" preserveAspectRatio="xMidYMid meet">
-        <title id="orchTitle">Orchestrierung: Leader delegiert an Agenten-Team</title>
-        <desc id="orchDesc">Ein Leader-Knoten oben delegiert an drei Agenten-Knoten, die Aufgaben erledigen und zurückmelden.</desc>
-        <!-- connectors -->
-        <path class="orch-link orch-link-1" d="M400,96 C300,150 230,190 168,250" />
-        <path class="orch-link orch-link-2" d="M400,96 C400,160 400,195 400,248" />
-        <path class="orch-link orch-link-3" d="M400,96 C500,150 570,190 632,250" />
-        <!-- delegation pulses (Leader → Agent) -->
-        <circle class="orch-pulse orch-pulse-1" r="4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M400,96 C300,150 230,190 168,250" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-pulse orch-pulse-2" r="4"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" path="M400,96 C400,160 400,195 400,248" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-pulse orch-pulse-3" r="4"><animateMotion dur="2.6s" begin="1s" repeatCount="indefinite" path="M400,96 C500,150 570,190 632,250" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <!-- report-back pulses (Agent → Leader) -->
-        <circle class="orch-report orch-report-1" r="3"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M168,250 C230,190 300,150 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-report orch-report-2" r="3"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M400,248 C400,195 400,160 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <circle class="orch-report orch-report-3" r="3"><animateMotion dur="2.6s" begin="2.3s" repeatCount="indefinite" path="M632,250 C570,190 500,150 400,96" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1" /></circle>
-        <!-- leader node -->
-        <g class="orch-node orch-leader">
-          <circle cx="400" cy="62" r="34" />
-          <text x="400" y="120" class="orch-node-label" id="orch-leader-label">Leader</text>
+      <svg class="orch-svg" viewBox="0 0 720 600" role="img" aria-labelledby="orchTitle orchDesc" preserveAspectRatio="xMidYMid meet">
+        <title id="orchTitle">Organisation der Zukunft: rundes Agenten-Netzwerk um den Agent Boss</title>
+        <desc id="orchDesc">Ein rundes Netzwerk: zentral der Agent Boss (AB), vernetzt mit Agenten (A) und Menschen (H).</desc>
+        <defs>
+          <path id="orchSpark" d="M0,-5 L1.5,-1.5 L5,0 L1.5,1.5 L0,5 L-1.5,1.5 L-5,0 L-1.5,-1.5 Z"/>
+          <g id="orchHuman"><circle cx="0" cy="-3.6" r="3.4" fill="currentColor"/><path d="M-6,8 a6.3,6.7 0 0 1 12,0" fill="none" stroke="currentColor" stroke-width="1.7"/></g>
+        </defs>
+        <circle class="orch-bound" cx="360" cy="318" r="292"/>
+        <!-- Kanten -->
+        <line class="orch-link" x1="333" y1="211" x2="269" y2="161"/>
+        <line class="orch-link" x1="360" y1="198" x2="360" y2="138"/>
+        <line class="orch-link" x1="387" y1="212" x2="455" y2="163"/>
+        <line class="orch-link" x1="333" y1="253" x2="219" y2="345"/>
+        <line class="orch-link" x1="360" y1="266" x2="360" y2="368"/>
+        <line class="orch-link" x1="387" y1="253" x2="501" y2="345"/>
+        <line class="orch-link" x1="186" y1="380" x2="140" y2="445"/>
+        <line class="orch-link" x1="209" y1="382" x2="243" y2="461"/>
+        <line class="orch-link" x1="352" y1="415" x2="328" y2="483"/>
+        <line class="orch-link" x1="370" y1="414" x2="402" y2="480"/>
+        <line class="orch-link" x1="510" y1="382" x2="477" y2="454"/>
+        <line class="orch-link" x1="534" y1="379" x2="581" y2="443"/>
+        <!-- Info-Pulse (negative begin → kein 0,0-Parken) -->
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="0.00s" repeatCount="indefinite" path="M360,198 L360,138"/></circle>
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="-0.40s" repeatCount="indefinite" path="M333,253 L219,345"/></circle>
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="-0.80s" repeatCount="indefinite" path="M360,266 L360,368"/></circle>
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="-1.20s" repeatCount="indefinite" path="M387,253 L501,345"/></circle>
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="-1.60s" repeatCount="indefinite" path="M186,380 L140,445"/></circle>
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="-2.00s" repeatCount="indefinite" path="M370,414 L402,480"/></circle>
+        <circle class="orch-pulse" r="3.4"><animateMotion dur="2.4s" begin="-2.40s" repeatCount="indefinite" path="M510,382 L477,454"/></circle>
+        <!-- Knoten -->
+        <g class="orch-node orch-boss">
+          <circle cx="360" cy="232" r="34"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(360,224) scale(1.9)"/>
+          <text x="360" y="244" class="orch-let orch-let-agent" style="font-size:15px">AB</text>
         </g>
-        <!-- agent nodes -->
-        <g class="orch-node orch-agent orch-agent-1">
-          <circle cx="168" cy="278" r="26" />
-          <text x="168" y="330" class="orch-node-label orch-agent-label">Agent</text>
+        <g class="orch-node orch-agent">
+          <circle cx="255" cy="150" r="18"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(255,146) scale(1.05)"/>
+          <text x="255" y="159" class="orch-let orch-let-agent" style="font-size:12px">A</text>
         </g>
-        <g class="orch-node orch-agent orch-agent-2">
-          <circle cx="400" cy="278" r="26" />
-          <text x="400" y="330" class="orch-node-label orch-agent-label">Agent</text>
+        <g class="orch-node orch-agent">
+          <circle cx="360" cy="120" r="18"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(360,116) scale(1.05)"/>
+          <text x="360" y="129" class="orch-let orch-let-agent" style="font-size:12px">A</text>
         </g>
-        <g class="orch-node orch-agent orch-agent-3">
-          <circle cx="632" cy="278" r="26" />
-          <text x="632" y="330" class="orch-node-label orch-agent-label">Agent</text>
+        <g class="orch-node orch-human">
+          <circle cx="470" cy="152" r="18"/>
+          <use href="#orchHuman" class="orch-ic-human" transform="translate(470,147) scale(0.82)"/>
+          <text x="470" y="161" class="orch-let orch-let-human" style="font-size:11px">H</text>
         </g>
+        <g class="orch-node orch-agent">
+          <circle cx="200" cy="360" r="24"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(200,356) scale(1.05)"/>
+          <text x="200" y="369" class="orch-let orch-let-agent" style="font-size:12px">A</text>
+        </g>
+        <g class="orch-node orch-agent">
+          <circle cx="360" cy="392" r="24"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(360,388) scale(1.05)"/>
+          <text x="360" y="401" class="orch-let orch-let-agent" style="font-size:12px">A</text>
+        </g>
+        <g class="orch-node orch-agent">
+          <circle cx="520" cy="360" r="24"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(520,356) scale(1.05)"/>
+          <text x="520" y="369" class="orch-let orch-let-agent" style="font-size:12px">A</text>
+        </g>
+        <g class="orch-node orch-agent">
+          <circle cx="130" cy="460" r="18"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(130,456) scale(1.05)"/>
+          <text x="130" y="469" class="orch-let orch-let-agent" style="font-size:12px">A</text>
+        </g>
+        <g class="orch-node orch-human">
+          <circle cx="250" cy="478" r="18"/>
+          <use href="#orchHuman" class="orch-ic-human" transform="translate(250,473) scale(0.82)"/>
+          <text x="250" y="487" class="orch-let orch-let-human" style="font-size:11px">H</text>
+        </g>
+        <g class="orch-node orch-human">
+          <circle cx="322" cy="500" r="18"/>
+          <use href="#orchHuman" class="orch-ic-human" transform="translate(322,495) scale(0.82)"/>
+          <text x="322" y="509" class="orch-let orch-let-human" style="font-size:11px">H</text>
+        </g>
+        <g class="orch-node orch-agent">
+          <circle cx="410" cy="496" r="18"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(410,492) scale(1.05)"/>
+          <text x="410" y="505" class="orch-let orch-let-agent" style="font-size:12px">A</text>
+        </g>
+        <g class="orch-node orch-agent">
+          <circle cx="470" cy="470" r="18"/>
+          <use href="#orchSpark" class="orch-ic-agent" transform="translate(470,466) scale(1.05)"/>
+          <text x="470" y="479" class="orch-let orch-let-agent" style="font-size:12px">A</text>
+        </g>
+        <g class="orch-node orch-human">
+          <circle cx="592" cy="458" r="18"/>
+          <use href="#orchHuman" class="orch-ic-human" transform="translate(592,453) scale(0.82)"/>
+          <text x="592" y="467" class="orch-let orch-let-human" style="font-size:11px">H</text>
+        </g>
+        <text x="360" y="184" class="orch-node-label orch-leader-label" id="orch-leader-label">Agent Boss</text>
       </svg>
+      <div class="orch-legend">
+        <span class="orch-leg-item"><span class="orch-leg-dot orch-leg-boss">★</span><span data-de="AB · Agent Boss" data-en="AB · Agent Boss">AB · Agent Boss</span></span>
+        <span class="orch-leg-item"><span class="orch-leg-dot orch-leg-agent">★</span><span data-de="A · Agent" data-en="A · Agent">A · Agent</span></span>
+        <span class="orch-leg-item"><span class="orch-leg-dot orch-leg-human">●</span><span data-de="H · People" data-en="H · People">H · People</span></span>
+      </div>
     </div>
   </section>
 
   <section class="programs" id="programmes">
     <div class="programs-header fade-in">
+      <span class="sec-index" data-idx="03"></span>
       <div class="section-label" id="prog-label">Anwendungsfelder</div>
       <h2 class="section-headline" id="prog-h2">Wo Agent-Boss-Arbeit wirkt</h2>
       <p id="prog-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Dieselben drei Wege – angewendet auf die Bereiche, in denen ich am meisten helfe.</p>
@@ -1296,6 +1443,7 @@
 
   <section class="why" id="why">
     <div class="why-header fade-in">
+      <span class="sec-index" data-idx="04"></span>
       <div class="section-label" id="why-label">Warum wir</div>
       <h2 class="section-headline" id="why-h2">Warum Abteilungsleiter mit mir arbeiten</h2>
     </div>
@@ -1307,28 +1455,9 @@
     </div>
   </section>
 
-  <section class="about" id="team">
-    <div class="about-inner">
-      <div class="about-aside fade-in">
-        <img class="about-avatar about-photo" src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="lazy">
-        <div class="about-name">Robert Weller</div>
-        <div class="about-role" data-de="Gründer · Agent Boss Leader" data-en="Founder · Agent Boss Leader">Gründer · Agent Boss Leader</div>
-        <div class="about-meta" data-de="VP &amp; Global Content Officer, SAP" data-en="VP &amp; Global Content Officer, SAP">VP &amp; Global Content Officer, SAP</div>
-        <a class="about-link" href="https://www.linkedin.com/in/robertweller-info/" target="_blank" rel="noopener">LinkedIn →</a>
-      </div>
-      <div class="about-body fade-in">
-        <div class="section-label" data-de="Wer hinter Agent Boss steht" data-en="Who is behind Agent Boss">Wer hinter Agent Boss steht</div>
-        <h2 class="about-headline" data-de="SAP-Exec bei Tag, Agent Boss bei Nacht." data-en="SAP exec by day, Agent Boss by night.">SAP-Exec bei Tag, Agent Boss bei Nacht.</h2>
-        <p data-de="Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms&quot; nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn." data-en="As VP &amp; Global Content Officer at SAP, I'm building what we call 'Frontier Firms' — companies that don't just use AI, but learn to lead alongside it. That same mindset is the reason I started the Agent Boss Academy, my venture for people who want more than another ChatGPT hack on LinkedIn.">Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms" nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn.</p>
-        <p data-de="Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped." data-en="My sweet spot: strategy, product, and content — right where they collide. Due diligence on the Signavio acquisition? Done. SAP-wide Content Strategy from scratch? Live. Digital Boardroom in operations? Shipped.">Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped.</p>
-        <p data-de="Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak." data-en="I believe transformation doesn't start with tech. It starts with attitude. I like straight talk, sharp positioning, and content that actually moves the needle — no buzzword bingo, no consultant-speak.">Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak.</p>
-        <p data-de="Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt." data-en="Off-hours? Fresh MBAI in the pocket, a gin startup in the oven, and a mountain bike that doesn't ride itself.">Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="impact" id="impact">
     <div class="impact-header fade-in">
+      <span class="sec-index" data-idx="05"></span>
       <div class="section-label" id="impact-label">Erste Ergebnisse 2026</div>
       <h2 class="section-headline" id="impact-h2">Erste Ergebnisse aus der Praxis</h2>
     </div>
@@ -1343,19 +1472,21 @@
 
   <section class="testimonials" id="testimonials">
     <div class="testimonials-header fade-in">
+      <span class="sec-index" data-idx="06"></span>
       <div class="section-label" id="testi-label">Stimmen</div>
       <h2 class="section-headline" id="testi-h2">Was Abteilungsleiter sagen</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card testimonial-card--feature fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-1">HS</div><div class="testimonial-meta"><div class="testimonial-author" id="t1a">Head of Sales</div><div class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</div></div></div></div>
-      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-2">HF</div><div class="testimonial-meta"><div class="testimonial-author" id="t2a">Head of Finance</div><div class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</div></div></div></div>
-      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-footer"><div class="t-avatar t-avatar-3">HR</div><div class="testimonial-meta"><div class="testimonial-author" id="t3a">Head of HR</div><div class="testimonial-role" id="t3r">Tech-Scale-up, Series B</div></div></div></div>
+      <div class="testimonial-card testimonial-card--feature fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-cite"><span class="testimonial-author" id="t1a">Head of Sales</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</span></div></div>
+      <div class="testimonial-card fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.</p><div class="testimonial-cite"><span class="testimonial-author" id="t2a">Head of Finance</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</span></div></div>
+      <div class="testimonial-card fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-cite"><span class="testimonial-author" id="t3a">Head of HR</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t3r">Tech-Scale-up, Series B</span></div></div>
     </div>
   </section>
 
   <section class="insights-teaser" id="insights-home">
     <div class="insights-teaser-head fade-in">
       <div>
+        <span class="sec-index" data-idx="07"></span>
         <div class="section-label" id="ins-teaser-label">Insights</div>
         <h2 class="section-headline" id="ins-teaser-h2">Aus der Praxis</h2>
       </div>
@@ -1975,8 +2106,8 @@
       mnavProg: 'Anwendungsfelder', mnavWhy: 'Warum wir', mnavImpact: 'Ergebnisse', mnavTesti: 'Stimmen', mnavInsights: 'Insights', mnavCta: 'Strategy Call buchen',
       // ORCHESTRATION
       orchLabel: 'Orchestrierung', orchH2: 'Wie ein Agent Boss arbeitet',
-      orchIntro: 'Du tippst nicht mehr selbst. Du delegierst an ein Team aus Agenten – sie arbeiten parallel und melden zurück. Aus „alles selbst machen" wird „das Richtige entscheiden".',
-      orchLeader: 'Leader', orchAgent: 'Agent',
+      orchIntro: 'So sieht eine Organisation der Zukunft aus: ein rundes, vernetztes Team – du als Agent Boss (AB), umgeben von Agenten (A) und Menschen (H), die orchestriert Informationen austauschen.',
+      orchLeader: 'Agent Boss Leader', orchAgent: 'Agent',
       // INSIGHTS
       insLabel: 'Insights', insH2: 'Adventures &amp; Knowledge Craft',
       insIntro: 'Notizen, How-Tos und Beobachtungen aus dem Alltag als Agent Boss – aus meinen LinkedIn-Serien, hier in Ruhe nachlesbar.',
@@ -1997,12 +2128,12 @@
       floatingCtaText: 'Strategy Call buchen',
       // HERO
       heroBadge: 'Robert Weller · Agent Boss Leader',
-      heroH1a: 'Werde zum ',
-      heroH1b: 'Agent Boss',
-      heroH1c: ' in deinem Bereich.',
-      heroSub: 'Du bist bereit für die KI-Ära – und willst dein Profil und deine Teams für die nächste Revolution startklar machen. Du wirst verstehen, wo du stehst, was als Nächstes kommt und wie du es Schritt für Schritt aufbaust. Hier sind <strong>deine Startpunkte für die Agent-Boss-Journey</strong> – und die Wege, wie wir zusammenarbeiten.',
+      heroH1a: 'Ich coache Führungskräfte in die ',
+      heroH1b: 'KI-Transformation',
+      heroH1c: '',
+      heroSub: 'Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.',
       heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
-      heroCta2: 'Die 3 Wege ansehen',
+      heroCaption: 'SAP-Exec · Agent Boss Leader', heroProg: 'Assistant → Agent → Agent Boss',
       heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.', heroRcLink: '2-Min Readiness-Check: Wo stehst du? →',
       // OFFERINGS
       offLabel: 'Zusammenarbeit', offH2: 'Drei Wege, mit mir zu arbeiten',
@@ -2145,8 +2276,8 @@
       mnavProg: 'Use cases', mnavWhy: 'Why us', mnavImpact: 'Results', mnavTesti: 'Testimonials', mnavInsights: 'Insights', mnavCta: 'Book Strategy Call',
       // ORCHESTRATION
       orchLabel: 'Orchestration', orchH2: 'How an Agent Boss works',
-      orchIntro: 'You don\'t type everything yourself anymore. You delegate to a team of agents — they work in parallel and report back. "Do it all yourself" becomes "decide what matters".',
-      orchLeader: 'Leader', orchAgent: 'Agent',
+      orchIntro: 'This is what the organization of the future looks like: one round, connected team – you as the Agent Boss (AB), surrounded by agents (A) and people (H), exchanging information in orchestration.',
+      orchLeader: 'Agent Boss Leader', orchAgent: 'Agent',
       // INSIGHTS
       insLabel: 'Insights', insH2: 'Adventures &amp; Knowledge Craft',
       insIntro: 'Notes, how-tos and observations from life as an Agent Boss — from my LinkedIn series, collected here to read at leisure.',
@@ -2166,12 +2297,12 @@
       hrFaq4q: 'When will we see first results?', hrFaq4a: 'First productive recruiting agents often run within a few weeks. In the end, your complete recruiting-to-onboarding process runs live in your real environment.',
       floatingCtaText: 'Book Strategy Call',
       heroBadge: 'Robert Weller · Agent Boss Leader',
-      heroH1a: 'Become the ',
-      heroH1b: 'Agent Boss',
-      heroH1c: ' in your domain.',
-      heroSub: 'You\'re ready for the AI era – and want to get your profile and your teams set for the next revolution. You\'ll understand where you stand, what comes next, and how to build it step by step. These are <strong>your starting points for the Agent Boss journey</strong> – and the ways we can work together.',
+      heroH1a: 'I coach leaders through their ',
+      heroH1b: 'AI transformation',
+      heroH1c: '',
+      heroSub: 'You don\'t just want to use AI — you want to lead your team alongside it. I show you <strong>where you stand and what comes next</strong> – and guide you step by step from manager to Agent Boss.',
       heroCta1: 'Book a Free 30-Min Strategy Call',
-      heroCta2: 'See the 3 paths',
+      heroCaption: 'SAP exec · Agent Boss Leader', heroProg: 'Assistant → Agent → Agent Boss',
       heroFn: 'Practitioner, not theory — real AI agents live in production.', heroRcLink: '2-min Readiness Check: where do you stand? →',
       // OFFERINGS
       offLabel: 'Work with me', offH2: 'Three ways to work with me',
@@ -2447,7 +2578,8 @@
     s('h-badge', t.heroBadge);
     s('h-h1', `${t.heroH1a}<span class="highlight">${t.heroH1b}</span>${t.heroH1c}`);
     s('h-sub', t.heroSub);
-    st('h-cta1', t.heroCta1); st('h-cta2', t.heroCta2);
+    st('h-cta1', t.heroCta1);
+    st('h-caption', t.heroCaption); st('h-prog', t.heroProg);
     st('h-fn', t.heroFn); st('h-rc', t.heroRcLink);
     st('trust-label', t.trustLabel); st('trust-soon-tag', t.trustSoon);
     // ── OFFERINGS ──
