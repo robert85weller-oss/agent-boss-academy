@@ -770,6 +770,8 @@
   .impressum-back:hover { color: var(--white); }
   .impressum-back::before { content: '←'; font-size: 16px; }
   .impressum hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  /* Impressum zweisprachig: passend zur html[lang] ein-/ausblenden */
+  html[lang="en"] .imp-de, html[lang="de"] .imp-en { display: none; }
 
   /* HAMBURGER */
   .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
@@ -2329,44 +2331,69 @@
 <!-- ═══════ IMPRESSUM ═══════ -->
 <div id="page-impressum" class="page">
   <div class="impressum">
-    <div class="impressum-back" onclick="showPage('home')">Zurück zur Startseite</div>
+    <div class="impressum-back" onclick="showPage('home')" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</div>
 
-    <h1>Impressum</h1>
+    <!-- DE (eRecht24-generiert, abmahngeschützt) -->
+    <div class="imp-de">
+      <h1>Impressum</h1>
 
-    <h2>Angaben gemäß § 5 TMG</h2>
-    <address>
-      Robert Weller<br>
-      Theodor-Heuss-Str. 31<br>
-      69226 Nußloch<br>
-      Deutschland
-    </address>
+      <p>
+        Robert Weller<br>
+        Strategische KI-Beratung und Coaching<br>
+        Theodor-Heuss-Straße, 31<br>
+        69226 Nussloch
+      </p>
 
-    <h2>Kontakt</h2>
-    <p>
-      Telefon: 015120565890<br>
-      E-Mail: <a href="mailto:kontakt@agent-boss-academy.com">kontakt@agent-boss-academy.com</a>
-    </p>
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: 015120565890<br>
+        E-Mail: <a href="mailto:kontakt@agent-boss-academy.com">kontakt@agent-boss-academy.com</a>
+      </p>
 
-    <hr>
+      <h2>Wirtschafts&shy;identifikations&shy;nummer</h2>
+      <p>DE463254008</p>
 
-    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-    <address>
-      Robert Weller<br>
-      Theodor-Heuss-Str. 31<br>
-      69226 Nußloch
-    </address>
+      <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+      <p>Berufsbezeichnung:<br>
+      Strategischer Berater</p>
 
-    <hr>
+      <h2>Redaktionell verantwortlich</h2>
+      <p>Robert Weller</p>
 
-    <h2>Haftungsausschluss</h2>
-    <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+      <h2>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
 
-    <h2>Urheberrecht</h2>
-    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    <!-- EN (eRecht24-generated) -->
+    <div class="imp-en">
+      <h1>Site Notice</h1>
 
-    <hr>
+      <p>
+        Robert Weller<br>
+        Strategische KI-Beratung und Coaching<br>
+        Theodor-Heuss-Straße, 31<br>
+        69226 Nussloch
+      </p>
 
-    <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Stand: Juni 2026</p>
+      <h2>Contact</h2>
+      <p>
+        Phone: 015120565890<br>
+        E-mail: <a href="mailto:kontakt@agent-boss-academy.com">kontakt@agent-boss-academy.com</a>
+      </p>
+
+      <h2>Business identification number</h2>
+      <p>DE463254008</p>
+
+      <h2>Job title and professional regulations</h2>
+      <p>Job title:<br>
+      Strategischer Berater</p>
+
+      <h2>Person responsible for editorial</h2>
+      <p>Robert Weller</p>
+
+      <h2>Dispute resolution proceedings in front of a consumer arbitration board</h2>
+      <p>We are not willing or obliged to participate in dispute resolution proceedings in front of a consumer arbitration board.</p>
+    </div>
   </div>
 
   <footer>
