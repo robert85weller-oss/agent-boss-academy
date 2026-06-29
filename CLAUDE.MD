@@ -44,9 +44,10 @@ Premium-Beratung-Editorial, bewusst **anti-„KI-Look"**. Doku im Second Brain: 
 - **Git:** auf `main` arbeiten, committen, `git push` = live. `.gitignore` deckt `.netlify` + `.DS_Store`.
 
 ## Offene Folge-Themen
+- **n8n-Flow (TODO):** neue Readiness-Check-Leads aus **Netlify Forms** automatisch weiterverarbeiten → z. B. ins Second Brain / eine Tabelle schreiben + Benachrichtigung. Netlify-Form-Detection ist seit 2026-06-29 aktiv; `readiness-check` (Name·E-Mail·Level·Score) + `skool-waitlist` werden erfasst. Anbindung via Netlify Form-Notification (Webhook) oder Netlify-API.
 - Tonbruch „du" vs. „Sie" auf den Subpage-Detailtexten angleichen.
 - Team-Sektion: Sarah Krüger & Markus Hoffmann sind Platzhalter (nicht real).
-- Datenschutzerklärung fehlt (Impressum steht).
+- Impressum + Datenschutzerklärung sind live (eRecht24, abmahngeschützt, zweisprachig); offen nur: Adresse in eRecht24-Stammdaten auf „Nußloch" nachziehen (Quelle/Website synchron halten).
 - Skool-Community noch nicht gebaut (nur Warteliste live).
 - Toten Chat-/Pricing-/WHU-Code aufräumen.
 - Readiness-Fragen/Scoring/Guide sind v1 — verfeinerbar.
