@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(awk '/id=\"page-datenschutz\"/,/\\\\/datenschutz -->/' index.html)",
+      "Bash(awk '/RC_DATA *=|de: *\\\\{/{f=1} /en: *\\\\{/{if\\(seen\\)f=0; seen=1} f' index.html)",
+      "Bash(git pull *)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx --yes impeccable install)",
+      "Skill(impeccable)",
+      "Skill(impeccable:*)",
+      "Bash(grep -oE 'data-de=\"[^\"]{15,90}\"' index.html)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(node shot.mjs)"
+    ]
+  }
+}

@@ -1424,9 +1424,9 @@
   .ins-tab:hover { border-color:var(--amber); color:var(--ink); }
   .ins-tab.is-active { background:var(--ink); color:var(--paper); border-color:var(--ink); }
 
-  .insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  .insight-card { background:var(--paper-card); border:none; border-radius:0; text-align:left; cursor:pointer; padding:34px 30px 30px; display:flex; flex-direction:column; gap:13px; min-height:236px; font-family:'Hanken Grotesk',sans-serif; transition:background .25s; width:100%; }
-  .insight-card:hover { background:#fff; }
+  .insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; background:transparent; border:none; }
+  .insight-card { background:var(--paper-card); border:1px solid var(--line); border-radius:2px; text-align:left; cursor:pointer; padding:34px 30px 30px; display:flex; flex-direction:column; gap:13px; min-height:236px; font-family:'Hanken Grotesk',sans-serif; transition:background .25s, border-color .25s, transform .25s; width:100%; }
+  .insight-card:hover { background:#fff; border-color:rgba(182,84,31,.35); transform:translateY(-3px); }
   .insight-card-series { font-size:11px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--amber); display:inline-flex; align-items:center; gap:9px; }
   .insight-card-series::before { content:''; width:16px; height:1px; background:currentColor; flex-shrink:0; }
   .insight-series--craft, .insight-series-label.insight-series--craft { color:var(--ink-soft); }
@@ -1460,7 +1460,7 @@
   .insights-teaser { background:var(--paper); padding:100px 64px; }
   .insights-teaser-head { max-width:1180px; margin:0 auto 36px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; }
   .insights-teaser-all { white-space:nowrap; }
-  .insights-grid--teaser { max-width:1180px; margin:0 auto; }
+  .insights-grid--teaser { max-width:1180px; margin:0 auto; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
 
   /* ═══════════════════════════════════════════════════════════
      ADVISORY-REDESIGN — laufender Index + linksbündige Header (Home)
@@ -1481,7 +1481,23 @@
   .hero-portrait img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 22%; display:block; border:1px solid var(--line); border-radius:2px; box-shadow:0 36px 80px -46px rgba(22,20,15,.55); filter:saturate(.96); }
   .hero-portrait figcaption { margin-top:14px; font-size:12px; letter-spacing:.4px; color:var(--ink-mute); display:flex; align-items:center; gap:10px; }
   .hero-portrait figcaption::before { content:''; width:20px; height:1px; background:var(--amber); flex-shrink:0; }
-  .hero-prog { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+  /* Transformationsleiter — Hero-Signature (Assistant → Agent → Agent Boss) */
+  .hero-ladder { margin:24px 0 0; padding:0; list-style:none; border-top:1px solid var(--line); }
+  .hero-ladder .hl-step { position:relative; display:flex; align-items:baseline; gap:16px; padding:13px 2px 13px 0; border-bottom:1px solid var(--line); }
+  .hero-ladder .hl-step:last-child { border-bottom:none; }
+  .hero-ladder .hl-num { flex:0 0 auto; min-width:1.5em; font-family:'Fraunces',serif; font-style:italic; font-weight:360; font-size:21px; line-height:1; letter-spacing:-.5px; color:var(--ink-mute); opacity:.6; transition:color .4s, opacity .4s; }
+  .hero-ladder .hl-body { display:flex; flex-direction:column; gap:3px; }
+  .hero-ladder .hl-name { font-family:'Fraunces',serif; font-weight:430; font-size:18px; line-height:1.05; letter-spacing:-.2px; color:var(--ink); }
+  .hero-ladder .hl-desc { font-size:12.5px; line-height:1.3; letter-spacing:.2px; color:var(--ink-mute); }
+  .hero-ladder .hl-step--goal .hl-num { color:var(--amber); opacity:1; }
+  .hero-ladder .hl-step--goal .hl-name { color:var(--amber-deep); }
+  .hero-ladder .hl-step--goal::after { content:''; position:absolute; right:0; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px rgba(182,84,31,.13); }
+  @keyframes hlRise { from { opacity:0; transform:translateY(11px); } to { opacity:1; transform:none; } }
+  .hero-ladder .hl-step { animation:hlRise .7s cubic-bezier(.16,1,.3,1) backwards; }
+  .hero-ladder .hl-step:nth-child(1) { animation-delay:.30s; }
+  .hero-ladder .hl-step:nth-child(2) { animation-delay:.44s; }
+  .hero-ladder .hl-step:nth-child(3) { animation-delay:.58s; }
+  @media (prefers-reduced-motion: reduce) { .hero-ladder .hl-step { animation:none; } }
 
   /* About rückt unter den Hero → Hintergrund an Hero angleichen (kein Doppel-Paper-2) */
   body.theme-light #page-home .about { background:var(--paper); }
@@ -1595,7 +1611,11 @@
           <img src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="eager">
           <figcaption id="h-caption">SAP-Exec · Agent Boss Leader</figcaption>
         </figure>
-        <div class="hero-prog" id="h-prog">Assistant → Agent → Agent Boss</div>
+        <ol class="hero-ladder" id="h-ladder" aria-label="Vom Assistant zum Agent Boss">
+          <li class="hl-step"><span class="hl-num">01</span><span class="hl-body"><span class="hl-name">Assistant</span><span class="hl-desc" data-de="nutzt KI-Tools" data-en="uses AI tools">nutzt KI-Tools</span></span></li>
+          <li class="hl-step"><span class="hl-num">02</span><span class="hl-body"><span class="hl-name">Agent</span><span class="hl-desc" data-de="delegiert Aufgaben" data-en="delegates tasks">delegiert Aufgaben</span></span></li>
+          <li class="hl-step hl-step--goal"><span class="hl-num">03</span><span class="hl-body"><span class="hl-name">Agent Boss</span><span class="hl-desc" data-de="orchestriert Mensch + KI" data-en="orchestrates people + AI">orchestriert Mensch + KI</span></span></li>
+        </ol>
       </div>
     </div>
   </section>
@@ -1832,7 +1852,7 @@
     <div class="why-header fade-in">
       <span class="sec-index" data-idx="04"></span>
       <div class="section-label" id="why-label">Warum wir</div>
-      <h2 class="section-headline" id="why-h2">Warum Abteilungsleiter mit mir arbeiten</h2>
+      <h2 class="section-headline" id="why-h2">Warum Führungskräfte mit mir arbeiten</h2>
     </div>
     <div class="features-grid">
       <div class="feature-card fade-in"><div class="feature-num">01</div><div class="feature-title" id="feat1t">End-to-End</div><p class="feature-desc" id="feat1d">Von Beratung über Community bis zur fertig betriebenen Automatisierung – ein Ansprechpartner über die ganze Journey.</p></div>
@@ -1845,28 +1865,26 @@
   <section class="impact" id="impact">
     <div class="impact-header fade-in">
       <span class="sec-index" data-idx="05"></span>
-      <div class="section-label" id="impact-label">Erste Ergebnisse 2026</div>
-      <h2 class="section-headline" id="impact-h2">Erste Ergebnisse aus der Praxis</h2>
+      <div class="section-label" id="impact-label">Was sich ändert</div>
+      <h2 class="section-headline" id="impact-h2">Was möglich wird, wenn du Agenten führst</h2>
     </div>
     <div class="impact-grid">
-      <div class="metric-card metric-card--lead fade-in"><div class="metric-value" id="m1v"><span>+</span>45<span>%</span></div><div class="metric-label" id="m1l">mehr produktive Zeit<br>in den Abteilungen</div><p class="metric-context" id="m1ctx">Teams verbringen wieder Zeit mit Entscheidungen statt mit Fleißarbeit – der Hebel, der alles andere trägt.</p></div>
-      <div class="metric-card fade-in"><div class="metric-value" id="m2v"><span>–</span>52<span>%</span></div><div class="metric-label" id="m2l">Time-to-Hire<br>(HR)</div></div>
-      <div class="metric-card fade-in"><div class="metric-value" id="m3v"><span>+</span>22<span>%</span></div><div class="metric-label" id="m3l">Win-Rate Steigerung<br>(Sales)</div></div>
-      <div class="metric-card fade-in"><div class="metric-value" id="m4v"><span>–</span>58<span>%</span></div><div class="metric-label" id="m4l">Reporting-Aufwand<br>(Finance)</div></div>
+      <div class="metric-card metric-card--lead fade-in"><div class="metric-value" id="m1v">Zeit zum <span>Führen</span></div><div class="metric-label" id="m1l">statt Fleißarbeit im Team</div><p class="metric-context" id="m1ctx" data-de="Deine Leute verbringen ihre Stunden wieder mit Entscheidungen statt mit Sammeln, Suchen und Formatieren — der Hebel, der alles andere trägt." data-en="Your people spend their hours on decisions again — not on gathering, searching and formatting. The lever that carries everything else.">Deine Leute verbringen ihre Stunden wieder mit Entscheidungen statt mit Sammeln, Suchen und Formatieren — der Hebel, der alles andere trägt.</p></div>
+      <div class="metric-card fade-in"><div class="metric-value" id="m2v" style="font-size:clamp(26px,2.8vw,38px);padding-top:6px;">Weniger <span>Handarbeit</span></div><div class="metric-label" id="m2l">Routine läuft als Agenten-Workflow</div></div>
+      <div class="metric-card fade-in"><div class="metric-value" id="m3v" style="font-size:clamp(26px,2.8vw,38px);padding-top:6px;">Schnellere <span>Zyklen</span></div><div class="metric-label" id="m3l">von der Frage zur belastbaren Antwort</div></div>
+      <div class="metric-card fade-in"><div class="metric-value" id="m4v" style="font-size:clamp(26px,2.8vw,38px);padding-top:6px;">Ein <span>System</span></div><div class="metric-label" id="m4l">Wissen &amp; Prozesse wachsen mit — nicht im Kopf Einzelner</div></div>
     </div>
-    <p class="impact-footnote fade-in" id="impact-fn">Und das sind nur die ersten 90 Tage.</p>
+    <p class="impact-footnote fade-in" id="impact-fn">Keine Pilot-Demos — Agenten, die im Betrieb laufen und bleiben.</p>
   </section>
 
   <section class="testimonials" id="testimonials">
     <div class="testimonials-header fade-in">
       <span class="sec-index" data-idx="06"></span>
-      <div class="section-label" id="testi-label">Stimmen</div>
-      <h2 class="section-headline" id="testi-h2">Was Abteilungsleiter sagen</h2>
+      <div class="section-label" id="testi-label">Haltung</div>
+      <h2 class="section-headline" id="testi-h2">Warum ich das ernst meine</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card testimonial-card--feature fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.</p><div class="testimonial-cite"><span class="testimonial-author" id="t1a">Head of Sales</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t1r">Maschinenbau, 1.200 Mitarbeiter</span></div></div>
-      <div class="testimonial-card fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t2">Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.</p><div class="testimonial-cite"><span class="testimonial-author" id="t2a">Head of Finance</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t2r">Hidden Champion, Mittelstand</span></div></div>
-      <div class="testimonial-card fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t3">Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.</p><div class="testimonial-cite"><span class="testimonial-author" id="t3a">Head of HR</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t3r">Tech-Scale-up, Series B</span></div></div>
+      <div class="testimonial-card testimonial-card--feature fade-in"><span class="quote-mark">"</span><p class="testimonial-text" id="t1">Ich verkaufe keine KI-Kurse. Ich baue und betreibe die Agenten, die ich empfehle — und führe bei SAP jeden Tag Menschen durch genau diesen Wandel.</p><div class="testimonial-cite"><span class="testimonial-author" id="t1a">Robert Weller</span><span class="testimonial-sep">·</span><span class="testimonial-role" id="t1r">Agent Boss Leader · VP &amp; Global Content Officer, SAP</span></div></div>
     </div>
   </section>
 
@@ -1953,14 +1971,14 @@
   <!-- RESULTS -->
   <section class="sales-results">
     <div class="sales-results-header fade-in">
-      <div class="section-label" id="sr-label">Ergebnisse</div>
-      <h2 class="section-headline" id="sr-h2">Was du in den ersten 90 Tagen erreichst</h2>
+      <div class="section-label" id="sr-label">Potenzial</div>
+      <h2 class="section-headline" id="sr-h2">Was in deinem Sales-Team möglich wird</h2>
     </div>
     <div class="results-top">
-      <div class="result-metric fade-in" style="transition-delay:80ms;"><span class="result-icon">⏱</span><div class="result-value"><span>+</span>30–50<span>%</span></div><div class="result-label">echte Selling Time</div></div>
-      <div class="result-metric fade-in" style="transition-delay:160ms;"><span class="result-icon">🎯</span><div class="result-value"><span>+</span>15–25<span>%</span></div><div class="result-label">Win-Rate Steigerung</div></div>
-      <div class="result-metric fade-in" style="transition-delay:240ms;"><span class="result-icon">📊</span><div class="result-value" style="font-size:clamp(26px,3vw,38px);padding-top:10px;">Deutlich<br>präziser</div><div class="result-label">Pipeline-Forecasts</div></div>
-      <div class="result-metric fade-in" style="transition-delay:320ms;"><span class="result-icon">💡</span><div class="result-value" style="font-size:clamp(26px,3vw,38px);padding-top:10px;">Weniger<br>Fluktuation</div><div class="result-label">AI als persönlicher Co-Pilot</div></div>
+      <div class="result-metric fade-in" style="transition-delay:80ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Mehr Zeit fürs Verkaufen" data-en="More time to sell">Mehr Zeit fürs Verkaufen</div><div class="result-label" data-de="weniger Admin, mehr Kundenkontakt" data-en="less admin, more time with customers">weniger Admin, mehr Kundenkontakt</div></div>
+      <div class="result-metric fade-in" style="transition-delay:160ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Sauberere Pipeline" data-en="A cleaner pipeline">Sauberere Pipeline</div><div class="result-label" data-de="Lead-Scoring & Research automatisiert" data-en="lead scoring & research automated">Lead-Scoring & Research automatisiert</div></div>
+      <div class="result-metric fade-in" style="transition-delay:240ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Präzisere Forecasts" data-en="Sharper forecasts">Präzisere Forecasts</div><div class="result-label" data-de="auf Basis echter Signale statt Bauchgefühl" data-en="based on real signals, not gut feel">auf Basis echter Signale statt Bauchgefühl</div></div>
+      <div class="result-metric fade-in" style="transition-delay:320ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Weniger Reibung" data-en="Less friction">Weniger Reibung</div><div class="result-label" data-de="Follow-ups & Angebote laufen von selbst" data-en="follow-ups & proposals run themselves">Follow-ups & Angebote laufen von selbst</div></div>
     </div>
     <div class="fade-in">
       <div class="results-agents-label" id="s-agent-label">Deine Agent-Flotte</div>
@@ -2102,14 +2120,14 @@
 
   <section class="sales-results">
     <div class="sales-results-header fade-in">
-      <div class="section-label" id="fr-label">Ergebnisse</div>
-      <h2 class="section-headline" id="fr-h2">Erste Ergebnisse in 90 Tagen</h2>
+      <div class="section-label" id="fr-label">Potenzial</div>
+      <h2 class="section-headline" id="fr-h2">Was in deinem Finance-Bereich möglich wird</h2>
     </div>
     <div class="results-top">
-      <div class="result-metric fade-in" style="transition-delay:80ms;"><span class="result-icon">⏱</span><div class="result-value"><span>–</span>40–60<span>%</span></div><div class="result-label">Reporting- & Closing-Zeit</div></div>
-      <div class="result-metric fade-in" style="transition-delay:160ms;"><span class="result-icon">📊</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Echtzeit-<br>Forecasting</div><div class="result-label">mit Anomaly Detection</div></div>
-      <div class="result-metric fade-in" style="transition-delay:240ms;"><span class="result-icon">🔒</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Höhere<br>Audit-Sicherheit</div><div class="result-label">durch vollständige Protokollierung</div></div>
-      <div class="result-metric fade-in" style="transition-delay:320ms;"><span class="result-icon">🎯</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Mehr Zeit<br>für Strategie</div><div class="result-label">Beratung der Geschäftsführung</div></div>
+      <div class="result-metric fade-in" style="transition-delay:80ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Schnellerer Abschluss" data-en="A faster close">Schnellerer Abschluss</div><div class="result-label" data-de="Monatsabschluss ohne Nachtschichten" data-en="month-end without all-nighters">Monatsabschluss ohne Nachtschichten</div></div>
+      <div class="result-metric fade-in" style="transition-delay:160ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Echtzeit-Forecasting" data-en="Real-time forecasting">Echtzeit-Forecasting</div><div class="result-label" data-de="mit Anomalie-Erkennung" data-en="with anomaly detection">mit Anomalie-Erkennung</div></div>
+      <div class="result-metric fade-in" style="transition-delay:240ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Mehr Audit-Sicherheit" data-en="More audit safety">Mehr Audit-Sicherheit</div><div class="result-label" data-de="durch lückenlose Protokollierung" data-en="through complete logging">durch lückenlose Protokollierung</div></div>
+      <div class="result-metric fade-in" style="transition-delay:320ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Zeit für Strategie" data-en="Time for strategy">Zeit für Strategie</div><div class="result-label" data-de="statt Reporting-Handarbeit" data-en="instead of manual reporting">statt Reporting-Handarbeit</div></div>
     </div>
     <div class="fade-in">
       <div class="results-agents-label" id="f-agent-label">Deine Agent-Flotte</div>
@@ -2240,14 +2258,14 @@
 
   <section class="sales-results">
     <div class="sales-results-header fade-in">
-      <div class="section-label" id="hrr-label">Ergebnisse</div>
-      <h2 class="section-headline" id="hrr-h2">Erste Ergebnisse in 90 Tagen</h2>
+      <div class="section-label" id="hrr-label">Potenzial</div>
+      <h2 class="section-headline" id="hrr-h2">Was in deinem HR-Bereich möglich wird</h2>
     </div>
     <div class="results-top">
-      <div class="result-metric fade-in" style="transition-delay:80ms;"><span class="result-icon">⚡</span><div class="result-value"><span>–</span>40–60<span>%</span></div><div class="result-label">Time-to-Hire</div></div>
-      <div class="result-metric fade-in" style="transition-delay:160ms;"><span class="result-icon">🤝</span><div class="result-value"><span>+</span>25–35<span>%</span></div><div class="result-label">Offer-Acceptance-Rate</div></div>
-      <div class="result-metric fade-in" style="transition-delay:240ms;"><span class="result-icon">⭐</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Deutlich bessere</div><div class="result-label">Candidate Experience</div></div>
-      <div class="result-metric fade-in" style="transition-delay:320ms;"><span class="result-icon">🧠</span><div class="result-value" style="font-size:clamp(24px,3vw,36px);padding-top:10px;">Skills-Intelligence</div><div class="result-label">in Echtzeit</div></div>
+      <div class="result-metric fade-in" style="transition-delay:80ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Schnellere Besetzung" data-en="Faster hiring">Schnellere Besetzung</div><div class="result-label" data-de="Matching & Screening automatisiert" data-en="matching & screening automated">Matching & Screening automatisiert</div></div>
+      <div class="result-metric fade-in" style="transition-delay:160ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Bessere Zusagen" data-en="Better acceptance">Bessere Zusagen</div><div class="result-label" data-de="persönlichere Candidate Experience" data-en="a more personal candidate experience">persönlichere Candidate Experience</div></div>
+      <div class="result-metric fade-in" style="transition-delay:240ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Stärkeres Onboarding" data-en="Stronger onboarding">Stärkeres Onboarding</div><div class="result-label" data-de="individuell statt Standard von der Stange" data-en="personal, not one-size-fits-all">individuell statt Standard von der Stange</div></div>
+      <div class="result-metric fade-in" style="transition-delay:320ms;"><div class="result-value" style="font-size:clamp(24px,2.7vw,34px);padding-top:8px;" data-de="Skills in Echtzeit" data-en="Skills in real time">Skills in Echtzeit</div><div class="result-label" data-de="Lücken sichtbar, bevor sie wehtun" data-en="gaps visible before they hurt">Lücken sichtbar, bevor sie wehtun</div></div>
     </div>
     <div class="fade-in">
       <div class="results-agents-label" id="hr-agent-label">Deine Agent-Flotte</div>
@@ -2631,7 +2649,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       heroH1c: '',
       heroSub: 'Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.',
       heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
-      heroCaption: 'SAP-Exec · Agent Boss Leader', heroProg: 'Assistant → Agent → Agent Boss',
+      heroCaption: 'SAP-Exec · Agent Boss Leader',
       heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.', heroRcLink: '2-Min Readiness-Check: Wo stehst du? →',
       // OFFERINGS
       offLabel: 'Zusammenarbeit', offH2: 'Drei Wege, mit mir zu arbeiten',
@@ -2649,23 +2667,21 @@ E-mail: kontakt@agent-boss-academy.com</p>
       progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Schließe Monate in Tagen. Finance wird zum strategischen Business Partner mit Autonomous Reporting & Echtzeit-Insights.', progFinLink: 'Use-Cases in Finance →',
       progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Besetze Stellen 50 % schneller und steigere die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.', progHRLink: 'Use-Cases in HR →',
       // WHY
-      whyLabel: 'Warum wir', whyH2: 'Warum Abteilungsleiter mit mir arbeiten',
+      whyLabel: 'Warum wir', whyH2: 'Warum Führungskräfte mit mir arbeiten',
       feat1t: 'End-to-End', feat1d: 'Von Beratung über Community bis zur fertig betriebenen Automatisierung – ein Ansprechpartner über die ganze Journey.',
       feat2t: 'Voller Stack', feat2d: 'Langdock, n8n, Make, Claude & Second Brain aus einer Hand – von Beratung bis Betrieb.',
       feat3t: 'Bereichsspezifisch & praxisnah', feat3d: 'Konkrete Use-Cases für Sales, Finance und HR – mit sofort einsetzbaren Agent-Templates.',
       feat4t: 'Ergebnisorientiert', feat4d: 'Am Ende laufen echte, produktive Agents in deinem Bereich – nicht nur Folien.',
       // IMPACT
-      impactLabel: 'Erste Ergebnisse 2026', impactH2: 'Erste Ergebnisse aus der Praxis',
-      m1: '+45%', m1l: 'mehr produktive Zeit<br>in den Abteilungen',
-      m2: '–52%', m2l: 'Time-to-Hire<br>(HR)',
-      m3: '+22%', m3l: 'Win-Rate Steigerung<br>(Sales)',
-      m4: '–58%', m4l: 'Reporting-Aufwand<br>(Finance)',
-      impactFn: 'Und das sind nur die ersten 90 Tage.',
+      impactLabel: 'Was sich ändert', impactH2: 'Was möglich wird, wenn du Agenten führst',
+      m1: 'Zeit zum <span>Führen</span>', m1l: 'statt Fleißarbeit im Team',
+      m2: 'Weniger <span>Handarbeit</span>', m2l: 'Routine läuft als Agenten-Workflow',
+      m3: 'Schnellere <span>Zyklen</span>', m3l: 'von der Frage zur belastbaren Antwort',
+      m4: 'Ein <span>System</span>', m4l: 'Wissen &amp; Prozesse wachsen mit — nicht im Kopf Einzelner',
+      impactFn: 'Keine Pilot-Demos — Agenten, die im Betrieb laufen und bleiben.',
       // TESTIMONIALS
-      testiLabel: 'Stimmen', testiH2: 'Was Abteilungsleiter sagen',
-      t1: 'Endlich jemand, der nicht nur Tools zeigt, sondern meine gesamte Sales-Abteilung neu aufstellt. Der erste Agent hat schon nach wenigen Wochen Mehrwert geliefert.', t1a: 'Head of Sales', t1r: 'Maschinenbau, 1.200 Mitarbeiter',
-      t2: 'Der Finance Agent hat unseren Monatsabschluss von 12 auf 4 Tage verkürzt. Endlich jemand, der Finance wirklich versteht – jetzt habe ich Zeit für Strategie.', t2a: 'Head of Finance', t2r: 'Hidden Champion, Mittelstand',
-      t3: 'Recruiting-Agent + Onboarding-Agent haben uns massiv entlastet. Endlich kann HR strategisch arbeiten.', t3a: 'Head of HR', t3r: 'Tech-Scale-up, Series B',
+      testiLabel: 'Haltung', testiH2: 'Warum ich das ernst meine',
+      t1: 'Ich verkaufe keine KI-Kurse. Ich baue und betreibe die Agenten, die ich empfehle — und führe bei SAP jeden Tag Menschen durch genau diesen Wandel.', t1a: 'Robert Weller', t1r: 'Agent Boss Leader · VP & Global Content Officer, SAP',
       // FINAL CTA
       ctaLabel: 'Jetzt starten', ctaH2a: 'Bereit, deinen Bereich zur', ctaH2b: 'Frontier Unit', ctaH2c: 'zu machen?',
       ctaP: 'Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deinem Bereich.',
@@ -2691,7 +2707,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       ss1tag: 'Use-Case · live umgesetzt', ss1t: 'Gemeinsam live gebaut', ss1d: 'Agent-Building, Prompt-Strategien und Sales-spezifische Multi-Agent-Systeme – gemeinsam aufgesetzt und live in deiner Umgebung.',
       ss2tag: 'Department Transformation Coaching · 3–6 Monate', ss2t: 'Deine Abteilung neu aufstellen', ss2d: 'Wir begleiten dich und dein Team bei der Einführung – inkl. Change-Management, Team-Workshops und Prozess-Neugestaltung.',
       ss3tag: 'Managed Second Brain + Agent Service · laufend', ss3t: 'Agents die 24/7 für dich arbeiten', ss3d: 'Deine Sales-Agents laufen kontinuierlich. Wir kümmern uns um Monitoring, Updates, Governance und Skalierung.',
-      salesResLabel: 'Ergebnisse', salesResH2: 'Was du in den ersten 90 Tagen erreichst',
+      salesResLabel: 'Potenzial', salesResH2: 'Was in deinem Sales-Team möglich wird',
       sr1: '+30–50%', sr1l: 'echte Selling Time', sr2: '+15–25%', sr2l: 'Win-Rate Steigerung',
       sr3: 'Deutlich<br>präziser', sr3l: 'Pipeline-Forecasts', sr4: 'Weniger<br>Fluktuation', sr4l: 'AI als persönlicher Co-Pilot',
       agentFlotte: 'Deine Agent-Flotte',
@@ -2723,7 +2739,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       fs1tag: 'Use-Case · live umgesetzt', fs1t: 'Gemeinsam live gebaut', fs1d: 'Fokus auf Finance Agents, Autonomous Reporting und erklärbare KI – gemeinsam aufgesetzt und live in deiner Umgebung.',
       fs2tag: 'Department Transformation Coaching · 3–6 Monate', fs2t: 'Deine Finance-Prozesse neu gestalten', fs2d: 'Prozess-Neugestaltung, Team-Workshops und Einführung von Human-in-the-Loop Workflows.',
       fs3tag: 'Managed Second Brain + Agent Service · laufend', fs3t: '24/7 laufende Finance Agents', fs3d: 'Kontinuierliche Agents mit Monitoring, Updates und vollständigen Audit-Trails.',
-      finResLabel: 'Ergebnisse', finResH2: 'Erste Ergebnisse in 90 Tagen',
+      finResLabel: 'Potenzial', finResH2: 'Was in deinem Finance-Bereich möglich wird',
       fr1: '–40–60%', fr1l: 'Reporting- & Closing-Zeit', fr2: 'Echtzeit-<br>Forecasting', fr2l: 'mit Anomaly Detection', fr3: 'Höhere<br>Audit-Sicherheit', fr3l: 'durch vollständige Protokollierung', fr4: 'Mehr Zeit<br>für Strategie', fr4l: 'Beratung der Geschäftsführung',
       finAgentFlotte: 'Deine Agent-Flotte',
       fag1: 'Monthly Closing Agent', fag2: 'Forecasting & Scenario Agent', fag3: 'Reconciliation & Anomaly Agent', fag4: 'Board-Report Generator',
@@ -2751,7 +2767,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       hs1tag: 'Use-Case · live umgesetzt', hs1t: 'Gemeinsam live gebaut', hs1d: 'Fokus auf Recruiting- und Talent-Agents – gemeinsam aufgesetzt und live in deiner Umgebung.',
       hs2tag: 'Department Transformation Coaching · 3–6 Monate', hs2t: 'Neue HR-Prozesse & Team-Adoption', hs2d: 'Wir begleiten dich bei der Neugestaltung deiner HR-Prozesse und der Team-Adoption der neuen Agents.',
       hs3tag: 'Managed Second Brain + Agent Service · laufend', hs3t: 'Kontinuierliche Optimierung', hs3d: 'Monitoring, Updates und kontinuierliche Optimierung deiner HR-Agenten-Flotte.',
-      hrResLabel: 'Ergebnisse', hrResH2: 'Erste Ergebnisse in 90 Tagen',
+      hrResLabel: 'Potenzial', hrResH2: 'Was in deinem HR-Bereich möglich wird',
       hr1: '–40–60%', hr1l: 'Time-to-Hire', hr2: '+25–35%', hr2l: 'Offer-Acceptance-Rate', hr3: 'Deutlich bessere', hr3l: 'Candidate Experience', hr4: 'Skills-Intelligence', hr4l: 'in Echtzeit',
       hrAgentFlotte: 'Deine Agent-Flotte',
       hag1: 'Intelligent Recruiting & Matching Agent', hag2: 'Personalisiertes Onboarding Agent', hag3: 'Talent Development & Skills-Gap Agent', hag4: 'Employee Experience Feedback Agent',
@@ -2795,7 +2811,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       heroH1c: '',
       heroSub: 'You don\'t just want to use AI — you want to lead your team alongside it. I show you <strong>where you stand and what comes next</strong> – and guide you step by step from manager to Agent Boss.',
       heroCta1: 'Book a Free 30-Min Strategy Call',
-      heroCaption: 'SAP exec · Agent Boss Leader', heroProg: 'Assistant → Agent → Agent Boss',
+      heroCaption: 'SAP exec · Agent Boss Leader',
       heroFn: 'Practitioner, not theory — real AI agents live in production.', heroRcLink: '2-min Readiness Check: where do you stand? →',
       // OFFERINGS
       offLabel: 'Work with me', offH2: 'Three ways to work with me',
@@ -2808,21 +2824,19 @@ E-mail: kontakt@agent-boss-academy.com</p>
       progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Turn your sales team into a revenue machine. More selling time, higher win rates, precise forecasts.', progSalesLink: 'Use cases in Sales →',
       progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Close months in days. Finance becomes a strategic business partner with autonomous reporting & real-time insights.', progFinLink: 'Use cases in Finance →',
       progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Fill positions 50% faster and boost the employee experience. Recruiting, onboarding & talent agents included.', progHRLink: 'Use cases in HR →',
-      whyLabel: 'Why us', whyH2: 'Why department heads work with me',
+      whyLabel: 'Why us', whyH2: 'Why leaders work with me',
       feat1t: 'End-to-end', feat1d: 'From advisory to community to fully managed automation – one partner across the whole journey.',
       feat2t: 'Full stack', feat2d: 'Langdock, n8n, Make, Claude & Second Brain from one source – from advisory to operations.',
       feat3t: 'Domain-specific & hands-on', feat3d: 'Concrete use cases for Sales, Finance and HR – with ready-to-deploy agent templates.',
       feat4t: 'Results-oriented', feat4d: 'In the end, real productive agents run in your area – not just slides.',
-      impactLabel: 'First Results 2026', impactH2: 'First results from real projects',
-      m1: '+45%', m1l: 'more productive time<br>in departments',
-      m2: '–52%', m2l: 'Time-to-Hire<br>(HR)',
-      m3: '+22%', m3l: 'Win Rate Increase<br>(Sales)',
-      m4: '–58%', m4l: 'Reporting Effort<br>(Finance)',
-      impactFn: 'And those are just the first 90 days.',
-      testiLabel: 'Testimonials', testiH2: 'What Department Heads Say',
-      t1: 'Finally someone who doesn\'t just show tools, but completely restructures my entire sales department. The first agent delivered value within a few weeks.', t1a: 'Head of Sales', t1r: 'Mechanical Engineering, 1,200 Employees',
-      t2: 'The Finance Agent reduced our month-end close from 12 to 4 days. Finally someone who really gets finance – now I have time for strategy.', t2a: 'Head of Finance', t2r: 'Hidden Champion, Mid-Market',
-      t3: 'The Recruiting Agent + Onboarding Agent took a massive load off us. Finally HR can work strategically.', t3a: 'Head of HR', t3r: 'Tech Scale-up, Series B',
+      impactLabel: 'What changes', impactH2: 'What becomes possible when you lead agents',
+      m1: 'Time to <span>lead</span>', m1l: 'instead of busywork on the team',
+      m2: 'Less <span>manual work</span>', m2l: 'routine runs as an agent workflow',
+      m3: 'Faster <span>cycles</span>', m3l: 'from question to a reliable answer',
+      m4: 'One <span>system</span>', m4l: 'knowledge & processes grow with you — not in one head',
+      impactFn: 'No pilot demos — agents that run in production and stay.',
+      testiLabel: 'Where I stand', testiH2: 'Why I mean this',
+      t1: 'I don\'t sell AI courses. I build and run the agents I recommend — and at SAP I lead people through exactly this shift every single day.', t1a: 'Robert Weller', t1r: 'Agent Boss Leader · VP & Global Content Officer, SAP',
       ctaLabel: 'Get Started', ctaH2a: 'Ready to turn your domain into a', ctaH2b: 'Frontier Unit', ctaH2c: '?',
       ctaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your domain.',
       ctaBtn: 'Book Your Free Strategy Call',
@@ -2845,7 +2859,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       ss1tag: 'Use case · built live', ss1t: 'Built together, live', ss1d: 'Agent-building, prompt strategies and sales-specific multi-agent systems – set up together and live in your environment.',
       ss2tag: 'Department Transformation Coaching · 3–6 Months', ss2t: 'Restructure Your Department', ss2d: 'We guide you and your team through the rollout – including change management, team workshops and process redesign.',
       ss3tag: 'Managed Second Brain + Agent Service · ongoing', ss3t: 'Agents Working 24/7 for You', ss3d: 'Your sales agents run continuously. We handle monitoring, updates, governance and scaling.',
-      salesResLabel: 'Results', salesResH2: 'What You Achieve in the First 90 Days',
+      salesResLabel: 'Potential', salesResH2: 'What becomes possible in your sales team',
       sr1: '+30–50%', sr1l: 'real selling time', sr2: '+15–25%', sr2l: 'Win Rate Increase',
       sr3: 'Significantly<br>more precise', sr3l: 'Pipeline Forecasts', sr4: 'Less<br>Turnover', sr4l: 'AI as personal co-pilot',
       agentFlotte: 'Your Agent Fleet',
@@ -2876,7 +2890,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       fs1tag: 'Use case · built live', fs1t: 'Built together, live', fs1d: 'Focus on finance agents, autonomous reporting and explainable AI – set up together and live in your environment.',
       fs2tag: 'Department Transformation Coaching · 3–6 Months', fs2t: 'Redesign Your Finance Processes', fs2d: 'Process redesign, team workshops and introduction of human-in-the-loop workflows.',
       fs3tag: 'Managed Second Brain + Agent Service · ongoing', fs3t: '24/7 Finance Agents Running', fs3d: 'Continuous agents with monitoring, updates and full audit trails.',
-      finResLabel: 'Results', finResH2: 'First Results in 90 Days',
+      finResLabel: 'Potential', finResH2: 'What becomes possible in your finance function',
       fr1: '–40–60%', fr1l: 'Reporting & Closing Time', fr2: 'Real-Time<br>Forecasting', fr2l: 'with Anomaly Detection', fr3: 'Higher<br>Audit Security', fr3l: 'through full audit trails', fr4: 'More Time<br>for Strategy', fr4l: 'Advising the Executive Board',
       finAgentFlotte: 'Your Agent Fleet',
       fag1: 'Monthly Closing Agent', fag2: 'Forecasting & Scenario Agent', fag3: 'Reconciliation & Anomaly Agent', fag4: 'Board Report Generator',
@@ -2903,7 +2917,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       hs1tag: 'Use case · built live', hs1t: 'Built together, live', hs1d: 'Focus on recruiting and talent agents – set up together and live in your environment.',
       hs2tag: 'Department Transformation Coaching · 3–6 Months', hs2t: 'New HR Processes & Team Adoption', hs2d: 'We guide you through redesigning your HR processes and team adoption of the new agents.',
       hs3tag: 'Managed Second Brain + Agent Service · ongoing', hs3t: 'Continuous Optimization', hs3d: 'Monitoring, updates and continuous optimization of your HR agent fleet.',
-      hrResLabel: 'Results', hrResH2: 'First Results in 90 Days',
+      hrResLabel: 'Potential', hrResH2: 'What becomes possible in your HR function',
       hr1: '–40–60%', hr1l: 'Time-to-Hire', hr2: '+25–35%', hr2l: 'Offer Acceptance Rate', hr3: 'Significantly better', hr3l: 'Candidate Experience', hr4: 'Skills Intelligence', hr4l: 'in real time',
       hrAgentFlotte: 'Your Agent Fleet',
       hag1: 'Intelligent Recruiting & Matching Agent', hag2: 'Personalized Onboarding Agent', hag3: 'Talent Development & Skills-Gap Agent', hag4: 'Employee Experience Feedback Agent',
@@ -2971,6 +2985,217 @@ E-mail: kontakt@agent-boss-academy.com</p>
 </ul>
 <p>Alex didn't get it on Day One. Most of us won't. But that's where the adventure starts. <em>(Next week: Samantha hits the same wall — from the other side of the building.)</em></p>
 <blockquote>Where are you — still the answer machine, or already letting go?</blockquote>`
+      }
+    },
+    {
+      id: 'adventures-ep-2-same-wall',
+      series: 'adventures',
+      date: '2026-06-23',
+      readMin: 4,
+      url: 'https://www.linkedin.com/posts/robertweller-info_agentboss-leadership-changemanagement-activity-7475110453912780800-TJv4',
+      title: {
+        de: 'Adventures of an Agent Boss — Folge 2: Dieselbe Wand, andere Seite',
+        en: 'Adventures of an Agent Boss — Ep. 2: The Same Wall, Other Side'
+      },
+      excerpt: {
+        de: 'Letzte Woche traf Alex die Wand von oben. Diese Woche läuft Samantha drei Etagen tiefer dagegen — und ertrinkt fast im Tool-Dschungel.',
+        en: 'Last week Alex hit the wall from the top. This week Samantha hits it three floors down — and nearly drowns in the tool jungle.'
+      },
+      body: {
+        de: `<h3>Folge 2: Dieselbe Wand, andere Seite</h3>
+<p>Letzte Woche lief Alex an seinem ersten Tag als CEO gegen eine Wand. Diese Woche läuft Samantha gegen dieselbe — drei Etagen tiefer. Samantha verantwortet Marketing und People bei Falkenrad. Als Alex verkündete „Wir machen uns bereit für KI", nickte sie mit. Dann landeten die Fragen auf ihrem Tisch. Ihr Team wollte keine Vision. Es wollte eine Sache wissen: Was mache ich am Montag konkret anders?</p>
+<p>Also tat Samantha, was sie bis hierher gebracht hatte — sie stürzte sich rein. Und wäre fast ertrunken. Claude. ChatGPT. Copilot. Langdock. n8n. Make. Bei jedem Öffnen von LinkedIn ein neues. Sie testete, verglich, schaute um Mitternacht Tutorials — bis alles ineinander verschwamm. Andere Logos, dieselben Versprechen. Beschäftigt mit Tools, ohne vom Fleck zu kommen. Das war die Falle: nicht zu wenig KI — zu viel, ohne Fokus.</p>
+<p>Der Durchbruch war nicht, das eine perfekte Tool zu finden. Es war das Gegenteil: ein paar auswählen, sie auf die Arbeit richten, die wirklich zählt, den Rest des Lärms ignorieren. Das richtige Tool für die richtige Aufgabe schlägt jedes Tool für jede Aufgabe. Doch das war die kleinere Lektion. Die größere war dieselbe Wand, an die auch Alex stieß: Ihr Reflex, alles selbst aufzusaugen — jedes Tool, jede Aufgabe — war genau das, was sie zum Engpass machte.</p>
+<p>Das verlangt die „von unten"-Version von Tag Eins:</p>
+<ul>
+<li>Hör auf, jedem Tool hinterherzujagen. Fang mit den wenigen an, die zur wichtigen Arbeit passen.</li>
+<li>Hör auf, das Sicherheitsnetz für jede Aufgabe zu sein. Fang an, ein Team zu bauen — Mensch und Agent — das sich selbst auffängt.</li>
+<li>Hör auf, dich daran zu messen, wie viel du tust. Miss dich an den Entscheidungen, die du zu dem triffst, was zählt.</li>
+</ul>
+<p>Alex spürt das Gewicht von oben. Samantha trägt es unten. Dieselbe Wand, zwei Seiten — und Falkenrad kommt nur durch, wenn beide aufhören, alles selbst zu machen, und anfangen zu wählen, was zählt. <em>(Nächste Woche: Folge 3 — Die Antwort-Maschine.)</em></p>
+<blockquote>Top-down oder von unten — auf welcher Seite der Wand stehst du?</blockquote>
+<p><strong>P.S.</strong> Samanthas Tool-Dschungel — ich habe ihn selbst durchlebt. Was mich rausgezogen hat, war erzwungener Fokus: ein kleines Set, dem ich wirklich vertraue, eines für jede Aufgabe, die zählt — die Routinearbeit automatisieren, ein täglicher Denkpartner, Co-Working an echten Deliverables, Coding, Agenten bauen. Alles andere habe ich stummgeschaltet. Es ging nie darum, die meisten Tools zu besitzen. Es geht darum, seine Tools zu kennen — wofür jedes da ist und was man von ihm erwarten kann.</p>`,
+        en: `<h3>Ep. 2: The Same Wall, Other Side</h3>
+<p>Last week, Alex hit a wall on his first day as CEO. This week, Samantha hits the same one — three floors down. Samantha runs marketing and people at Falkenrad. When Alex announced "we're getting ready for AI," she nodded along. Then the questions started landing on her desk. Her team didn't want a vision. They wanted to know one thing: what do I actually do differently on Monday?</p>
+<p>So Samantha did what got her this far — she dove in. And nearly drowned. Claude. ChatGPT. Copilot. Langdock. n8n. Make. A new one every time she opened LinkedIn. She tested, compared, watched tutorials at midnight — until they all blurred together. Different logos, same promises. Busy with tools, moving nowhere. That was the trap: not too little AI — too much, with no focus.</p>
+<p>The breakthrough wasn't finding the one perfect tool. It was the opposite: pick a few, point them at the work that actually matters, ignore the rest of the noise. The right tool for the right job beats every tool for every job. But even that was the smaller lesson. The bigger one was the wall Alex hit too: her instinct to absorb it all — every tool, every task — was exactly what made her the bottleneck.</p>
+<p>Here's what the floor-up version of Day One asks:</p>
+<ul>
+<li>Stop chasing every tool. Start with the few that fit the work that matters.</li>
+<li>Stop being the safety net for every task. Start building a team — human and agent — that catches itself.</li>
+<li>Stop measuring yourself by how much you do. Start measuring the calls you make on what matters.</li>
+</ul>
+<p>Alex feels the weight from the top. Samantha carries it on the floor. Same wall, two sides — and Falkenrad only gets through if both stop trying to do it all, and start choosing what matters. <em>(Next: Ep. 3 — The Answer Machine.)</em></p>
+<blockquote>Top-down or floor-up — which side of the wall are you on?</blockquote>
+<p><strong>P.S.</strong> Samantha's tool jungle — I lived it. What pulled me out was forcing focus: a small set I actually trust, one for each job that matters — automating the repetitive work, a daily thinking partner, co-working on real deliverables, coding, building agents. Everything else, I muted. The point was never owning the most tools. It's knowing your tools — what each one is for, and what to expect from it.</p>`
+      }
+    },
+    {
+      id: 'adventures-ep-3-answer-machine',
+      series: 'adventures',
+      date: '2026-06-30',
+      readMin: 4,
+      url: 'https://www.linkedin.com/posts/robertweller-info_agentboss-leadership-delegation-activity-7477801689018884096-Za1U',
+      title: {
+        de: 'Adventures of an Agent Boss — Folge 3: Die Antwort-Maschine',
+        en: 'Adventures of an Agent Boss — Ep. 3: The Answer Machine'
+      },
+      excerpt: {
+        de: 'Im zweiten Monat läuft alles — nur nicht ohne Alex. Er hat eine Firma gebaut, die auf einem Motor läuft: ihm. Was passiert, wenn er aufhört zu antworten.',
+        en: 'By month two, everything moves — but not without Alex. He built a company that runs on one engine: him. What happens when he stops answering.'
+      },
+      body: {
+        de: `<h3>Folge 3: Die Antwort-Maschine</h3>
+<p>Im zweiten Monat hatte Alex ein neues Problem. Es lief. Nur nicht ohne ihn. Jede Entscheidung, jede „kurze Frage", jedes „Alex, was meinst du?" landete auf seinem Tisch. Er beantwortete alles — schnell, scharf, meistens richtig. Darauf war er stolz. Genau diese Fähigkeit hatte ihn zum CEO gemacht. Und genau sie war der Grund, warum nichts vorankam, sobald er in einem Meeting saß. Er hatte eine Firma gebaut, die auf einem Motor lief: ihm. Je schneller er antwortete, desto mehr Fragen kamen. Er führte kein Team. Er betrieb eine Antwort-Maschine — mit einem einzigen Bediener.</p>
+<p>Die Wand aus Tag Eins hatte eine zweite Seite, die er nicht gesehen hatte. Loszulassen, der Klügste zu sein, hieß nicht nur, die KI die einfachen Antworten übernehmen zu lassen. Es hieß, dass er sich weigerte, die schweren abzugeben.</p>
+<p>Also versuchte er etwas, das sich jedes Mal falsch anfühlte: Er hörte auf zu antworten. Jemand fragte, was man wegen eines verzögerten Lieferanten tun solle. Der alte Alex hätte es in zehn Sekunden gelöst. Der neue Alex fragte zurück: „Was sagen die Daten — und was würdest du tun?" Dann wartete er. Es war unbequem. Die Stille fühlte sich an wie Scheitern. War sie nicht.</p>
+<p>Das hat er in diesem Monat gelernt:</p>
+<ul>
+<li>Jede Antwort, die du gibst, ist ein Muskel, den dein Team nicht aufbaut. Gib sie zurück — an einen Menschen oder an einen Agenten — und sieh zu, wie sie stärker werden.</li>
+<li>Eine zurückgegebene Frage ist mehr wert als eine gegebene Antwort. „Was würdest du tun?" macht aus einem Abhängigen einen Entscheider. Die KI kann die Optionen entwerfen; die Entscheidung müssen deine Leute besitzen.</li>
+<li>Dein Job ist nicht mehr der mit den Antworten. Er ist der, der dafür sorgt, dass gute Antworten entstehen — ohne dich im Raum.</li>
+</ul>
+<p>In der Woche, in der Alex so wenige Fragen beantwortete wie nie in seinem Leben, traf Falkenrad die meisten Entscheidungen des ganzen Quartals. Komisch, wie das funktioniert. <em>(Nächste Woche: Folge 4 — als die KI die halbe Arbeit machte und das Feedback kompliziert wurde.)</em></p>
+<blockquote>Wann hast du zuletzt bewusst eine Frage NICHT beantwortet?</blockquote>
+<p><strong>P.S.</strong> KI erweitert enorm, was du kannst. Dinge, für die es früher Spezialisten brauchte, machst du jetzt selbst — und dein ganzes Team bekommt direkt neben dir Superkräfte. Aber Superkräfte allein machen ein Team nicht stärker. Der eigentliche Muskel — in deinen Agenten und in deinen Leuten — wächst erst, wenn du aufhörst zu übernehmen und anfängst zu coachen. Das Tool macht dich fähig. Das Coaching macht alle um dich herum fähig. Das ist der Unterschied zwischen KI nutzen und mit KI führen.</p>`,
+        en: `<h3>Ep. 3: The Answer Machine</h3>
+<p>By month two, Alex had a new problem. Things were moving. Just not without him. Every decision, every "quick question," every "Alex, what do you think?" landed on his desk. He answered all of them — fast, sharp, usually right. He was proud of that. It was the skill that made him CEO. It was also the reason nothing moved when he was in a meeting. He'd built a company that ran on one engine: him. The faster he answered, the more questions came. He wasn't leading a team. He was running an answer machine — and the machine had one operator.</p>
+<p>The wall he hit on Day One had a second side he hadn't seen. Letting go of being the smartest one wasn't just about AI taking the easy answers. It was about him refusing to give up the hard ones.</p>
+<p>So he tried something that felt wrong every single time: he stopped answering. Someone asked what to do about a delayed supplier. Old Alex would have solved it in ten seconds. New Alex asked back: "What does the data say, and what would you do?" Then he waited. It was uncomfortable. The silence felt like failure. It wasn't.</p>
+<p>Here's what he learned that month:</p>
+<ul>
+<li>Every answer you give is a muscle your team doesn't build. Hand it back — to a person, or to an agent — and watch them get stronger.</li>
+<li>A question returned is worth more than an answer given. "What would you do?" turns a dependent into a decision-maker. The AI can draft the options; your people have to own the call.</li>
+<li>Your job stopped being the one with the answers. It became the one who makes sure good answers happen without you in the room.</li>
+</ul>
+<p>The week Alex answered the fewest questions of his life, Falkenrad made the most decisions it had all quarter. Funny how that works. <em>(Next: Ep. 4 — when the AI did half the work, and the feedback got complicated.)</em></p>
+<blockquote>When did you last NOT answer a question on purpose?</blockquote>
+<p><strong>P.S.</strong> AI expands what you can do — enormously. Things that used to need a specialist, you can now do yourself, and your whole team gets superpowers right next to you. But superpowers alone don't make a team stronger. The real muscle — in your agents and your people — only grows when you stop taking over and start coaching. The tool makes you capable. The coaching makes everyone around you capable. That's the difference between using AI and leading with it.</p>`
+      }
+    },
+    {
+      id: 'adventures-ep-4-half-the-work',
+      series: 'adventures',
+      date: '2026-07-07',
+      readMin: 4,
+      url: 'https://www.linkedin.com/posts/robertweller-info_agentboss-leadership-feedback-activity-7480353902844944385-NH45',
+      title: {
+        de: 'Adventures of an Agent Boss — Folge 4: Die halbe Arbeit',
+        en: 'Adventures of an Agent Boss — Ep. 4: Half the Work'
+      },
+      excerpt: {
+        de: 'Samanthas Team liefert einen Launch in zwei Tagen statt zwei Wochen. Doch dann kommt die Review-Saison — und die Frage: Wer hat eigentlich die gute Arbeit gemacht?',
+        en: 'Samantha\'s team ships a launch in two days instead of two weeks. Then review season hits — and the question: who actually did the good work?'
+      },
+      body: {
+        de: `<h3>Folge 4: Die halbe Arbeit</h3>
+<p>Samanthas Team lieferte einen Produkt-Launch in zwei Tagen. Letztes Jahr hatte dasselbe zwei Wochen gedauert. Sie hätte begeistert sein sollen. Stattdessen hing sie an einer Frage, die sie nicht zu beantworten wusste: Wer hat eigentlich die gute Arbeit gemacht?</p>
+<p>Der Kampagnentext saß — aber den ersten Entwurf schrieb ein Agent. Die Zielgruppen-Segmente stimmten — ein Modell zog sie in Sekunden. Die Landingpage war halb Template, halb Mensch. Ihre beste Junior-Kollegin hatte es „gemacht". Aber was hatte sie wirklich gemacht?</p>
+<p>Dann kam die Review-Saison, und die Frage wurde ernst. Die alte Samantha bewertete das Ergebnis: schöner Text, starke Zahlen, gute Arbeit. Aber das Ergebnis sagte ihr nicht, wen sie befördern, wen sie coachen sollte — oder wer nur schnell auf „Generieren" drückte. Die Deliverables sahen nie besser aus. Das Signal war nie schlechter. Das war die neue Wand: Wenn die KI die halbe Arbeit macht, sagt dir das Bewerten der Arbeit fast nichts über den Menschen.</p>
+<p>Also hörte sie auf, das Deliverable anzuschauen. Sie fing an, auf die Entscheidungen dahinter zu schauen.</p>
+<ul>
+<li>Hör auf, das Ergebnis zu benoten. Fang an, das Urteilsvermögen zu benoten — was sie behalten, was sie gestrichen, was sie gefangen haben, das das Modell falsch hatte. „Die KI hat's geschrieben" ist kein Review.</li>
+<li>Der neue Top-Performer ist nicht der schnellste Generierer. Es ist der mit dem besten Gespür — der „gut" von „gut genug" unterscheidet.</li>
+</ul>
+<p>Es stellte sich heraus: Ihre Junior-Kollegin hatte nicht nur einen Knopf gedrückt. Sie hatte drei Entwürfe verworfen, den Hook von Hand neu geschrieben und eine Statistik gefangen, die das Modell leise erfunden hatte. Das war die Arbeit — genau das, was Samantha fast als „die der KI" abgestempelt hätte. Die Maschine kann jetzt die halbe Arbeit machen. Die andere Hälfte — zu wissen, welche Hälfte etwas taugt — ist die ganze Arbeit. <em>(Nächste Woche: Folge 5 — die Angst, die niemand im Team laut ausspricht.)</em></p>
+<blockquote>Wenn die KI die halbe Arbeit macht — woran erkennst du, wer die gute Hälfte gemacht hat?</blockquote>
+<p><strong>P.S.</strong> Das Ergebnis ist jetzt schnell und meist gut. Aber das Ergebnis war nie der Punkt — das Outcome ist es: was sich wirklich verändert hat, weil die Arbeit getan wurde. Also prüfe ich bei jeder Aufgabe zuerst das KI- und Automatisierungs-Potenzial. Dann kommt die schwerere Frage: Welche Entscheidung war meine, und welche die des Modells? Beide formen das Resultat, aber nur einer von uns trägt die Konsequenzen. Am Ende zählt: Beurteile das Outcome, nicht den Output.</p>`,
+        en: `<h3>Ep. 4: Half the Work</h3>
+<p>Samantha's team shipped a product launch in two days. Last year, the same thing took two weeks. She should have been thrilled. Instead she was stuck on a question she didn't know how to answer: who actually did the good work?</p>
+<p>The campaign copy was sharp — but an agent wrote the first draft. The audience segments were spot-on — a model pulled them in seconds. The landing page was half template, half human. Her best junior had "made it." But what had she actually made?</p>
+<p>Then review season hit, and the question got real. Old Samantha graded the output: nice copy, strong numbers, good job. But the output didn't tell her who to promote, who to coach, or who was just fast at pressing generate. The deliverables had never looked better. The signal had never been worse. That was the new wall: when AI does half the work, judging the work tells you almost nothing about the person.</p>
+<p>So she stopped looking at the deliverable. She started looking at the decisions behind it.</p>
+<ul>
+<li>Stop grading the output. Start grading the judgment — what they kept, what they cut, what they caught that the model got wrong. "The AI wrote it" is not a review.</li>
+<li>The new top performer isn't the fastest generator. It's the one with the best taste — who knows good from good enough.</li>
+</ul>
+<p>Turned out her junior hadn't just pressed a button. She'd killed three drafts, rewritten the hook by hand, and caught a stat the model had quietly invented. That was the work — exactly what Samantha had almost graded as "the AI's." The machine can do half the job now. The other half — knowing which half is any good — is the whole job. <em>(Next: Ep. 5 — the fear nobody on the team says out loud.)</em></p>
+<blockquote>When AI does half the work, how do you tell who did the good half?</blockquote>
+<p><strong>P.S.</strong> The output is fast now, and usually good. But output was never the point — the outcome is: what actually changed because the work got done. So on every task, I check the AI and automation potential first. Then comes the harder question: which decision was mine, and which was the model's? Both shape the result, but only one of us owns the consequences. In the end, judge the outcome, not the output.</p>`
+      }
+    },
+    {
+      id: 'adventures-ep-5-replace-them',
+      series: 'adventures',
+      date: '2026-07-15',
+      readMin: 4,
+      url: 'https://www.linkedin.com/posts/robertweller-info_agentboss-leadership-psychologicalsafety-activity-7483006871650471936-WycQ',
+      title: {
+        de: 'Adventures of an Agent Boss — Folge 5: Sie glauben, KI ersetzt sie',
+        en: 'Adventures of an Agent Boss — Ep. 5: They Think AI Will Replace Them'
+      },
+      excerpt: {
+        de: 'Das Meeting lief gut. Dann bemerkte Samantha die Stille — nicht die gute Art. Ihre schärfsten Leute pitchten nicht mehr. Über die Angst, die niemand ausspricht.',
+        en: 'The meeting was going fine. Then Samantha noticed the silence — not the good kind. Her sharpest people had stopped pitching. On the fear nobody says out loud.'
+      },
+      body: {
+        de: `<h3>Folge 5: Sie glauben, KI ersetzt sie</h3>
+<p>Das Meeting lief gut. Dann bemerkte Samantha die Stille. Nicht die gute Art. Ihre schärfsten Leute pitchten keine Ideen mehr. Die, die früher mit ihr stritten, nickten jetzt nur. Die Arbeit lief weiter — schneller als je zuvor. Aber der Raum war auf eine Weise still geworden, die nichts mit den Zahlen zu tun hatte.</p>
+<p>Sie kannte die Frage darunter, weil niemand sie laut aussprach: Wenn ein Agent die Hälfte meines Jobs kann — wann entscheidet jemand, dass er auch die andere Hälfte kann? Das schreibt niemand in ein Status-Update. Es zeigt sich als Junior, der sich nicht mehr meldet. Als Team-Lead, der plötzlich „nur noch ausführt". Menschen bekämpfen die Angst nicht. Sie werden still und schützen sich.</p>
+<p>Die alte Samantha hätte mit einer Aufmunterungsrede geantwortet. „KI ersetzt dich nicht — sie macht dich besser." Wahr, und völlig nutzlos. Man kann niemanden aus einer Angst herausreden, die man nicht einmal benennt. Also tat sie das Unbequeme. Sie sprach es zuerst aus, offen: „Manche von euch fragen sich, ob sie gerade ihren eigenen Ersatz trainieren. Lasst uns wirklich darüber reden." Der Raum atmete aus.</p>
+<p>Das hat sie darüber gelernt, Menschen durch die Angst zu führen:</p>
+<ul>
+<li>Benenne sie, bevor die anderen es tun. Stille ist keine Sicherheit — sie ist Angst, die in den Untergrund gegangen ist. In dem Moment, in dem du das Unausgesprochene aussprichst, hört es auf, den Raum zu beherrschen.</li>
+<li>Zeichne den Job neu, laut. Die Aufgaben wandern zur Maschine. Das Urteilsvermögen nicht. Zeig jedem, welcher Teil seiner Arbeit gerade zum wertvollsten wurde — und meine es ernst.</li>
+<li>Mach es sicher, zu sagen: „Die KI kann diesen Teil meines Jobs." Dieser Satz ist keine Drohung. Er ist der Anfang des Gesprächs darüber, was der Job als Nächstes wird.</li>
+</ul>
+<p>Die Angst geht nicht, weil du es ihr befiehlst. Sie geht, weil Menschen eine Version von sich selbst auf der anderen Seite sehen können — und weil ihr Chef der Erste war, der mutig genug war, das auszusprechen, was alle dachten. Ihr Team wurde nach diesem Gespräch nicht leiser. Es wurde lauter. Denn wer glaubt, eine Zukunft zu haben, streitet mit dir. Wer sich schützt, nickt nur. Die Agenten waren nie das Risiko. Ein Team, das zu ängstlich zum Reden ist, schon. <em>(Nächste Woche: Folge 6 — Alex muss schneller entscheiden, als ihm lieb ist.)</em></p>
+<blockquote>Die Angst ist im Raum, ob du sie benennst oder nicht. Also — benennst du sie?</blockquote>
+<p><strong>P.S.</strong> Ich habe diese Angst aus der Nähe gesehen — im Konzern und in einem Team, das bei null startete. Jedes Mal dasselbe Muster: Die Gefahr war nie das Tool, es sind Menschen, die still werden, um sich zu schützen. Und die Stille beginnt meist bei uns. Wenn ich nicht sage „Ja, das verändert deinen Job, lass uns darüber reden, wie" — warum sollte es sonst jemand? Psychologische Sicherheit ist in der KI-Ära keine Soft Skill — sie entscheidet, ob deine besten Leute weiter laut denken.</p>`,
+        en: `<h3>Ep. 5: They Think AI Will Replace Them</h3>
+<p>The meeting was going fine. Then Samantha noticed the silence. Not the good kind. Her sharpest people had stopped pitching ideas. The ones who used to argue with her now just nodded. Work still shipped — faster than ever. But the room had gone quiet in a way that had nothing to do with the numbers.</p>
+<p>She knew the question underneath it, because nobody would say it out loud: if an agent can do half my job, when does someone decide it can do the other half? No one writes that in a status update. It shows up as a junior who stops volunteering. A team lead who suddenly "just executes." People don't fight the fear. They go quiet and protect themselves.</p>
+<p>Old Samantha would have answered with a pep talk. "AI won't replace you — it'll make you better." True, and completely useless. You can't reassure someone out of a fear you won't even name. So she did the uncomfortable thing. She said it first, in the open: "Some of you are wondering if you're training your own replacement. Let's actually talk about that." The room exhaled.</p>
+<p>Here's what she learned about leading people through the fear:</p>
+<ul>
+<li>Name it before they do. Silence isn't safety — it's fear that went underground. The moment you say the quiet part out loud, it stops running the room.</li>
+<li>Redraw the job, out loud. The tasks are moving to the machine. The judgment isn't. Show each person which part of their work just became the most valuable part — and mean it.</li>
+<li>Make it safe to say "the AI can do this part of my job." That sentence isn't a threat. It's the start of the conversation about what their job becomes next.</li>
+</ul>
+<p>The fear doesn't leave because you told it to. It leaves because people can see a version of themselves on the other side of it — and because their boss was the first one brave enough to say the thing everyone was thinking. Her team didn't get quieter after that conversation. They got louder. Because a person who believes they have a future argues with you. A person who's protecting themselves just nods. The agents were never the risk. A team too scared to speak was. <em>(Next: Ep. 6 — Alex has to decide faster than he's comfortable with.)</em></p>
+<blockquote>The fear is in the room whether you name it or not. So — do you name it?</blockquote>
+<p><strong>P.S.</strong> I've watched this fear up close — in a big company and in a team built from zero. Same pattern every time: the danger was never the tool, it's people going quiet to protect themselves. And the silence usually starts with us. If I won't say "yes, this changes your job, let's talk about how," why would anyone else? Psychological safety isn't a soft skill in the AI era — it decides whether your best people keep thinking out loud.</p>`
+      }
+    },
+    {
+      id: 'adventures-ep-6-deciding-at-speed',
+      series: 'adventures',
+      date: '2026-08-04',
+      readMin: 4,
+      url: 'https://www.linkedin.com/posts/robertweller-info_agentboss-leadership-decisionmaking-activity-7490473175101886464-AqiH',
+      title: {
+        de: 'Adventures of an Agent Boss — Folge 6: Entscheiden im Tempo',
+        en: 'Adventures of an Agent Boss — Ep. 6: Deciding at Speed'
+      },
+      excerpt: {
+        de: 'Die KI liefert Kosten, Risiko, drei Szenarien und eine Empfehlung — in Sekunden. Alex zögert zwei Tage. Das Zögern kostet ein Zwei-Wochen-Fenster.',
+        en: 'The AI delivers cost, risk, three scenarios and a recommendation — in seconds. Alex hesitates for two days. The delay costs a two-week window.'
+      },
+      body: {
+        de: `<h3>Folge 6: Entscheiden im Tempo</h3>
+<p>Die Analyse kam in Sekunden zurück: Kosten, Risiko, drei Szenarien und eine klare Empfehlung. Alex las sie zweimal. Dann ließ er sie zwei Tage liegen. Er nannte es „Due Diligence". War es nicht. Die Arbeit war getan — ihm war nur unwohl dabei, derjenige zu sein, dessen einzige verbliebene Aufgabe das Entscheiden war. Als er die Entscheidung traf, war der Liefervertrag weitergezogen. Das Zögern kostete Falkenrad ein Zwei-Wochen-Fenster.</p>
+<p>Seine ganze Karriere lang hatte Denken Zeit gebraucht, und die Zeit war das Alibi. „Lass mich das analysieren" kaufte ihm Tage, und die Tage fühlten sich nach Gründlichkeit an. Jetzt machte die Maschine die Analyse, bevor sein Kaffee kalt war — und das Alibi war weg. Die KI nahm ihm nicht sein Urteilsvermögen. Sie nahm ihm seine Ausrede, langsam zu sein.</p>
+<p>Das verlangt Entscheiden im Tempo wirklich:</p>
+<ul>
+<li>Vertraue der Analyse der Maschine — behalte die Entscheidung. Das Modell kann Optionen und Wahrscheinlichkeiten ausbreiten. Welche du wählst und dass du damit lebst, bleibt deins.</li>
+<li>Lege „gut genug zum Entscheiden" fest, bevor du anfängst. Ohne Linie endet die Analyse nie — es gibt immer noch ein Szenario mehr. Setz die Schwelle, erreiche sie, entscheide.</li>
+<li>Trenne umkehrbare Entscheidungen von Einbahnstraßen. Kannst du es rückgängig machen, geh schnell und lerne. Kannst du es nicht, werde bewusst langsam — das ist Urteilsvermögen, nicht als Gründlichkeit verkleidete Angst.</li>
+</ul>
+<p>Am nächsten Morgen traf Alex die Entscheidung in zehn Minuten — und verbrachte die gesparten Tage mit der einen Entscheidung, die sich nicht rückgängig machen ließ. Die Maschine gab ihm Tempo. Die Entscheidung zu besitzen — das war immer noch der ganze Job.</p>
+<blockquote>Wenn KI in Sekunden analysieren kann — wofür lohnt es sich noch, langsam zu werden?</blockquote>
+<p><strong>P.S.</strong> Ich schreibe diese Folgen so, wie ich arbeite: Agenten entwerfen und analysieren, ich behalte die Steuerung und die Entscheidung. Dieselbe Lektion wie bei Alex — das Tempo gehört der Maschine, die Entscheidung mir.</p>`,
+        en: `<h3>Ep. 6: Deciding at Speed</h3>
+<p>The analysis came back in seconds: cost, risk, three scenarios, and a clear recommendation. Alex read it twice. Then he sat on it for two days. He called it "due diligence." It wasn't. The work was done — he just wasn't comfortable being the one whose only job left was to decide. By the time he made the call, the supplier deal had moved on. The hesitation cost Falkenrad a two-week window.</p>
+<p>For his whole career, thinking took time, and the time was the alibi. "Let me analyze it" bought him days, and the days felt like rigor. Now the machine did the analysis before his coffee was cold — and the alibi was gone. AI didn't take his judgment away. It took away his excuse for being slow.</p>
+<p>Here's what deciding at speed actually asks:</p>
+<ul>
+<li>Trust the machine's analysis — keep the decision. The model can lay out the options and the odds. Owning which one you pick, and living with it, is still yours.</li>
+<li>Define "good enough to decide" before you start. Without a line, analysis never ends — there's always one more scenario to run. Set the bar, hit it, decide.</li>
+<li>Separate reversible calls from one-way doors. If you can undo it, move fast and learn. If you can't, slow down on purpose — that's judgment, not fear dressed up as diligence.</li>
+</ul>
+<p>The next morning, Alex made the call in ten minutes — and spent the saved days on the one decision that couldn't be undone. The machine gave him speed. Owning the call — that was still the whole job.</p>
+<blockquote>When AI can analyze in seconds, what's still worth slowing down for?</blockquote>
+<p><strong>P.S.</strong> I write these episodes the way I work: agents draft and analyze, I keep the steering and the decision. Same lesson as Alex's — the speed is the machine's, the call is mine.</p>`
       }
     },
     {
@@ -3068,7 +3293,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
     s('h-h1', `${t.heroH1a}<span class="highlight">${t.heroH1b}</span>${t.heroH1c}`);
     s('h-sub', t.heroSub);
     st('h-cta1', t.heroCta1);
-    st('h-caption', t.heroCaption); st('h-prog', t.heroProg);
+    st('h-caption', t.heroCaption);
     st('h-fn', t.heroFn); st('h-rc', t.heroRcLink);
     st('trust-label', t.trustLabel); st('trust-soon-tag', t.trustSoon);
     // ── OFFERINGS ──
@@ -3092,8 +3317,6 @@ E-mail: kontakt@agent-boss-academy.com</p>
     st('impact-fn', t.impactFn);
     s('testi-label', t.testiLabel); s('testi-h2', t.testiH2);
     st('t1', t.t1); st('t1a', t.t1a); st('t1r', t.t1r);
-    st('t2', t.t2); st('t2a', t.t2a); st('t2r', t.t2r);
-    st('t3', t.t3); st('t3a', t.t3a); st('t3r', t.t3r);
     s('cta-label', t.ctaLabel); s('cta-h2', `${t.ctaH2a} <span>${t.ctaH2b}</span> ${t.ctaH2c}`);
     st('cta-p', t.ctaP); st('cta-btn', t.ctaBtn);
     st('cta-meta1', t.ctaMeta1); st('cta-meta2', t.ctaMeta2); st('cta-meta3', t.ctaMeta3);
