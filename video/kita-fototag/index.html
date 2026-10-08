@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <title>Kita-Fototag – Vorbereitung &amp; Ablauf</title>
+    <title>Kita-Fototag mit Melina</title>
     <script src="assets/js/gsap.min.js"></script>
     <style>
       @font-face { font-family: "Baloo2"; src: url("assets/fonts/baloo-2-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
@@ -13,6 +13,17 @@
       @font-face { font-family: "Nunito"; src: url("assets/fonts/nunito-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
       @font-face { font-family: "Nunito"; src: url("assets/fonts/nunito-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
 
+      @font-face { font-family: "Playfair"; src: url("assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+      #flash { position: absolute; inset: 0; z-index: 40; background: #fff; opacity: 0; pointer-events: none; }
+      .nametag { position: absolute; left: 880px; top: 330px; background: #fff; border: 5px solid var(--ink); border-radius: 26px; padding: 14px 34px 16px; box-shadow: 0 8px 0 var(--ink); }
+      .nametag b { display: block; font: 700 76px/1 "Playfair"; color: var(--ink); }
+      .nametag span { display: block; margin-top: 6px; font: 800 34px/1 "Nunito"; color: #d9804a; }
+      .chip-x { background: #fff2ee; }
+      .chip-x::after { content: ""; position: absolute; left: 14px; top: 44px; width: 62px; height: 8px; border-radius: 4px; background: #e8553d; rotate: -45deg; }
+      .brand { display: flex; align-items: center; gap: 22px; margin-bottom: 44px; }
+      .mono { width: 112px; height: 112px; border-radius: 50%; background: #d9804a; border: 5px solid var(--ink); display: grid; place-items: center; font: 700 50px/1 "Playfair"; color: #fff; }
+      .wm { font: 700 58px/1 "Playfair"; color: var(--ink); }
+      .wm-sub { font: 800 24px/1 "Nunito"; letter-spacing: 8px; text-transform: uppercase; color: #d9804a; margin-top: 10px; }
       :root { --ink: #2b2140; --cream: #fff7ea; --yellow: #ffc93c; --coral: #ff7a59; --teal: #2ec4b6; }
       body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Nunito", sans-serif; }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--cream); }
@@ -54,9 +65,9 @@
       .step span { padding-top: 6px; }
       .step.on { background: var(--yellow); }
       .step.on b { background: var(--ink); color: #fff; }
-      .endcard { position: absolute; left: 1040px; top: 260px; width: 820px; }
+      .endcard { position: absolute; left: 1040px; top: 170px; width: 840px; }
       .end-kicker { font: 800 52px/1 "Baloo2"; color: var(--coral); }
-      .end-title { font: 800 104px/1 "Baloo2"; color: var(--ink); margin: 18px 0 44px; }
+      .end-title { font: 800 92px/1 "Baloo2"; color: var(--ink); margin: 14px 0 40px; }
       .end-title em { font-style: normal; color: var(--teal); -webkit-text-stroke: 10px var(--ink); paint-order: stroke fill; }
       .url {
         display: inline-flex; align-items: center; gap: 14px; background: #fff; border: 5px solid var(--ink); border-radius: 28px;
@@ -69,15 +80,16 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="61.62">
-      <section id="s1" class="clip" data-start="0" data-duration="9.03" data-track-index="1"><div class="cam" id="s1-cam"></div></section>
-      <section id="s2" class="clip" data-start="9.03" data-duration="8.004" data-track-index="1"><div class="cam" id="s2-cam"></div></section>
-      <section id="s3" class="clip" data-start="17.034" data-duration="6.955" data-track-index="1"><div class="cam" id="s3-cam"></div></section>
-      <section id="s4" class="clip" data-start="23.989" data-duration="4.749" data-track-index="1"><div class="cam" id="s4-cam"></div></section>
-      <section id="s5" class="clip" data-start="28.738" data-duration="6.452" data-track-index="1"><div class="cam" id="s5-cam"></div></section>
-      <section id="s6" class="clip" data-start="35.19" data-duration="13.463" data-track-index="1"><div class="cam" id="s6-cam"></div></section>
-      <section id="s7" class="clip" data-start="48.653" data-duration="4.392" data-track-index="1"><div class="cam" id="s7-cam"></div></section>
-      <section id="s8" class="clip" data-start="53.045" data-duration="8.575" data-track-index="1"><div class="cam" id="s8-cam"></div></section>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="61.27">
+      <section id="s1" class="clip" data-start="0.0" data-duration="9.685" data-track-index="1"><div class="cam" id="s1-cam"></div></section>
+      <section id="s2" class="clip" data-start="9.685" data-duration="6.537" data-track-index="1"><div class="cam" id="s2-cam"></div></section>
+      <section id="s3" class="clip" data-start="16.222" data-duration="8.54" data-track-index="1"><div class="cam" id="s3-cam"></div></section>
+      <section id="s4" class="clip" data-start="24.762" data-duration="9.217" data-track-index="1"><div class="cam" id="s4-cam"></div></section>
+      <section id="s5" class="clip" data-start="33.979" data-duration="9.785" data-track-index="1"><div class="cam" id="s5-cam"></div></section>
+      <section id="s6" class="clip" data-start="43.764" data-duration="8.5" data-track-index="1"><div class="cam" id="s6-cam"></div></section>
+      <section id="s7" class="clip" data-start="52.264" data-duration="9.006" data-track-index="1"><div class="cam" id="s7-cam"></div></section>
+
+      <div id="flash"></div>
 
       <div id="wipe"></div>
       <svg class="grain" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true">
@@ -85,7 +97,7 @@
         <rect width="1920" height="1080" filter="url(#paper-grain)" opacity="0.09" />
       </svg>
 
-      <audio id="mix" src="assets/audio/mix.flac" data-start="0" data-duration="61.62" data-track-index="10" data-volume="1"></audio>
+      <audio id="mix" src="assets/audio/mix.flac" data-start="0" data-duration="61.27" data-track-index="10" data-volume="1"></audio>
     </div>
 
     <script src="assets/js/timing.js"></script>

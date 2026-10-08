@@ -101,6 +101,23 @@
       present(id, side, t) { const k = side === "R" ? -1 : 1; R.arm(id, side, k * 62, k * 38, t, 0.4); },
       point(id, side, t) { const k = side === "R" ? -1 : 1; R.arm(id, side, k * 82, k * 10, t, 0.35); },
       cheer(id, t) { R.arm(id, "L", 155, 12, t, 0.3); R.arm(id, "R", -155, -12, t, 0.3); },
+      /** camera up to the eye (characters built with chestCam) */
+      photo(id, t, d = 0.3) {
+        R.arm(id, "L", 150, 131, t, d); R.arm(id, "R", -150, -131, t, d);
+        tl.set(q(id, "chestcam"), { opacity: 0 }, t + d * 0.5);
+        tl.set(q(id, "facecam"), { opacity: 1 }, t + d * 0.5);
+      },
+      unphoto(id, t, d = 0.3) {
+        R.rest(id, "L", t, d); R.rest(id, "R", t, d);
+        tl.set(q(id, "facecam"), { opacity: 0 }, t + d * 0.4);
+        tl.set(q(id, "chestcam"), { opacity: 1 }, t + d * 0.4);
+      },
+      /** global camera flash + shutter sound */
+      flash(t, k = 0.6) {
+        tl.fromTo("#flash", { opacity: k }, { opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, t);
+        R.sfx("shutter", t, 0.9);
+      },
+      balance(id, t, d = 0.3) { R.arm(id, "L", 84, 6, t, d); R.arm(id, "R", -84, -6, t, d); },
       hold(id, t, d = 0.35) { R.arm(id, "L", -12, -48, t, d); R.arm(id, "R", 12, 48, t, d); },
 
       hop(id, t, h = 70, d = 0.42) {

@@ -6,7 +6,7 @@ assets/js/timing.js (consumed by index.html) and tools/schedule.json
 (consumed by build_audio.py)."""
 import json, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TEMPO, PRE, POST, LEAD, GAP, TAIL = 1.08, 0.06, 0.16, 0.7, 0.42, 2.5
+TEMPO, PRE, POST, LEAD, GAP, TAIL = 1.0, 0.06, 0.16, 0.7, 0.45, 2.9
 vo = json.loads((ROOT / "tools/vo_words.json").read_text())
 t, segs = LEAD, []
 for i, v in enumerate(vo):

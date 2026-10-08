@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Download the eight ElevenLabs VO clips (Magnific delivery, WAV 48 kHz) to
-# assets/vo/vo1.wav … vo8.wav. Signed URLs live in tools/vo_urls.local.json
+# Download the seven ElevenLabs VO clips (Magnific delivery, WAV 48 kHz) to
+# assets/vo/vo1.wav … vo7.wav. Signed URLs live in tools/vo_urls.local.json
 # (git-ignored; re-create them with Magnific "creations_deliver" → wav_48k).
 set -euo pipefail
 cd "$(dirname "$0")/.."

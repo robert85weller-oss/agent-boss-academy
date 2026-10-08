@@ -63,6 +63,10 @@
         back = `<path ${s} d="M ${-rx - 14} ${-0.2 * ry} C ${-rx - 18} ${0.55 * ry}, ${-rx * 0.7} ${0.75 * ry}, ${-rx * 0.55} ${0.6 * ry} L ${rx * 0.55} ${0.6 * ry} C ${rx * 0.7} ${0.75 * ry}, ${rx + 18} ${0.55 * ry}, ${rx + 14} ${-0.2 * ry} Z"/>`;
         front = `<path ${s} d="M ${-rx - 8} ${0.1 * ry} C ${-rx - 12} ${-1.35 * ry}, ${rx + 12} ${-1.35 * ry}, ${rx + 8} ${0.1 * ry} L ${rx * 0.7} ${-0.38 * ry} L ${-rx * 0.7} ${-0.38 * ry} Z"/>`;
         break;
+      case "longbangs":
+        back = `<path ${s} d="M ${-rx - 10} ${-0.3 * ry} C ${-rx - 26} ${0.9 * ry}, ${-rx - 6} ${1.5 * ry}, ${-rx * 0.3} ${1.5 * ry} L ${rx * 0.3} ${1.5 * ry} C ${rx + 6} ${1.5 * ry}, ${rx + 26} ${0.9 * ry}, ${rx + 10} ${-0.3 * ry} Z"/>`;
+        front = `<path ${s} d="M ${-rx - 8} ${0.25 * ry} C ${-rx - 14} ${-1.35 * ry}, ${rx + 14} ${-1.35 * ry}, ${rx + 8} ${0.25 * ry} C ${rx * 0.9} ${-0.2 * ry}, ${rx * 0.75} ${-0.42 * ry}, ${rx * 0.45} ${-0.46 * ry} C ${rx * 0.1} ${-0.5 * ry}, ${-rx * 0.35} ${-0.3 * ry}, ${-rx * 0.62} ${-0.52 * ry} C ${-rx * 0.8} ${-0.3 * ry}, ${-rx * 0.9} ${-0.1 * ry}, ${-rx - 8} ${0.25 * ry} Z"/>`;
+        break;
       case "long":
         back = `<path ${s} d="M ${-rx - 10} ${-0.3 * ry} C ${-rx - 26} ${0.9 * ry}, ${-rx - 6} ${1.5 * ry}, ${-rx * 0.3} ${1.5 * ry} L ${rx * 0.3} ${1.5 * ry} C ${rx + 6} ${1.5 * ry}, ${rx + 26} ${0.9 * ry}, ${rx + 10} ${-0.3 * ry} Z"/>`;
         front = cap;
@@ -84,7 +88,7 @@
   }
 
   // ---------- torso ----------
-  function torso(o, g) {
+  function torso(id, o, g) {
     const { shY, hipY, shHalf: sh, hipHalf: hh } = g;
     const d = `M ${-sh} ${shY + 22} Q ${-sh} ${shY} ${-sh + 26} ${shY} L ${sh - 26} ${shY} Q ${sh} ${shY} ${sh} ${shY + 22} L ${hh} ${hipY + 4} Q ${hh} ${hipY + 18} ${hh - 16} ${hipY + 18} L ${-hh + 16} ${hipY + 18} Q ${-hh} ${hipY + 18} ${-hh} ${hipY + 4} Z`;
     let out = `<path d="${d}" fill="${o.top}" stroke="${INK}" stroke-width="${SW}" stroke-linejoin="round"/>`;
@@ -98,6 +102,12 @@
     if (o.stripe) out += `<rect x="${-sh + 6}" y="${midY + 6}" width="${2 * sh - 12}" height="${(hipY - shY) * 0.13}" fill="${o.stripe}"/>`;
     if (o.print === "dino") out += dinoPrint(0, midY + 6, (sh * 1.1) / 84);
     if (o.print === "star") out += star(0, midY, sh * 0.32, P.yellow);
+    if (o.chestCam) {
+      // camera on a strap around the neck — Melina's trademark
+      out += `<path d="M ${-sh * 0.42} ${shY + 2} L ${-22} ${shY + 92} M ${sh * 0.42} ${shY + 2} L ${22} ${shY + 92}" stroke="${INK}" stroke-width="10" stroke-linecap="round"/>` +
+        `<path d="M ${-sh * 0.42} ${shY + 2} L ${-22} ${shY + 92} M ${sh * 0.42} ${shY + 2} L ${22} ${shY + 92}" stroke="${o.strapColor || P.paper}" stroke-width="4" stroke-linecap="round"/>` +
+        `<g id="${id}-chestcam" transform="translate(0,${shY + 112})">${camera(88, "#3D3550")}</g>`;
+    }
     if (o.strap) out += `<path d="M ${-sh + 18} ${shY + 4} L ${sh - 30} ${hipY - 10}" stroke="${INK}" stroke-width="11" stroke-linecap="round"/><path d="M ${-sh + 18} ${shY + 4} L ${sh - 30} ${hipY - 10}" stroke="${o.strap}" stroke-width="5" stroke-linecap="round"/>`;
     return out;
   }
@@ -152,6 +162,7 @@
     s += `<g id="${id}-m-grin" opacity="0"><path d="M ${-mw * 1.25} ${my - 12} Q 0 ${my + mw * 1.7} ${mw * 1.25} ${my - 12} Z" fill="${INK}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M ${-mw * 0.95} ${my - 8} L ${mw * 0.95} ${my - 8} L ${mw * 0.8} ${my - 1} L ${-mw * 0.8} ${my - 1} Z" fill="#fff"/><ellipse cx="0" cy="${my + mw * 0.6}" rx="${mw * 0.55}" ry="${mw * 0.26}" fill="${tongue}"/></g>`;
     s += `<path id="${id}-m-wobble" opacity="0" d="M ${-mw} ${my + 4} q ${mw * 0.33} -10 ${mw * 0.66} 0 t ${mw * 0.66} 0 t ${mw * 0.66} 0" fill="none" stroke="${INK}" stroke-width="${SW}" stroke-linecap="round"/>`;
     s += `</g>`;
+    if (o.chestCam) s += `<g id="${id}-facecam" opacity="0" transform="translate(0,${ey + 6})">${camera(rx * 2.05, "#3D3550")}</g>`;
     return s;
   }
 
@@ -202,7 +213,7 @@
       `<g id="${id}-legs">${legs(id, o, g)}</g>` +
       `<g id="${id}-upper">` +
       (o.backArm ? arm(id, "L", o, g) : "") +
-      neck + `<g id="${id}-torso">${torso(o, g)}</g>` +
+      neck + `<g id="${id}-torso">${torso(id, o, g)}</g>` +
       `<g id="${id}-headpivot"><g id="${id}-head" transform="translate(0,${g.headY})">${hp.back}${f.pre}${hp.front}${features(id, o, g, f)}</g></g>` +
       (o.backArm ? "" : arm(id, "L", o, g)) + arm(id, "R", o, g) +
       `</g></g></g>`;
@@ -217,6 +228,8 @@
     emil: { size: "tot", skin: "#FFDDBF", hair: "#F2A341", hairStyle: "short", top: P.sky, bottom: P.navy, shoes: P.tomato, brow: "#B86E1E" },
     noah: { size: "kid", skin: "#6B4029", hair: "#1E120C", hairStyle: "puffs", top: P.grass, bottom: P.navy, shoes: P.yellow },
     lotta: { size: "kid", skin: "#F7D2B5", hair: "#C8502C", hairStyle: "bob", top: P.lilac, bottom: P.teal, shoes: P.purple, freckles: true, brow: "#8C3418" },
+    melina: { skin: "#F6D2B6", hair: "#9A6337", hairStyle: "longbangs", top: "#E08A55", collar: P.paper, bottom: "#3E4A6B", shoes: "#8C5A3C", brow: "#6B4226", chestCam: true, strapColor: "#F6E3CF" },
+    erz: { skin: "#F2C4A0", hair: "#7A3E2B", hairStyle: "bun", top: P.yellow, cardigan: P.teal, bottom: P.navy, shoes: P.coral, brow: "#5A2B1E" },
     foto: { skin: "#C68A62", hair: "#2B1A12", hairStyle: "beanie", accent: P.coral, accent2: P.yellow, top: P.purple, collar: P.paper, bottom: "#3B3355", shoes: P.ink, strap: P.yellow },
     mama: { skin: "#FFDDBF", hair: "#F2A341", hairStyle: "long", top: P.rose, bottom: P.navy, shoes: P.ink, brow: "#B86E1E" },
     papa: { skin: "#F0C09A", hair: "#5A3A28", hairStyle: "short", top: P.grass, collar: P.paper, bottom: "#3B3355", shoes: P.ink, glasses: true },
