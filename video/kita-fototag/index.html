@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Kita-Fototag – Vorbereitung &amp; Ablauf</title>
+    <script src="assets/js/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Baloo2"; src: url("assets/fonts/baloo-2-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      @font-face { font-family: "Baloo2"; src: url("assets/fonts/baloo-2-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+      @font-face { font-family: "Baloo2"; src: url("assets/fonts/baloo-2-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "Nunito"; src: url("assets/fonts/nunito-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      @font-face { font-family: "Nunito"; src: url("assets/fonts/nunito-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+      @font-face { font-family: "Nunito"; src: url("assets/fonts/nunito-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+
+      :root { --ink: #2b2140; --cream: #fff7ea; --yellow: #ffc93c; --coral: #ff7a59; --teal: #2ec4b6; }
+      body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Nunito", sans-serif; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--cream); }
+      .clip { position: absolute; inset: 0; overflow: hidden; }
+      .cam { position: absolute; inset: 0; }
+      .world { position: absolute; left: 0; top: 0; height: 1080px; }
+      .art { position: absolute; left: 0; top: 0; display: block; }
+      .ui { position: absolute; inset: 0; }
+
+      .chip {
+        position: absolute; display: flex; align-items: center; gap: 14px;
+        padding: 10px 32px 10px 14px; background: #fff; border: 5px solid var(--ink); border-radius: 999px;
+        box-shadow: 0 8px 0 var(--ink); font: 800 46px/1 "Baloo2"; color: var(--ink); white-space: nowrap;
+      }
+      .chip span { padding-top: 6px; }
+      .chip-dark { background: var(--ink); color: #fff; box-shadow: 0 8px 0 var(--yellow); }
+      .title { position: absolute; left: 104px; top: 40px; font: 800 220px/1 "Baloo2"; letter-spacing: 4px; white-space: nowrap; }
+      .title span { display: inline-block; -webkit-text-stroke: 16px var(--ink); paint-order: stroke fill; text-shadow: 0 14px 0 var(--ink); }
+      .pill {
+        position: absolute; left: 124px; top: 300px; display: flex; align-items: center; gap: 14px;
+        background: var(--ink); color: #fff; padding: 8px 36px 8px 16px; border-radius: 999px; font: 800 58px/1 "Baloo2";
+        box-shadow: 0 8px 0 var(--coral);
+      }
+      .pill span { padding-top: 8px; }
+      .tag {
+        position: absolute; left: 925px; top: 318px; background: var(--yellow); border: 5px solid var(--ink); border-radius: 18px;
+        padding: 8px 18px 2px; font: 800 38px/1.1 "Baloo2"; color: var(--ink); box-shadow: 0 6px 0 var(--ink);
+      }
+      .swatches { position: absolute; left: 1345px; top: 600px; display: flex; gap: 18px; }
+      .swatches i { display: block; width: 60px; height: 60px; border-radius: 50%; border: 5px solid var(--ink); box-shadow: 0 6px 0 var(--ink); }
+      .title-sm { position: absolute; display: flex; align-items: center; gap: 18px; font: 800 92px/1 "Baloo2"; color: var(--ink); }
+      .title-sm svg { width: 92px; height: 92px; }
+      .steps { position: absolute; display: flex; gap: 18px; }
+      .step {
+        display: flex; align-items: center; gap: 12px; background: #fff; border: 5px solid var(--ink); border-radius: 999px;
+        padding: 6px 28px 6px 6px; font: 800 38px/1 "Baloo2"; color: var(--ink); box-shadow: 0 6px 0 var(--ink);
+      }
+      .step b { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: #ede7ff; padding-top: 4px; box-sizing: border-box; }
+      .step span { padding-top: 6px; }
+      .step.on { background: var(--yellow); }
+      .step.on b { background: var(--ink); color: #fff; }
+      .endcard { position: absolute; left: 1040px; top: 260px; width: 820px; }
+      .end-kicker { font: 800 52px/1 "Baloo2"; color: var(--coral); }
+      .end-title { font: 800 104px/1 "Baloo2"; color: var(--ink); margin: 18px 0 44px; }
+      .end-title em { font-style: normal; color: var(--teal); -webkit-text-stroke: 10px var(--ink); paint-order: stroke fill; }
+      .url {
+        display: inline-flex; align-items: center; gap: 14px; background: #fff; border: 5px solid var(--ink); border-radius: 28px;
+        padding: 14px 28px 14px 18px; box-shadow: 0 8px 0 var(--ink); font: 800 35px/1 "Nunito"; color: var(--ink); white-space: nowrap;
+      }
+      .hash { position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; font: 700 27px/1 "Nunito"; letter-spacing: 1.5px; color: var(--ink); }
+      #wipe { position: absolute; inset: 0; z-index: 50; overflow: hidden; pointer-events: none; }
+      .iris { position: absolute; width: 4600px; height: 4600px; border-radius: 50%; }
+      .grain { position: absolute; inset: 0; z-index: 60; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="61.62">
+      <section id="s1" class="clip" data-start="0" data-duration="9.03" data-track-index="1"><div class="cam" id="s1-cam"></div></section>
+      <section id="s2" class="clip" data-start="9.03" data-duration="8.004" data-track-index="1"><div class="cam" id="s2-cam"></div></section>
+      <section id="s3" class="clip" data-start="17.034" data-duration="6.955" data-track-index="1"><div class="cam" id="s3-cam"></div></section>
+      <section id="s4" class="clip" data-start="23.989" data-duration="4.749" data-track-index="1"><div class="cam" id="s4-cam"></div></section>
+      <section id="s5" class="clip" data-start="28.738" data-duration="6.452" data-track-index="1"><div class="cam" id="s5-cam"></div></section>
+      <section id="s6" class="clip" data-start="35.19" data-duration="13.463" data-track-index="1"><div class="cam" id="s6-cam"></div></section>
+      <section id="s7" class="clip" data-start="48.653" data-duration="4.392" data-track-index="1"><div class="cam" id="s7-cam"></div></section>
+      <section id="s8" class="clip" data-start="53.045" data-duration="8.575" data-track-index="1"><div class="cam" id="s8-cam"></div></section>
+
+      <div id="wipe"></div>
+      <svg class="grain" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true">
+        <filter id="paper-grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" /><feColorMatrix values="0 0 0 0 0.17  0 0 0 0 0.13  0 0 0 0 0.25  0 0 0 0.55 0" /></filter>
+        <rect width="1920" height="1080" filter="url(#paper-grain)" opacity="0.09" />
+      </svg>
+
+      <audio id="mix" src="assets/audio/mix.flac" data-start="0" data-duration="61.62" data-track-index="10" data-volume="1"></audio>
+    </div>
+
+    <script src="assets/js/timing.js"></script>
+    <script src="assets/js/art.js"></script>
+    <script src="assets/js/rig.js"></script>
+    <script src="assets/js/scenes.js"></script>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      buildScenes(tl);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

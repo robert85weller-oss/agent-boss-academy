@@ -1,0 +1,11 @@
+{
+ "voice_stem_lufs": -14.0,
+ "music_stem_lufs": -36.0,
+ "sfx_stem_lufs": -25.0,
+ "mix_lufs": -12.03,
+ "mix_true_peak_dbtp": -1.2,
+ "master_gain_db": 3.36,
+ "voice_in_mix_lufs": -10.64,
+ "music_in_mix_lufs": -32.64,
+ "voice_mode": "fallback"
+}
