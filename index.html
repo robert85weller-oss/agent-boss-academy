@@ -922,6 +922,29 @@
   .about-headline { font-family:'Fraunces',serif; font-weight:460; font-size:clamp(28px,3.4vw,42px); color:var(--ink); letter-spacing:-.6px; line-height:1.08; margin:14px 0 26px; }
   .about-body > p { font-size:16px; line-height:1.75; color:var(--ink-soft); margin-bottom:16px; max-width:60ch; }
   .about-body > p:last-child { margin-bottom:0; }
+
+  /* Tag/Nacht-Dualität — harter Creme→Ink-Split an einer Amber-Naht */
+  .daynight { margin:4px 0 28px; border:1px solid var(--line); border-radius:3px; overflow:hidden; }
+  .dn-grid { display:grid; grid-template-columns:1fr 2px 1fr; }
+  .dn-seam { background:var(--amber); min-height:2px; }
+  .dn-side { padding:30px 30px 32px; }
+  .dn-day { background:var(--paper); }
+  .dn-night { background:var(--ink); }
+  .dn-label { display:inline-flex; align-items:center; gap:9px; font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:14px; }
+  .dn-label::before { content:''; width:18px; height:1px; background:currentColor; }
+  .dn-day .dn-label { color:var(--amber-deep); }
+  .dn-night .dn-label { color:var(--amber-light); }
+  .dn-role { font-family:'Fraunces',serif; font-weight:470; font-size:20px; letter-spacing:-.3px; line-height:1.15; margin-bottom:12px; }
+  .dn-day .dn-role { color:var(--ink); }
+  .dn-night .dn-role { color:var(--paper); }
+  .dn-desc { font-size:14.5px; line-height:1.65; margin:0; }
+  .dn-day .dn-desc { color:var(--ink-soft); }
+  .dn-night .dn-desc { color:rgba(244,241,234,.8); }
+  @media (max-width:640px) {
+    .dn-grid { grid-template-columns:1fr; }
+    .dn-side { padding:26px 22px 28px; }
+  }
+
   @media (max-width:900px) {
     .about { padding-left:24px; padding-right:24px; }
     .about-inner { grid-template-columns:1fr; gap:32px; }
@@ -1546,8 +1569,21 @@
         <span class="sec-index" data-idx="01"></span>
         <div class="section-label" data-de="Wer hinter Agent Boss steht" data-en="Who is behind Agent Boss">Wer hinter Agent Boss steht</div>
         <h2 class="about-headline" data-de="SAP-Exec bei Tag, Agent Boss bei Nacht." data-en="SAP exec by day, Agent Boss by night.">SAP-Exec bei Tag, Agent Boss bei Nacht.</h2>
-        <p data-de="Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms&quot; nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn." data-en="As VP &amp; Global Content Officer at SAP, I'm building what we call 'Frontier Firms' — companies that don't just use AI, but learn to lead alongside it. That same mindset is the reason I started the Agent Boss Academy, my venture for people who want more than another ChatGPT hack on LinkedIn.">Als VP &amp; Global Content Officer bei SAP baue ich, was wir „Frontier Firms" nennen — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Genau dieses Mindset steckt hinter der Agent Boss Academy: für Menschen, die mehr wollen als den nächsten ChatGPT-Hack auf LinkedIn.</p>
-        <p data-de="Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped." data-en="My sweet spot: strategy, product, and content — right where they collide. Due diligence on the Signavio acquisition? Done. SAP-wide Content Strategy from scratch? Live. Digital Boardroom in operations? Shipped.">Mein Sweet Spot: Strategy, Product und Content — genau da, wo sie kollidieren. Due Diligence zur Signavio-Akquisition? Erledigt. SAP-weite Content-Strategie von null? Live. Digital Boardroom im Betrieb? Shipped.</p>
+        <div class="daynight">
+          <div class="dn-grid">
+            <div class="dn-side dn-day">
+              <span class="dn-label" data-de="Bei Tag" data-en="By day">Bei Tag</span>
+              <h3 class="dn-role" data-de="VP &amp; Global Content Officer, SAP" data-en="VP &amp; Global Content Officer, SAP">VP &amp; Global Content Officer, SAP</h3>
+              <p class="dn-desc" data-de="Ich baue „Frontier Firms&quot; — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Signavio-Due-Diligence, SAP-weite Content-Strategie, Digital Boardroom: geliefert." data-en="I build 'Frontier Firms' — companies that don't just use AI but learn to lead alongside it. Signavio due diligence, SAP-wide content strategy, Digital Boardroom: delivered.">Ich baue „Frontier Firms" — Unternehmen, die KI nicht nur nutzen, sondern lernen, daneben zu führen. Signavio-Due-Diligence, SAP-weite Content-Strategie, Digital Boardroom: geliefert.</p>
+            </div>
+            <div class="dn-seam" aria-hidden="true"></div>
+            <div class="dn-side dn-night">
+              <span class="dn-label" data-de="Bei Nacht" data-en="By night">Bei Nacht</span>
+              <h3 class="dn-role" data-de="Agent Boss Leader" data-en="Agent Boss Leader">Agent Boss Leader</h3>
+              <p class="dn-desc" data-de="Ich baue und betreibe die KI-Agenten, die ich empfehle — mit Langdock, Claude und n8n. Done-for-you, live im Betrieb. Das ist die Agent Boss Academy." data-en="I build and run the AI agents I recommend — with Langdock, Claude and n8n. Done-for-you, live in operation. That's the Agent Boss Academy.">Ich baue und betreibe die KI-Agenten, die ich empfehle — mit Langdock, Claude und n8n. Done-for-you, live im Betrieb. Das ist die Agent Boss Academy.</p>
+            </div>
+          </div>
+        </div>
         <p data-de="Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak." data-en="I believe transformation doesn't start with tech. It starts with attitude. I like straight talk, sharp positioning, and content that actually moves the needle — no buzzword bingo, no consultant-speak.">Ich glaube: Transformation beginnt nicht mit Technologie. Sie beginnt mit Haltung. Straight Talk, scharfe Positionierung, Content der wirklich etwas bewegt — kein Buzzword-Bingo, kein Consultant-Speak.</p>
         <p data-de="Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt." data-en="Off-hours? Fresh MBAI in the pocket, a gin startup in the oven, and a mountain bike that doesn't ride itself.">Off-hours? Frischer MBAI in der Tasche, ein Gin-Startup im Ofen, und ein Mountainbike, das nicht von alleine fährt.</p>
       </div>
