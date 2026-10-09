@@ -10,6 +10,3 @@ assets/robert.jpeg
 
 # Lokale Firecrawl-Scrapes (nur Arbeitsmaterial)
 .firecrawl/
-
-# Lokal/auf dem Server gespeicherte Leads (Fallback, falls außerhalb des Webroots nicht möglich)
-_data/*.csv

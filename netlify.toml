@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "https://agent-boss-academy.de/*"
+  to = "https://www.agent-boss-academy.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://agent-boss-academy.com/*"
+  to = "https://www.agent-boss-academy.com/:splat"
+  status = 301
+  force = true
