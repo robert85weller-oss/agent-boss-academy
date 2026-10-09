@@ -1,0 +1,44 @@
+# Agent Boss Academy
+
+> Agent Boss Academy ist die Website von Robert Weller. Er begleitet Führungskräfte in die KI-Transformation: vom Manager, der Menschen führt, zum „Agent Boss“, der Menschen und KI-Agenten gemeinsam führt.
+
+Robert Weller bezeichnet sich als „Agent Boss Leader“. Hauptberuflich ist er VP & Global Content Officer bei SAP.
+Die Agent Boss Academy sitzt in Nußloch (Baden-Württemberg, Deutschland) und arbeitet auf Deutsch und Englisch.
+Das Angebot richtet sich an Führungskräfte und Bereichsverantwortliche, besonders in Sales, Finance und HR.
+Es geht um produktiv laufende AI-Agents und Workflows, nicht um Kurse oder Zertifikate.
+
+## Stufenmodell
+
+1. Assistant: nutzt KI-Tools.
+2. Agent: delegiert Aufgaben an KI-Agenten.
+3. Agent Boss: orchestriert Menschen und KI-Agenten gemeinsam.
+
+Ein kostenloser 2-Minuten-Test auf der Website, der „Agent Boss Readiness Check“, ordnet Besucher einer dieser Stufen zu.
+
+## Leistungen
+
+- Beratung & Guidance: Frameworks, Sparring und konkrete Hilfe beim Aufbau der eigenen Agent-Boss-Journey, strategisch und umsetzungsnah.
+- Skool Community: Playbooks und Austausch unter Agent Bosses. Noch nicht geöffnet, Eintrag auf die Warteliste über die Website.
+- Done-for-you Automation: AI-Agents mit Langdock und Claude sowie Workflows mit n8n und Make werden gebaut und laufend betrieben.
+
+Eingesetzte Werkzeuge: Microsoft AI Portfolio, Langdock, n8n, Make, Claude, Second Brain.
+
+## Anwendungsfelder
+
+- Sales: Lead-Scoring, Account-Research, Angebotserstellung und Follow-ups mit Agents.
+- Finance: Reporting, Abstimmungen (Reconciliation) und Forecasting mit Agents, schnellerer Monatsabschluss.
+- HR: Recruiting, Onboarding und Talent Development mit Agents.
+
+## Zusammenarbeit
+
+1. Kostenloser Strategie-Call, 30 Minuten, ohne Verkaufspräsentation.
+2. Gemeinsam den größten Hebel im eigenen Bereich finden.
+3. Je nach Bedarf Beratung, Community oder Umsetzung und Betrieb durch die Agent Boss Academy.
+
+## Links
+
+- [Website](https://www.agent-boss-academy.com/)
+- [Strategie-Call buchen](https://calendly.com/robert85-weller/30min)
+- [Robert Weller auf LinkedIn](https://www.linkedin.com/in/robertweller-info/)
+- [Insights: „Adventures of an Agent Boss“](https://www.agent-boss-academy.com/#insights)
+- Kontakt: kontakt@agent-boss-academy.com

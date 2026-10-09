@@ -32,6 +32,7 @@ Premium-Beratung-Editorial, bewusst **anti-„KI-Look"**. Doku im Second Brain: 
 - Trust-Bar „Womit wir automatisieren": Microsoft AI Portfolio · Langdock · n8n · Make · Claude · Second Brain · Mountanridge (zukünftig).
 
 ## Integrationen / Daten
+- **SEO/GEO:** `<head>` hat canonical, Open Graph/Twitter (Vorschaubild `assets/og-image.jpg`, 1200×630), JSON-LD (Person + ProfessionalService + WebSite), Favicon (`assets/favicon.svg`, `assets/apple-touch-icon.png`). Dazu `robots.txt` (KI-Crawler erlaubt), `sitemap.xml`, `llms.txt` (Faktenprofil für KI-Assistenten). **Bei Angebots-/Positionierungsänderungen `llms.txt` + JSON-LD mitziehen.**
 - **Strategie-Call:** Calendly `https://calendly.com/robert85-weller/30min` (überall verlinkt).
 - **Formulare:** Netlify Forms — `readiness-check` + `skool-waitlist` (versteckte Detection-Forms direkt nach `<body>`; greifen nur live, nicht lokal/`file://`).
 - **Brevo-Popup** (`#popup`, `submitBrevoForm`): separater Test, **nicht** auto-getriggert — in Ruhe lassen.
