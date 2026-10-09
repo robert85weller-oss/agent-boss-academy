@@ -67,7 +67,7 @@ Terminologie: „Agent Boss", „Agent Boss Leader", „Frontier Firm/Unit", „
 - Name/Marke: **Agent Boss Academy** / Robert Weller als *Agent Boss Leader*.
 - **Tonfall:** „du" (Homepage; einige Subpages noch „Sie" — Angleichung offen).
 - **Design-System v2 „Editorial"** ist verbindlich: Premium-Beratung-Editorial, bewusst
-  **anti-„KI-Look"**. EIN Akzent (Deep Amber `#B6541F`), Fraunces (Display, Highlight =
+  **anti-„KI-Look"**. EIN Akzent (Deep Amber `#A64A19`), Fraunces (Display, Highlight =
   kursiv+amber) + Hanken Grotesk (Body), Hairline-Grids, viel Whitespace, 01/02/03-Index-
   Ziffern, EIN dunkler Ink-CTA-Block pro Seite. Keine Emoji-Icons, Glow-Blobs, Grid-Masken,
   Puls-Badges. (Doku: Second Brain, Design System Editorial v2.)

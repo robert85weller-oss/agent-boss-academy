@@ -9,3 +9,40 @@
   to = "https://www.agent-boss-academy.com/:splat"
   status = 301
   force = true
+
+# Echte URLs der Single-Page-Seite: Netlify liefert für diese Pfade index.html aus,
+# das Routing im Browser zeigt dann die passende Seite (showPage/applyRoute in index.html).
+[[redirects]]
+  from = "/sales"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/finance"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/hr"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/insights"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/insights/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/impressum"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/index.html"
+  status = 200

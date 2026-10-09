@@ -40,5 +40,8 @@ Eingesetzte Werkzeuge: Microsoft AI Portfolio, Langdock, n8n, Make, Claude, Seco
 - [Website](https://www.agent-boss-academy.com/)
 - [Strategie-Call buchen](https://calendly.com/robert85-weller/30min)
 - [Robert Weller auf LinkedIn](https://www.linkedin.com/in/robertweller-info/)
-- [Insights: „Adventures of an Agent Boss“](https://www.agent-boss-academy.com/#insights)
+- [Insights: „Adventures of an Agent Boss“](https://www.agent-boss-academy.com/insights)
+- [Anwendungsfeld Sales](https://www.agent-boss-academy.com/sales)
+- [Anwendungsfeld Finance](https://www.agent-boss-academy.com/finance)
+- [Anwendungsfeld HR](https://www.agent-boss-academy.com/hr)
 - Kontakt: kontakt@agent-boss-academy.com

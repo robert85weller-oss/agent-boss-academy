@@ -11,15 +11,18 @@
 
 ## Architektur (index.html)
 - **SPA-artig:** `showPage(id)` schaltet zwischen `#page-home`, `#page-sales`, `#page-finance`, `#page-hr`, `#page-impressum` (jeweils `.page`, eine ist `.active`).
+- **Echte URLs (seit 2026-10):** `/`, `/sales`, `/finance`, `/hr`, `/insights`, `/insights/<id>`, `/impressum`, `/datenschutz`. Netlify-Rewrites in `netlify.toml` liefern dafür `index.html`; `applyRoute()` zeigt beim Laden/Zurück die passende Seite, `showPage()`/`openInsight()` setzen per `pushState` die URL, `updateMeta()` Titel, Description und Canonical (`PAGE_META` DE/EN). Alte `#insights/…`-Links werden umgeschrieben.
+- **Links:** interne Navigation immer als `<a href="/pfad" data-nav onclick="return nav(event,'id')">` (Abschnitte: `navSection`, Artikel: `navInsight`) — nie wieder `div`/`span` mit `onclick`, sonst sieht Google die Seite nicht. Assets immer absolut (`/assets/…`), sonst brechen sie unter `/insights/<id>`.
+- **Lokal testen** mit SPA-Fallback (sonst 404 auf `/sales`): kleiner Python-Server, der unbekannte Pfade ohne Punkt auf `index.html` umleitet; `python3 -m http.server` reicht nur für `/`.
 - **Zweisprachig DE/EN** über `setLang(lang)`:
   1. Großes `i18n`-Objekt (`de: {…}, en: {…}`), Texte werden per Element-`id` gesetzt: `s(id,html)` / `st(id,text)`.
   2. **Zusätzlich:** `[data-de]`/`[data-en]`-Attribute werden automatisch übersetzt (eine Schleife in `setLang` setzt `textContent`). → **Neuer kurzer Text = einfach `data-de`/`data-en` ans Element** (kein i18n-Key nötig). Längerer/strukturierter Content = id + `setLang`-Zeile + Keys in BEIDEN Sprachobjekten.
 - **Theme:** `body.theme-light` ist IMMER gesetzt (alle Seiten). Editorial-Overrides hängen daran. Alte Dark-Theme-Regeln existieren noch als Basis (für nichts mehr genutzt, aber harmlos).
-- **Toter Code (harmlos, nicht gerendert):** alte Chat-Demo (`chat-demo`-CSS, `chatBody`/`run()`-JS), ungenutzte Pricing-/WHU-Reste. Kann bei Gelegenheit aufgeräumt werden.
+- **Toter Code:** Chat-Demo, Pricing-/WHU-/Team-CSS und die alten Schriften (Bebas Neue, DM Sans, DM Serif) wurden 2026-10 entfernt. Alte Dark-Theme-Basisregeln existieren noch (werden von `theme-light` überschrieben).
 
 ## Design-System v2 — „Editorial" (verbindlich)
 Premium-Beratung-Editorial, bewusst **anti-„KI-Look"**. Doku im Second Brain: `02 Projects/Agent Boss Academy/01 Design/Design System/(C) Design-Wechsel 2026-06-12 — Editorial v2.md`.
-- **Farben** (`:root`): Paper `#F4F1EA` / Paper-2 `#EDE8DD` / Card `#FBF9F4` · Ink `#16140F` / soft `#423D33` / mute `#6B6557` · **Akzent Deep Amber `#B6541F`** (deep `#913F14`, light `#E08A4E`) · Hairlines `rgba(22,20,15,.14)`. **Nur EIN Akzent**, kein Blau/Grün.
+- **Farben** (`:root`): Paper `#F4F1EA` / Paper-2 `#EDE8DD` / Card `#FBF9F4` · Ink `#16140F` / soft `#423D33` / mute `#6B6557` · **Akzent Deep Amber `#A64A19`** (bis 2026-10 `#B6541F`, für WCAG-AA-Kontrast abgedunkelt) (deep `#913F14`, light `#E08A4E`) · Hairlines `rgba(22,20,15,.14)`. **Nur EIN Akzent**, kein Blau/Grün.
 - **Fonts:** **Fraunces** (Display/Serife, Highlight = *kursiv + amber*) + **Hanken Grotesk** (Body) — via Google Fonts.
 - **Prinzipien:** Hairline-Grids (`gap:1px` auf `--line`), viel Whitespace, 01/02/03-Index-Ziffern (Fraunces-kursiv), EIN dunkler Ink-CTA-Block pro Seite, KEINE Emoji-Icons / Glow-Blobs / Grid-Masken / Puls-Badges. Motion sparsam (Fade-Ins, Hover-Underlines).
 - **Bei UI-Arbeit:** `frontend-design`-Skill nutzen, Stil halten, bei Design-Entscheidungen `AskUserQuestion`.
@@ -50,7 +53,6 @@ Premium-Beratung-Editorial, bewusst **anti-„KI-Look"**. Doku im Second Brain: 
 - Team-Sektion: Sarah Krüger & Markus Hoffmann sind Platzhalter (nicht real).
 - Impressum + Datenschutzerklärung sind live (eRecht24, abmahngeschützt, zweisprachig); offen nur: Adresse in eRecht24-Stammdaten auf „Nußloch" nachziehen (Quelle/Website synchron halten).
 - Skool-Community noch nicht gebaut (nur Warteliste live).
-- Toten Chat-/Pricing-/WHU-Code aufräumen.
 - Readiness-Fragen/Scoring/Guide sind v1 — verfeinerbar.
 
 ## Second Brain (Roberts Obsidian-Vault)

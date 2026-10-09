@@ -3,19 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agent Boss Academy | Robert Weller – Agent Boss Leader für AI-Agents & Automation</title>
+<title>Robert Weller – Agent Boss | KI-Agents für Führungskräfte</title>
 <meta name="description" content="Robert Weller – Agent Boss Leader. Beratung, Community und fertig betriebene AI-Agents (Langdock, n8n, Make, Claude) für Sales, Finance und HR.">
-<link rel="canonical" href="https://www.agent-boss-academy.com/">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="assets/apple-touch-icon.png" type="image/png" sizes="180x180">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- Canonical je Pfad (/sales, /insights/<id> …); bewusst nur per Skript, damit das rohe HTML keiner Unterseite widerspricht -->
+<script>(function(){var p=location.pathname.replace(/\/+$/,'').replace(/\/index\.html$/,'')||'/';var l=document.createElement('link');l.rel='canonical';l.href='https://www.agent-boss-academy.com'+p;document.head.appendChild(l);})();</script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/apple-touch-icon.png" type="image/png" sizes="180x180">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#F4F1EA">
+<!-- Hero-Schriften früh laden: weniger Layout-Sprung beim Schriftwechsel -->
+<link rel="preload" href="/assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO8UikR_BPug.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOskzP9Ddt0.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2" as="font" type="font/woff2" crossorigin>
 <!-- Vorschau beim Teilen (LinkedIn, WhatsApp, Slack) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agent Boss Academy">
 <meta property="og:locale" content="de_DE">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:url" content="https://www.agent-boss-academy.com/">
 <meta property="og:title" content="Robert Weller – Agent Boss Leader | Agent Boss Academy">
 <meta property="og:description" content="Robert Weller – Agent Boss Leader. Beratung, Community und fertig betriebene AI-Agents (Langdock, n8n, Make, Claude) für Sales, Finance und HR.">
 <meta property="og:image" content="https://www.agent-boss-academy.com/assets/og-image.jpg">
@@ -130,157 +134,13 @@
 </script>
 <style>
   /* ── Lokale Schriften: selbst gehostet, DSGVO-konform — keine Verbindung zu Google-Servern (kein IP-Transfer) ── */
-  /* latin-ext */
-  @font-face {
-    font-family: 'Bebas Neue';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/JTUSjIg69CK48gW7PXoo9WdhyyTh89ZNpQ.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Bebas Neue';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/JTUSjIg69CK48gW7PXoo9WlhyyTh89Y.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: italic;
-    font-weight: 300;
-    font-display: swap;
-    src: url(assets/fonts/rP2Wp2ywxg089UriCZaSExdy3sGt9zz86D3wyKK58UfivUw4aw.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: italic;
-    font-weight: 300;
-    font-display: swap;
-    src: url(assets/fonts/rP2Wp2ywxg089UriCZaSExdy3sGt9zz86D3wyKy58UfivUw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZOIHTWEBlw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZOIHTWEBlw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZOIHTWEBlw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(assets/fonts/rP2Hp2ywxg089UriCZOIHTWEBlw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Serif Display';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/-nFhOHM81r4j6k0gjAW3mujVU2B2G_VB3vD2xWr53BJl.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Serif Display';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/-nFhOHM81r4j6k0gjAW3mujVU2B2G_VB0PD2xWr53A.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'DM Serif Display';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/-nFnOHM81r4j6k0gjAW3mujVU2B2G_5x0vrx52jJ3Q.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'DM Serif Display';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/-nFnOHM81r4j6k0gjAW3mujVU2B2G_Bx0vrx52g.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
   /* vietnamese */
   @font-face {
     font-family: 'Fraunces';
     font-style: italic;
     font-weight: 300 600;
     font-display: swap;
-    src: url(assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOQkzP9Ddt2Wew.woff2) format('woff2');
+    src: url(/assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOQkzP9Ddt2Wew.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -289,7 +149,7 @@
     font-style: italic;
     font-weight: 300 600;
     font-display: swap;
-    src: url(assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOUkzP9Ddt2Wew.woff2) format('woff2');
+    src: url(/assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOUkzP9Ddt2Wew.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -298,7 +158,7 @@
     font-style: italic;
     font-weight: 300 600;
     font-display: swap;
-    src: url(assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOskzP9Ddt0.woff2) format('woff2');
+    src: url(/assets/fonts/6NUT8FyLNQOQZAnv9ZwNpOskzP9Ddt0.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   /* vietnamese */
@@ -307,7 +167,7 @@
     font-style: normal;
     font-weight: 300 700;
     font-display: swap;
-    src: url(assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO_kikR_BPumo3.woff2) format('woff2');
+    src: url(/assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO_kikR_BPumo3.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -316,7 +176,7 @@
     font-style: normal;
     font-weight: 300 700;
     font-display: swap;
-    src: url(assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO_0ikR_BPumo3.woff2) format('woff2');
+    src: url(/assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO_0ikR_BPumo3.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -325,7 +185,7 @@
     font-style: normal;
     font-weight: 300 700;
     font-display: swap;
-    src: url(assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO8UikR_BPug.woff2) format('woff2');
+    src: url(/assets/fonts/6NUI8FyLNQOQZAnv9bYEvCeYdG9Ea92uemAO8UikR_BPug.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   /* cyrillic-ext */
@@ -334,7 +194,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
   }
   /* vietnamese */
@@ -343,7 +203,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -352,7 +212,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -361,7 +221,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   /* cyrillic-ext */
@@ -370,7 +230,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
   }
   /* vietnamese */
@@ -379,7 +239,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -388,7 +248,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -397,7 +257,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   /* cyrillic-ext */
@@ -406,7 +266,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
   }
   /* vietnamese */
@@ -415,7 +275,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -424,7 +284,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -433,7 +293,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   /* cyrillic-ext */
@@ -442,7 +302,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
   }
   /* vietnamese */
@@ -451,7 +311,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -460,7 +320,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -469,7 +329,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   /* cyrillic-ext */
@@ -478,7 +338,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
   }
   /* vietnamese */
@@ -487,7 +347,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
   }
   /* latin-ext */
@@ -496,7 +356,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CxCis4UvI.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
   /* latin */
@@ -505,7 +365,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
+    src: url(/assets/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59CxCis4.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
@@ -527,7 +387,7 @@
     --ink: #16140F;
     --ink-soft: #423D33;
     --ink-mute: #6B6557;
-    --amber: #B6541F;
+    --amber: #A64A19; /* WCAG AA: 5,2:1 auf Paper, 4,8:1 auf Paper-2 (vorher #B6541F = 4,35:1) */
     --amber-deep: #913F14;
     --amber-light: #E08A4E;
     --line: rgba(22,20,15,0.14);
@@ -535,15 +395,19 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  :where(button, input, select, textarea) { font-family: inherit; }
+  /* Interne Links (früher div/span mit onclick): sehen aus wie vorher, sind aber für Google crawlbar */
+  :where(a[data-nav]) { color: inherit; text-decoration: none; cursor: pointer; }
+  :where(a.program-card, div > a.logo, footer a.logo) { display: block; }
   html { scroll-behavior: smooth; }
-  body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+  body { background: var(--dark); color: var(--text); font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
   .page { display: none; }
   .page.active { display: block; }
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,15,20,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--white); cursor: pointer; text-decoration: none; }
+  .logo { font-family: 'Fraunces', serif; font-size: 26px; letter-spacing: 2px; color: var(--white); cursor: pointer; text-decoration: none; }
   .logo span { color: var(--orange); }
   nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
   nav ul a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: .5px; transition: color .2s; cursor: pointer; }
@@ -554,15 +418,15 @@
   .nav-back:hover { color: var(--white); }
   .nav-back::before { content: '←'; font-size: 16px; }
   .lang-toggle { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; flex-shrink: 0; }
-  .lang-toggle button { background: none; border: none; padding: 7px 13px; font-size: 12px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all .2s; font-family: 'DM Sans', sans-serif; color: var(--text-muted); }
+  .lang-toggle button { background: none; border: none; padding: 7px 13px; font-size: 12px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all .2s; font-family: inherit; color: var(--text-muted); }
   .lang-toggle button.lang-active { background: var(--orange); color: var(--white); }
   .lang-toggle button:hover:not(.lang-active) { color: var(--white); background: rgba(255,255,255,.06); }
   .nav-right { display: flex; align-items: center; gap: 16px; }
 
   /* SHARED BUTTONS */
-  .btn-primary { background: var(--orange); color: var(--white); padding: 16px 32px; border-radius: 4px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-block; letter-spacing: .3px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-primary { background: var(--orange); color: var(--white); padding: 16px 32px; border-radius: 4px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-block; letter-spacing: .3px; border: none; cursor: pointer; font-family: 'Hanken Grotesk', sans-serif; }
   .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,98,30,.35); }
-  .btn-secondary { background: transparent; color: var(--white); padding: 15px 32px; border-radius: 4px; font-size: 16px; font-weight: 500; text-decoration: none; border: 1.5px solid rgba(255,255,255,.25); transition: all .2s; display: inline-block; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary { background: transparent; color: var(--white); padding: 15px 32px; border-radius: 4px; font-size: 16px; font-weight: 500; text-decoration: none; border: 1.5px solid rgba(255,255,255,.25); transition: all .2s; display: inline-block; cursor: pointer; font-family: 'Hanken Grotesk', sans-serif; }
   .btn-secondary:hover { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.05); }
   .btn-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--orange-light); text-decoration: none; letter-spacing: .3px; transition: gap .2s; cursor: pointer; }
   .btn-link:hover { gap: 12px; }
@@ -570,7 +434,7 @@
 
   /* SHARED SECTION */
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
-  .section-headline { font-family: 'DM Serif Display', serif; font-size: clamp(34px,4vw,52px); line-height: 1.15; color: var(--white); margin-bottom: 20px; }
+  .section-headline { font-family: 'Fraunces', serif; font-size: clamp(34px,4vw,52px); line-height: 1.15; color: var(--white); margin-bottom: 20px; }
 
   /* FADE */
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
@@ -587,7 +451,7 @@
   .hero-right { flex: 0 0 440px; }
   .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,98,30,.12); border: 1px solid rgba(245,98,30,.3); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--orange-light); margin-bottom: 32px; letter-spacing: .5px; }
   .hero-badge::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; animation:pulse 2s infinite; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(50px,5.2vw,86px); line-height: .95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(50px,5.2vw,86px); line-height: .95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
   .hero h1 .highlight { color: var(--orange); display: block; }
   .hero-sub { font-size: clamp(16px,1.8vw,19px); line-height: 1.55; color: var(--text-muted); max-width: 560px; margin-bottom: 40px; font-weight: 300; }
   .hero-sub strong { color: var(--text); font-weight: 500; }
@@ -595,38 +459,7 @@
   .hero-footnote::before { content:'✓'; color:var(--orange); font-weight:700; }
 
   /* CHAT DEMO */
-  .chat-demo { width: 100%; background: var(--dark-2); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.04); }
-  .chat-hd { background: var(--dark-3); border-bottom: 1px solid var(--border); padding: 13px 18px; display: flex; align-items: center; gap: 10px; }
-  .chat-hd-av { width: 30px; height: 30px; border-radius: 50%; background: rgba(245,98,30,.15); border: 1.5px solid rgba(245,98,30,.4); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--orange); flex-shrink: 0; }
-  .chat-hd-name { font-size: 13px; font-weight: 600; color: var(--white); flex: 1; }
-  .chat-hd-live { font-size: 11px; color: #4ade80; font-weight: 600; display: flex; align-items: center; gap: 5px; }
-  .chat-hd-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
-  .chat-body { padding: 18px; min-height: 300px; max-height: 340px; overflow: hidden; display: flex; flex-direction: column; gap: 10px; }
-  .chat-row { display: flex; gap: 9px; align-items: flex-start; opacity: 0; transition: opacity .3s; }
-  .chat-row.show { opacity: 1; }
-  .chat-row.human { flex-direction: row-reverse; }
-  .chat-av { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 12px; }
-  .chat-av.ab { background: rgba(245,98,30,.15); border: 1.5px solid rgba(245,98,30,.3); color: var(--orange); }
-  .chat-av.hu { background: rgba(99,102,241,.2); border: 1.5px solid rgba(99,102,241,.35); color: #a5b4fc; }
-  .chat-bbl { background: var(--dark-3); border: 1px solid var(--border); border-radius: 10px 10px 10px 3px; padding: 9px 13px; font-size: 12.5px; color: var(--text); line-height: 1.55; max-width: calc(100% - 38px); }
-  .chat-row.human .chat-bbl { background: rgba(99,102,241,.12); border-color: rgba(99,102,241,.25); border-radius: 10px 10px 3px 10px; }
-  .chat-dots { display: flex; gap: 4px; align-items: center; padding: 9px 13px; background: var(--dark-3); border: 1px solid var(--border); border-radius: 10px 10px 10px 3px; }
-  .chat-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--text-muted); animation: chatDot 1.4s infinite; }
-  .chat-dots span:nth-child(2) { animation-delay:.2s; }
-  .chat-dots span:nth-child(3) { animation-delay:.4s; }
-  @keyframes chatDot { 0%,60%,100%{opacity:.3;transform:scale(1)} 30%{opacity:1;transform:scale(1.35)} }
-  .chat-card { background: var(--dark-3); border: 1px solid var(--border); border-radius: 3px 10px 10px 10px; padding: 13px 15px; font-size: 12px; color: var(--text-muted); line-height: 1.7; max-width: calc(100% - 38px); }
-  .chat-card-ttl { font-size: 12.5px; font-weight: 700; color: var(--white); margin-bottom: 7px; display: block; }
-  .chat-card-row { display: flex; gap: 6px; margin-bottom: 3px; }
-  .chat-card-row .arr { color: var(--orange); flex-shrink: 0; }
-  .chat-card-sep { border: none; border-top: 1px solid var(--border); margin: 9px 0; }
-  .chat-cta-bbl { background: rgba(245,98,30,.1); border: 1px solid rgba(245,98,30,.3); border-radius: 10px 10px 10px 3px; padding: 9px 13px; font-size: 12.5px; color: var(--orange-light); font-weight: 500; max-width: calc(100% - 38px); }
-  .chat-inp-area { border-top: 1px solid var(--border); padding: 11px 14px; display: flex; gap: 9px; align-items: center; background: var(--dark-3); }
-  .chat-inp { flex: 1; background: var(--dark-4); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 34px; display: flex; align-items: center; overflow: hidden; white-space: nowrap; }
-  .chat-inp-cursor { display: inline-block; width: 1.5px; height: 13px; background: var(--orange); margin-left: 1px; vertical-align: middle; animation: blink .9s step-end infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-  .chat-send { width: 30px; height: 30px; border-radius: 7px; background: var(--orange); border: none; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 13px; flex-shrink: 0; cursor: default; transition: background .2s; }
-  .chat-send.sent { background: var(--orange-light); }
 
   .trust-bar { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 60px; }
   .trust-inner { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
@@ -634,7 +467,6 @@
   .trust-logos { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
   .trust-logo { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.4); letter-spacing: .5px; transition: color .2s; }
   .trust-logo:hover { color: rgba(255,255,255,.7); }
-  .trust-logo.whu { font-family: 'DM Serif Display', serif; font-size: 16px; }
 
   .programs { background: var(--dark-2); padding: 100px 60px; }
   .programs-header { margin-bottom: 60px; }
@@ -645,7 +477,7 @@
   .offering-card { position:relative; background:var(--dark-3); border:1px solid var(--border); border-radius:12px; padding:40px 32px; display:flex; flex-direction:column; transition:all .3s; }
   .offering-card:hover { border-color:rgba(245,98,30,.3); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
   .offering-icon { font-size:32px; margin-bottom:20px; }
-  .offering-title { font-family:'DM Serif Display',serif; font-size:24px; color:var(--white); margin-bottom:14px; line-height:1.2; }
+  .offering-title { font-family:'Fraunces',serif; font-size:24px; color:var(--white); margin-bottom:14px; line-height:1.2; }
   .offering-desc { font-size:15px; color:var(--text-muted); line-height:1.6; margin-bottom:28px; flex:1; }
   .offering-badge { position:absolute; top:-12px; right:24px; background:var(--orange); color:var(--white); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 14px; border-radius:100px; }
   .program-card { background: var(--dark-3); padding: 48px 40px; position: relative; overflow: hidden; transition: all .3s; cursor: pointer; }
@@ -654,7 +486,7 @@
   .program-card:hover { background: var(--dark-4); transform: translateY(-4px); }
   .program-icon { width:52px; height:52px; background:rgba(245,98,30,.12); border:1px solid rgba(245,98,30,.25); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:24px; }
   .program-tag { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
-  .program-title { font-family:'DM Serif Display',serif; font-size:32px; color:var(--white); margin-bottom:16px; line-height:1.1; }
+  .program-title { font-family:'Fraunces',serif; font-size:32px; color:var(--white); margin-bottom:16px; line-height:1.1; }
   .program-desc { font-size:15px; color:var(--text-muted); line-height:1.65; margin-bottom:32px; font-weight:300; }
 
   .why { background: var(--dark); padding: 100px 60px; }
@@ -662,7 +494,7 @@
   .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
   .feature-card { background:var(--dark-2); padding:40px 32px; border-top:3px solid transparent; transition:border-color .3s; }
   .feature-card:hover { border-top-color:var(--orange); }
-  .feature-num { font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(245,98,30,.2); line-height:1; margin-bottom:20px; }
+  .feature-num { font-family:'Fraunces',serif; font-size:48px; color:rgba(245,98,30,.2); line-height:1; margin-bottom:20px; }
   .feature-title { font-size:17px; font-weight:600; color:var(--white); margin-bottom:12px; line-height:1.3; }
   .feature-desc { font-size:14px; color:var(--text-muted); line-height:1.65; font-weight:300; }
 
@@ -674,7 +506,7 @@
   .metric-card::after { content:''; position:absolute; bottom:0;left:0;right:0; height:1px; background:linear-gradient(90deg,transparent,var(--orange),transparent); opacity:0; transition:opacity .3s; }
   .metric-card:hover::after { opacity:1; }
   .metric-card:hover { transform:translateY(-4px); }
-  .metric-value { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,6vw,80px); color:var(--white); line-height:1; margin-bottom:12px; letter-spacing:1px; }
+  .metric-value { font-family:'Fraunces',serif; font-size:clamp(56px,6vw,80px); color:var(--white); line-height:1; margin-bottom:12px; letter-spacing:1px; }
   .metric-value span { color:var(--orange); }
   .metric-label { font-size:14px; color:var(--text-muted); line-height:1.5; }
   .impact-footnote { text-align:center; font-size:14px; color:var(--text-muted); font-style:italic; }
@@ -684,16 +516,15 @@
   .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   .testimonial-card { background:var(--dark-3); border:1px solid var(--border); border-radius:8px; padding:40px 36px; transition:all .3s; }
   .testimonial-card:hover { border-color:rgba(245,98,30,.25); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
-  .quote-mark { font-family:'DM Serif Display',serif; font-size:80px; color:rgba(245,98,30,.15); line-height:.8; margin-bottom:16px; display:block; }
+  .quote-mark { font-family:'Fraunces',serif; font-size:80px; color:rgba(245,98,30,.15); line-height:.8; margin-bottom:16px; display:block; }
   .testimonial-text { font-size:15px; line-height:1.7; color:var(--text); margin-bottom:28px; font-weight:300; font-style:italic; }
   .testimonial-author { font-size:14px; font-weight:600; color:var(--white); margin-bottom:4px; }
   .testimonial-role { font-size:12px; color:var(--text-muted); }
-  .stars { color:var(--orange); font-size:13px; margin-bottom:20px; letter-spacing:2px; }
 
   .final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
   .final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(245,98,30,.09) 0%,transparent 70%); }
   .final-cta-content { position:relative; z-index:2; max-width:700px; margin:0 auto; }
-  .final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7vw,90px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .final-cta h2 { font-family:'Fraunces',serif; font-size:clamp(52px,7vw,90px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
   .final-cta h2 span { color:var(--orange); }
   .final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:48px; font-weight:300; line-height:1.6; }
   .cta-meta { font-size:13px; color:var(--text-muted); display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:24px; }
@@ -716,12 +547,12 @@
   .sales-bc-sep { opacity:.4; }
   .sales-hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(245,98,30,.12); border:1px solid rgba(245,98,30,.3); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; color:var(--orange-light); margin-bottom:28px; letter-spacing:.5px; }
   .sales-hero-tag::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; animation:pulse 2s infinite; }
-  .sales-hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
+  .sales-hero h1 { font-family:'Fraunces',serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
   .sales-hero h1 .hl { color:var(--orange); display:block; }
   .sales-hero-sub { font-size:clamp(17px,2vw,21px); line-height:1.6; color:var(--text-muted); max-width:660px; margin-bottom:44px; font-weight:300; }
   .sales-hero-sub strong { color:var(--text); font-weight:500; }
   .sales-hero-footnote { font-size:13px; color:var(--orange-light); display:flex; align-items:center; gap:8px; font-weight:500; }
-  .sales-hero-footnote::before { content:'⚡'; }
+  .sales-hero-footnote::before { content:''; width:18px; height:1.5px; background:currentColor; }
 
   .sales-pain { background:var(--dark-2); padding:90px 60px; }
   .sales-pain-header { margin-bottom:56px; max-width:640px; }
@@ -741,9 +572,9 @@
   .stufe-card::after { content:''; position:absolute; left:0;top:0;bottom:0; width:3px; background:var(--orange); transform:scaleY(0); transition:transform .4s; transform-origin:top; }
   .stufe-card:hover::after { transform:scaleY(1); }
   .stufe-card:hover { background:var(--dark-3); padding-left:56px; }
-  .stufe-num { font-family:'Bebas Neue',sans-serif; font-size:64px; color:rgba(245,98,30,.2); line-height:1; padding-top:4px; }
+  .stufe-num { font-family:'Fraunces',serif; font-size:64px; color:rgba(245,98,30,.2); line-height:1; padding-top:4px; }
   .stufe-tag { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:10px; }
-  .stufe-title { font-family:'DM Serif Display',serif; font-size:28px; color:var(--white); margin-bottom:14px; line-height:1.15; }
+  .stufe-title { font-family:'Fraunces',serif; font-size:28px; color:var(--white); margin-bottom:14px; line-height:1.15; }
   .stufe-desc { font-size:15px; color:var(--text-muted); line-height:1.7; font-weight:300; }
 
   .sales-results { background:var(--dark-2); padding:90px 60px; }
@@ -753,8 +584,7 @@
   .result-metric::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--orange); transform:scaleX(0); transition:transform .4s; transform-origin:left; }
   .result-metric:hover::before { transform:scaleX(1); }
   .result-metric:hover { transform:translateY(-4px); }
-  .result-icon { font-size:28px; margin-bottom:16px; display:block; }
-  .result-value { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,5vw,62px); color:var(--white); line-height:1; margin-bottom:10px; }
+  .result-value { font-family:'Fraunces',serif; font-size:clamp(40px,5vw,62px); color:var(--white); line-height:1; margin-bottom:10px; }
   .result-value span { color:var(--orange); }
   .result-label { font-size:13px; color:var(--text-muted); line-height:1.5; }
   .results-agents-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; }
@@ -778,21 +608,6 @@
 
   .sales-pricing { background:var(--dark); padding:90px 60px; }
   .sales-pricing-header { margin-bottom:64px; max-width:580px; }
-  .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .pricing-card { background:var(--dark-2); border:1px solid var(--border); border-radius:12px; padding:44px 36px; position:relative; transition:all .3s; }
-  .pricing-card:hover { border-color:rgba(245,98,30,.3); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
-  .pricing-card.featured { border-color:rgba(245,98,30,.4); background:var(--dark-3); }
-  .pricing-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--orange); color:var(--white); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 16px; border-radius:100px; white-space:nowrap; }
-  .pricing-tier { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
-  .pricing-name { font-family:'DM Serif Display',serif; font-size:26px; color:var(--white); margin-bottom:24px; line-height:1.2; }
-  .pricing-price { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--white); line-height:1; margin-bottom:6px; letter-spacing:1px; }
-  .pricing-price span { font-size:22px; color:var(--text-muted); }
-  .pricing-price-sub { font-size:13px; color:var(--text-muted); margin-bottom:28px; line-height:1.5; }
-  .pricing-divider { border:none; border-top:1px solid var(--border); margin-bottom:24px; }
-  .pricing-features { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:32px; }
-  .pricing-features li { font-size:14px; color:var(--text-muted); display:flex; align-items:flex-start; gap:10px; line-height:1.45; }
-  .pricing-features li::before { content:'✓'; color:var(--orange); font-weight:700; font-size:12px; flex-shrink:0; margin-top:2px; }
-  .pricing-note { font-size:13px; color:var(--text-muted); text-align:center; margin-top:28px; font-style:italic; }
 
   .sales-faq { background:var(--dark-2); padding:90px 60px; }
   .sales-faq-header { margin-bottom:56px; max-width:580px; }
@@ -809,11 +624,11 @@
   .sales-final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
   .sales-final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(245,98,30,.1) 0%,transparent 70%); pointer-events:none; }
   .sales-final-cta-content { position:relative; z-index:2; max-width:720px; margin:0 auto; }
-  .sales-final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .sales-final-cta h2 { font-family:'Fraunces',serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
   .sales-final-cta h2 span { color:var(--orange); }
   .sales-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
   .sales-cta-urgency { margin-top:20px; font-size:13px; color:var(--orange-light); display:flex; align-items:center; justify-content:center; gap:8px; font-weight:500; }
-  .sales-cta-urgency::before { content:'🔴'; font-size:10px; }
+  .sales-cta-urgency::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; display:inline-block; }
 
   /* POPUP */
   .popup-overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:9999; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; backdrop-filter:blur(8px); }
@@ -823,10 +638,10 @@
   .popup-close { position:absolute; top:16px;right:20px; background:none; border:none; color:var(--text-muted); font-size:22px; cursor:pointer; }
   .popup-close:hover { color:var(--white); }
   .popup-badge { display:inline-block; background:rgba(245,98,30,.12); border:1px solid rgba(245,98,30,.3); color:var(--orange-light); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius:100px; margin-bottom:20px; }
-  .popup h3 { font-family:'DM Serif Display',serif; font-size:28px; color:var(--white); margin-bottom:12px; line-height:1.2; }
+  .popup h3 { font-family:'Fraunces',serif; font-size:28px; color:var(--white); margin-bottom:12px; line-height:1.2; }
   .popup p { font-size:14px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; font-weight:300; }
   .popup-form { display:flex; flex-direction:column; gap:12px; }
-  .popup-form input { background:var(--dark-4); border:1px solid var(--border); border-radius:4px; padding:14px 16px; color:var(--white); font-size:15px; font-family:'DM Sans',sans-serif; outline:none; transition:border-color .2s; }
+  .popup-form input { background:var(--dark-4); border:1px solid var(--border); border-radius:4px; padding:14px 16px; color:var(--white); font-size:15px; font-family:'Hanken Grotesk',sans-serif; outline:none; transition:border-color .2s; }
   .popup-form input:focus { border-color:rgba(245,98,30,.5); }
   .popup-form input::placeholder { color:var(--text-muted); }
   .popup-disclaimer { font-size:11px; color:var(--text-muted); text-align:center; margin-top:8px; }
@@ -842,12 +657,12 @@
   .fin-bc-sep { opacity:.4; }
   .fin-hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.3); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; color:#93C5FD; margin-bottom:28px; letter-spacing:.5px; }
   .fin-hero-tag::before { content:''; width:6px; height:6px; background:#3B82F6; border-radius:50%; animation:pulse 2s infinite; }
-  .fin-hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
+  .fin-hero h1 { font-family:'Fraunces',serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
   .fin-hero h1 .hl { color:var(--orange); display:block; }
   .fin-hero-sub { font-size:clamp(17px,2vw,21px); line-height:1.6; color:var(--text-muted); max-width:660px; margin-bottom:44px; font-weight:300; }
   .fin-hero-sub strong { color:var(--text); font-weight:500; }
   .fin-hero-footnote { font-size:13px; color:#93C5FD; display:flex; align-items:center; gap:8px; font-weight:500; }
-  .fin-hero-footnote::before { content:'📅'; }
+  .fin-hero-footnote::before { content:''; width:18px; height:1.5px; background:currentColor; }
 
   /* ═══════ HR PAGE ═══════ */
   .hr-hero { min-height:88vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:140px 60px 80px; }
@@ -860,7 +675,7 @@
   .hr-bc-sep { opacity:.4; }
   .hr-hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(16,185,129,.12); border:1px solid rgba(16,185,129,.3); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; color:#6EE7B7; margin-bottom:28px; letter-spacing:.5px; }
   .hr-hero-tag::before { content:''; width:6px; height:6px; background:#10B981; border-radius:50%; animation:pulse 2s infinite; }
-  .hr-hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
+  .hr-hero h1 { font-family:'Fraunces',serif; font-size:clamp(52px,7.5vw,100px); line-height:.95; letter-spacing:1px; color:var(--white); margin-bottom:24px; }
   .hr-hero h1 .hl { color:var(--orange); display:block; }
   .hr-hero-sub { font-size:clamp(17px,2vw,21px); line-height:1.6; color:var(--text-muted); max-width:660px; margin-bottom:44px; font-weight:300; }
   .hr-hero-sub strong { color:var(--text); font-weight:500; }
@@ -871,19 +686,19 @@
   .fin-final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
   .fin-final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(59,130,246,.08) 0%,transparent 70%); pointer-events:none; }
   .fin-final-cta-content { position:relative; z-index:2; max-width:720px; margin:0 auto; }
-  .fin-final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .fin-final-cta h2 { font-family:'Fraunces',serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
   .fin-final-cta h2 span { color:var(--orange); }
   .fin-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
   .hr-final-cta { background:var(--dark); text-align:center; padding:120px 60px; position:relative; overflow:hidden; }
   .hr-final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(16,185,129,.07) 0%,transparent 70%); pointer-events:none; }
   .hr-final-cta-content { position:relative; z-index:2; max-width:720px; margin:0 auto; }
-  .hr-final-cta h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
+  .hr-final-cta h2 { font-family:'Fraunces',serif; font-size:clamp(48px,7vw,86px); line-height:1; color:var(--white); margin-bottom:24px; letter-spacing:1px; }
   .hr-final-cta h2 span { color:var(--orange); }
   .hr-final-cta p { font-size:18px; color:var(--text-muted); margin-bottom:44px; font-weight:300; line-height:1.6; }
 
   /* IMPRESSUM PAGE */
   .impressum { padding: 140px 60px 100px; max-width: 780px; margin: 0 auto; }
-  .impressum h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px,6vw,72px); color: var(--white); margin-bottom: 48px; letter-spacing: 1px; }
+  .impressum h1 { font-family: 'Fraunces', serif; font-size: clamp(40px,6vw,72px); color: var(--white); margin-bottom: 48px; letter-spacing: 1px; }
   .impressum h2 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin: 40px 0 12px; }
   .impressum p, .impressum address { font-size: 15px; color: var(--text-muted); line-height: 1.8; font-style: normal; font-weight: 300; }
   .impressum h3 { font-size: 18px; font-weight: 600; color: var(--white); margin: 30px 0 10px; }
@@ -918,35 +733,13 @@
 
   /* TEAM SECTION */
   .team { background:var(--dark-3); padding:100px 60px; }
-  .team-header { margin-bottom:64px; max-width:600px; }
-  .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .team-card { background:var(--dark-2); border:1px solid var(--border); border-radius:8px; padding:36px 32px; transition:all .3s; }
-  .team-card:hover { border-color:rgba(245,98,30,.25); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.3); }
-  .team-avatar { width:64px; height:64px; border-radius:50%; background:rgba(245,98,30,.15); border:2px solid rgba(245,98,30,.35); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--orange); margin-bottom:20px; }
-  .team-name { font-size:17px; font-weight:600; color:var(--white); margin-bottom:4px; }
-  .team-title { font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
-  .team-bio { font-size:14px; color:var(--text-muted); line-height:1.65; font-weight:300; }
 
   /* TRUST CHIPS */
   .trust-chip { display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:6px; padding:10px 18px; transition:all .2s; }
   .trust-chip:hover { border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.07); }
-  .trust-chip-icon { font-size:16px; line-height:1; }
   .trust-chip-name { font-size:13px; font-weight:600; color:rgba(255,255,255,.55); letter-spacing:.5px; }
-  .trust-chip.whu-chip { border-color:rgba(245,98,30,.25); background:rgba(245,98,30,.06); }
-  .trust-chip.whu-chip .trust-chip-name { color:var(--orange-light); }
-  .trust-whu-sep { width:1px; height:24px; background:var(--border); flex-shrink:0; }
-
-  /* TESTIMONIAL AVATARS */
-  .testimonial-footer { display:flex; align-items:center; gap:14px; }
-  .t-avatar { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:17px; color:var(--white); flex-shrink:0; position:relative; }
+  .t-avatar { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:17px; color:var(--white); flex-shrink:0; position:relative; }
   .t-avatar::after { content:''; position:absolute; bottom:1px; right:1px; width:10px; height:10px; border-radius:50%; border:2px solid var(--dark-3); }
-  .t-avatar-1 { background:linear-gradient(135deg,rgba(245,98,30,.6),rgba(245,98,30,.3)); }
-  .t-avatar-1::after { background:#F5621E; }
-  .t-avatar-2 { background:linear-gradient(135deg,rgba(59,130,246,.6),rgba(59,130,246,.3)); }
-  .t-avatar-2::after { background:#3B82F6; }
-  .t-avatar-3 { background:linear-gradient(135deg,rgba(16,185,129,.6),rgba(16,185,129,.3)); }
-  .t-avatar-3::after { background:#10B981; }
-  .testimonial-meta { display:flex; flex-direction:column; }
 
   /* HR FAQ */
   .hr-faq { background:var(--dark-2); padding:90px 60px; }
@@ -997,10 +790,8 @@
     content:''; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   }
-  body.theme-light .page,
-  body.theme-light nav,
-  body.theme-light .floating-cta,
-  body.theme-light .scroll-top { position:relative; z-index:2; }
+  /* Inhalt über das Papierkorn heben; Nav, Floating-CTA und Scroll-Top bleiben fixed (nur z-index, keine position überschreiben) */
+  body.theme-light .page { position:relative; z-index:2; }
 
   /* selection */
   body.theme-light ::selection { background: var(--amber); color: var(--paper); }
@@ -1065,35 +856,12 @@
   .ls-new { color:var(--ink); font-weight:600; }
   .ls-foot { margin-top:18px; padding-top:16px; border-top:1px solid var(--line); text-align:center; font-size:12px; font-weight:600; letter-spacing:.3px; color:var(--ink-soft); }
 
-  /* hero chat demo → light "paper console" */
-  body.theme-light .chat-demo { background:var(--paper-card); border:1px solid var(--line); border-radius:6px; box-shadow:0 30px 60px -24px rgba(22,20,15,.28), 0 2px 0 rgba(22,20,15,.04); }
-  body.theme-light .chat-hd { background:var(--paper-2); border-bottom:1px solid var(--line); }
-  body.theme-light .chat-hd-av { background:rgba(182,84,31,.1); border-color:rgba(182,84,31,.35); color:var(--amber); font-family:'Fraunces',serif; }
-  body.theme-light .chat-hd-name { color:var(--ink); }
-  body.theme-light .chat-hd-live { color:var(--amber-deep); }
-  body.theme-light .chat-hd-live::before { background:var(--amber); }
-  body.theme-light .chat-av.ab { background:rgba(182,84,31,.12); border-color:rgba(182,84,31,.3); color:var(--amber); font-family:'Fraunces',serif; }
-  body.theme-light .chat-av.hu { background:rgba(22,20,15,.07); border-color:var(--line); color:var(--ink-soft); font-family:'Fraunces',serif; }
-  body.theme-light .chat-bbl { background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft); }
-  body.theme-light .chat-row.human .chat-bbl { background:rgba(22,20,15,.05); border-color:var(--line-soft); }
-  body.theme-light .chat-dots { background:var(--paper-2); border:1px solid var(--line-soft); }
-  body.theme-light .chat-dots span { background:var(--ink-mute); }
-  body.theme-light .chat-card { background:#fff; border:1px solid var(--line); color:var(--ink-mute); }
-  body.theme-light .chat-card-ttl { color:var(--ink); }
-  body.theme-light .chat-card-row .arr { color:var(--amber); }
-  body.theme-light .chat-card-sep { border-top-color:var(--line); }
-  body.theme-light .chat-cta-bbl { background:rgba(182,84,31,.08); border:1px solid rgba(182,84,31,.3); color:var(--amber-deep); }
-  body.theme-light .chat-inp-area { background:var(--paper-2); border-top:1px solid var(--line); }
-  body.theme-light .chat-inp { background:#fff; border:1px solid var(--line); color:var(--ink); font-family:'Hanken Grotesk',sans-serif; }
-  body.theme-light .chat-inp-cursor { background:var(--amber); }
-  body.theme-light .chat-send { background:var(--amber); color:var(--paper); border-radius:5px; }
 
   /* ── TRUST BAR ── */
   body.theme-light .trust-bar { background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 64px; }
   body.theme-light .trust-inner { gap:40px; }
   body.theme-light .trust-label { color:var(--ink-mute); border-right:1px solid var(--line); letter-spacing:2px; }
   body.theme-light .trust-logos { gap:30px 34px; }
-  body.theme-light .trust-chip-icon { display:none; }
   body.theme-light .trust-chip { background:none; border:none; padding:0; border-radius:0; }
   body.theme-light .trust-chip:hover { background:none; border:none; }
   body.theme-light .trust-chip-name { color:var(--ink-soft); font-weight:600; letter-spacing:.3px; font-size:15px; transition:color .2s; }
@@ -1143,16 +911,9 @@
 
   /* ── TEAM ── */
   body.theme-light .team { background:var(--paper-2); padding:104px 64px; }
-  body.theme-light .team-card { background:var(--paper-card); border:1px solid var(--line); border-radius:4px; padding:40px 34px; }
-  body.theme-light .team-avatar { background:var(--ink); color:var(--paper); font-family:'Fraunces',serif; }
-  body.theme-light .team-name { font-family:'Fraunces',serif; color:var(--ink); font-weight:500; }
-  body.theme-light .team-title { color:var(--amber); }
-  body.theme-light .team-bio { color:var(--ink-mute); }
   /* ABOUT / VITA */
   .about { background:var(--paper-2); padding:104px 64px; }
   .about-inner { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:260px 1fr; gap:60px; align-items:start; }
-  .about-avatar { width:84px; height:84px; border-radius:50%; background:var(--ink); color:var(--paper); font-family:'Fraunces',serif; font-size:31px; display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
-  .about-photo { width:104px; height:104px; object-fit:cover; object-position:center 30%; display:block; border:1px solid var(--line); }
   .about-name { font-family:'Fraunces',serif; font-size:26px; color:var(--ink); font-weight:500; line-height:1.1; margin-bottom:8px; }
   .about-role { color:var(--amber); font-weight:600; font-size:11px; letter-spacing:1.8px; text-transform:uppercase; margin-bottom:14px; }
   .about-meta { color:var(--ink-mute); font-size:14px; line-height:1.5; margin-bottom:18px; }
@@ -1186,13 +947,12 @@
   body.theme-light .testimonial-text { color:var(--ink-soft); font-weight:400; font-style:normal; }
   body.theme-light .testimonial-author { color:var(--ink); }
   body.theme-light .testimonial-role { color:var(--ink-mute); }
-  body.theme-light .stars { color:var(--amber); }
 
   /* ── FINAL CTA → dramatic ink block ── */
   body.theme-light .final-cta { background:var(--ink); padding:130px 64px; }
   body.theme-light .final-cta::before { display:none; }
-  body.theme-light .final-cta .section-label { color:var(--amber); }
-  body.theme-light .final-cta .section-label::before { background:var(--amber); }
+  body.theme-light .final-cta .section-label { color:var(--amber-light); } /* auf Ink: Amber-Light hat genug Kontrast */
+  body.theme-light .final-cta .section-label::before { background:var(--amber-light); }
   body.theme-light .final-cta h2 { font-family:'Fraunces',serif; font-weight:430; font-variation-settings:'SOFT' 40; color:var(--paper); font-size:clamp(48px,6.5vw,86px); line-height:1.02; letter-spacing:-1px; }
   body.theme-light .final-cta h2 span { color:var(--amber-light); font-style:italic; }
   body.theme-light .final-cta p { color:rgba(244,241,234,.66); }
@@ -1207,6 +967,7 @@
 
   /* ── FOOTER ── */
   body.theme-light footer { background:var(--paper); border-top:1px solid var(--line); color:var(--ink-mute); }
+  body.theme-light footer p { color:var(--ink-mute); }
   body.theme-light footer .logo { font-family:'Fraunces',serif; color:var(--ink); }
   body.theme-light footer .logo span { color:var(--amber); }
   body.theme-light #footer-links span { color:var(--amber-deep); }
@@ -1225,10 +986,26 @@
   body.theme-light .popup-form input { background:#fff; border:1px solid var(--line); color:var(--ink); }
   body.theme-light .popup-form input::placeholder { color:var(--ink-mute); }
   body.theme-light .popup-disclaimer { color:var(--ink-mute); }
+  @media (max-width:600px) {
+    body.theme-light nav { padding:12px 20px; }
+    body.theme-light .logo { font-size:20px; white-space:nowrap; }
+    body.theme-light .nav-back { display:none !important; } /* Logo + Brotkrumen führen zurück; sonst rutscht das Menü-Icon aus dem Bild */
+    body.theme-light .hero { padding:92px 20px 56px; }
+    body.theme-light .hero-badge { margin-bottom:18px; letter-spacing:2px; }
+    body.theme-light #h-h1 { font-size:clamp(32px,10.2vw,42px); margin-bottom:20px; }
+    body.theme-light #h-h1 .highlight { white-space:nowrap; }
+    body.theme-light .hero-sub { font-size:16px; margin-bottom:28px; }
+    body.theme-light #h-cta1 { padding:15px 22px; font-size:15px; }
+  }
+  @media (max-width:360px) {
+    body.theme-light nav { padding:10px 14px; }
+    body.theme-light .logo { font-size:16px; }
+    body.theme-light .lang-toggle button { padding:6px 9px; }
+  }
 
   /* ── responsive ── */
   @media (max-width:1024px) {
-    body.theme-light .hero { padding:112px 24px 64px; }
+    body.theme-light .hero { padding:104px 24px 64px; }
     body.theme-light .offerings, body.theme-light .programs, body.theme-light .why,
     body.theme-light .team, body.theme-light .impact, body.theme-light .testimonials,
     body.theme-light .final-cta, body.theme-light .trust-bar { padding-left:24px; padding-right:24px; }
@@ -1260,8 +1037,7 @@
   body.theme-light .sales-hero-sub, body.theme-light .fin-hero-sub, body.theme-light .hr-hero-sub { color:var(--ink-soft); font-weight:400; }
   body.theme-light .sales-hero-sub strong, body.theme-light .fin-hero-sub strong, body.theme-light .hr-hero-sub strong { color:var(--ink); font-weight:600; }
   body.theme-light .sales-hero-footnote, body.theme-light .fin-hero-footnote { color:var(--ink-mute); }
-  body.theme-light .sales-hero-footnote::before { content:'⚡'; }
-  body.theme-light .fin-hero-footnote::before { content:'📅'; }
+  body.theme-light .sales-hero-footnote::before, body.theme-light .fin-hero-footnote::before { background:var(--amber); }
 
   /* ── PAIN ── */
   body.theme-light .sales-pain { background:var(--paper-2); padding:96px 64px; }
@@ -1291,7 +1067,6 @@
   body.theme-light .result-metric { background:var(--paper); }
   body.theme-light .result-metric:hover { background:var(--paper-card); transform:none; }
   body.theme-light .result-metric::before { background:var(--amber); }
-  body.theme-light .result-icon { display:none; }
   body.theme-light .result-value { font-family:'Fraunces',serif; font-weight:400; color:var(--ink); letter-spacing:-1px; }
   body.theme-light .result-value span { color:var(--amber); }
   body.theme-light .result-label { color:var(--ink-mute); }
@@ -1335,6 +1110,8 @@
   body.theme-light .sales-final-cta .btn-primary, body.theme-light .fin-final-cta .btn-primary, body.theme-light .hr-final-cta .btn-primary { background:var(--amber); color:var(--paper); }
   body.theme-light .sales-final-cta .btn-primary:hover, body.theme-light .fin-final-cta .btn-primary:hover, body.theme-light .hr-final-cta .btn-primary:hover { background:#fff; color:var(--ink); }
   body.theme-light .sales-cta-urgency { color:var(--amber-light); }
+  body.theme-light :is(.sales-final-cta,.fin-final-cta,.hr-final-cta) .section-label { color:var(--amber-light); }
+  body.theme-light :is(.sales-final-cta,.fin-final-cta,.hr-final-cta) .section-label::before { background:var(--amber-light); }
 
   /* ── IMPRESSUM ── */
   body.theme-light .impressum h1 { font-family:'Fraunces',serif; font-weight:460; color:var(--ink); letter-spacing:-1px; }
@@ -1489,10 +1266,8 @@
   body.theme-light .testimonials-grid { grid-template-columns:repeat(2,1fr); }
   body.theme-light .testimonial-card--feature { grid-column:1 / -1; background:none; border:none; border-radius:0; border-bottom:1px solid var(--line); padding:8px 0 40px; text-align:center; }
   body.theme-light .testimonial-card--feature:hover { transform:none; box-shadow:none; border-color:var(--line); }
-  body.theme-light .testimonial-card--feature .stars { justify-content:center; }
   body.theme-light .testimonial-card--feature .quote-mark { font-size:88px; color:rgba(182,84,31,.18); display:block; line-height:.4; margin:10px 0 0; }
   body.theme-light .testimonial-card--feature .testimonial-text { font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-size:clamp(22px,2.6vw,30px); line-height:1.35; color:var(--ink); max-width:24ch; margin:0 auto 22px; letter-spacing:-.3px; }
-  body.theme-light .testimonial-card--feature .testimonial-footer { justify-content:center; }
 
   /* ═══════════════════════════════════════════════════════════
      ORCHESTRATION — leadership animation band
@@ -1608,7 +1383,7 @@
   .hero-ladder { margin:24px 0 0; padding:0; list-style:none; border-top:1px solid var(--line); }
   .hero-ladder .hl-step { position:relative; display:flex; align-items:baseline; gap:16px; padding:13px 2px 13px 0; border-bottom:1px solid var(--line); }
   .hero-ladder .hl-step:last-child { border-bottom:none; }
-  .hero-ladder .hl-num { flex:0 0 auto; min-width:1.5em; font-family:'Fraunces',serif; font-style:italic; font-weight:360; font-size:21px; line-height:1; letter-spacing:-.5px; color:var(--ink-mute); opacity:.6; transition:color .4s, opacity .4s; }
+  .hero-ladder .hl-num { flex:0 0 auto; min-width:1.5em; font-family:'Fraunces',serif; font-style:italic; font-weight:360; font-size:21px; line-height:1; letter-spacing:-.5px; color:var(--ink-mute); transition:color .4s, opacity .4s; }
   .hero-ladder .hl-body { display:flex; flex-direction:column; gap:3px; }
   .hero-ladder .hl-name { font-family:'Fraunces',serif; font-weight:430; font-size:18px; line-height:1.05; letter-spacing:-.2px; color:var(--ink); }
   .hero-ladder .hl-desc { font-size:12.5px; line-height:1.3; letter-spacing:.2px; color:var(--ink-mute); }
@@ -1677,17 +1452,17 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a class="logo" onclick="showPage('home')">Agent<span>Boss</span> Academy</a>
+  <a href="/" data-nav onclick="return nav(event,'home')" class="logo">Agent<span>Boss</span> Academy</a>
   <ul id="navLinks">
-    <li><a onclick="goHomeSection('programmes')" data-de="Anwendungsfelder" data-en="Use cases">Anwendungsfelder</a></li>
-    <li><a onclick="goHomeSection('why')" data-de="Warum wir" data-en="Why us">Warum wir</a></li>
-    <li><a onclick="goHomeSection('impact')" data-de="Ergebnisse" data-en="Results">Ergebnisse</a></li>
-    <li><a onclick="goHomeSection('testimonials')" data-de="Stimmen" data-en="Testimonials">Stimmen</a></li>
-    <li><a onclick="showPage('insights');location.hash='insights'" data-de="Insights" data-en="Insights">Insights</a></li>
-    <li><a href="https://calendly.com/robert85-weller/30min" target="_blank" class="nav-cta" data-de="Strategy Call" data-en="Strategy Call">Strategy Call</a></li>
+    <li><a href="/#programmes" data-nav onclick="return navSection(event,'programmes')" data-de="Anwendungsfelder" data-en="Use cases">Anwendungsfelder</a></li>
+    <li><a href="/#why" data-nav onclick="return navSection(event,'why')" data-de="Warum wir" data-en="Why us">Warum wir</a></li>
+    <li><a href="/#impact" data-nav onclick="return navSection(event,'impact')" data-de="Ergebnisse" data-en="Results">Ergebnisse</a></li>
+    <li><a href="/#testimonials" data-nav onclick="return navSection(event,'testimonials')" data-de="Stimmen" data-en="Testimonials">Stimmen</a></li>
+    <li><a href="/insights" data-nav onclick="return nav(event,'insights')" data-de="Insights" data-en="Insights">Insights</a></li>
+    <li><a href="https://calendly.com/robert85-weller/30min" target="_blank" class="nav-cta" data-de="Strategie-Call" data-en="Strategy Call">Strategie-Call</a></li>
   </ul>
   <div class="nav-right">
-    <span class="nav-back" id="navBack" onclick="showPage('home')" data-de="Zurück zur Übersicht" data-en="Back to Overview">Zurück zur Übersicht</span>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="nav-back" id="navBack" data-de="Zurück zur Übersicht" data-en="Back to Overview">Zurück zur Übersicht</a>
     <div class="lang-toggle">
       <button class="lang-active" onclick="setLang('de')">DE</button>
       <button onclick="setLang('en')">EN</button>
@@ -1700,13 +1475,13 @@
 
 <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav()"></div>
 <div class="mobile-nav-drawer" id="mobileNavDrawer">
-  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
-  <a id="mnav-prog" onclick="closeMobileNav();goHomeSection('programmes')">Anwendungsfelder</a>
-  <a id="mnav-why" onclick="closeMobileNav();goHomeSection('why')">Warum wir</a>
-  <a id="mnav-impact" onclick="closeMobileNav();goHomeSection('impact')">Ergebnisse</a>
-  <a id="mnav-testi" onclick="closeMobileNav();goHomeSection('testimonials')">Stimmen</a>
-  <a id="mnav-insights" onclick="closeMobileNav();showPage('insights');location.hash='insights'">Insights</a>
-  <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="mobile-nav-cta" id="mnav-cta" onclick="closeMobileNav()">Strategy Call buchen</a>
+  <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Menü schließen">✕</button>
+  <a href="/#programmes" data-nav onclick="closeMobileNav();return navSection(event,'programmes')" id="mnav-prog">Anwendungsfelder</a>
+  <a href="/#why" data-nav onclick="closeMobileNav();return navSection(event,'why')" id="mnav-why">Warum wir</a>
+  <a href="/#impact" data-nav onclick="closeMobileNav();return navSection(event,'impact')" id="mnav-impact">Ergebnisse</a>
+  <a href="/#testimonials" data-nav onclick="closeMobileNav();return navSection(event,'testimonials')" id="mnav-testi">Stimmen</a>
+  <a href="/insights" data-nav onclick="closeMobileNav();return nav(event,'insights')" id="mnav-insights">Insights</a>
+  <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="mobile-nav-cta" id="mnav-cta" onclick="closeMobileNav()">Strategie-Call buchen</a>
 </div>
 
 
@@ -1720,10 +1495,10 @@
       <!-- LEFT: Advisory-Statement -->
       <div class="hero-left">
         <div class="hero-badge" id="h-badge">Robert Weller · Agent Boss Leader</div>
-        <h1 id="h-h1">Ich coache Führungskräfte in die <span class="highlight">KI-Transformation</span></h1>
+        <h1 id="h-h1">Ich coache Führungskräfte in&nbsp;die <span class="highlight">KI-Transformation</span></h1>
         <p class="hero-sub" id="h-sub">Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.</p>
         <div class="btn-group">
-          <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="h-cta1">Kostenloses 30-Min Strategy Call buchen</a>
+          <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="h-cta1">Kostenlosen 30-Min-Strategie-Call buchen</a>
         </div>
         <button class="hero-rc-link" id="h-rc" onclick="rcOpen()">2-Min Readiness-Check: Wo stehst du? →</button>
         <p class="hero-footnote" id="h-fn">Praktiker statt Theorie — echte AI-Agents live in Produktion.</p>
@@ -1731,7 +1506,7 @@
       <!-- RIGHT: Porträt -->
       <div class="hero-right">
         <figure class="hero-portrait">
-          <img src="assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="eager">
+          <img src="/assets/robert-avatar.jpg" alt="Robert Weller" width="600" height="600" loading="eager" fetchpriority="high">
           <figcaption id="h-caption">SAP-Exec · Agent Boss Leader</figcaption>
         </figure>
         <ol class="hero-ladder" id="h-ladder" aria-label="Vom Assistant zum Agent Boss">
@@ -1767,7 +1542,7 @@
     <div class="leader-shift fade-in">
       <div class="ls-eyebrow" data-de="Der Leadership-Wandel" data-en="The leadership shift">Der Leadership-Wandel</div>
       <h3 class="ls-title" data-de="Vom Manager zum Agent Boss" data-en="From manager to Agent Boss">Vom Manager zum Agent Boss</h3>
-      <figure class="ls-banner"><img src="assets/robert-transformation-banner.jpg" alt="Robert Weller: vom Executive zum Agent Boss" loading="lazy" width="1004" height="500"></figure>
+      <figure class="ls-banner"><img src="/assets/robert-transformation-banner.jpg" alt="Robert Weller: vom Executive zum Agent Boss" loading="lazy" width="1004" height="500"></figure>
       <div class="ls-colhead">
         <span data-de="Gestern" data-en="Yesterday">Gestern</span>
         <span data-de="Agent Boss" data-en="Agent Boss">Agent Boss</span>
@@ -1806,20 +1581,20 @@
     </div>
     <div class="offerings-grid">
       <div class="offering-card fade-in">
-        <div class="offering-icon" data-num="01">🧭</div>
+        <div class="offering-icon" data-num="01" aria-hidden="true"></div>
         <h3 class="offering-title" id="off1-title">Beratung &amp; Guidance</h3>
         <p class="offering-desc" id="off1-desc">Frameworks, Sparring und konkrete Hilfe beim Aufbau deiner eigenen Agent-Boss-Journey – strategisch und umsetzungsnah.</p>
         <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener" class="btn-primary" id="off1-cta" style="width:100%;text-align:center;display:block;">Strategie-Call buchen</a>
       </div>
       <div class="offering-card fade-in">
         <span class="offering-badge" id="off2-badge">Bald verfügbar</span>
-        <div class="offering-icon" data-num="02">👥</div>
+        <div class="offering-icon" data-num="02" aria-hidden="true"></div>
         <h3 class="offering-title" id="off2-title">Skool Community</h3>
         <p class="offering-desc" id="off2-desc">Lerne in der Community, equippe dich mit Playbooks und tausche dich im Exchange mit anderen Agent Bosses aus.</p>
         <button class="btn-secondary" id="off2-cta" onclick="openWaitlist()" style="width:100%;text-align:center;display:block;">Auf die Warteliste</button>
       </div>
       <div class="offering-card fade-in">
-        <div class="offering-icon" data-num="03">⚙️</div>
+        <div class="offering-icon" data-num="03" aria-hidden="true"></div>
         <h3 class="offering-title" id="off3-title">Done-for-you Automation</h3>
         <p class="offering-desc" id="off3-desc">Wir bauen deine AI-Agents (Langdock + Claude) und Workflows (n8n) – und betreiben sie laufend für dich.</p>
         <a href="https://calendly.com/robert85-weller/30min" target="_blank" rel="noopener" class="btn-primary" id="off3-cta" style="width:100%;text-align:center;display:block;">Strategie-Call buchen</a>
@@ -1947,27 +1722,27 @@
       <p id="prog-sub" style="font-size:18px;color:var(--text-muted);font-weight:300;line-height:1.6;">Dieselben drei Wege – angewendet auf die Bereiche, in denen ich am meisten helfe.</p>
     </div>
     <div class="programs-grid">
-      <div class="program-card fade-in" onclick="showPage('sales')">
+      <a href="/sales" data-nav onclick="return nav(event,'sales')" class="program-card fade-in">
         <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div>
         <div class="program-tag" id="prog-sales-tag">Sales</div>
         <h3 class="program-title" id="prog-sales-title">Agent Boss<br>Sales</h3>
         <p class="program-desc" id="prog-sales-desc">Verwandle dein Vertriebsteam in eine Revenue-Maschine. Mehr Selling-Time, höhere Win-Rates, präzise Forecasts.</p>
         <span class="btn-link" id="prog-sales-link">Use-Cases in Sales →</span>
-      </div>
-      <div class="program-card fade-in" onclick="showPage('finance')">
+      </a>
+      <a href="/finance" data-nav onclick="return nav(event,'finance')" class="program-card fade-in">
         <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="20" x2="21" y2="20"/><line x1="6.5" y1="20" x2="6.5" y2="13"/><line x1="12" y1="20" x2="12" y2="5"/><line x1="17.5" y1="20" x2="17.5" y2="10"/></svg></div>
         <div class="program-tag" id="prog-fin-tag">Finance</div>
         <h3 class="program-title" id="prog-fin-title">Agent Boss<br>Finance</h3>
         <p class="program-desc" id="prog-fin-desc">Schließe Monate in Tagen. Finance wird zum strategischen Business Partner mit Autonomous Reporting & Echtzeit-Insights.</p>
         <span class="btn-link" id="prog-fin-link">Use-Cases in Finance →</span>
-      </div>
-      <div class="program-card fade-in" onclick="showPage('hr')">
+      </a>
+      <a href="/hr" data-nav onclick="return nav(event,'hr')" class="program-card fade-in">
         <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.4-5 5.5-5s5.5 2 5.5 5"/><path d="M16 5.4a3 3 0 0 1 0 5.8"/><path d="M16.8 14.1c2.3.5 3.9 2.3 3.9 4.9"/></svg></div>
         <div class="program-tag" id="prog-hr-tag">HR</div>
         <h3 class="program-title" id="prog-hr-title">Agent Boss<br>HR</h3>
-        <p class="program-desc" id="prog-hr-desc">Besetze Stellen 50 % schneller und steigere die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.</p>
+        <p class="program-desc" id="prog-hr-desc">Besetze Stellen schneller und steigere die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.</p>
         <span class="btn-link" id="prog-hr-link">Use-Cases in HR →</span>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -2018,7 +1793,7 @@
         <div class="section-label" id="ins-teaser-label">Insights</div>
         <h2 class="section-headline" id="ins-teaser-h2">Aus der Praxis</h2>
       </div>
-      <button class="btn-link insights-teaser-all fade-in" id="ins-teaser-all" onclick="showPage('insights');location.hash='insights'">Alle Insights →</button>
+      <a class="btn-link insights-teaser-all fade-in" id="ins-teaser-all" href="/insights" data-nav onclick="return nav(event,'insights')">Alle Insights →</a>
     </div>
     <div class="insights-grid insights-grid--teaser" id="insightsTeaserGrid"><!-- JS-gerendert --></div>
   </section>
@@ -2028,15 +1803,15 @@
       <div class="section-label" id="cta-label" style="text-align:center;">Jetzt starten</div>
       <h2 id="cta-h2">Bereit, deinen Bereich zur <span>Frontier Unit</span> zu machen?</h2>
       <p id="cta-p">Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deinem Bereich.</p>
-      <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="cta-btn">Jetzt kostenloses Strategy Call buchen</a>
-      <div class="cta-meta"><span id="cta-meta1">Dauer: 30 Minuten</span><span id="cta-meta2">Keine Verkaufspräsentation</span><span id="cta-meta3">Konkrete nächste Schritte garantiert</span></div>
+      <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="cta-btn">Jetzt kostenlosen Strategie-Call buchen</a>
+      <div class="cta-meta"><span id="cta-meta1">Dauer: 30 Minuten</span><span id="cta-meta2">Keine Verkaufspräsentation</span><span id="cta-meta3">Mit konkreten nächsten Schritten</span></div>
     </div>
   </section>
 
   <footer>
     <div class="logo">Agent<span>Boss</span> Academy</div>
     <p id="footer-copy">© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p id="footer-links" style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);" data-de="Impressum" data-en="Imprint">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);" data-de="Datenschutz" data-en="Privacy">Datenschutz</span></p>
+    <p id="footer-links" style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);" data-de="Impressum" data-en="Imprint">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);" data-de="Datenschutz" data-en="Privacy">Datenschutz</a></p>
   </footer>
 
 </div><!-- /home -->
@@ -2050,17 +1825,17 @@
     <div class="sales-hero-bg"></div>
     <div class="sales-hero-grid"></div>
     <div class="sales-hero-content">
-      <div class="sales-breadcrumb" onclick="showPage('home')">
+      <a href="/" data-nav onclick="return nav(event,'home')" class="sales-breadcrumb">
         <span id="s-bread-home">Home</span><span class="sales-bc-sep"> › </span><span id="s-bread-prog">Anwendungsfelder</span><span class="sales-bc-sep"> › </span><span class="sales-bc-current" id="s-bread-cur">Agent Boss Sales</span>
-      </div>
+      </a>
       <div class="sales-hero-tag" id="s-tag">Sales · Anwendungsfeld</div>
       <h1 class="fade-in" id="s-h1">Dein Sales-Team zur<span class="hl">Revenue-Maschine</span>machen</h1>
       <p class="sales-hero-sub fade-in" id="s-sub" style="transition-delay:100ms;">Vom Head of Sales zum <strong>Agent Boss Leader</strong>. AI Agents übernehmen Admin-Arbeit – dein Team verkauft mehr, schneller und präziser.</p>
       <div class="btn-group fade-in" style="transition-delay:200ms;">
-        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="s-cta1">Kostenloses 30-Min Strategy Call buchen</a>
-        <a onclick="goHomeSection('offerings')" class="btn-secondary" id="s-cta2" style="cursor:pointer;">Die 3 Wege ansehen</a>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="s-cta1">Kostenlosen 30-Min-Strategie-Call buchen</a>
+        <a href="/#offerings" data-nav onclick="return navSection(event,'offerings')" class="btn-secondary" id="s-cta2" style="cursor:pointer;">Die 3 Wege ansehen</a>
       </div>
-      <p class="sales-hero-footnote fade-in" id="s-fn" style="transition-delay:300ms;">Begrenzte Kapazität – aktuell offen für neue Sales-Projekte.</p>
+      <p class="sales-hero-footnote fade-in" id="s-fn" style="transition-delay:300ms;">Aktuell offen für neue Sales-Projekte.</p>
     </div>
   </section>
 
@@ -2071,9 +1846,9 @@
       <h2 class="section-headline" id="sp-h2">Warum die meisten Sales-Teams trotz AI nicht vorankommen</h2>
     </div>
     <div class="pain-grid">
-      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon">⏳</span><div class="pain-title" id="sp1t"><span>40–60 %</span> Admin-Time</div><p class="pain-desc" id="sp1d">Deine Verkäufer recherchieren, qualifizieren manuell und schreiben Proposals statt zu verkaufen.</p></div>
-      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon">📉</span><div class="pain-title" id="sp2t">Unzuverlässige Forecasts</div><p class="pain-desc" id="sp2d">Pipeline-Daten sind unvollständig → Überraschungen gegenüber der Geschäftsführung.</p></div>
-      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon">🔥</span><div class="pain-title" id="sp3t">Hohe Fluktuation & Demotivation</div><p class="pain-desc" id="sp3d">Verkäufer hassen den administrativen Ballast und brennen aus.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="sp1t"><span>Zu viel</span> Admin-Time</div><p class="pain-desc" id="sp1d">Deine Verkäufer recherchieren, qualifizieren manuell und schreiben Proposals statt zu verkaufen.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="sp2t">Unzuverlässige Forecasts</div><p class="pain-desc" id="sp2d">Pipeline-Daten sind unvollständig → Überraschungen gegenüber der Geschäftsführung.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="sp3t">Hohe Fluktuation & Demotivation</div><p class="pain-desc" id="sp3d">Verkäufer hassen den administrativen Ballast und brennen aus.</p></div>
     </div>
     <div class="pain-quote fade-in" id="sp-quote">"Wir haben schon Copilot und Salesforce Einstein – aber nichts verändert sich wirklich."</div>
   </section>
@@ -2106,11 +1881,11 @@
     <div class="fade-in">
       <div class="results-agents-label" id="s-agent-label">Deine Agent-Flotte</div>
       <div class="agents-grid">
-        <div class="agent-chip"><span class="agent-chip-icon">🔍</span><div class="agent-chip-name" id="sag1">Lead-Scoring Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">🧠</span><div class="agent-chip-name" id="sag2">Research & Account-Intelligence Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">✍️</span><div class="agent-chip-name" id="sag3">Proposal Generator</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">🔄</span><div class="agent-chip-name" id="sag4">Automated Follow-up Orchestra</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">📈</span><div class="agent-chip-name" id="sag5">Live ROI-Dashboard</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="sag1">Lead-Scoring Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="sag2">Research & Account-Intelligence Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="sag3">Proposal Generator</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="sag4">Automated Follow-up Orchestra</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="sag5">Live ROI-Dashboard</div></div>
       </div>
     </div>
   </section>
@@ -2132,7 +1907,7 @@
       <div class="week-card fade-in" style="transition-delay:320ms;"><div class="week-num">08</div><div class="week-title" id="sw8">Go-Live: Deine produktive Sales-Agent-Flotte live in deiner Umgebung</div></div>
     </div>
     <div class="cert-banner fade-in" style="margin-top:32px;">
-      <span class="cert-icon">🎓</span>
+      <span class="cert-icon" aria-hidden="true"></span>
       <div><div class="cert-text-label" id="s-cert-label">Community</div><div class="cert-text-title" id="s-cert-title">Zugang zur Skool-Community: Learnings, Videos &amp; organisierter Austausch mit Sales-Experten in ähnlicher Situation.</div></div>
     </div>
   </section>
@@ -2180,16 +1955,16 @@
       <h2 class="fade-in" id="scta-h2">Bereit, deine Sales-Abteilung zur <span>Frontier Unit</span> zu machen?</h2>
       <p class="fade-in" id="scta-p" style="transition-delay:100ms;">Lass uns in einem 30-minütigen Call herausfinden, welcher Agent den größten Hebel in deinem Team hat.</p>
       <div class="fade-in" style="transition-delay:200ms;">
-        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="scta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenloses Strategy Call buchen</a>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="scta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenlosen Strategie-Call buchen</a>
       </div>
-      <div class="sales-cta-urgency fade-in" id="scta-urgency" style="transition-delay:280ms;">Termine verfügbar: Diese Woche noch 4 Plätze</div>
+      <div class="sales-cta-urgency fade-in" id="scta-urgency" style="transition-delay:280ms;">Termin direkt im Kalender wählen</div>
     </div>
   </section>
 
   <footer>
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="logo" style="cursor:pointer;">Agent<span>Boss</span> Academy</a>
     <p>© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);">Datenschutz</span></p>
+    <p style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);">Datenschutz</a></p>
   </footer>
 
 </div><!-- /sales -->
@@ -2202,17 +1977,17 @@
     <div class="fin-hero-bg"></div>
     <div class="fin-hero-grid"></div>
     <div class="fin-hero-content">
-      <div class="fin-breadcrumb" onclick="showPage('home')">
+      <a href="/" data-nav onclick="return nav(event,'home')" class="fin-breadcrumb">
         <span>Home</span><span class="fin-bc-sep"> › </span><span>Anwendungsfelder</span><span class="fin-bc-sep"> › </span><span class="fin-bc-current" id="f-bread-cur">Agent Boss Finance</span>
-      </div>
+      </a>
       <div class="fin-hero-tag" id="f-tag">Finance · Anwendungsfeld</div>
       <h1 class="fade-in" id="f-h1">Finance abschließen in<span class="hl">Tagen statt Wochen</span></h1>
       <p class="fin-hero-sub fade-in" id="f-sub" style="transition-delay:100ms;">Vom Head of Finance zum <strong>Agent Boss Leader</strong>. Autonome Agents übernehmen Reporting, Reconciliation und Forecasting – du wirst zum strategischen Business Partner.</p>
       <div class="btn-group fade-in" style="transition-delay:200ms;">
-        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary">Kostenloses 30-Min Strategy Call buchen</a>
-        <a onclick="goHomeSection('offerings')" class="btn-secondary" style="cursor:pointer;">Die 3 Wege ansehen</a>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary">Kostenlosen 30-Min-Strategie-Call buchen</a>
+        <a href="/#offerings" data-nav onclick="return navSection(event,'offerings')" class="btn-secondary" style="cursor:pointer;">Die 3 Wege ansehen</a>
       </div>
-      <p class="fin-hero-footnote fade-in" id="f-fn" style="transition-delay:300ms;">Begrenzte Kapazität – aktuell offen für neue Finance-Projekte.</p>
+      <p class="fin-hero-footnote fade-in" id="f-fn" style="transition-delay:300ms;">Aktuell offen für neue Finance-Projekte.</p>
     </div>
   </section>
 
@@ -2222,9 +1997,9 @@
       <h2 class="section-headline" id="fp-h2">Die Closing-Hölle 2026 ist noch real</h2>
     </div>
     <div class="pain-grid">
-      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon">🗂️</span><div class="pain-title" id="fp1t">Manuelles Reporting & Daten-Chaos</div><p class="pain-desc" id="fp1d">Stundenlanges Zusammenführen aus SAP, Excel, Power BI & Co.</p></div>
-      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon">📅</span><div class="pain-title" id="fp2t">Monatsabschluss dauert <span>8–14 Tage</span></div><p class="pain-desc" id="fp2d">Hoher Stress, Fehlerquellen und wenig Zeit für echte Analysen.</p></div>
-      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon">⚖️</span><div class="pain-title" id="fp3t">Regulatorische & Compliance-Last</div><p class="pain-desc" id="fp3d">ESG, IFRS, GoBD – alles noch weitgehend manuell.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="fp1t">Manuelles Reporting & Daten-Chaos</div><p class="pain-desc" id="fp1d">Stundenlanges Zusammenführen aus SAP, Excel, Power BI & Co.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="fp2t">Monatsabschluss dauert <span>8–14 Tage</span></div><p class="pain-desc" id="fp2d">Hoher Stress, Fehlerquellen und wenig Zeit für echte Analysen.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="fp3t">Regulatorische & Compliance-Last</div><p class="pain-desc" id="fp3d">ESG, IFRS, GoBD – alles noch weitgehend manuell.</p></div>
     </div>
     <div class="pain-quote fade-in" id="fp-quote">"Wir haben Tools, aber keine echte Automatisierung und keine Zeit für strategische Arbeit."</div>
   </section>
@@ -2255,10 +2030,10 @@
     <div class="fade-in">
       <div class="results-agents-label" id="f-agent-label">Deine Agent-Flotte</div>
       <div class="agents-grid" style="grid-template-columns:repeat(4,1fr);">
-        <div class="agent-chip"><span class="agent-chip-icon">🗓️</span><div class="agent-chip-name" id="fag1">Monthly Closing Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">🔮</span><div class="agent-chip-name" id="fag2">Forecasting & Scenario Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">🔍</span><div class="agent-chip-name" id="fag3">Reconciliation & Anomaly Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">📋</span><div class="agent-chip-name" id="fag4">Board-Report Generator</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="fag1">Monthly Closing Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="fag2">Forecasting & Scenario Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="fag3">Reconciliation & Anomaly Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="fag4">Board-Report Generator</div></div>
       </div>
     </div>
   </section>
@@ -2279,7 +2054,7 @@
       <div class="week-card fade-in" style="transition-delay:320ms;"><div class="week-num">08</div><div class="week-title" id="fw8">Go-Live: Vollautomatisierter Monatsabschluss-Prozess</div></div>
     </div>
     <div class="cert-banner fade-in" style="margin-top:32px;">
-      <span class="cert-icon">🎓</span>
+      <span class="cert-icon" aria-hidden="true"></span>
       <div><div class="cert-text-label">Community</div><div class="cert-text-title" id="f-cert-title">Zugang zur Skool-Community: Learnings, Videos &amp; organisierter Austausch mit Finance-Experten in ähnlicher Situation.</div></div>
     </div>
   </section>
@@ -2320,15 +2095,15 @@
       <h2 class="fade-in" id="fcta-h2">Bereit, Finance zum strategischen <span>Powerhouse</span> zu machen?</h2>
       <p class="fade-in" id="fcta-p" style="transition-delay:100ms;">Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deiner Finance-Abteilung.</p>
       <div class="fade-in" style="transition-delay:200ms;">
-        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="fcta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenloses Strategy Call buchen</a>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="fcta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenlosen Strategie-Call buchen</a>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="logo" style="cursor:pointer;">Agent<span>Boss</span> Academy</a>
     <p>© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);">Datenschutz</span></p>
+    <p style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);">Datenschutz</a></p>
   </footer>
 
 </div><!-- /finance -->
@@ -2341,15 +2116,15 @@
     <div class="hr-hero-bg"></div>
     <div class="hr-hero-grid"></div>
     <div class="hr-hero-content">
-      <div class="hr-breadcrumb" onclick="showPage('home')">
+      <a href="/" data-nav onclick="return nav(event,'home')" class="hr-breadcrumb">
         <span>Home</span><span class="hr-bc-sep"> › </span><span>Anwendungsfelder</span><span class="hr-bc-sep"> › </span><span class="hr-bc-current" id="hr-bread-cur">Agent Boss HR</span>
-      </div>
+      </a>
       <div class="hr-hero-tag" id="hr-tag">HR · Anwendungsfeld</div>
-      <h1 class="fade-in" id="hr-h1">Stellen <span class="hl">50 % schneller</span> besetzen und Top-Talente halten</h1>
+      <h1 class="fade-in" id="hr-h1">Stellen <span class="hl">schneller</span> besetzen und Top-Talente halten</h1>
       <p class="hr-hero-sub fade-in" id="hr-sub" style="transition-delay:100ms;">Vom Head of HR zum <strong>Agent Boss Leader</strong>. Recruiting, Onboarding und Talent Development Agents machen HR zum strategischen Talent-Magneten.</p>
       <div class="btn-group fade-in" style="transition-delay:200ms;">
-        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary">Kostenloses 30-Min Strategy Call buchen</a>
-        <a onclick="goHomeSection('offerings')" class="btn-secondary" style="cursor:pointer;">Die 3 Wege ansehen</a>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary">Kostenlosen 30-Min-Strategie-Call buchen</a>
+        <a href="/#offerings" data-nav onclick="return navSection(event,'offerings')" class="btn-secondary" style="cursor:pointer;">Die 3 Wege ansehen</a>
       </div>
     </div>
   </section>
@@ -2360,9 +2135,9 @@
       <h2 class="section-headline" id="hrp-h2">HR kämpft 2026 noch viel zu oft manuell</h2>
     </div>
     <div class="pain-grid">
-      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon">📥</span><div class="pain-title" id="hp1t"><span>100+</span> Bewerbungen manuell sichten</div><p class="pain-desc" id="hp1d">Wochenlange Recruiting-Zyklen kosten die besten Kandidaten.</p></div>
-      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon">📝</span><div class="pain-title" id="hp2t">Hoher Admin-Aufwand</div><p class="pain-desc" id="hp2d">On-/Offboarding und Verwaltungsaufgaben fressen strategische HR-Zeit.</p></div>
-      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon">📉</span><div class="pain-title" id="hp3t">Schwieriger HR-Impact-Nachweis</div><p class="pain-desc" id="hp3d">Messung von HR-Wirkung und Skills-Gaps bleibt ohne datengetriebene Unterstützung schwierig.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:80ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="hp1t"><span>100+</span> Bewerbungen manuell sichten</div><p class="pain-desc" id="hp1d">Wochenlange Recruiting-Zyklen kosten die besten Kandidaten.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:160ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="hp2t">Hoher Admin-Aufwand</div><p class="pain-desc" id="hp2d">On-/Offboarding und Verwaltungsaufgaben fressen strategische HR-Zeit.</p></div>
+      <div class="pain-card fade-in" style="transition-delay:240ms;"><span class="pain-icon" aria-hidden="true"></span><div class="pain-title" id="hp3t">Schwieriger HR-Impact-Nachweis</div><p class="pain-desc" id="hp3d">Messung von HR-Wirkung und Skills-Gaps bleibt ohne datengetriebene Unterstützung schwierig.</p></div>
     </div>
     <div class="pain-quote fade-in" id="hrp-quote">"Wir verlieren gute Kandidaten, weil der Prozess zu langsam ist."</div>
   </section>
@@ -2393,10 +2168,10 @@
     <div class="fade-in">
       <div class="results-agents-label" id="hr-agent-label">Deine Agent-Flotte</div>
       <div class="agents-grid" style="grid-template-columns:repeat(4,1fr);">
-        <div class="agent-chip"><span class="agent-chip-icon">🔍</span><div class="agent-chip-name" id="hag1">Intelligent Recruiting & Matching Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">🚀</span><div class="agent-chip-name" id="hag2">Personalisiertes Onboarding Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">📈</span><div class="agent-chip-name" id="hag3">Talent Development & Skills-Gap Agent</div></div>
-        <div class="agent-chip"><span class="agent-chip-icon">💬</span><div class="agent-chip-name" id="hag4">Employee Experience Feedback Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="hag1">Intelligent Recruiting & Matching Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="hag2">Personalisiertes Onboarding Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="hag3">Talent Development & Skills-Gap Agent</div></div>
+        <div class="agent-chip"><span class="agent-chip-icon" aria-hidden="true"></span><div class="agent-chip-name" id="hag4">Employee Experience Feedback Agent</div></div>
       </div>
     </div>
   </section>
@@ -2417,7 +2192,7 @@
       <div class="week-card fade-in" style="transition-delay:320ms;"><div class="week-num">08</div><div class="week-title" id="hw8">Go-Live: Vollständiger AI-gestützter Recruiting-to-Onboarding-Prozess</div></div>
     </div>
     <div class="cert-banner fade-in" style="margin-top:32px;">
-      <span class="cert-icon">🎓</span>
+      <span class="cert-icon" aria-hidden="true"></span>
       <div><div class="cert-text-label">Community</div><div class="cert-text-title" id="hr-cert-title">Zugang zur Skool-Community: Learnings, Videos &amp; organisierter Austausch mit HR-Experten in ähnlicher Situation.</div></div>
     </div>
   </section>
@@ -2462,15 +2237,15 @@
       <h2 class="fade-in" id="hrcta-h2">Bereit, HR zum strategischen <span>Talent-Magneten</span> zu machen?</h2>
       <p class="fade-in" id="hrcta-p" style="transition-delay:100ms;">Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deiner HR-Abteilung.</p>
       <div class="fade-in" style="transition-delay:200ms;">
-        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="hrcta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenloses Strategy Call buchen</a>
+        <a href="https://calendly.com/robert85-weller/30min" target="_blank" class="btn-primary" id="hrcta-btn" style="font-size:18px;padding:20px 48px;">Jetzt kostenlosen Strategie-Call buchen</a>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="logo" style="cursor:pointer;">Agent<span>Boss</span> Academy</a>
     <p>© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);">Datenschutz</span></p>
+    <p style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);">Datenschutz</a></p>
   </footer>
 
 </div><!-- /hr -->
@@ -2479,7 +2254,7 @@
 <!-- ═══════ IMPRESSUM ═══════ -->
 <div id="page-impressum" class="page">
   <div class="impressum">
-    <div class="impressum-back" onclick="showPage('home')" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="impressum-back" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</a>
 
     <!-- DE (eRecht24-generiert, abmahngeschützt) -->
     <div class="imp-de">
@@ -2545,9 +2320,9 @@
   </div>
 
   <footer>
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="logo" style="cursor:pointer;">Agent<span>Boss</span> Academy</a>
     <p>© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);">Datenschutz</span></p>
+    <p style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);">Datenschutz</a></p>
   </footer>
 </div><!-- /impressum -->
 
@@ -2555,7 +2330,7 @@
 <!-- ═══════ DATENSCHUTZ ═══════ -->
 <div id="page-datenschutz" class="page">
   <div class="impressum">
-    <div class="impressum-back" onclick="showPage('home')" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="impressum-back" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</a>
 
     <!-- DE (eRecht24-generiert, abmahngeschützt) -->
     <div class="imp-de">
@@ -2649,9 +2424,9 @@ E-mail: kontakt@agent-boss-academy.com</p>
   </div>
 
   <footer>
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="logo" style="cursor:pointer;">Agent<span>Boss</span> Academy</a>
     <p>© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);">Datenschutz</span></p>
+    <p style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);">Datenschutz</a></p>
   </footer>
 </div><!-- /datenschutz -->
 
@@ -2688,9 +2463,9 @@ E-mail: kontakt@agent-boss-academy.com</p>
   </article>
 
   <footer>
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer;">Agent<span>Boss</span> Academy</div>
+    <a href="/" data-nav onclick="return nav(event,'home')" class="logo" style="cursor:pointer;">Agent<span>Boss</span> Academy</a>
     <p id="ins-footer-copy">© 2026 Agent Boss Academy · Agent-Boss-Community über Skool</p>
-    <p style="font-size:12px;"><span onclick="showPage('impressum')" style="cursor:pointer;color:var(--orange-light);">Impressum</span> · <span onclick="showPage('datenschutz')" style="cursor:pointer;color:var(--orange-light);">Datenschutz</span></p>
+    <p style="font-size:12px;"><a href="/impressum" data-nav onclick="return nav(event,'impressum')" style="cursor:pointer;color:var(--amber-deep);">Impressum</a> · <a href="/datenschutz" data-nav onclick="return nav(event,'datenschutz')" style="cursor:pointer;color:var(--amber-deep);">Datenschutz</a></p>
   </footer>
 </div><!-- /insights -->
 
@@ -2699,7 +2474,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
 <!-- SKOOL WAITLIST POPUP -->
 <div class="popup-overlay" id="waitlist-popup">
   <div class="popup">
-    <button class="popup-close" onclick="document.getElementById('waitlist-popup').classList.remove('active')">✕</button>
+    <button class="popup-close" onclick="document.getElementById('waitlist-popup').classList.remove('active')" aria-label="Schließen">✕</button>
     <div class="popup-badge" id="wl-badge">Early Access</div>
     <h3 id="wl-h3">Skool Community – Warteliste</h3>
     <p id="wl-p">Trag dich ein und sei dabei, sobald die Community öffnet.</p>
@@ -2739,10 +2514,10 @@ E-mail: kontakt@agent-boss-academy.com</p>
   const i18n = {
     de: {
       // META
-      pageTitle: 'Agent Boss Academy | Robert Weller – Agent Boss Leader für AI-Agents & Automation',
+      pageTitle: 'Robert Weller – Agent Boss | KI-Agents für Führungskräfte',
       // NAV
       navBack: 'Zurück zur Übersicht',
-      mnavProg: 'Anwendungsfelder', mnavWhy: 'Warum wir', mnavImpact: 'Ergebnisse', mnavTesti: 'Stimmen', mnavInsights: 'Insights', mnavCta: 'Strategy Call buchen',
+      mnavProg: 'Anwendungsfelder', mnavWhy: 'Warum wir', mnavImpact: 'Ergebnisse', mnavTesti: 'Stimmen', mnavInsights: 'Insights', mnavCta: 'Strategie-Call buchen',
       // ORCHESTRATION
       orchLabel: 'Orchestrierung', orchH2: 'Wie ein Agent Boss arbeitet',
       orchIntro: 'So sieht eine Organisation der Zukunft aus: ein rundes, vernetztes Team – du als Agent Boss (AB), umgeben von Agenten (A) und Menschen (H), die orchestriert Informationen austauschen.',
@@ -2764,14 +2539,14 @@ E-mail: kontakt@agent-boss-academy.com</p>
       hrFaq2q: 'Wie steht es um Bias und ethische KI?', hrFaq2a: 'Ethical AI und Bias-Reduction sind von Anfang an fester Bestandteil. Alle Recruiting-Agents werden mit integrierten Bias-Checks und laufendem Bias-Monitoring gebaut.',
       hrFaq3q: 'Passt das zu Personio / SAP SuccessFactors?', hrFaq3a: 'Ja. Wir integrieren in alle gängigen HR-Systeme – Personio, Workday, SAP SuccessFactors und mehr. Die Integration ist fester Bestandteil der Umsetzung.',
       hrFaq4q: 'Wann sehen wir erste Ergebnisse?', hrFaq4a: 'Erste produktive Recruiting-Agents laufen häufig schon nach wenigen Wochen. Am Ende läuft dein vollständiger Recruiting-to-Onboarding-Prozess live in deiner echten Umgebung.',
-      floatingCtaText: 'Strategy Call buchen',
+      floatingCtaText: 'Strategie-Call buchen',
       // HERO
       heroBadge: 'Robert Weller · Agent Boss Leader',
-      heroH1a: 'Ich coache Führungskräfte in die ',
+      heroH1a: 'Ich coache Führungskräfte in&nbsp;die ',
       heroH1b: 'KI-Transformation',
       heroH1c: '',
       heroSub: 'Du willst KI nicht nur einsetzen, sondern dein Team daneben führen. Ich zeige dir, <strong>wo du stehst, was als Nächstes kommt</strong> – und begleite dich Schritt für Schritt vom Manager zum Agent Boss.',
-      heroCta1: 'Kostenloses 30-Min Strategy Call buchen',
+      heroCta1: 'Kostenlosen 30-Min-Strategie-Call buchen',
       heroCaption: 'SAP-Exec · Agent Boss Leader',
       heroFn: 'Praktiker statt Theorie — echte AI-Agents live in Produktion.', heroRcLink: '2-Min Readiness-Check: Wo stehst du? →',
       // OFFERINGS
@@ -2788,7 +2563,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       progSub: 'Dieselben drei Wege – angewendet auf die Bereiche, in denen ich am meisten helfe.',
       progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Verwandle dein Vertriebsteam in eine Revenue-Maschine. Mehr Selling-Time, höhere Win-Rates, präzise Forecasts.', progSalesLink: 'Use-Cases in Sales →',
       progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Schließe Monate in Tagen. Finance wird zum strategischen Business Partner mit Autonomous Reporting & Echtzeit-Insights.', progFinLink: 'Use-Cases in Finance →',
-      progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Besetze Stellen 50 % schneller und steigere die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.', progHRLink: 'Use-Cases in HR →',
+      progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Besetze Stellen schneller und steigere die Employee Experience. Recruiting, Onboarding & Talent Agents inklusive.', progHRLink: 'Use-Cases in HR →',
       // WHY
       whyLabel: 'Warum wir', whyH2: 'Warum Führungskräfte mit mir arbeiten',
       feat1t: 'End-to-End', feat1d: 'Von Beratung über Community bis zur fertig betriebenen Automatisierung – ein Ansprechpartner über die ganze Journey.',
@@ -2808,8 +2583,8 @@ E-mail: kontakt@agent-boss-academy.com</p>
       // FINAL CTA
       ctaLabel: 'Jetzt starten', ctaH2a: 'Bereit, deinen Bereich zur', ctaH2b: 'Frontier Unit', ctaH2c: 'zu machen?',
       ctaP: 'Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deinem Bereich.',
-      ctaBtn: 'Jetzt kostenloses Strategy Call buchen',
-      ctaMeta1: 'Dauer: 30 Minuten', ctaMeta2: 'Keine Verkaufspräsentation', ctaMeta3: 'Konkrete nächste Schritte garantiert',
+      ctaBtn: 'Jetzt kostenlosen Strategie-Call buchen',
+      ctaMeta1: 'Dauer: 30 Minuten', ctaMeta2: 'Keine Verkaufspräsentation', ctaMeta3: 'Mit konkreten nächsten Schritten',
       // FOOTER
       footerCopy: '© 2026 Agent Boss Academy · Agent-Boss-Community über Skool',
       footerLinks: 'Impressum · Datenschutz',
@@ -2819,10 +2594,10 @@ E-mail: kontakt@agent-boss-academy.com</p>
       salesTag: 'Sales · Anwendungsfeld',
       salesH1a: 'Dein Sales-Team zur', salesH1b: 'Revenue-Maschine', salesH1c: 'machen',
       salesSub: 'Vom Head of Sales zum <strong>Agent Boss Leader</strong>. AI Agents übernehmen Admin-Arbeit – dein Team verkauft mehr, schneller und präziser.',
-      salesCta1: 'Kostenloses 30-Min Strategy Call buchen', salesCta2: 'Die 3 Wege ansehen',
-      salesFn: 'Begrenzte Kapazität – aktuell offen für neue Sales-Projekte.',
+      salesCta1: 'Kostenlosen 30-Min-Strategie-Call buchen', salesCta2: 'Die 3 Wege ansehen',
+      salesFn: 'Aktuell offen für neue Sales-Projekte.',
       salesPainLabel: 'Die Realität in Sales 2026', salesPainH2: 'Warum die meisten Sales-Teams trotz AI nicht vorankommen',
-      sp1t: '40–60 % Admin-Time', sp1d: 'Deine Verkäufer recherchieren, qualifizieren manuell und schreiben Proposals statt zu verkaufen.',
+      sp1t: 'Zu viel Admin-Time', sp1d: 'Deine Verkäufer recherchieren, qualifizieren manuell und schreiben Proposals statt zu verkaufen.',
       sp2t: 'Unzuverlässige Forecasts', sp2d: 'Pipeline-Daten sind unvollständig → Überraschungen gegenüber der Geschäftsführung.',
       sp3t: 'Hohe Fluktuation & Demotivation', sp3d: 'Verkäufer hassen den administrativen Ballast und brennen aus.',
       salesPainQuote: '"Wir haben schon Copilot und Salesforce Einstein – aber nichts verändert sich wirklich."',
@@ -2846,13 +2621,13 @@ E-mail: kontakt@agent-boss-academy.com</p>
       faq4q: 'Was ist mit Datenschutz & Compliance?', faq4a: 'Voll DSGVO-konform. Das Governance-Framework inkl. Compliance-Anforderungen, Datenschutzarchitektur und Audit-Trails ist fester Bestandteil der Umsetzung – und wird in deiner Umgebung implementiert.',
       salesCtaLabel: 'Jetzt starten', salesCtaH2a: 'Bereit, deine Sales-Abteilung zur', salesCtaH2b: 'Frontier Unit', salesCtaH2c: 'zu machen?',
       salesCtaP: 'Lass uns in einem 30-minütigen Call herausfinden, welcher Agent den größten Hebel in deinem Team hat.',
-      salesCtaBtn: 'Jetzt kostenloses Strategy Call buchen', salesCtaUrgency: 'Termine verfügbar: Diese Woche noch 4 Plätze',
+      salesCtaBtn: 'Jetzt kostenlosen Strategie-Call buchen', salesCtaUrgency: 'Termin direkt im Kalender wählen',
       // FINANCE PAGE
       finBreadCurrent: 'Agent Boss Finance', finTag: 'Finance · Anwendungsfeld',
       finH1a: 'Finance abschließen in', finH1b: 'Tagen statt Wochen', finH1c: '',
       finSub: 'Vom Head of Finance zum <strong>Agent Boss Leader</strong>. Autonome Agents übernehmen Reporting, Reconciliation und Forecasting – du wirst zum strategischen Business Partner.',
-      finCta1: 'Kostenloses 30-Min Strategy Call buchen', finCta2: 'Die 3 Wege ansehen',
-      finFn: 'Begrenzte Kapazität – aktuell offen für neue Finance-Projekte.',
+      finCta1: 'Kostenlosen 30-Min-Strategie-Call buchen', finCta2: 'Die 3 Wege ansehen',
+      finFn: 'Aktuell offen für neue Finance-Projekte.',
       finPainLabel: 'Die Closing-Hölle 2026', finPainH2: 'Die Closing-Hölle 2026 ist noch real',
       fp1t: 'Manuelles Reporting & Daten-Chaos', fp1d: 'Stundenlanges Zusammenführen aus SAP, Excel, Power BI & Co.',
       fp2t: 'Monatsabschluss dauert 8–14 Tage', fp2d: 'Hoher Stress, Fehlerquellen und wenig Zeit für echte Analysen.',
@@ -2875,12 +2650,12 @@ E-mail: kontakt@agent-boss-academy.com</p>
       finFaq3q: 'Wann sehe ich erste Ergebnisse?', finFaq3a: 'Erste produktive Reporting-Agents laufen häufig schon nach wenigen Wochen.',
       finCtaLabel: 'Jetzt starten', finCtaH2a: 'Bereit, Finance zum strategischen', finCtaH2b: 'Powerhouse', finCtaH2c: 'zu machen?',
       finCtaP: 'Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deiner Finance-Abteilung.',
-      finCtaBtn: 'Jetzt kostenloses Strategy Call buchen',
+      finCtaBtn: 'Jetzt kostenlosen Strategie-Call buchen',
       // HR PAGE
       hrBreadCurrent: 'Agent Boss HR', hrTag: 'HR · Anwendungsfeld',
-      hrH1a: 'Stellen', hrH1b: '50 % schneller', hrH1c: 'besetzen und Top-Talente halten',
+      hrH1a: 'Stellen', hrH1b: 'schneller', hrH1c: 'besetzen und Top-Talente halten',
       hrSub: 'Vom Head of HR zum <strong>Agent Boss Leader</strong>. Recruiting, Onboarding und Talent Development Agents machen HR zum strategischen Talent-Magneten.',
-      hrCta1: 'Kostenloses 30-Min Strategy Call buchen', hrCta2: 'Die 3 Wege ansehen',
+      hrCta1: 'Kostenlosen 30-Min-Strategie-Call buchen', hrCta2: 'Die 3 Wege ansehen',
       hrPainLabel: 'Die HR-Realität 2026', hrPainH2: 'HR kämpft 2026 noch viel zu oft manuell',
       hp1t: '100+ Bewerbungen manuell sichten', hp1d: 'Wochenlange Recruiting-Zyklen kosten die besten Kandidaten.',
       hp2t: 'Hoher Admin-Aufwand', hp2d: 'On-/Offboarding und Verwaltungsaufgaben fressen strategische HR-Zeit.',
@@ -2900,10 +2675,10 @@ E-mail: kontakt@agent-boss-academy.com</p>
       hrPriceLabel: 'Zusammenarbeit', hrPriceH2: 'So arbeiten wir hier zusammen',
       hrCtaLabel: 'Jetzt starten', hrCtaH2a: 'Bereit, HR zum strategischen', hrCtaH2b: 'Talent-Magneten', hrCtaH2c: 'zu machen?',
       hrCtaP: 'Starte mit einem unverbindlichen Strategie-Call. Wir finden gemeinsam den größten Hebel in deiner HR-Abteilung.',
-      hrCtaBtn: 'Jetzt kostenloses Strategy Call buchen',
+      hrCtaBtn: 'Jetzt kostenlosen Strategie-Call buchen',
     },
     en: {
-      pageTitle: 'Agent Boss Academy | Robert Weller – Agent Boss Leader for AI agents & automation',
+      pageTitle: 'Robert Weller – Agent Boss | AI Agents for Leaders',
       navBack: 'Back to Overview',
       mnavProg: 'Use cases', mnavWhy: 'Why us', mnavImpact: 'Results', mnavTesti: 'Testimonials', mnavInsights: 'Insights', mnavCta: 'Book Strategy Call',
       // ORCHESTRATION
@@ -2946,7 +2721,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       progLabel: 'Use cases', progH2: 'Where Agent Boss work pays off', progSub: 'The same three paths – applied to the areas where I help most.',
       progSalesTag: 'Sales', progSalesTitle: 'Agent Boss<br>Sales', progSalesDesc: 'Turn your sales team into a revenue machine. More selling time, higher win rates, precise forecasts.', progSalesLink: 'Use cases in Sales →',
       progFinTag: 'Finance', progFinTitle: 'Agent Boss<br>Finance', progFinDesc: 'Close months in days. Finance becomes a strategic business partner with autonomous reporting & real-time insights.', progFinLink: 'Use cases in Finance →',
-      progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Fill positions 50% faster and boost the employee experience. Recruiting, onboarding & talent agents included.', progHRLink: 'Use cases in HR →',
+      progHRTag: 'HR', progHRTitle: 'Agent Boss<br>HR', progHRDesc: 'Fill positions faster and boost the employee experience. Recruiting, onboarding & talent agents included.', progHRLink: 'Use cases in HR →',
       whyLabel: 'Why us', whyH2: 'Why leaders work with me',
       feat1t: 'End-to-end', feat1d: 'From advisory to community to fully managed automation – one partner across the whole journey.',
       feat2t: 'Full stack', feat2d: 'Langdock, n8n, Make, Claude & Second Brain from one source – from advisory to operations.',
@@ -2963,7 +2738,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       ctaLabel: 'Get Started', ctaH2a: 'Ready to turn your domain into a', ctaH2b: 'Frontier Unit', ctaH2c: '?',
       ctaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your domain.',
       ctaBtn: 'Book Your Free Strategy Call',
-      ctaMeta1: 'Duration: 30 Minutes', ctaMeta2: 'No Sales Pitch', ctaMeta3: 'Concrete Next Steps Guaranteed',
+      ctaMeta1: 'Duration: 30 Minutes', ctaMeta2: 'No Sales Pitch', ctaMeta3: 'With Concrete Next Steps',
       footerCopy: '© 2026 Agent Boss Academy · Agent Boss community on Skool',
       footerLinks: 'Imprint · Privacy',
       wlBadge: 'Early access', wlH3: 'Skool Community – Waitlist', wlP: 'Sign up and be first in when the community opens.', wlName: 'Your name', wlEmail: 'Your email', wlBtn: 'Join the waitlist', wlDisc: 'No data sharing. Unsubscribe at any time.',
@@ -2972,9 +2747,9 @@ E-mail: kontakt@agent-boss-academy.com</p>
       salesH1a: 'Turn Your Sales Team into a', salesH1b: 'Revenue Machine', salesH1c: '',
       salesSub: 'From Head of Sales to <strong>Agent Boss Leader</strong>. AI Agents take over admin work – your team sells more, faster and more precisely.',
       salesCta1: 'Book a Free 30-Min Strategy Call', salesCta2: 'See the 3 paths',
-      salesFn: 'Limited capacity – currently taking on new Sales projects.',
+      salesFn: 'Currently taking on new Sales projects.',
       salesPainLabel: 'The Reality in Sales 2026', salesPainH2: 'Why Most Sales Teams Don\'t Progress Despite AI',
-      sp1t: '40–60% Admin Time', sp1d: 'Your reps are researching, qualifying manually and writing proposals instead of selling.',
+      sp1t: 'Too Much Admin Time', sp1d: 'Your reps are researching, qualifying manually and writing proposals instead of selling.',
       sp2t: 'Unreliable Forecasts', sp2d: 'Pipeline data is incomplete → surprises for management.',
       sp3t: 'High Turnover & Demotivation', sp3d: 'Salespeople hate the administrative burden and burn out.',
       salesPainQuote: '"We already have Copilot and Salesforce Einstein – but nothing really changes."',
@@ -2998,12 +2773,12 @@ E-mail: kontakt@agent-boss-academy.com</p>
       faq4q: 'What about data protection & compliance?', faq4a: 'Fully GDPR-compliant. The governance framework including compliance requirements, data protection architecture and audit trails is a core part of the work – and is implemented in your environment.',
       salesCtaLabel: 'Get Started', salesCtaH2a: 'Ready to turn your Sales Department into a', salesCtaH2b: 'Frontier Unit', salesCtaH2c: '?',
       salesCtaP: 'Let\'s find out in a 30-minute call which agent has the biggest lever in your team.',
-      salesCtaBtn: 'Book Your Free Strategy Call', salesCtaUrgency: 'Available this week: 4 spots remaining',
+      salesCtaBtn: 'Book Your Free Strategy Call', salesCtaUrgency: 'Pick a slot directly in the calendar',
       finBreadCurrent: 'Agent Boss Finance', finTag: 'Finance · Use case',
       finH1a: 'Close Finance in', finH1b: 'Days, Not Weeks', finH1c: '',
       finSub: 'From Head of Finance to <strong>Agent Boss Leader</strong>. Autonomous agents handle reporting, reconciliation and forecasting – you become the strategic business partner.',
       finCta1: 'Book a Free 30-Min Strategy Call', finCta2: 'See the 3 paths',
-      finFn: 'Limited capacity – currently taking on new Finance projects.',
+      finFn: 'Currently taking on new Finance projects.',
       finPainLabel: 'The Closing Hell 2026', finPainH2: 'The Closing Hell of 2026 Is Still Real',
       fp1t: 'Manual Reporting & Data Chaos', fp1d: 'Hours spent merging data from SAP, Excel, Power BI & more.',
       fp2t: 'Month-End Close Takes 8–14 Days', fp2d: 'High stress, error sources and little time for real analysis.',
@@ -3028,7 +2803,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
       finCtaP: 'Start with a no-commitment strategy call. Together we\'ll identify the biggest lever in your finance department.',
       finCtaBtn: 'Book Your Free Strategy Call',
       hrBreadCurrent: 'Agent Boss HR', hrTag: 'HR · Use case',
-      hrH1a: 'Fill Positions', hrH1b: '50% Faster', hrH1c: 'and Retain Top Talent',
+      hrH1a: 'Fill Positions', hrH1b: 'Faster', hrH1c: 'and Retain Top Talent',
       hrSub: 'From Head of HR to <strong>Agent Boss Leader</strong>. Recruiting, onboarding and talent development agents turn HR into a strategic talent magnet.',
       hrCta1: 'Book a Free 30-Min Strategy Call', hrCta2: 'See the 3 paths',
       hrPainLabel: 'The HR Reality 2026', hrPainH2: 'HR Still Fights Too Many Manual Battles in 2026',
@@ -3394,7 +3169,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
     currentLang = lang;
     const t = i18n[lang];
     document.documentElement.lang = lang;
-    document.title = t.pageTitle;
+    if (typeof updateMeta === 'function' && document.querySelector('.page.active')) updateMeta(); else document.title = t.pageTitle;
 
     // toggle buttons
     document.querySelectorAll('.lang-toggle button').forEach(b => {
@@ -3552,24 +3327,89 @@ E-mail: kontakt@agent-boss-academy.com</p>
   }
 
   // ── ROUTING ──
-  function showPage(id) {
+  // Echte URLs je Seite (Netlify liefert für diese Pfade index.html aus, siehe netlify.toml)
+  const SITE_URL = 'https://www.agent-boss-academy.com';
+  const PAGE_PATHS = { home:'/', sales:'/sales', finance:'/finance', hr:'/hr', insights:'/insights', impressum:'/impressum', datenschutz:'/datenschutz' };
+  const PAGE_META = {
+    de: {
+      sales:       ['Agent Boss Sales: AI-Agents für Vertriebsteams | Robert Weller', 'AI-Agents für Sales: Lead-Scoring, Account-Research, Angebote und Follow-ups automatisieren – mit Beratung, Umsetzung und Betrieb durch Robert Weller.'],
+      finance:     ['Agent Boss Finance: AI-Agents für Finance | Robert Weller', 'AI-Agents für Finance: Reporting, Reconciliation und Forecasting automatisieren und den Monatsabschluss beschleunigen.'],
+      hr:          ['Agent Boss HR: AI-Agents für HR | Robert Weller', 'AI-Agents für HR: Recruiting, Onboarding und Talent Development – Stellen schneller besetzen und Talente gezielt entwickeln.'],
+      insights:    ['Insights: Adventures of an Agent Boss | Robert Weller', 'Geschichten und Praxiswissen zum Führen mit KI-Agents: die LinkedIn-Serie „Adventures of an Agent Boss“ und Knowledge Craft von Robert Weller.'],
+      impressum:   ['Impressum | Agent Boss Academy', 'Impressum der Agent Boss Academy, Robert Weller, Nußloch.'],
+      datenschutz: ['Datenschutzerklärung | Agent Boss Academy', 'Datenschutzerklärung der Agent Boss Academy.']
+    },
+    en: {
+      sales:       ['Agent Boss Sales: AI agents for sales teams | Robert Weller', 'AI agents for sales: automate lead scoring, account research, proposals and follow-ups – with advisory, implementation and operations by Robert Weller.'],
+      finance:     ['Agent Boss Finance: AI agents for finance | Robert Weller', 'AI agents for finance: automate reporting, reconciliation and forecasting and speed up the month-end close.'],
+      hr:          ['Agent Boss HR: AI agents for HR | Robert Weller', 'AI agents for HR: recruiting, onboarding and talent development – fill roles faster and grow talent deliberately.'],
+      insights:    ['Insights: Adventures of an Agent Boss | Robert Weller', 'Stories and field notes on leading with AI agents: the LinkedIn series “Adventures of an Agent Boss” and Knowledge Craft by Robert Weller.'],
+      impressum:   ['Site notice | Agent Boss Academy', 'Site notice of Agent Boss Academy, Robert Weller, Nußloch, Germany.'],
+      datenschutz: ['Privacy policy | Agent Boss Academy', 'Privacy policy of Agent Boss Academy.']
+    }
+  };
+  let homeDescription = null;
+  function setUrl(url, replace) {
+    if (location.pathname + location.hash !== url) history[replace ? 'replaceState' : 'pushState'](null, '', url);
+    updateMeta();
+  }
+  function updateMeta() {
+    const L = currentLang, active = document.querySelector('.page.active');
+    const id = active ? active.id.replace('page-', '') : 'home';
+    const desc = document.querySelector('meta[name="description"]');
+    if (homeDescription === null && desc) homeDescription = desc.content;
+    let title = i18n[L].pageTitle, text = homeDescription, path = '/';
+    if (id === 'insights' && currentInsightId) {
+      const post = insights.find(x => x.id === currentInsightId);
+      title = post.title[L] + ' | Agent Boss Academy';
+      text = post.excerpt[L];
+      path = '/insights/' + post.id;
+    } else if (id !== 'home') {
+      [title, text] = PAGE_META[L][id];
+      path = PAGE_PATHS[id];
+    }
+    document.title = title;
+    if (desc && text) desc.content = text;
+    const canon = document.querySelector('link[rel="canonical"]');
+    if (canon) canon.href = SITE_URL + path;
+  }
+  // Link-Klicks abfangen; Strg/Cmd/Mittelklick öffnen wie gewohnt einen neuen Tab
+  function plainClick(e) { return !(e && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1)); }
+  function nav(e, id) {
+    if (!plainClick(e)) return true;
+    if (id === 'insights') { closeInsight(true); renderInsightsList(); }
+    showPage(id);
+    return false;
+  }
+  function navSection(e, sectionId) {
+    if (!plainClick(e)) return true;
+    goHomeSection(sectionId);
+    return false;
+  }
+  function navInsight(e, id) {
+    if (!plainClick(e)) return true;
+    openInsight(id);
+    return false;
+  }
+
+  function showPage(id, noUrl) {
     closeMobileNav();
-    // verlässt man die Insights über Logo/Back, den Insights-Hash entfernen (kein Re-Open beim Reload)
-    if (id !== 'insights' && location.hash.indexOf('#insights') === 0) history.replaceState(null, '', location.pathname + location.search);
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
     const isHome = id === 'home';
     document.body.classList.add('theme-light'); // editorial light theme across all pages
     document.getElementById('navBack').style.display = isHome ? 'none' : 'flex';
-    document.getElementById('navLinks').style.display = isHome ? 'flex' : 'none';
+    document.getElementById('navLinks').style.display = isHome ? '' : 'none'; // '' = CSS entscheidet (auf dem Handy ausgeblendet)
     setTimeout(() => {
       document.querySelectorAll('#page-' + id + ' .fade-in:not(.visible)').forEach(el => observer.observe(el));
     }, 60);
+    if (!noUrl) setUrl(PAGE_PATHS[id]);
   }
 
-  function goHomeSection(sectionId) {
-    showPage('home');
+  function goHomeSection(sectionId, noUrl) {
+    showPage('home', true);
+    if (!noUrl) setUrl('/#' + sectionId);
     setTimeout(() => {
       const el = document.getElementById(sectionId);
       if (!el) return;
@@ -3607,12 +3447,12 @@ E-mail: kontakt@agent-boss-academy.com</p>
   }
   function insightCard(p) {
     const L = currentLang;
-    return `<button class="insight-card fade-in" onclick="openInsight('${p.id}')" aria-label="${p.title[L].replace(/"/g, '&quot;')}">
+    return `<a class="insight-card fade-in" href="/insights/${p.id}" data-nav onclick="return navInsight(event,'${p.id}')">
         <span class="insight-card-series insight-series--${p.series}">${seriesName(p.series)}</span>
         <h3 class="insight-card-title">${p.title[L]}</h3>
         <p class="insight-card-excerpt">${p.excerpt[L]}</p>
         <span class="insight-card-meta">${fmtDate(p.date)} &middot; ${p.readMin} ${i18n[L].insMinRead}</span>
-      </button>`;
+      </a>`;
   }
   function sortedInsights() {
     return insights.slice().sort((a, b) => b.date.localeCompare(a.date));
@@ -3635,10 +3475,10 @@ E-mail: kontakt@agent-boss-academy.com</p>
     grid.innerHTML = sortedInsights().slice(0, 3).map(insightCard).join('');
     grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   }
-  function openInsight(id, fromHash) {
+  function openInsight(id, noUrl) {
     const p = insights.find(x => x.id === id);
-    if (!p) { showPage('insights'); return; }
-    if (!document.getElementById('page-insights').classList.contains('active')) showPage('insights');
+    if (!p) { closeInsight(true); renderInsightsList(); showPage('insights', true); setUrl('/insights', true); return; }
+    if (!document.getElementById('page-insights').classList.contains('active')) showPage('insights', true);
     const L = currentLang;
     const set = (elId, txt) => { const el = document.getElementById(elId); if (el) el.textContent = txt; };
     const series = document.getElementById('insReaderSeries');
@@ -3654,30 +3494,35 @@ E-mail: kontakt@agent-boss-academy.com</p>
     document.getElementById('insightReader').hidden = false;
     currentInsightId = id;
     window.scrollTo({ top: 0, behavior: 'instant' });
-    if (!fromHash) location.hash = 'insights/' + id;
+    if (!noUrl) setUrl('/insights/' + id); else updateMeta();
   }
-  function closeInsight() {
+  function closeInsight(noUrl) {
     document.getElementById('insightReader').hidden = true;
     const hub = document.querySelector('#page-insights .insights-hub');
     if (hub) hub.style.display = '';
     currentInsightId = null;
-    if (location.hash.indexOf('insights/') !== -1) location.hash = 'insights';
     window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!noUrl) setUrl('/insights');
   }
-  function applyHash() {
-    const h = location.hash.replace(/^#/, '');
-    if (h.indexOf('insights') === 0) {
-      const slug = h.split('/')[1];
-      showPage('insights');
-      renderInsightsList();
-      if (slug) openInsight(slug, true); else closeInsight();
-    }
+  // Aktuelle Adresse anzeigen (Seitenaufruf, Zurück/Vor im Browser)
+  function applyRoute() {
+    const path = location.pathname.replace(/\/+$/, '').replace(/\/index\.html$/, '') || '/';
+    const post = path.match(/^\/insights\/([\w-]+)$/);
+    if (post) { renderInsightsList(); openInsight(post[1], true); return; }
+    const id = Object.keys(PAGE_PATHS).find(k => PAGE_PATHS[k] === path) || 'home';
+    if (id === 'insights') { closeInsight(true); renderInsightsList(); }
+    showPage(id, true);
+    const section = id === 'home' && location.hash.slice(1);
+    if (section && document.getElementById(section)) goHomeSection(section, true);
+    updateMeta();
   }
-  window.addEventListener('hashchange', applyHash);
+  window.addEventListener('popstate', applyRoute);
   window.addEventListener('DOMContentLoaded', () => {
+    // alte Links aus LinkedIn-Posts (#insights, #insights/<id>) auf echte Pfade umschreiben
+    if (location.hash.indexOf('#insights') === 0) history.replaceState(null, '', '/' + location.hash.slice(1) + location.search);
     renderInsightsTeaser();
     renderInsightsList();
-    applyHash();
+    applyRoute();
   });
 
   // ── FAQ ──
@@ -3720,153 +3565,6 @@ E-mail: kontakt@agent-boss-academy.com</p>
       if (floatingCta) floatingCta.classList.toggle('visible', y > 500);
       if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', y > 800);
     }, { passive: true });
-  })();
-
-  // ── CHAT DEMO ANIMATION ──
-  (function() {
-    const HUMAN = "Erstelle eine Jobbeschreibung für einen Context Engineer im Sales. Suche Sourcing-Möglichkeiten für Berlin raus.";
-
-    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-    function row(cls) {
-      const d = document.createElement('div');
-      d.className = 'chat-row ' + cls;
-      return d;
-    }
-    function av(cls, txt) {
-      const d = document.createElement('div');
-      d.className = 'chat-av ' + cls;
-      d.textContent = txt;
-      return d;
-    }
-
-    async function run() {
-      const body = document.getElementById('chatBody');
-      const input = document.getElementById('chatInput');
-      const sendBtn = document.getElementById('chatSendBtn');
-      if (!body) return;
-
-      // reset
-      body.innerHTML = '';
-      input.innerHTML = '<span class="chat-inp-cursor"></span>';
-
-      await sleep(900);
-
-      // TYPE human message into input
-      for (let i = 0; i <= HUMAN.length; i++) {
-        input.textContent = HUMAN.slice(0, i);
-        const cur = document.createElement('span');
-        cur.className = 'chat-inp-cursor';
-        input.appendChild(cur);
-        await sleep(i < 20 ? 55 : 28);
-      }
-
-      await sleep(350);
-      sendBtn.classList.add('sent');
-      await sleep(200);
-
-      // Human bubble appears
-      input.textContent = '';
-      const cur2 = document.createElement('span');
-      cur2.className = 'chat-inp-cursor';
-      input.appendChild(cur2);
-      sendBtn.classList.remove('sent');
-
-      const hRow = row('human');
-      hRow.appendChild(av('hu', 'RW'));
-      const hBbl = document.createElement('div');
-      hBbl.className = 'chat-bbl';
-      hBbl.textContent = HUMAN;
-      hRow.appendChild(hBbl);
-      body.appendChild(hRow);
-      requestAnimationFrame(() => hRow.classList.add('show'));
-      body.scrollTop = body.scrollHeight;
-
-      await sleep(500);
-
-      // Typing indicator
-      const thinkRow = row('agent');
-      thinkRow.appendChild(av('ab', 'AB'));
-      const dots = document.createElement('div');
-      dots.className = 'chat-dots';
-      dots.innerHTML = '<span></span><span></span><span></span>';
-      thinkRow.appendChild(dots);
-      body.appendChild(thinkRow);
-      requestAnimationFrame(() => thinkRow.classList.add('show'));
-      body.scrollTop = body.scrollHeight;
-
-      await sleep(1800);
-      thinkRow.remove();
-
-      // ── RESULT CARD 1: Jobbeschreibung ──
-      const r1Row = row('agent');
-      r1Row.appendChild(av('ab', 'AB'));
-      const card1 = document.createElement('div');
-      card1.className = 'chat-card';
-      r1Row.appendChild(card1);
-      body.appendChild(r1Row);
-      requestAnimationFrame(() => r1Row.classList.add('show'));
-
-      async function addLine(card, html, delay) {
-        await sleep(delay);
-        const d = document.createElement('div');
-        d.innerHTML = html;
-        d.style.opacity = '0';
-        d.style.transition = 'opacity .25s';
-        card.appendChild(d);
-        requestAnimationFrame(() => d.style.opacity = '1');
-        body.scrollTop = body.scrollHeight;
-      }
-
-      await addLine(card1, '<span class="chat-card-ttl">✅ Jobbeschreibung erstellt</span>', 120);
-      await addLine(card1, '<div class="chat-card-row"><span class="arr">↳</span><span>Context Engineer (Sales) · Berlin</span></div>', 320);
-      await addLine(card1, '<div class="chat-card-row"><span class="arr">↳</span><span>AI-Prompts &amp; Agent-Workflows im Sales</span></div>', 260);
-      await addLine(card1, '<div class="chat-card-row"><span class="arr">↳</span><span>Zusammenarbeit mit CRM &amp; Revenue Ops</span></div>', 260);
-      await addLine(card1, '<div class="chat-card-row"><span class="arr">↳</span><span>Prompt-Bibliothek für Sales-Prozesse</span></div>', 260);
-
-      await sleep(500);
-
-      // ── RESULT CARD 2: Sourcing ──
-      const r2Row = row('agent');
-      r2Row.appendChild(av('ab', 'AB'));
-      const card2 = document.createElement('div');
-      card2.className = 'chat-card';
-      r2Row.appendChild(card2);
-      body.appendChild(r2Row);
-      requestAnimationFrame(() => r2Row.classList.add('show'));
-      body.scrollTop = body.scrollHeight;
-
-      await addLine(card2, '<span class="chat-card-ttl">🔍 Sourcing Berlin – 3 Plattformen</span>', 120);
-      await addLine(card2, '<div class="chat-card-row"><span class="arr">↳</span><span>LinkedIn: 47 passende Profile</span></div>', 320);
-      await addLine(card2, '<div class="chat-card-row"><span class="arr">↳</span><span>XING: 23 Profile gefunden</span></div>', 260);
-      await addLine(card2, '<div class="chat-card-row"><span class="arr">↳</span><span>Stepstone: 12 aktive Kandidaten</span></div>', 260);
-
-      await sleep(500);
-
-      // ── CTA bubble ──
-      const ctaRow = row('agent');
-      ctaRow.appendChild(av('ab', 'AB'));
-      const ctaBbl = document.createElement('div');
-      ctaBbl.className = 'chat-cta-bbl';
-      ctaBbl.textContent = '→ Top 5 direkt anschreiben?';
-      ctaRow.appendChild(ctaBbl);
-      body.appendChild(ctaRow);
-      requestAnimationFrame(() => ctaRow.classList.add('show'));
-      body.scrollTop = body.scrollHeight;
-
-      // Pause, then fade out and restart
-      await sleep(3200);
-      body.style.transition = 'opacity .6s';
-      body.style.opacity = '0';
-      await sleep(700);
-      body.style.opacity = '1';
-      body.style.transition = '';
-
-      run();
-    }
-
-    // start after page fonts/layout settle
-    setTimeout(run, 600);
   })();
 
   // ── POPUP ──
@@ -4152,8 +3850,8 @@ E-mail: kontakt@agent-boss-academy.com</p>
       const p = document.getElementById('wl-p');
       const form = wp && wp.querySelector('form');
       if (p) p.textContent = document.documentElement.lang === 'en'
-        ? 'Thank you! You are on the waitlist. ✅'
-        : 'Danke! Du stehst auf der Warteliste. ✅';
+        ? 'Thank you! You are on the waitlist.'
+        : 'Danke! Du stehst auf der Warteliste.';
       if (form) form.style.display = 'none';
       if (wp) wp.classList.add('active');
     });
@@ -4163,7 +3861,7 @@ E-mail: kontakt@agent-boss-academy.com</p>
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floatingCta">
   <a href="https://calendly.com/robert85-weller/30min" target="_blank">
-    <span class="floating-cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.3 4-2 1.4a11 11 0 0 0 4.8 4.8l1.4-2 4 1.3v3a1.5 1.5 0 0 1-1.6 1.5A14.5 14.5 0 0 1 5 5.1 1.5 1.5 0 0 1 6.5 3.5z"/></svg></span><span id="floating-cta-text">Strategy Call buchen</span>
+    <span class="floating-cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.3 4-2 1.4a11 11 0 0 0 4.8 4.8l1.4-2 4 1.3v3a1.5 1.5 0 0 1-1.6 1.5A14.5 14.5 0 0 1 5 5.1 1.5 1.5 0 0 1 6.5 3.5z"/></svg></span><span id="floating-cta-text">Strategie-Call buchen</span>
   </a>
 </div>
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben">↑</button>
