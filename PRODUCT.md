@@ -41,7 +41,7 @@ echte KI-Agenten — „SAP-Exec bei Tag, Agent Boss bei Nacht." Glaubwürdigkei
 - **Lead-Magnet:** Agent Boss Readiness Check (6-Fragen-Quiz → Level Assistant/Agent/
   Agent Boss → E-Mail → On-Page Mini-Guide „Vom Assistant zum Agent Boss" + PDF-Export).
   Auto-Popup nach 12 s (1×/Session) + Hero-Link.
-- **Formulare:** Netlify Forms (`readiness-check`, `skool-waitlist`) — greifen nur live.
+- **Formulare:** `form-handler.php` auf Hostinger (`readiness-check`, `skool-waitlist`) — CSV + E-Mail pro Lead.
 
 ## Capabilities and Constraints
 
@@ -52,7 +52,7 @@ Drei gleichwertige Offerings (keine Kurse, keine Preis-Pakete):
 
 Technisch: **eine einzige `index.html`** (~230 KB), reines HTML/CSS/JS, **kein Build,
 kein Framework**. SPA-artig via `showPage(id)`. **Zweisprachig DE/EN** (`setLang`,
-i18n-Objekt + `data-de`/`data-en`). Auto-Deploy: `git push` auf `main` → Netlify live
+i18n-Objekt + `data-de`/`data-en`). Auto-Deploy: `git push` auf `main` → Hostinger live
 auf https://www.agent-boss-academy.com.
 
 Terminologie: „Agent Boss", „Agent Boss Leader", „Frontier Firm/Unit", „Anwendungsfelder"

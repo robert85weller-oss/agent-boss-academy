@@ -5,7 +5,7 @@
 
 ## ⚠️ Wichtigste Fakten (NICHT übersehen)
 - **Eine einzige Datei: `index.html`** (~230 KB) — **reines HTML/CSS/JS, KEIN Build, KEIN Framework** (kein Next.js/React/Tailwind, trotz altem Eintrag). Alles inline: `<style>` + `<script>` + Markup.
-- **Auto-Deploy aktiv:** jeder `git push` auf `main` → Netlify deployt automatisch live auf **https://www.agent-boss-academy.com**. Kein manuelles `netlify deploy` mehr nötig.
+- **Hosting: Hostinger** (umgezogen von Netlify, Checkliste: `docs/hostinger-umzug.md`). Auto-Deploy über hPanel → Git: jeder `git push` auf `main` → live auf **https://www.agent-boss-academy.com**. Redirects/Zugriffsschutz/Caching in `.htaccess`.
 - Repo: `github.com/robert85weller-oss/agent-boss-academy`, Branch `main`. Projektordner: `/Users/robert/Agent Boss Academy/` (flach, Repo-Root).
 - **Niemals wieder einbauen:** Academy-/Kurs-/Zertifikat-Framing (Hochschulzertifikat, WHU, „8–12 Wochen", „Woche 01–08", „Capstone", „Teilnehmer", „Learning Journey", Preis-Pakete). Wurde bewusst komplett entfernt.
 
@@ -33,7 +33,7 @@ Premium-Beratung-Editorial, bewusst **anti-„KI-Look"**. Doku im Second Brain: 
 
 ## Integrationen / Daten
 - **Strategie-Call:** Calendly `https://calendly.com/robert85-weller/30min` (überall verlinkt).
-- **Formulare:** Netlify Forms — `readiness-check` + `skool-waitlist` (versteckte Detection-Forms direkt nach `<body>`; greifen nur live, nicht lokal/`file://`).
+- **Formulare:** `form-handler.php` (PHP auf Hostinger) — `readiness-check` (per `fetch`, JSON) + `skool-waitlist` (POST → Redirect `/?waitlist=success`). Pro Lead: CSV-Zeile in `../ab-leads/<form>.csv` (außerhalb `public_html`, Fallback `_data/`, per `.htaccess` gesperrt) + Mail an `kontakt@agent-boss-academy.com`. Lokal testen: `php -S localhost:8000`.
 - **Brevo-Popup** (`#popup`, `submitBrevoForm`): separater Test, **nicht** auto-getriggert — in Ruhe lassen.
 - **Impressum:** Robert Weller, Theodor-Heuss-Str. 31, 69226 Nußloch, Tel. 015120565890, robert85.weller@googlemail.com.
 
@@ -41,10 +41,10 @@ Premium-Beratung-Editorial, bewusst **anti-„KI-Look"**. Doku im Second Brain: 
 - **JS prüfen:** `node -e "..."` Script extrahieren + `node --check`. (Es gibt ein bewährtes Playwright-E2E-Muster — 29 Checks: Nav, Subpages, Sprachwechsel, Modals, Readiness-Flow, Guide, PDF, Mobile.)
 - **Lokal ansehen:** `cd "/Users/robert/Agent Boss Academy" && python3 -m http.server 8000` → http://localhost:8000 (Formular-Speicherung geht nur live).
 - **Visuell verifizieren:** Playwright headless (Chromium installiert unter `~/.npm/_npx/.../playwright`); Screenshots statt Raten.
-- **Git:** auf `main` arbeiten, committen, `git push` = live. `.gitignore` deckt `.netlify` + `.DS_Store`.
+- **Git:** auf `main` arbeiten, committen, `git push` = live. `.gitignore` deckt `.netlify`, `.DS_Store` + `_data/*.csv`.
 
 ## Offene Folge-Themen
-- **n8n-Flow (TODO):** neue Readiness-Check-Leads aus **Netlify Forms** automatisch weiterverarbeiten → z. B. ins Second Brain / eine Tabelle schreiben + Benachrichtigung. Netlify-Form-Detection ist seit 2026-06-29 aktiv; `readiness-check` (Name·E-Mail·Level·Score) + `skool-waitlist` werden erfasst. Anbindung via Netlify Form-Notification (Webhook) oder Netlify-API.
+- **n8n-Flow (TODO):** neue Readiness-Check-Leads automatisch weiterverarbeiten → z. B. ins Second Brain / eine Tabelle schreiben + Benachrichtigung. `readiness-check` (Name·E-Mail·Level·Score) + `skool-waitlist` laufen über `form-handler.php`; Anbindung am einfachsten per zusätzlichem Webhook-Call im Handler.
 - Tonbruch „du" vs. „Sie" auf den Subpage-Detailtexten angleichen.
 - Team-Sektion: Sarah Krüger & Markus Hoffmann sind Platzhalter (nicht real).
 - Impressum + Datenschutzerklärung sind live (eRecht24, abmahngeschützt, zweisprachig); offen nur: Adresse in eRecht24-Stammdaten auf „Nußloch" nachziehen (Quelle/Website synchron halten).

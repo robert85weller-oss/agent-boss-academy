@@ -46,6 +46,6 @@
 
 ## Technische Notizen
 - Alles in einer Datei: `index.html` (~1900 Zeilen)
-- Hosting: Netlify (auto-deploy vom `main` Branch)
+- Hosting: Hostinger (Git-Auto-Deploy vom `main` Branch, siehe `docs/hostinger-umzug.md`)
 - Repo: `https://github.com/robert85weller-oss/agent-boss-academy`
 - Keine externen Build-Tools, kein npm – reines HTML/CSS/JS
