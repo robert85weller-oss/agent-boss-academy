@@ -28,7 +28,7 @@ ausgefüllt, Skool-Warteliste-Eintrag oder Call gebucht.
 ## Positioning
 
 **Robert selbst ist der Differenzierer**, den niemand kopieren kann: Er lebt den Wandel
-täglich als **VP & Global Content Officer bei SAP** *und* baut/betreibt als Practitioner
+täglich als **VP, AI Product Manager bei SAP** *und* baut/betreibt als Practitioner
 echte KI-Agenten — „SAP-Exec bei Tag, Agent Boss bei Nacht." Glaubwürdigkeit entsteht
 über die Person, nicht über Zertifikate oder Kurs-Framing. Sekundär gestützt durch das
 „Agent Boss"-Leadership-Modell (Vom Manager zum Agent Boss) und Done-for-you-Automation
@@ -76,7 +76,7 @@ Terminologie: „Agent Boss", „Agent Boss Leader", „Frontier Firm/Unit", „
 ## Evidence on Hand
 
 **Real und nutzbar:**
-- Roberts **SAP-Rolle** (VP & Global Content Officer, SAP) und öffentliches
+- Roberts **SAP-Rolle** (VP, AI Product Manager, SAP) und öffentliches
   **LinkedIn-Profil** (`linkedin.com/in/robertweller-info/`) — primärer Vertrauensbeleg.
 - Tool-/Tech-Stack „Womit wir automatisieren": Microsoft AI, Langdock, n8n, Make, Claude,
   Second Brain (Mountanridge = zukünftig).
